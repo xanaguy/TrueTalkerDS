@@ -16531,6 +16531,14 @@ Rule ScavengeStartJSGone2Coach
 	Response ScavengeStartC1M4Coach
 }
 
+Rule JSGone2escapeCoach
+{
+	criteria Conceptc1m4escape IsCoach NotSaidOutro IsJSGone2 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "Talk:1:0,SaidOutro:1:0"
+	applycontexttoworld
+	Response _PlayerInfoRemarkableBlankCoach
+}
+
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------

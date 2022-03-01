@@ -17645,6 +17645,14 @@ Rule ScavengeStartJSGone2Mechanic
 	Response ScavengeStartJSGone2Mechanic
 }
 
+Rule JSGone2escapeMechanic
+{
+	criteria Conceptc1m4escape IsMechanic NotSaidOutro IsJSGone2 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "Talk:1:0,SaidOutro:1:0"
+	applycontexttoworld
+	Response _PlayerInfoRemarkableBlankMechanic
+}
+
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------

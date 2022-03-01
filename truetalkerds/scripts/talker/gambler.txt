@@ -16860,6 +16860,14 @@ Rule ScavengeStartJSGone2Gambler
 	Response FinaleStartC1M4Gambler
 }
 
+Rule JSGone2escapeGambler
+{
+	criteria Conceptc1m4escape IsGambler NotSaidOutro IsJSGone2 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "Talk:1:0,SaidOutro:1:0"
+	applycontexttoworld
+	Response _PlayerInfoRemarkableBlankGambler
+}
+
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------

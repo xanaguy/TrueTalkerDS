@@ -15599,6 +15599,14 @@ Rule ScavengeStartJSGone2Producer
 	Response FinaleStartC1M4Producer
 }
 
+Rule JSGone2escapeProducer
+{
+	criteria Conceptc1m4escape IsProducer NotSaidOutro IsJSGone2 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "Talk:1:0,SaidOutro:1:0"
+	applycontexttoworld
+	Response _PlayerInfoRemarkableBlankProducer
+}
+
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
