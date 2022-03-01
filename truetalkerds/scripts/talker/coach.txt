@@ -16478,6 +16478,59 @@ Rule SurvivorNearFinaleDayBreak5Coach
 	Response NoResponse
 }
 
+
+//--------------------------------------------------------------------------------------------------------------
+// Gone in 60 Smokers
+//--------------------------------------------------------------------------------------------------------------
+Rule JSGone2GasPourCoach
+{
+	criteria ConceptPlayerPourStarted IsCoach IsTalk IsTalkCoach IsWorldTalkCoach IsNotScavenge IsJSGone2 _auto_NotNoGasPourLine
+	ApplyContext "TalkCoach:1:2"
+	Response C1M4GasPourCoach
+}
+
+Rule JSGone2PlayerGetToRescueVehicleCoach
+{
+	criteria ConceptGetToVehicle IsCoach IsJSGone2 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockCoach IsNotSpeakingWeight0
+	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockCoach:1:30"
+	applycontexttoworld
+	Response C1M4PlayerGetToRescueVehicleCoach
+}
+
+Response FinaleStartJSGone2Coach
+{
+	scene "scenes/Coach/WorldC1M4B11.vcd"  //Haul ass and get gas!
+	scene "scenes/Coach/WorldC1M4B20.vcd"  //Let's go! Find a gas can!
+	scene "scenes/Coach/WorldC1M4B21.vcd"  //Let's get this car gassed up!
+}
+Rule FinaleStartJSGone2Coach
+{
+	criteria ConceptFinaleTriggered IsCoach IsTalkCoach IsWorldTalkCoach IsJSGone2 IsNotScavenge _auto_NotFinaleStarted
+	ApplyContext "Talk:1:3,_auto_Finale:1:0,_auto_NoLostCall:1:0"
+	applycontexttoworld
+	Response FinaleStartJSGone2Coach
+}
+
+Response GasPourDoneJSGone2Coach
+{
+	scene "scenes/Coach/WorldC1M4B32.vcd"  //We're all gassed up, get to the car!
+}
+Rule GasPourDoneJSGone2Coach
+{
+	criteria ConceptPlayerPourFinished IsCoach IsTalk IsTalkCoach IsWorldTalkCoach IsNotScavenge IsJSGone2 ScoreDoneSC
+	ApplyContext "_auto_TimerLockA:1:5"
+	applycontexttoworld
+	Response GasPourDoneJSGone2Coach
+}
+
+Rule ScavengeStartJSGone2Coach
+{
+	criteria ConceptSurvivorLeavingCheckpoint IsCoach IsNotAlone IsTalk IsTalkCoach IsWorldTalkCoach IsJSGone2 IsScavenge IsNotSaidLeavingSafeArea
+	ApplyContext "SaidLeavingSafeArea:1:0"
+	applycontexttoworld
+	Response ScavengeStartC1M4Coach
+}
+
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------

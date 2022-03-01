@@ -8597,6 +8597,57 @@ Rule PlayerTransitionDW3NamVet
 }
 
 //--------------------------------------------------------------------------------------------------------------
+// 7 Hours Later II
+//--------------------------------------------------------------------------------------------------------------
+Rule FinaleTriggered7HoursLaterIINamVet
+{
+	criteria ConceptFinaleTriggered IsTriggeredByNamVet Is7HoursLaterII5 _auto_NotFinaleStarted IsNamVet AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "_auto_Finale:1:0"
+	applycontexttoworld
+	Response L4D1SurvivorFinaleTriggeredC11M5NamVet
+}
+
+Rule FinalVehicleArrived7HoursLaterIINamVet
+{
+	criteria ConceptGetToVehicle IsNamVet Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated NoOneInSafeSpot IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival _auto_NotEscapeReady IsNotSpeakingWeight0
+	ApplyContext "_auto_Escape:1:0,_auto_TimerLockA:1:10,_auto_TimerLockNamVet:1:30"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleArrivedRunwayNamVet
+}
+
+Rule FinalVehicleInside7HoursLaterIINamVet
+{
+	criteria ConceptGetToVehicle IsNamVet Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockNamVet IsNotSpeakingWeight0
+	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockNamVet:1:30"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleInsideRunwayNamVet
+}
+
+Rule FinalVehicleSpotted7HoursLaterIINamVet
+{
+	criteria ConceptFinalVehicleSpotted IsNamVet Is7HoursLaterII5 _auto_IsFinaleStarted
+	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockNamVet:1:30,_auto_Finale:2:0"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleSpottedRunwayNamVet
+}
+
+Rule PlayerWarnMegaMob7HoursLaterIIFinaleFirstWaveNamVet
+{
+	criteria ConceptPlayerWarnMegaMob Is7HoursLaterII5 IsNamVet _auto_IsFinaleStarted FinaleFirstHalf IsNotWarnMegaMob IsTalk IsTalkNamVet IsNotSpeaking IsWorldTalkNamVet IsNotSurvival _auto_NotSpottedVehicle
+	ApplyContext "WarnMegaMob:1:60,SaidSpecialWarn:1:30"
+	applycontexttoworld
+	Response L4D1PlayerWarnMegaMobNamVet
+}
+
+Rule L4D1PlayerWarnMegaMob7HoursLaterIIFinaleNamVet
+{
+	criteria ConceptPlayerWarnMegaMob IsNamVet Is7HoursLaterII5 _auto_IsFinaleStarted FinaleSecondHalf IsNotWarnMegaMob _auto_NotSpottedVehicle
+	ApplyContext "WarnMegaMob:1:300,SaidSpecialWarn:1:30"
+	applycontexttoworld
+	Response L4D1PlayerWarnMegaMobC11M5FinaleNamVet
+}
+
+//--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
 Rule SafeRoomStartNamVet

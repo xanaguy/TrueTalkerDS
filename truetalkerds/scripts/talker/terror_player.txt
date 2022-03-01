@@ -2649,6 +2649,9 @@ criterion "Is7HoursLaterII3"  "map" "l4d2_7hours_later_03" required weight 100
 criterion "Is7HoursLaterII4"  "map" "l4d2_7hours_later_04" required weight 100
 criterion "Is7HoursLaterII5"  "map" "l4d2_7hours_later_05" required weight 100
 
+//Gone in 60 Smokers
+criterion "IsJSGone1"  "map" "jsgone01_crash" required weight 100
+criterion "IsJSGone2"  "map" "jsgone02_end" required weight 100
 
 //Moved from gambler's first text file to keep my sanity.
 criterion "IsNotSrcGrp_ELLISSTORYINIT" "worldSrcGrp_ELLISSTORYINIT" "<1" required

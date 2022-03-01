@@ -17575,6 +17575,77 @@ Rule SurvivorNearFinaleDayBreak5Mechanic
 }
 
 //--------------------------------------------------------------------------------------------------------------
+// Gone in 60 Smokers
+//--------------------------------------------------------------------------------------------------------------
+Response JSGone2GasPourMechanic
+{
+	scene "scenes/Mechanic/WorldC1M4B30.vcd"  //Come comeoncomeoncomeon...
+	scene "scenes/Mechanic/WorldC1M4B31.vcd"  //Please get in the tank, please please please...
+	scene "scenes/Mechanic/WorldC1M4B32.vcd"  //C'mon, hurrrry up up up up up...
+	scene "scenes/Mechanic/WorldC1M4B39.vcd"  //Come onnnn, come onnnnnn...Fill it up here!
+}
+Rule JSGone2GasPourMechanic
+{
+	criteria ConceptPlayerPourStarted IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotScavenge IsJSGone2 _auto_NotNoGasPourLine
+	ApplyContext "TalkMechanic:1:2"
+	Response JSGone2GasPourMechanic
+}
+
+Rule JSGone2PlayerGetToRescueVehicleMechanic
+{
+	criteria ConceptGetToVehicle IsMechanic IsJSGone2 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
+	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockMechanic:1:30"
+	applycontexttoworld
+	Response C1M4PlayerGetToRescueVehicleMechanic
+}
+
+Response FinaleStartJSGone2Mechanic
+{
+	scene "scenes/Mechanic/WorldC1M4B25.vcd"  //Go! Go! Go! Find some gas!
+	scene "scenes/Mechanic/WorldC1M4B40.vcd"  //Grab a gas can and fill 'er up!
+	scene "scenes/Mechanic/WorldC1M4B41.vcd"  //Find a gas can!
+	scene "scenes/Mechanic/WorldC1M4B42.vcd"  //Find a gas can!
+	scene "scenes/Mechanic/WorldC1M4B44.vcd"  //Let's go! Let's get this car gassed up!
+	scene "scenes/Mechanic/WorldC1M4B45.vcd"  //Let's get this car gassed up!
+}
+Rule FinaleStartJSGone2Mechanic
+{
+	criteria ConceptFinaleTriggered IsMechanic IsTalkMechanic IsWorldTalkMechanic IsJSGone2 IsNotScavenge _auto_NotFinaleStarted
+	ApplyContext "Talk:1:3,_auto_Finale:1:0,_auto_NoLostCall:1:0"
+	applycontexttoworld
+	Response FinaleStartJSGone2Mechanic
+}
+
+Response GasPourDoneJSGone2Mechanic
+{
+	scene "scenes/Mechanic/WorldC1M4B57.vcd"  //We're all filled up, let's go!
+}
+Rule GasPourDoneJSGone2Mechanic
+{
+	criteria ConceptPlayerPourFinished IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotScavenge IsJSGone2 ScoreDoneSC
+	ApplyContext "_auto_TimerLockA:1:5"
+	applycontexttoworld
+	Response GasPourDoneJSGone2Mechanic
+}
+
+Response ScavengeStartJSGone2Mechanic
+{
+	scene "scenes/Mechanic/WorldC1M4B25.vcd"  //Go! Go! Go! Find some gas!
+	scene "scenes/Mechanic/WorldC1M4B40.vcd"  //Grab a gas can and fill 'er up!
+	scene "scenes/Mechanic/WorldC1M4B41.vcd"  //Find a gas can!
+	scene "scenes/Mechanic/WorldC1M4B42.vcd"  //Find a gas can!
+	scene "scenes/Mechanic/WorldC1M4B44.vcd"  //Let's go! Let's get this car gassed up!
+	scene "scenes/Mechanic/WorldC1M4B45.vcd"  //Let's get this car gassed up!
+}
+Rule ScavengeStartJSGone2Mechanic
+{
+	criteria ConceptSurvivorLeavingCheckpoint IsMechanic IsNotAlone IsTalk IsTalkMechanic IsWorldTalkMechanic IsJSGone2 IsScavenge IsNotSaidLeavingSafeArea
+	ApplyContext "SaidLeavingSafeArea:1:0"
+	applycontexttoworld
+	Response ScavengeStartJSGone2Mechanic
+}
+
+//--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
 Rule EllisStoryStartMechanic
