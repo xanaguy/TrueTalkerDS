@@ -1,1 +1,0 @@
-Fixed 7 Hours Later II's orator intransit responses not triggering properly. (Install this addon first)
