@@ -1,0 +1,13 @@
+"AddonInfo"
+{
+	"addonSteamAppID"	"550"							// 550 is the app ID for Left 4 Dead 2
+	"addontitle"		"TrueTalkerDS - TLS"					// Add-on title that shows up in Add-ons list. ~20 chars max
+	"addonversion"		"1.0"							// Version number of add-on version of the form <major>.<minor>
+	"addonauthor"		"Xanaguy"					// Name/alias of the author
+	"addonauthorSteamID"	""		// (Optional) Steam ID of author. We use this to construct a URL to the author's page.
+
+	"addonURL0"		""			// An html home page for the add-on that includes a download link.
+
+	"addonDescription"		""
+	"addonContent_Script"	"1"
+}
