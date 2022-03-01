@@ -9672,12 +9672,71 @@ Rule PlayerLockTheDoorCheckPointDW3TeenGIrl
 	Response NoResponse
 }
 
-Rule PlayerTransitionDW33TeenGirl
+Rule PlayerTransitionDW3TeenGirl
 {
 	criteria ConceptPlayerTransition IsNotCoughing IsTeenGirl IsNotSaidPlayerTransition IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsDarkWood3 AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidPlayerTransition:1:90"
 	applycontexttoworld
 	Response NoResponse
+}
+
+//--------------------------------------------------------------------------------------------------------------
+// 7 Hours Later II
+//--------------------------------------------------------------------------------------------------------------
+Rule FinaleTriggered7HoursLaterIITeenGirl
+{
+	criteria ConceptFinaleTriggered IsTriggeredByTeenGirl Is7HoursLaterII5 _auto_NotFinaleStarted IsTeenGirl AutoIsNotSurvival
+	ApplyContext "_auto_Finale:1:0"
+	applycontexttoworld
+	Response L4D1SurvivorFinaleTriggeredC11M5TeenGirl
+}
+
+Rule FinalVehicleArrived7HoursLaterIITeenGirl
+{
+	criteria ConceptFinalVehicleArrived IsTeenGirl Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival _auto_NotEscapeReady IsNotSpeakingWeight0
+	ApplyContext "_auto_Escape:1:0,_auto_TimerLockA:1:10,_auto_TimerLockTeenGirl:1:30"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleArrivedRunwayTeenGirl
+}
+
+Rule FinalVehicle7HoursLaterIITeenGirl
+{
+	criteria ConceptGetToVehicle IsTeenGirl Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated NoOneInSafeSpot IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsNotInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockTeenGirl IsNotSpeakingWeight0
+	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockTeenGirl:1:30"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleRunwayTeenGirl
+}
+
+Rule FinalVehicleInside7HoursLaterIITeenGirl
+{
+	criteria ConceptGetToVehicle IsTeenGirl Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockTeenGirl IsNotSpeakingWeight0
+	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockTeenGirl:1:30"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleInsideRunwayTeenGirl
+}
+
+Rule FinalVehicleSpotted7HoursLaterIITeenGirl
+{
+	criteria ConceptFinalVehicleSpotted IsTeenGirl Is7HoursLaterII5 _auto_IsFinaleStarted
+	ApplyContext "_auto_Finale:2:0"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleSpottedRunwayTeenGirl
+}
+
+Rule PlayerWarnMegaMob7HoursLaterIIFinaleFirstWaveTeenGirl
+{
+	criteria ConceptPlayerWarnMegaMob Is7HoursLaterII5 IsTeenGirl _auto_IsFinaleStarted FinaleFirstHalf IsNotWarnMegaMob IsTalk IsTalkTeenGirl IsNotSpeaking IsWorldTalkTeenGirl IsNotSurvival _auto_NotSpottedVehicle
+	ApplyContext "WarnMegaMob:1:60,SaidSpecialWarn:1:30"
+	applycontexttoworld
+	Response L4D1PlayerWarnMegaMobTeenGirl
+}
+
+Rule PlayerWarnMegaMob7HoursLaterIIFinaleTeenGirl
+{
+	criteria ConceptPlayerWarnMegaMob IsTeenGirl Is7HoursLaterII5 _auto_IsFinaleStarted FinaleSecondHalf IsNotWarnMegaMob _auto_NotSpottedVehicle
+	ApplyContext "WarnMegaMob:1:300,SaidSpecialWarn:1:30"
+	applycontexttoworld
+	Response L4D1PlayerWarnMegaMobC11M5FinaleTeenGirl
 }
 
 //--------------------------------------------------------------------------------------------------------------

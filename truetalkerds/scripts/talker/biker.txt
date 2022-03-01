@@ -10420,53 +10420,36 @@ Rule PlayerTransitionDW3Biker
 //--------------------------------------------------------------------------------------------------------------
 // 7 Hours Later II
 //--------------------------------------------------------------------------------------------------------------
-Response FinaleTriggered7HoursLaterIIBiker
-{
-	print " " then orator_plane_radio ConceptBlock570 foo:0 0 //
-}
 Rule FinaleTriggered7HoursLaterIIBiker
 {
 	criteria ConceptFinaleTriggered IsTriggeredByBiker Is7HoursLaterII5 _auto_NotFinaleStarted IsBiker AutoIsNotSurvival
 	ApplyContext "_auto_Finale:1:0"
 	applycontexttoworld
-	Response FinaleTriggered7HoursLaterIIBiker
+	Response L4D1SurvivorFinaleTriggeredC11M5Biker
 }
 
-Response FinalVehicleArrived7HoursLaterBiker
-{
-	scene "scenes/Biker/ArrivePlane01.vcd"  then any EmphaticArriveRun foo:0 -2.277 //Get to the plane. Let's go!
-	scene "scenes/Biker/ArrivePlaneInitial01.vcd"  then any EmphaticArriveRun foo:0 -2.609 //This is the last flight out of here! Let's go
-}
 Rule FinalVehicleArrived7HoursLaterBiker
 {
 	criteria ConceptFinalVehicleArrived IsBiker Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival _auto_NotEscapeReady IsNotSpeakingWeight0
 	ApplyContext "_auto_Escape:1:0,_auto_TimerLockA:1:10,_auto_TimerLockBiker:1:30"
 	applycontexttoworld
-	Response FinalVehicleArrived7HoursLaterBiker
+	Response L4D1SurvivorFinalVehicleArrivedRunwayBiker
 }
 
-Response FinalVehicleInside7HoursLaterBiker
-{
-	scene "scenes/Biker/ArrivePlane02.vcd"  then any EmphaticArriveRun foo:0 -1.434 //Get to the plane!
-}
 Rule FinalVehicleInside7HoursLaterBiker
 {
 	criteria ConceptGetToVehicle IsBiker Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockBiker IsNotSpeakingWeight0
 	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockBiker:1:30"
 	applycontexttoworld
-	Response FinalVehicleInside7HoursLaterBiker
+	Response L4D1SurvivorFinalVehicleInsideRunwayBiker
 }
 
-Response FinalVehicleSpotted7HoursLaterIIBiker
-{
-	print " "  then orator_plane_radio ConceptBlockPlaneFull foo:0 0 //
-}
 Rule FinalVehicleSpotted7HoursLaterIIBiker
 {
 	criteria ConceptFinalVehicleSpotted IsBiker Is7HoursLaterII5 _auto_IsFinaleStarted
 	ApplyContext "_auto_Finale:2:0"
 	applycontexttoworld
-	Response FinalVehicleSpotted7HoursLaterIIBiker
+	Response L4D1SurvivorFinalVehicleSpottedRunwayBiker
 }
 
 Rule PlayerWarnMegaMob7HoursLaterIIFinaleFirstWaveBiker
@@ -10477,16 +10460,12 @@ Rule PlayerWarnMegaMob7HoursLaterIIFinaleFirstWaveBiker
 	Response L4D1PlayerWarnMegaMobBiker
 }
 
-Response PlayerWarnMegaMob7HoursLaterIIFinaleBiker
-{
-	print " " then orator_plane_radio AirportRadioMegaMob foo:0 3.5 //
-}
 Rule PlayerWarnMegaMob7HoursLaterIIFinaleBiker
 {
 	criteria ConceptPlayerWarnMegaMob IsBiker Is7HoursLaterII5 _auto_IsFinaleStarted FinaleSecondHalf IsNotWarnMegaMob _auto_NotSpottedVehicle
 	ApplyContext "WarnMegaMob:1:300,SaidSpecialWarn:1:30"
 	applycontexttoworld
-	Response PlayerWarnMegaMob7HoursLaterIIFinaleBiker
+	Response L4D1PlayerWarnMegaMobC11M5FinaleBiker
 }
 
 

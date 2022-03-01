@@ -2130,10 +2130,6 @@ Rule L4D1SurvivorFinaleTriggeredBoatManager
 	Response L4D1SurvivorFinaleTriggeredBoatManager
 }
 
-Response L4D1SurvivorFinaleTriggeredC11M5Manager
-{
-	print " " then orator_plane_radio ConceptBlock570 foo:0 0 //
-}
 Rule L4D1SurvivorFinaleTriggeredC11M5Manager
 {
 	criteria ConceptFinaleTriggered IsTriggeredByManager IsDeadAir5 _auto_NotFinaleStarted IsManager AutoIsNotSurvival
@@ -9075,16 +9071,52 @@ Rule PlayerTransitionDW3Manager
 //--------------------------------------------------------------------------------------------------------------
 // 7 Hours Later II
 //--------------------------------------------------------------------------------------------------------------
-Response FinaleTriggered7HoursLaterIIManager
-{
-	print " " then orator_plane_radio ConceptBlock570 foo:0 0 //
-}
 Rule FinaleTriggered7HoursLaterIIManager
 {
 	criteria ConceptFinaleTriggered IsTriggeredByManager Is7HoursLaterII5 _auto_NotFinaleStarted IsManager AutoIsNotSurvival
 	ApplyContext "_auto_Finale:1:0"
 	applycontexttoworld
-	Response FinaleTriggered7HoursLaterIIManager
+	Response L4D1SurvivorFinaleTriggeredC11M5Manager
+}
+
+Rule FinalVehicle7HoursLaterIIManager
+{
+	criteria ConceptGetToVehicle IsManager Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated NoOneInSafeSpot IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsNotInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockManager IsNotSpeakingWeight0
+	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockManager:1:30"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleRunwayManager
+}
+
+Rule FinalVehicleInside7HoursLaterIIManager
+{
+	criteria ConceptGetToVehicle IsManager Is7HoursLaterII5 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockManager IsNotSpeakingWeight0
+	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockManager:1:30"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleInsideRunwayManager
+}
+
+Rule FinalVehicleSpotted7HoursLaterIIManager
+{
+	criteria ConceptFinalVehicleSpotted IsManager Is7HoursLaterII5 _auto_IsFinaleStarted
+	ApplyContext "_auto_Finale:2:0"
+	applycontexttoworld
+	Response L4D1SurvivorFinalVehicleSpottedRunwayManager
+}
+
+Rule PlayerWarnMegaMob7HoursLaterIIFinaleFirstWaveManager
+{
+	criteria ConceptPlayerWarnMegaMob Is7HoursLaterII5 IsManager _auto_IsFinaleStarted FinaleFirstHalf IsNotWarnMegaMob IsTalk IsTalkManager IsNotSpeaking IsWorldTalkManager IsNotSurvival _auto_NotSpottedVehicle
+	ApplyContext "WarnMegaMob:1:60,SaidSpecialWarn:1:30"
+	applycontexttoworld
+	Response L4D1PlayerWarnMegaMobManager
+}
+
+Rule L4D1PlayerWarnMegaMob7HoursLaterIIFinaleManager
+{
+	criteria ConceptPlayerWarnMegaMob IsManager Is7HoursLaterII5 _auto_IsFinaleStarted FinaleSecondHalf IsNotWarnMegaMob _auto_NotSpottedVehicle
+	ApplyContext "WarnMegaMob:1:0,SaidSpecialWarn:1:30"
+	applycontexttoworld
+	Response L4D1PlayerWarnMegaMobC11M5FinaleManager
 }
 
 //--------------------------------------------------------------------------------------------------------------
