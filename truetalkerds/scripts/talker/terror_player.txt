@@ -2653,6 +2653,11 @@ criterion "Is7HoursLaterII5"  "map" "l4d2_7hours_later_05" required weight 100
 criterion "IsJSGone1"  "map" "jsgone01_crash" required weight 100
 criterion "IsJSGone2"  "map" "jsgone02_end" required weight 100
 
+//Plan B
+criterion "IsPlanB01"  "map" "l4d2_planb1_v051" required weight 100
+criterion "IsPlanB02"  "map" "l4d2_planb2_v051" required weight 100
+criterion "IsPlanB03"  "map" "l4d2_planb3_v051" required weight 100
+
 //Moved from gambler's first text file to keep my sanity.
 criterion "IsNotSrcGrp_ELLISSTORYINIT" "worldSrcGrp_ELLISSTORYINIT" "<1" required
 criterion "IsNotSrcGrp_ELLISSTORY" "worldSrcGrp_ELLISSTORY" "<1" required

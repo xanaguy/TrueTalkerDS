@@ -10468,6 +10468,50 @@ Rule PlayerWarnMegaMob7HoursLaterIIFinaleBiker
 	Response L4D1PlayerWarnMegaMobC11M5FinaleBiker
 }
 
+//--------------------------------------------------------------------------------------------------------------
+// Plan B
+//--------------------------------------------------------------------------------------------------------------
+Rule SurvivorNearCheckpointPB2Biker
+{
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsBiker IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkBiker IsPlanB02 IsWorldTalkBiker AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidSafeSpotAhead:1:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
+Rule PlayerGetInsideCheckPointPB2Biker
+{
+	criteria ConceptPlayerGetInsideCheckPoint IsNotCoughing IsBiker IsInSafeSpot IsTalk IsTalkBiker SomeoneOutsideSafeSpot IsWorldTalkBiker IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerStayTogetherSaferoomPB2Biker
+{
+	criteria ConceptPlayerStayTogether IsNotCoughing IsBiker IsInSafeSpot IsTalk IsTalkBiker SomeoneOutsideSafeSpot IsWorldTalkBiker IsPlanB02 IsNotSpeaking AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerLockTheDoorCheckPointPB2Biker
+{
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsBiker IsInSafeSpot IsNotAlone IsTalk IsTalkBiker IsWorldTalkBiker IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerTransitionPB2Biker
+{
+	criteria ConceptPlayerTransition IsNotCoughing IsBiker IsNotSaidPlayerTransition IsTalk IsTalkBiker IsWorldTalkBiker IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidPlayerTransition:1:90"
+	applycontexttoworld
+	Response NoResponse
+}
+
+Rule NearFinalePlanBBiker
+{
+	criteria ConceptPlayerNearFinale IsNotCoughing IsBiker IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkBiker IsNotIncapacitated IsWorldTalkBiker IsPlanB03 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidFinaleAhead:1:0"
+	applycontexttoworld
+	Response NoResponse
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)

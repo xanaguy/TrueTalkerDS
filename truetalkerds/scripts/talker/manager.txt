@@ -9120,6 +9120,51 @@ Rule L4D1PlayerWarnMegaMob7HoursLaterIIFinaleManager
 }
 
 //--------------------------------------------------------------------------------------------------------------
+// Plan B
+//--------------------------------------------------------------------------------------------------------------
+Rule SurvivorNearCheckpointPB2Manager
+{
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsManager IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkManager IsPlanB02 IsWorldTalkManager AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidSafeSpotAhead:1:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
+Rule PlayerGetInsideCheckPointPB2Manager
+{
+	criteria ConceptPlayerGetInsideCheckPoint IsNotCoughing IsManager IsInSafeSpot IsTalk IsTalkManager SomeoneOutsideSafeSpot IsWorldTalkManager IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerStayTogetherSaferoomPB2Manager
+{
+	criteria ConceptPlayerStayTogether IsNotCoughing IsManager IsInSafeSpot IsTalk IsTalkManager SomeoneOutsideSafeSpot IsWorldTalkManager IsPlanB02 IsNotSpeaking AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerLockTheDoorCheckPointPB2Manager
+{
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsManager IsInSafeSpot IsNotAlone IsTalk IsTalkManager IsWorldTalkManager IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerTransitionPB2Manager
+{
+	criteria ConceptPlayerTransition IsNotCoughing IsManager IsNotSaidPlayerTransition IsTalk IsTalkManager IsWorldTalkManager IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidPlayerTransition:1:90"
+	applycontexttoworld
+	Response NoResponse
+}
+
+Rule NearFinalePlanBManager
+{
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsPlanB03 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidFinaleAhead:1:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
+//--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
 Rule SafeRoomStartManager

@@ -9740,6 +9740,51 @@ Rule PlayerWarnMegaMob7HoursLaterIIFinaleTeenGirl
 }
 
 //--------------------------------------------------------------------------------------------------------------
+// Plan B
+//--------------------------------------------------------------------------------------------------------------
+Rule SurvivorNearCheckpointPB2TeenGirl
+{
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsTeenGirl IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkTeenGirl IsPlanB02 IsWorldTalkTeenGirl AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidSafeSpotAhead:1:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
+Rule PlayerGetInsideCheckPointPB2TeenGirl
+{
+	criteria ConceptPlayerGetInsideCheckPoint IsNotCoughing IsTeenGirl IsInSafeSpot IsTalk IsTalkTeenGirl SomeoneOutsideSafeSpot IsWorldTalkTeenGirl IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerStayTogetherSaferoomPB2TeenGirl
+{
+	criteria ConceptPlayerStayTogether IsNotCoughing IsTeenGirl IsInSafeSpot IsTalk IsTalkTeenGirl SomeoneOutsideSafeSpot IsWorldTalkTeenGirl IsPlanB02 IsNotSpeaking AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerLockTheDoorCheckPointPB2TeenGirl
+{
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsTeenGirl IsInSafeSpot IsNotAlone IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerTransitionPB2TeenGirl
+{
+	criteria ConceptPlayerTransition IsNotCoughing IsTeenGirl IsNotSaidPlayerTransition IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidPlayerTransition:1:90"
+	applycontexttoworld
+	Response NoResponse
+}
+
+Rule NearFinalePlanBTeenGirl
+{
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsPlanB03 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidFinaleAhead:1:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
+//--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
 Rule SafeRoomStartTeenGirl

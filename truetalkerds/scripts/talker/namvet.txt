@@ -8648,6 +8648,51 @@ Rule L4D1PlayerWarnMegaMob7HoursLaterIIFinaleNamVet
 }
 
 //--------------------------------------------------------------------------------------------------------------
+// Plan B
+//--------------------------------------------------------------------------------------------------------------
+Rule SurvivorNearCheckpointPB2NamVet
+{
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsNamVet IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkNamVet IsPlanB02 IsWorldTalkNamVet AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidSafeSpotAhead:1:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
+Rule PlayerGetInsideCheckPointPB2NamVet
+{
+	criteria ConceptPlayerGetInsideCheckPoint IsNotCoughing IsNamVet IsInSafeSpot IsTalk IsTalkNamVet SomeoneOutsideSafeSpot IsWorldTalkNamVet IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerStayTogetherSaferoomPB2NamVet
+{
+	criteria ConceptPlayerStayTogether IsNotCoughing IsNamVet IsInSafeSpot IsTalk IsTalkNamVet SomeoneOutsideSafeSpot IsWorldTalkNamVet IsPlanB02 IsNotSpeaking AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerLockTheDoorCheckPointPB2NamVet
+{
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsNamVet IsInSafeSpot IsNotAlone IsTalk IsTalkNamVet IsWorldTalkNamVet IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	Response NoResponse
+}
+
+Rule PlayerTransitionPB2NamVet
+{
+	criteria ConceptPlayerTransition IsNotCoughing IsNamVet IsNotSaidPlayerTransition IsTalk IsTalkNamVet IsWorldTalkNamVet IsPlanB02 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidPlayerTransition:1:90"
+	applycontexttoworld
+	Response NoResponse
+}
+
+Rule NearFinalePlanBNamVet
+{
+	criteria ConceptPlayerNearFinale IsNotCoughing IsNamVet IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkNamVet IsNotIncapacitated IsWorldTalkNamVet IsPlanB03 AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidFinaleAhead:1:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
+//--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
 Rule SafeRoomStartNamVet
