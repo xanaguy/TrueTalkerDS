@@ -2276,7 +2276,7 @@ Rule SurvivorSpottedLaserSightsAutoNamVet
 
 Rule SurvivorBotPickupLaserSightsSpottedNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpLaserSights IsNotSpeaking IsBotIsAvailable IsNotInSafeSpot IsNotInStartArea IsNotInCheckpoint IsNotSaidSpotWeapons IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpLaserSights IsNotSpeaking IsBotIsAvailable IsNotInSafeSpot IsNotInStartArea IsNotInCheckpoint IsNotSaidSpotWeapons IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedAdrenalineNamVet
@@ -6401,21 +6401,21 @@ Response L4D1SurvivorPickupM60NamVet
 }
 Rule L4D1SurvivorPickupM60NamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpM60 IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpM60 IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupM60NamVet
 }
 
 Rule L4D1SurvivorPickupGrenadeLauncherNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpGrenadeLauncher IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpGrenadeLauncher IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupM60NamVet
 }
 
 Rule L4D1SurvivorPickupChainsawNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpChainSaw IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpChainSaw IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupM60NamVet
 }
@@ -6431,91 +6431,91 @@ Response L4D1SurvivorPickupMeleeNamVet
 
 Rule L4D1SurvivorPickupGolfClubNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpGolfClub IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpGolfClub IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupFireAxeBiker
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpFireAxe IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpFireAxe IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupCrowbarNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpCrowBar IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpCrowBar IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupGuitarNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpelectric_guitar IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpelectric_guitar IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupKatanaNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpKatana IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpKatana IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupMacheteNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpMachete IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpMachete IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupFryingPanNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpFryingPan IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpFryingPan IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupTonfaNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUptonfa IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUptonfa IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupCricketBatNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpcricket_bat IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpcricket_bat IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupBaseballBatNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpbaseball_bat IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpbaseball_bat IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupKnifeNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpKnife IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpKnife IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupShovelNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpShovel IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpShovel IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
 
 Rule L4D1SurvivorPickupPitchforkNamvet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpPitchfork IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpPitchfork IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
@@ -6527,14 +6527,14 @@ Response L4D1SurvivorPickupAutoShotgunNamVet
 }
 Rule L4D1SurvivorPickupAutoShotgunNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpAutoShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpAutoShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupAutoShotgunNamVet
 }
 
 Rule L4D1SurvivorPickupSpasShotgunNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpShotgun_Spas IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpShotgun_Spas IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupAutoShotgunNamVet
 }
@@ -6547,7 +6547,7 @@ Response L4D1SurvivorPickupFirstAidKitNamVet
 }
 Rule L4D1SurvivorPickupFirstAidKitNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpFirstAidKit IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpFirstAidKit IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupFirstAidKitNamVet
 }
@@ -6559,7 +6559,7 @@ Response L4D1SurvivorPickupHuntingRifleNamVet
 }
 Rule L4D1SurvivorPickupHuntingRifleNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpHuntingRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpHuntingRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupHuntingRifleNamVet
 }
@@ -6570,21 +6570,21 @@ Response L4D1SurvivorPickupMilitarySniperNamVet
 }
 Rule L4D1SurvivorPickupMilitarySniperNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSniper_Military IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSniper_Military IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMilitarySniperNamVet
 }
 
 Rule L4D1SurvivorPickupScoutSniperNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSniper_scout IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSniper_scout IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMilitarySniperNamVet
 }
 
 Rule L4D1SurvivorPickupAWPSniperNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSniper_awp IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSniper_awp IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMilitarySniperNamVet
 }
@@ -6598,21 +6598,21 @@ Response L4D1SurvivorPickupLaserSightsNamVet
 }
 Rule L4D1SurvivorPickupLaserSightsNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpLaserSights IsNotSpeaking IsBotNotAvailable ChanceToFire50Percent NotPickedUpItem IsNotInCheckpoint IsNotInSafeSpot IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotInStartArea _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpLaserSights IsNotSpeaking IsBotNotAvailable ChanceToFire50Percent NotPickedUpItem IsNotInCheckpoint IsNotInSafeSpot IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotInStartArea AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupLaserSightsNamVet
 }
 
 Rule L4D1SurvivorPickupUpIncendiaryAmmoNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpIncendiaryAmmo IsNotSpeaking IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpIncendiaryAmmo IsNotSpeaking IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupLaserSightsNamVet
 }
 
 Rule L4D1SurvivorPickupUpExplosiveAmmoNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpExplosiveAmmo IsNotSpeaking IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpExplosiveAmmo IsNotSpeaking IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupLaserSightsNamVet
 }
@@ -6625,7 +6625,7 @@ Response L4D1SurvivorPickupMolotovNamVet
 }
 Rule L4D1SurvivorPickupMolotovNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpMolotov IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpMolotov IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMolotovNamVet
 }
@@ -6638,7 +6638,7 @@ Response L4D1SurvivorPickupPainPillsNamVet
 }
 Rule L4D1SurvivorPickupPainPillsNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpPainPills IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpPainPills IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupPainPillsNamVet
 }
@@ -6650,14 +6650,14 @@ Response L4D1SurvivorPickupAdrenalineNamVet
 }
 Rule L4D1SurvivorPickupAdrenalineNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpAdrenaline IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpAdrenaline IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupAdrenalineNamVet
 }
 
 Rule SurvivorPickupDefibrillatorNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpDefibrillator IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpDefibrillator IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupAdrenalineNamVet
 }
@@ -6671,7 +6671,7 @@ Response L4D1SurvivorPickupPipeBombNamVet
 }
 Rule L4D1SurvivorPickupPipeBombNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpPipeBomb IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpPipeBomb IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupPipeBombNamVet
 }
@@ -6682,7 +6682,7 @@ Response L4D1SurvivorPickupVomitJarNamVet
 }
 Rule L4D1SurvivorPickupVomitJarNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpVomitJar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpVomitJar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupVomitJarNamVet
 }
@@ -6694,14 +6694,14 @@ Response L4D1SurvivorPickupPumpShotgunNamVet
 }
 Rule L4D1SurvivorPickupPumpShotgunNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpPumpShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpPumpShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupPumpShotgunNamVet
 }
 
 Rule L4D1SurvivorPickupChromeShotgunNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpShotgun_Chrome IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpShotgun_Chrome IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupPumpShotgunNamVet
 }
@@ -6719,28 +6719,28 @@ Response L4D1SurvivorPickupRifleNamVet
 }
 Rule L4D1SurvivorPickupRifleNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupRifleNamVet
 }
 
 Rule L4D1SurvivorPickupDesertRifleNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpRifle_Desert IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpRifle_Desert IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupRifleNamVet
 }
 
 Rule L4D1SurvivorPickupAK47RifleNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpRifle_AK47 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpRifle_AK47 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupRifleNamVet
 }
 
 Rule L4D1SurvivorPickupSG552RifleNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpRifle_sg552 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpRifle_sg552 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupRifleNamVet
 }
@@ -6753,21 +6753,21 @@ Response L4D1SurvivorPickupSMGNamVet
 }
 Rule L4D1SurvivorPickupSMGNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSMG IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSMG IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupSMGNamVet
 }
 
 Rule L4D1SurvivorPickupSilencedSMGNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSmg_silenced IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSmg_silenced IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupSMGNamVet
 }
 
 Rule L4D1SurvivorPickupMP5SMGNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSmg_mp5 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSmg_mp5 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupSMGNamVet
 }
@@ -6798,7 +6798,7 @@ Response SurvivorPickupSecondPistolNamVet
 }
 Rule SurvivorPickupSecondPistolNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSecondPistol IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpSecondPistol IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupSecondPistolNamVet
 }
@@ -6821,7 +6821,7 @@ Rule L4D1PlayerChainSawUsedNamVet
 
 Rule L4D1SurvivorPickupUpIncendiaryNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpUpgradePack_Incendiary NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotInStartArea _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpUpgradePack_Incendiary NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotInStartArea AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeNamVet
 }
@@ -6832,7 +6832,7 @@ Response L4D1SurvivorPickupUpExplosivesNamVet
 }
 Rule L4D1SurvivorPickupUpExplosivesNamVet
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpUpgradePack_Explosive NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotInStartArea _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsNamVet IsPickedUpUpgradePack_Explosive NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotInStartArea AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupUpExplosivesNamVet
 }

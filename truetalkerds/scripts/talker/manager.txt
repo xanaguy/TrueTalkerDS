@@ -2769,7 +2769,7 @@ Rule SurvivorSpottedLaserSightsAutoManager
 
 Rule SurvivorBotPickupLaserSightsSpottedManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpLaserSights IsNotSpeaking IsBotIsAvailable IsNotInSafeSpot IsNotInCheckpoint IsNotInStartArea IsNotSaidSpotWeapons IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpLaserSights IsNotSpeaking IsBotIsAvailable IsNotInSafeSpot IsNotInCheckpoint IsNotInStartArea IsNotSaidSpotWeapons IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedAdrenalineManager
@@ -6946,14 +6946,14 @@ Response L4D1SurvivorPickupAutoShotgunManager
 }
 Rule L4D1SurvivorPickupAutoShotgunManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpAutoShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpAutoShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupAutoShotgunManager
 }
 
 Rule L4D1SurvivorPickupSpasShotgunManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpShotgun_Spas IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpShotgun_Spas IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupAutoShotgunManager
 }
@@ -6966,7 +6966,7 @@ Response L4D1SurvivorPickupFirstAidKitManager
 }
 Rule L4D1SurvivorPickupFirstAidKitManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpFirstAidKit IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpFirstAidKit IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupFirstAidKitManager
 }
@@ -6977,14 +6977,14 @@ Response L4D1SurvivorPickupAdrenalineManager
 }
 Rule L4D1SurvivorPickupAdrenalineManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpAdrenaline IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpAdrenaline IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupAdrenalineManager
 }
 
 Rule SurvivorPickupDefibrillatorManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpDefibrillator IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpDefibrillator IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupAdrenalineManager
 }
@@ -6996,28 +6996,28 @@ Response L4D1SurvivorPickupHuntingRifleManager
 }
 Rule L4D1SurvivorPickupHuntingRifleManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpHuntingRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpHuntingRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupHuntingRifleManager
 }
 
 Rule L4D1SurvivorPickupMilitarySniperManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_Military IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_Military IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupHuntingRifleManager
 }
 
 Rule L4D1SurvivorPickupScoutSniperManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_scout IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_scout IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupHuntingRifleManager
 }
 
 Rule L4D1SurvivorPickupAWPSniperManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_awp IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_awp IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupHuntingRifleManager
 }
@@ -7032,21 +7032,21 @@ Response L4D1SurvivorPickupLaserSightsManager
 }
 Rule L4D1SurvivorPickupLaserSightsManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpLaserSights IsNotSpeaking IsBotNotAvailable ChanceToFire50Percent NotPickedUpItem IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkManager IsWorldTalkManager IsNotInStartArea _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpLaserSights IsNotSpeaking IsBotNotAvailable ChanceToFire50Percent NotPickedUpItem IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkManager IsWorldTalkManager IsNotInStartArea AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupLaserSightsManager
 }
 
 Rule L4D1SurvivorPickupUpIncendiaryAmmoManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpIncendiaryAmmo IsNotSpeaking IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpIncendiaryAmmo IsNotSpeaking IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupLaserSightsManager
 }
 
 Rule L4D1SurvivorPickupUpExplosiveAmmoManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpExplosiveAmmo IsNotSpeaking IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpExplosiveAmmo IsNotSpeaking IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupLaserSightsManager
 }
@@ -7059,7 +7059,7 @@ Response L4D1SurvivorPickupMolotovManager
 }
 Rule L4D1SurvivorPickupMolotovManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpMolotov IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpMolotov IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMolotovManager
 }
@@ -7072,7 +7072,7 @@ Response L4D1SurvivorPickupPainPillsManager
 }
 Rule L4D1SurvivorPickupPainPillsManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpPainPills IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpPainPills IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupPainPillsManager
 }
@@ -7086,7 +7086,7 @@ Response L4D1SurvivorPickupPipeBombManager
 }
 Rule L4D1SurvivorPickupPipeBombManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpPipeBomb IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpPipeBomb IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupPipeBombManager
 }
@@ -7097,7 +7097,7 @@ Response L4D1SurvivorPickupVomitJarManager
 }
 Rule L4D1SurvivorPickupVomitJarManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpVomitJar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpVomitJar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupVomitJarManager
 }
@@ -7108,14 +7108,14 @@ Response L4D1SurvivorPickupPumpShotgunManager
 }
 Rule L4D1SurvivorPickupPumpShotgunManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpPumpShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpPumpShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupPumpShotgunManager
 }
 
 Rule L4D1SurvivorPickupChromeShotgunManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpShotgun_Chrome IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpShotgun_Chrome IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupPumpShotgunManager
 }
@@ -7130,28 +7130,28 @@ Response L4D1SurvivorPickupRifleManager
 }
 Rule L4D1SurvivorPickupRifleManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupRifleManager
 }
 
 Rule L4D1SurvivorPickupDesertRifleManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle_Desert IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle_Desert IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupRifleManager
 }
 
 Rule L4D1SurvivorPickupAK47RifleManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle_AK47 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle_AK47 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupRifleManager
 }
 
 Rule L4D1SurvivorPickupSG552RifleManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle_sg552 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle_sg552 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupRifleManager
 }
@@ -7162,21 +7162,21 @@ Response L4D1SurvivorPickupSMGManager
 }
 Rule L4D1SurvivorPickupSMGManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSMG IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSMG IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupSMGManager
 }
 
 Rule L4D1SurvivorPickupSilencedSMGManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSmg_silenced IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSmg_silenced IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupSMGManager
 }
 
 Rule L4D1SurvivorPickupMP5SMGManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSmg_mp5 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSmg_mp5 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupSMGManager
 }
@@ -7187,7 +7187,7 @@ Response L4D1SurvivorPickupCSSMP5SMGManager
 }
 Rule L4D1SurvivorPickupCSSMP5SMGManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSmg_mp5 IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSmg_mp5 IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	forceweight 500
 	Response L4D1SurvivorPickupCSSMP5SMGManager
@@ -7195,7 +7195,7 @@ Rule L4D1SurvivorPickupCSSMP5SMGManager
 
 Rule L4D1SurvivorPickupCSSSG552RifleManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle_sg552 IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpRifle_sg552 IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	forceweight 500
 	Response L4D1SurvivorPickupCSSMP5SMGManager
@@ -7203,7 +7203,7 @@ Rule L4D1SurvivorPickupCSSSG552RifleManager
 
 Rule L4D1SurvivorPickupCSSScoutSniperManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_scout IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_scout IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	forceweight 500
 	Response L4D1SurvivorPickupCSSMP5SMGManager
@@ -7211,7 +7211,7 @@ Rule L4D1SurvivorPickupCSSScoutSniperManager
 
 Rule L4D1SurvivorPickupCSSAWPSniperManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_awp IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSniper_awp IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	forceweight 500
 	Response L4D1SurvivorPickupCSSMP5SMGManager
@@ -7219,7 +7219,7 @@ Rule L4D1SurvivorPickupCSSAWPSniperManager
 
 Rule SurvivorPickupCSSKnifeManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpKnife IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkManager IsWorldTalkManager IsNotInStartArea _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpKnife IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkManager IsWorldTalkManager IsNotInStartArea AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	forceweight 500
 	Response L4D1SurvivorPickupCSSMP5SMGManager
@@ -7262,7 +7262,7 @@ Response SurvivorPickupSecondPistolManager
 }
 Rule SurvivorPickupSecondPistolManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSecondPistol IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpSecondPistol IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupSecondPistolManager
 }
@@ -7281,91 +7281,91 @@ Response L4D1SurvivorPickupMeleeManager
 
 Rule L4D1SurvivorPickupGolfClubManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpGolfClub IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpGolfClub IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupFireAxeManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpFireAxe IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpFireAxe IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupGuitarManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpelectric_guitar IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpelectric_guitar IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupKatanaManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpKatana IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpKatana IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupMacheteManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpMachete IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpMachete IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupFryingPanManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpFryingPan IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpFryingPan IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupTonfaManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUptonfa IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUptonfa IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupCricketBatManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpcricket_bat IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpcricket_bat IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupBaseballBatManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpbaseball_bat IsNotSpeaking NotPickedUpItem IsNotInSafeSpot ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpbaseball_bat IsNotSpeaking NotPickedUpItem IsNotInSafeSpot ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupKnifeManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpKnife IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpKnife IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupShovelManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpShovel IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpShovel IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupPitchforkManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpPitchfork IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpPitchfork IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsNotInStartArea ChanceToFire30Percent IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
 
 Rule L4D1SurvivorPickupCrowBarManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpCrowBar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpCrowBar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
@@ -7376,7 +7376,7 @@ Response L4D1SurvivorPickupHLCrowBarManager
 }
 Rule L4D1SurvivorPickupHLCrowBarManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpCrowBar IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpCrowBar IsNotSpeaking ChanceToFire2Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	forceweight 500
 	Response L4D1SurvivorPickupHLCrowBarManager
@@ -7391,7 +7391,7 @@ Response L4D1SurvivorPickupChainSawManager
 }
 Rule L4D1SurvivorPickupChainSawManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpChainSaw IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpChainSaw IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupChainSawManager
 }
@@ -7402,7 +7402,7 @@ Response L4D1SurvivorPickupM60Manager
 }
 Rule L4D1SurvivorPickupM60Manager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpM60 IsNotSpeaking NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpM60 IsNotSpeaking NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupM60Manager
 }
@@ -7414,7 +7414,7 @@ Response L4D1SurvivorPickupGrenadeLauncherManager
 }
 Rule L4D1SurvivorPickupGrenadeLauncherManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpGrenadeLauncher IsNotSpeaking NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpGrenadeLauncher IsNotSpeaking NotPickedUpItem IsNotInSafeSpot  IsNotInStartArea IsTalk IsTalkManager IsWorldTalkManager AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupGrenadeLauncherManager
 }
@@ -7441,7 +7441,7 @@ Rule L4D1PlayerChainSawUsedManager
 
 Rule L4D1SurvivorPickupUpIncendiaryManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpUpgradePack_Incendiary NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkManager IsWorldTalkManager IsNotInStartArea _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpUpgradePack_Incendiary NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkManager IsWorldTalkManager IsNotInStartArea AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupMeleeManager
 }
@@ -7452,7 +7452,7 @@ Response L4D1SurvivorPickupUpExplosivesManager
 }
 Rule L4D1SurvivorPickupUpExplosivesManager
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpUpgradePack_Explosive NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkManager IsWorldTalkManager IsNotInStartArea _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsManager IsPickedUpUpgradePack_Explosive NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkManager IsWorldTalkManager IsNotInStartArea AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response L4D1SurvivorPickupUpExplosivesManager
 }
