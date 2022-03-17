@@ -12364,7 +12364,7 @@ Response SurvivorNearFinaleGambler
 }
 Rule SurvivorNearFinaleGambler
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleGambler
@@ -12372,7 +12372,7 @@ Rule SurvivorNearFinaleGambler
 
 Rule SurvivorNearFinaleC1M4Gambler
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler DeadCenter4DS AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler DeadCenter4DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -12384,7 +12384,7 @@ Response SurvivorNearFinaleC2M5Gambler
 }
 Rule SurvivorNearFinaleC2M5Gambler
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler ismap_c2m5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler ismap_c2m5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleC2M5Gambler
@@ -12396,7 +12396,7 @@ Response SurvivorNearFinaleC3M4Gambler
 }
 Rule SurvivorNearFinaleC3M4Gambler
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler IsAtPlantation AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler IsAtPlantation AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleC3M4Gambler
@@ -12409,7 +12409,7 @@ Response SurvivorNearFinaleC4M5Gambler
 }
 Rule SurvivorNearFinaleC4M5Gambler
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler C4M5orDPRM5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler C4M5orDPRM5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleC4M5Gambler
@@ -12417,7 +12417,7 @@ Rule SurvivorNearFinaleC4M5Gambler
 
 Rule SurvivorNearFinaleC5M5Gambler
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler TheParish5DS AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler TheParish5DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -12425,7 +12425,7 @@ Rule SurvivorNearFinaleC5M5Gambler
 
 Rule SurvivorNearFinaleC6M3Gambler
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler Isc6m3_port AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler Isc6m3_port AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -16812,7 +16812,7 @@ Rule SurvivorNearCheckpointDaybreak4Gambler
 
 Rule SurvivorNearFinaleDayBreak5Gambler
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler IsDayBreak5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsGambler IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkGambler IsNotIncapacitated IsWorldTalkGambler IsDayBreak5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse

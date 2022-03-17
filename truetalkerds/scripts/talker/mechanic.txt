@@ -12920,7 +12920,7 @@ Response SurvivorNearFinaleMechanic
 }
 Rule SurvivorNearFinaleMechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleMechanic
@@ -12928,7 +12928,7 @@ Rule SurvivorNearFinaleMechanic
 
 Rule SurvivorNearFinaleC1M4Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic DeadCenter4DS AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic DeadCenter4DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -12941,7 +12941,7 @@ Response SurvivorNearFinaleC2M5Mechanic
 }
 Rule SurvivorNearFinaleC2M5Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic ismap_c2m5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic ismap_c2m5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleC2M5Mechanic
@@ -12954,7 +12954,7 @@ Response SurvivorNearFinaleC3M4Mechanic
 }
 Rule SurvivorNearFinaleC3M4Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic ismapc3m4_plantation AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic ismapc3m4_plantation AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleC3M4Mechanic
@@ -12962,7 +12962,7 @@ Rule SurvivorNearFinaleC3M4Mechanic
 
 Rule SurvivorNearFinaleC4M5Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic C4M5orDPRM5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic C4M5orDPRM5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -12970,7 +12970,7 @@ Rule SurvivorNearFinaleC4M5Mechanic
 
 Rule SurvivorNearFinaleC5M5Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic TheParish5DS AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic TheParish5DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -12978,7 +12978,7 @@ Rule SurvivorNearFinaleC5M5Mechanic
 
 Rule SurvivorNearFinaleC6M3Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic Isc6m3_port AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic Isc6m3_port AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -17569,7 +17569,7 @@ Rule SurvivorNearCheckpointDaybreak4Mechanic
 
 Rule SurvivorNearFinaleDayBreak5Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic IsDayBreak5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic IsDayBreak5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse

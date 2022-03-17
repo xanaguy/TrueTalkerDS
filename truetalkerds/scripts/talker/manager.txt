@@ -4998,7 +4998,7 @@ Response L4D1SurvivorNearFinaleManager
 }
 Rule L4D1SurvivorNearFinaleManager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1SurvivorNearFinaleManager
@@ -5011,7 +5011,7 @@ Response L4D1PlayerNearFinaleC7M3Manager
 }
 Rule L4D1PlayerNearFinaleC7M3Manager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager C7M3VanillaOrC7M3TrueEnding AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager C7M3VanillaOrC7M3TrueEnding AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1PlayerNearFinaleC7M3Manager
@@ -5024,7 +5024,7 @@ Response L4D1SurvivorFinaleAheadC8M5Manager
 }
 Rule L4D1SurvivorFinaleAheadC8M5Manager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsNoMercy5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsNoMercy5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1SurvivorFinaleAheadC8M5Manager
@@ -5032,7 +5032,7 @@ Rule L4D1SurvivorFinaleAheadC8M5Manager
 
 Rule L4D1SurvivorFinaleAheadC9M2Manager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsCrashCourse2 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsCrashCourse2 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0,SaidCreshendoStartNear:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -5046,7 +5046,7 @@ Response L4D1SurvivorFinaleAheadC11M5Manager
 }
 Rule L4D1SurvivorFinaleAheadC11M5Manager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsDeadAir5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsDeadAir5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1SurvivorFinaleAheadC11M5Manager
@@ -5059,7 +5059,7 @@ Response L4D1PlayerNearFinaleC12M5Manager
 }
 Rule L4D1PlayerNearFinaleC12M5Manager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsBloodHarvest5 IsWorldTalkManager AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsBloodHarvest5 IsWorldTalkManager AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0,WarnMegaMob:1:60,SaidSpecialWarn:1:30"
 	applycontexttoworld
 	Response L4D1PlayerNearFinaleC12M5Manager
@@ -5067,7 +5067,7 @@ Rule L4D1PlayerNearFinaleC12M5Manager
 
 Rule L4D1PlayerNearFinaleC14M2Manager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsLastStand2 IsWorldTalkManager AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsLastStand2 IsWorldTalkManager AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -9020,7 +9020,7 @@ Response L4D1SurvivorNearFinaleFatalFreightManager
 }
 Rule L4D1SurvivorNearFinaleFatalFreightManager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsFatalFreight5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsFatalFreight5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1SurvivorNearFinaleFatalFreightManager
@@ -9158,7 +9158,7 @@ Rule PlayerTransitionPB2Manager
 
 Rule NearFinalePlanBManager
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsPlanB03 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsManager IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkManager IsNotIncapacitated IsWorldTalkManager IsPlanB03 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse

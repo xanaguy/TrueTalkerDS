@@ -12361,7 +12361,7 @@ Response SurvivorNearFinaleCoach
 }
 Rule SurvivorNearFinaleCoach
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleCoach
@@ -12369,7 +12369,7 @@ Rule SurvivorNearFinaleCoach
 
 Rule SurvivorNearFinaleC1M4Coach
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach DeadCenter4DS AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach DeadCenter4DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -12383,7 +12383,7 @@ Response SurvivorNearFinaleC2M5Coach
 }
 Rule SurvivorNearFinaleC2M5Coach
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach ismap_c2m5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach ismap_c2m5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleC2M5Coach
@@ -12395,7 +12395,7 @@ Response SurvivorNearFinaleC3M4Coach
 }
 Rule SurvivorNearFinaleC3M4Coach
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach ismapc3m4_plantation AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach ismapc3m4_plantation AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleC3M4Coach
@@ -12403,7 +12403,7 @@ Rule SurvivorNearFinaleC3M4Coach
 
 Rule SurvivorNearFinaleC4M5Coach
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach C4M5orDPRM5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach C4M5orDPRM5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -12411,7 +12411,7 @@ Rule SurvivorNearFinaleC4M5Coach
 
 Rule SurvivorNearFinaleC5M5Coach
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach TheParish5DS AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach TheParish5DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -12419,7 +12419,7 @@ Rule SurvivorNearFinaleC5M5Coach
 
 Rule SurvivorNearFinaleC6M3Coach
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach Isc6m3_port AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach Isc6m3_port AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -16472,7 +16472,7 @@ Rule SurvivorNearCheckpointDaybreak4Coach
 
 Rule SurvivorNearFinaleDayBreak5Coach
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach IsDayBreak5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsCoach IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkCoach IsNotIncapacitated IsWorldTalkCoach IsDayBreak5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse

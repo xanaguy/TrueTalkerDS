@@ -5264,7 +5264,7 @@ Response L4D1SurvivorNearFinaleTeenGirl
 }
 Rule L4D1SurvivorNearFinaleTeenGirl
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1SurvivorNearFinaleTeenGirl
@@ -5278,7 +5278,7 @@ Response L4D1PlayerNearFinaleC7M3TeenGirl
 }
 Rule L4D1PlayerNearFinaleC7M3TeenGirl
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl C7M3VanillaOrC7M3TrueEnding AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl C7M3VanillaOrC7M3TrueEnding AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1PlayerNearFinaleC7M3TeenGirl
@@ -5286,7 +5286,7 @@ Rule L4D1PlayerNearFinaleC7M3TeenGirl
 
 Rule L4D1SurvivorFinaleAheadC9M2TeenGirl
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsCrashCourse2 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsCrashCourse2 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0,SaidCreshendoStartNear:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -5299,7 +5299,7 @@ Response L4D1SurvivorNearFinaleC11M5TeenGirl
 }
 Rule L4D1SurvivorNearFinaleC11M5TeenGirl
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsDeadAir5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsDeadAir5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1SurvivorNearFinaleC11M5TeenGirl
@@ -5312,7 +5312,7 @@ Response L4D1PlayerNearFinaleC12M5TeenGirl
 }
 Rule L4D1PlayerNearFinaleC12M5TeenGirl
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsBloodHarvest5 IsWorldTalkTeenGirl AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsBloodHarvest5 IsWorldTalkTeenGirl AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0,WarnMegaMob:1:60,SaidSpecialWarn:1:30"
 	applycontexttoworld
 	Response L4D1PlayerNearFinaleC12M5TeenGirl
@@ -5320,7 +5320,7 @@ Rule L4D1PlayerNearFinaleC12M5TeenGirl
 
 Rule L4D1PlayerNearFinaleC14M2TeenGirl
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsLastStand2 IsWorldTalkTeenGirl AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsLastStand2 IsWorldTalkTeenGirl AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -9632,7 +9632,7 @@ Response L4D1SurvivorNearFinaleFatalFreightTeenGirl
 }
 Rule L4D1SurvivorNearFinaleFatalFreightTeenGirl
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsFatalFreight5 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsFatalFreight5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response L4D1SurvivorNearFinaleFatalFreightTeenGirl
@@ -9778,7 +9778,7 @@ Rule PlayerTransitionPB2TeenGirl
 
 Rule NearFinalePlanBTeenGirl
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsPlanB03 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearFinale IsNotCoughing IsTeenGirl IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl IsPlanB03 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
