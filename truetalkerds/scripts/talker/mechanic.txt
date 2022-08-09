@@ -11014,7 +11014,7 @@ Response PlayerHeardJockeyC1Mechanic
 }
 Rule PlayerHeardJockeyC1Mechanic
 {
-	criteria ConceptPlayerHeardJockey IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowJockey IsNotSpeaking
+	criteria ConceptPlayerHeardJockey IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowJockey IsNotSpeaking IsNotSurvival
 	Response PlayerHeardJockeyC1Mechanic
 }
 

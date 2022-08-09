@@ -10514,7 +10514,7 @@ Response PlayerHeardJockeyC1Gambler
 }
 Rule PlayerHeardJockeyC1Gambler
 {
-	criteria ConceptPlayerHeardJockey IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowJockey IsNotSpeaking
+	criteria ConceptPlayerHeardJockey IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowJockey IsNotSpeaking IsNotSurvival
 	Response PlayerHeardJockeyC1Gambler
 }
 

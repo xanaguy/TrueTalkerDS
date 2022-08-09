@@ -9612,7 +9612,7 @@ Rule PlayerHeardChargerC1Producer
 
 Rule PlayerHeardSpitterC1Producer
 {
-	criteria ConceptPlayerHeardSpitter IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer C1M1orC1M2 NoKnowSpitter IsNotSurvival IsNotSpeaking
+	criteria ConceptPlayerHeardSpitter IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer C1M1orC1M2 NoKnowSpitter IsNotSurvival IsNotSpeaking IsNotSurvival
 	Response PlayerHeardBoomerC1Producer
 }
 
