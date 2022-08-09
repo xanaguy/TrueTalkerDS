@@ -3287,6 +3287,7 @@ Rule C5M5_GateDownGambler
 
 Response C5M5_saferoom001Gambler
 {
+	scene "scenes/Gambler/WorldC5M5B02.vcd" then self IntroEnd foo:0 0.1 //Oh yeah.
 	scene "scenes/Gambler/WorldC5M5B05.vcd"  then any C5M5_saferoom005 foo:0 0.1 //Or they're gonna line us up against a wall and shoot us.
 }
 Rule C5M5_saferoom001Gambler
@@ -3297,7 +3298,6 @@ Rule C5M5_saferoom001Gambler
 
 Response C5M5_saferoom003Gambler
 {
-	scene "scenes/Gambler/WorldC5M5B02.vcd" then self IntroEnd foo:0 0.1 //Oh yeah.
 	scene "scenes/Gambler/WorldC5M5B03.vcd" then self IntroEnd foo:0 0.1 //[chuckles] Allright, let's go.
 	scene "scenes/Gambler/WorldC5M5B04.vcd" then self IntroEnd foo:0 0.1 //[chuckles] Okay, allright, let's go.
 }
@@ -5033,8 +5033,8 @@ Response SurvivorSpottedArmoredC5M1Gambler
 }
 Rule SurvivorSpottedArmoredC5M1Gambler
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeArmored IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated TheParish1DS IsNotSaidArmoredWarn IsNotSpeakingWeight0 _auto_NotSpottedVehicle
-	ApplyContext "SaidArmoredWarn:1:0"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeArmored IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated TheParish1DS IsNotSaidArmoredWarn SawFirstArmored IsNotSpeakingWeight0
+	ApplyContext "SaidArmoredWarn:1:0,SawArmored:++1"
 	applycontexttoworld
 	Response SurvivorSpottedArmoredC5M1Gambler
 }
@@ -5163,13 +5163,12 @@ Rule SurvivorSpottedCedaGambler
 
 Response SurvivorSpottedCedaC1M1Gambler
 {
-	norepeat
 	scene "scenes/Gambler/SeeHazmat02.vcd"  //Guess those suits don't stop bites.
 }
 Rule SurvivorSpottedCedaC1M1Gambler
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeCeda IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated IsNotSaidCedaWarn DeadCenter1DS IsNotSpeakingWeight0
-	ApplyContext "SaidCedaWarn:1:0"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeCeda IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated IsNotSaidCedaWarn DeadCenter1DS SawFirstHazmat IsNotSpeakingWeight0
+	ApplyContext "SaidCedaWarn:1:20,SawHazmat:++1"
 	applycontexttoworld
 	Response SurvivorSpottedCedaC1M1Gambler
 }
@@ -5258,14 +5257,15 @@ Response SurvivorSpottedClownC2M2Gambler
 }
 Rule SurvivorSpottedClownC2M2Gambler
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeClown IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated Ismap_c2m2 IsNotSaidClownWarn IsNotSpeakingWeight0
-	ApplyContext "SaidClownWarn:1:0,SawClowns:++1"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeClown IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated Ismap_c2m2 IsNotSaidClownWarn SawFirstClown IsNotSpeakingWeight0
+	ApplyContext "SaidClownWarn:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedClownC2M2Gambler
 }
 
 Response SurvivorSpottedClownGambler
 {
+	norepeat
 	scene "scenes/Gambler/SeeClowns02.vcd"  //Kill the clown!
 	scene "scenes/Gambler/SeeClowns03.vcd"  //Kill the clown, he's attracting more zombies!
 	scene "scenes/Gambler/SeeClowns04.vcd"  //Kill every clown you see!
@@ -5401,8 +5401,8 @@ Response SurvivorSpottedJimmyGambler
 }
 Rule SurvivorSpottedJimmyGambler
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeJimmy IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated IsNotSaidJimmyWarn IsNotSpeakingWeight0 _auto_NotSpottedVehicle
-	ApplyContext "SaidJimmyWarn:1:3"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeJimmy IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated SawJimmyGibbs IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	ApplyContext "SawJimmyGibbs:++1"
 	applycontexttoworld
 	Response SurvivorSpottedJimmyGambler
 }
@@ -5489,7 +5489,6 @@ Response SurvivorSpottedMudmenGambler
 	norepeat
 	scene "scenes/Gambler/SeeMudmen01.vcd"  //Mudders!
 	scene "scenes/Gambler/SeeMudmen02.vcd"  //Mudders!
-	scene "scenes/Gambler/SeeMudmen03.vcd"  //Watch out, Mudmen!
 	scene "scenes/Gambler/SeeMudmen04.vcd"  //Mudders!
 }
 Rule SurvivorSpottedMudmenGambler
@@ -5500,12 +5499,16 @@ Rule SurvivorSpottedMudmenGambler
 	Response SurvivorSpottedMudmenGambler
 }
 
+Response SurvivorSpottedMudmenC3M2Gambler
+{
+	scene "scenes/Gambler/SeeMudmen03.vcd"  //Watch out, Mudmen!
+}
 Rule SurvivorSpottedMudmenC3M2Gambler
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeMudmen IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated IsNotSaidMudmenWarn IsInSwamps IsNotSpeakingWeight0
-	ApplyContext "SaidMudmenWarn:1:0,SawMudMen:++1"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeMudmen IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated IsNotSaidMudmenWarn IsInSwamps SawFirstMudMen IsNotSpeakingWeight0
+	ApplyContext "SaidMudmenWarn:1:20,SawMudMen:++1"
 	applycontexttoworld
-	Response SurvivorSpottedMudmenGambler
+	Response SurvivorSpottedMudmenC3M2Gambler
 }
 
 Response SurvivorSpottedMudmen2Gambler
@@ -5514,8 +5517,8 @@ Response SurvivorSpottedMudmen2Gambler
 }
 Rule SurvivorSpottedMudmen2Gambler
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeMudmen IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated IsNotSaidMudmenWarn SawManyMudMen IntensityUnder50 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
-	ApplyContext "SaidMudmenWarn:1:20,SawMudMen:++1"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeMudmen IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler IsNotIncapacitated IsNotSaidMudmenWarn SawManyMudMen SickOfMudMen IntensityUnder50 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	ApplyContext "SaidMudmenWarn:1:20,SawMudMen:++1,SickOfMudMen:++1"
 	applycontexttoworld
 	Response SurvivorSpottedMudmen2Gambler
 }
@@ -6521,6 +6524,13 @@ Rule PlayerHelpIncappedLethargicGambler
 	Response PlayerHelpIncappedLethargicGambler
 }
 
+Rule PlayerHelpIncappedWitchGambler
+{
+	criteria ConceptPlayerHelp IsGambler IsIncapacitated IsWitchPresent IsWitchAggro
+	ApplyContext "CalledForHelp:1:10"
+	forceweight 30
+	Response NoResponse
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // PlayerIncappedResponse
@@ -10464,31 +10474,31 @@ Response PlayerHeardBoomerC1Gambler
 }
 Rule PlayerHeardBoomerC1Gambler
 {
-	criteria ConceptPlayerHeardBoomer IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowBoomer IsNotSpeaking
+	criteria ConceptPlayerHeardBoomer IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowBoomer IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Gambler
 }
 
 Rule PlayerHeardHunterC1Gambler
 {
-	criteria ConceptPlayerHeardHunter IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowHunter IsNotSpeaking
+	criteria ConceptPlayerHeardHunter IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowHunter IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Gambler
 }
 
 Rule PlayerHeardSmokerC1Gambler
 {
-	criteria ConceptPlayerHeardSmoker IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowSmoker IsNotSpeaking
+	criteria ConceptPlayerHeardSmoker IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowSmoker IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Gambler
 }
 
 Rule PlayerHeardChargerC1Gambler
 {
-	criteria ConceptPlayerHeardCharger IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowCharger IsNotSpeaking
+	criteria ConceptPlayerHeardCharger IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowCharger IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Gambler
 }
 
 Rule PlayerHeardSpitterC1Gambler
 {
-	criteria ConceptPlayerHeardSpitter IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowSpitter IsNotSpeaking
+	criteria ConceptPlayerHeardSpitter IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler C1M1orC1M2 NoKnowSpitter IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Gambler
 }	
 
@@ -11152,6 +11162,40 @@ Rule PlayerIncapacitatedInitialGambler
 	criteria ConceptPlayerIncapacitated IsNotCoughing  IsGambler IsTalk IsTalkGambler IsWorldTalkGambler
 	ApplyContext "TalkGambler:1:2"
 	Response PlayerIncapacitatedInitialGambler
+}
+
+Response PlayerIncapacitatedInitialWitchGambler
+{
+	scene "scenes/Gambler/HurtCritical01.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Gambler/HurtCritical02.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Gambler/HurtCritical03.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Gambler/HurtCritical04.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Gambler/HurtCritical05.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Gambler/HurtCritical06.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Gambler/HurtCritical07.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+}
+Rule PlayerIncapacitatedInitialWitchGambler
+{
+	criteria ConceptPlayerIncapacitated IsGambler IsWitchPresent IsWitchAggro IsCriticalPain
+	ApplyContext "TalkGambler:1:2"
+	forceweight 30
+	Response PlayerIncapacitatedInitialWitchGambler
+}
+
+Response WitchDownedGambler
+{
+	scene "scenes/Gambler/GrabbedBySmoker01.vcd"  //no, No, No, NO, NOOOOOOO!!!!!!!!!
+	scene "scenes/Gambler/GrabbedBySmoker01a.vcd"  //No, No!
+	scene "scenes/Gambler/GrabbedBySmoker04.vcd"  //no, No,  No, NO, NO!!!!!!!!
+	scene "scenes/Gambler/GrabbedBySmoker05.vcd"  //no, No,  No, NO!!!!!!!!
+	scene "scenes/Gambler/GrabbedBySmoker05a.vcd"  //NO!
+	scene "scenes/Gambler/GrabbedBySmoker05b.vcd"  //NO, NO!
+	scene "scenes/Gambler/GrabbedBySmoker05c.vcd"  //NO!!!!!!!!
+}
+Rule WitchDownedGambler
+{
+	criteria ConceptWitchDowned IsGambler IsWitchPresent IsWitchAggro
+	Response WitchDownedGambler
 }
 
 Response PlayerIncapacitatedInitialC1M2Gambler

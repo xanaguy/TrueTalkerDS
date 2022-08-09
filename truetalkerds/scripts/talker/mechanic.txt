@@ -2069,7 +2069,7 @@ Rule C2M5ReloadingTankMechanic
 	applycontexttoworld
 	Response C2M5ReloadingTankMechanic
 }
-	
+
 Response PlayerKillTankConfirmationC2M5Mechanic
 {
 	norepeat
@@ -2628,7 +2628,7 @@ Rule C5M1_intro005Mechanic
 	criteria ConceptC5M1_intro005 IsMechanic HasAFrom IsEveryoneAlive AutoIsNotScavenge AutoIsNotSurvival
 	Response C5M1_intro005Mechanic
 }
-	
+
 Response C5M1_intro007Mechanic
 {
 	scene "scenes/Mechanic/WorldC3M308.vcd" then self IntroEnd foo:0 0.1 //No sense hanging out here.
@@ -4961,7 +4961,7 @@ Rule C5M5EllisStoryMechanic
 
 Response C6M2EllisStoryMechanic
 {
-	scene "scenes/Mechanic/DLC1_KeithStories04.vcd"  then any EllisInterrupt foo:0 0.1 
+	scene "scenes/Mechanic/DLC1_KeithStories04.vcd"  then any EllisInterrupt foo:0 0.1
 	scene "scenes/Mechanic/DLC1_KeithStories02a.vcd"  then self C6M2EllisStoryStart1 foo:0 -9.23 //This one time my buddy Keith started up a historic tour, on account of his mom took him to Colonial Williamsburg, and it is like a license to print money at them places.
 	scene "scenes/Mechanic/DLC1_KeithStories07.vcd"  then any EllisInterrupt foo:0 -18.59 //I ever tell you about the time my buddy Keith snuck into a wedding? He thought he was being smart getting all dressed up and like...but it seems the preacher wasn't there and they thought he was the preacher and well, he married them the best he could. I think that counts for them being married but, I dunno, maybe not. I think they named one of their...
 	scene "scenes/Mechanic/DLC1_KeithStories06_v1.vcd"  then any EllisInterrupt foo:0 -14.18 //I ever tell you about the time my buddy Keith got married? 'Course not... that's a trick question. He never got married. You ever hear about those runaway brides right? Well, Keith was a runaway groom. and on his wedding day... It all started when...
@@ -5618,7 +5618,7 @@ Response SurvivorSpottedArmoredMechanic
 }
 Rule SurvivorSpottedArmoredMechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeArmored IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidArmoredWarn IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeArmored IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidArmoredWarn IsNotSpeakingWeight0
 	ApplyContext "SaidArmoredWarn:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedArmoredMechanic
@@ -5631,8 +5631,8 @@ Response SurvivorSpottedArmoredC5M1Mechanic
 }
 Rule SurvivorSpottedArmoredC5M1Mechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeArmored IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidArmoredWarn TheParish1DS IsNotSpeakingWeight0
-	ApplyContext "SaidArmoredWarn:1:0"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeArmored IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidArmoredWarn TheParish1DS SawFirstArmored IsNotSpeakingWeight0
+	ApplyContext "SaidArmoredWarn:1:0,SawArmored:++1"
 	applycontexttoworld
 	Response SurvivorSpottedArmoredC5M1Mechanic
 }
@@ -5738,8 +5738,8 @@ Response SurvivorSpottedCedaC1M1Mechanic
 }
 Rule SurvivorSpottedCedaC1M1Mechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeCeda IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidCedaWarn DeadCenter1DS IsNotSpeakingWeight0
-	ApplyContext "SaidCedaWarn:1:0"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeCeda IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidCedaWarn DeadCenter1DS SawFirstHazmat IsNotSpeakingWeight0
+	ApplyContext "SaidCedaWarn:1:20,SawHazmat:++1"
 	applycontexttoworld
 	Response SurvivorSpottedCedaC1M1Mechanic
 }
@@ -5803,6 +5803,7 @@ Rule SurvivorSpottedCharger2C1Mechanic
 
 Response SurvivorSpottedClownMechanic
 {
+	norepeat
 	scene "scenes/Mechanic/SeeClowns01.vcd"  //That clown's bringing friends! Take him down!
 	scene "scenes/Mechanic/SeeClowns02.vcd"  //We gotta shut that clown up!
 	scene "scenes/Mechanic/SeeClowns03.vcd"  //Hey, take that clown down!
@@ -5813,7 +5814,7 @@ Response SurvivorSpottedClownMechanic
 Rule SurvivorSpottedClownMechanic
 {
 	criteria ConceptPlayerWarnSpecial IsSpecialTypeClown IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidClownWarn IsNotSpeakingWeight0 _auto_ConcertNotLive _auto_NotSpottedVehicle
-	ApplyContext "SaidClownWarn:1:20,SawClowns:++1"
+	ApplyContext "SaidClownWarn:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedClownMechanic
 }
@@ -5844,8 +5845,8 @@ Response SurvivorSpottedFirstClownMechanic
 }
 Rule SurvivorSpottedFirstClownMechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeClown IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidClownWarn ismap_c2m2 IsNotSpeakingWeight0
-	ApplyContext "SaidClownWarn:1:0,SawClowns:++1"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeClown IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidClownWarn ismap_c2m2 SawFirstClown IsNotSpeakingWeight0
+	ApplyContext "SaidClownWarn:1:20,SawClowns:++1"
 	applycontexttoworld
 	Response SurvivorSpottedFirstClownMechanic
 }
@@ -5926,8 +5927,8 @@ Response SurvivorSpottedJimmyMechanic
 }
 Rule SurvivorSpottedJimmyMechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeJimmy IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidJimmyWarn IsNotSpeakingWeight0 _auto_NotSpottedVehicle
-	ApplyContext "SaidJimmyWarn:1:3"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeJimmy IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated SawJimmyGibbs IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	ApplyContext "SawJimmyGibbs:++1"
 	applycontexttoworld
 	Response SurvivorSpottedJimmyMechanic
 }
@@ -5995,8 +5996,8 @@ Response SurvivorSpottedMudmenC3M2Mechanic
 }
 Rule SurvivorSpottedMudmenC3M2Mechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeMudmen IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidMudmenWarn IsInSwamps IsNotSpeakingWeight0
-	ApplyContext "SaidMudmenWarn:1:0,SawMudMen:++1"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeMudmen IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidMudmenWarn IsInSwamps SawFirstMudMen IsNotSpeakingWeight0
+	ApplyContext "SaidMudmenWarn:1:20,SawMudMen:++1"
 	applycontexttoworld
 	Response SurvivorSpottedMudmenC3M2Mechanic
 }
@@ -6025,8 +6026,8 @@ Response SurvivorSpottedMudmen2Mechanic
 }
 Rule SurvivorSpottedMudmen2Mechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeMudmen IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidMudmenWarn SawManyMudMen IntensityUnder50 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
-	ApplyContext "SaidMudmenWarn:1:20,SawMudMen:++1"
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeMudmen IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidMudmenWarn SawManyMudMen SickOfMudMen IntensityUnder50 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	ApplyContext "SaidMudmenWarn:1:20,SawMudMen:++1,SickOfMudMen:++1"
 	applycontexttoworld
 	Response SurvivorSpottedMudmen2Mechanic
 }
@@ -7016,6 +7017,14 @@ Rule PlayerHelpIncappedLethargicMechanic
 	criteria ConceptPlayerHelp IsMechanic IsNotCoughing IsTalk IsTalkMechanic IsIncappedLethargic IsIncapacitated NotCalledForHelpRecently IsWorldTalkMechanic
 	ApplyContext "CalledForHelp:1:30"
 	Response PlayerHelpIncappedLethargicMechanic
+}
+
+Rule PlayerHelpIncappedWitchMechanic
+{
+	criteria ConceptPlayerHelp IsMechanic IsIncapacitated IsWitchPresent IsWitchAggro
+	ApplyContext "CalledForHelp:1:10"
+	forceweight 30
+	Response NoResponse
 }
 
 //--------------------------------------------------------------------------------------------------------------
@@ -10971,31 +10980,31 @@ Response PlayerHeardBoomerC1Mechanic
 }
 Rule PlayerHeardBoomerC1Mechanic
 {
-	criteria ConceptPlayerHeardBoomer IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowBoomer IsNotSpeaking
+	criteria ConceptPlayerHeardBoomer IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowBoomer IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Mechanic
 }
 
 Rule PlayerHeardHunterC1Mechanic
 {
-	criteria ConceptPlayerHeardHunter IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowHunter IsNotSpeaking
+	criteria ConceptPlayerHeardHunter IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowHunter IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Mechanic
 }
 
 Rule PlayerHeardSmokerC1Mechanic
 {
-	criteria ConceptPlayerHeardSmoker IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowSmoker IsNotSpeaking
+	criteria ConceptPlayerHeardSmoker IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowSmoker IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Mechanic
 }
 
 Rule PlayerHeardChargerC1Mechanic
 {
-	criteria ConceptPlayerHeardCharger IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowCharger IsNotSpeaking
+	criteria ConceptPlayerHeardCharger IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowCharger IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Mechanic
 }
 
 Rule PlayerHeardSpitterC1Mechanic
 {
-	criteria ConceptPlayerHeardSpitter IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowSpitter IsNotSpeaking
+	criteria ConceptPlayerHeardSpitter IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic C1M1orC1M2 NoKnowSpitter IsNotSurvival IsNotSpeaking
 	Response PlayerHeardBoomerC1Mechanic
 }
 
@@ -11451,7 +11460,7 @@ Response PlayerAlertGiveItemStopMechanic
 }
 Rule PlayerAlertGiveItemStopMechanic
 {
-	criteria ConceptAlertGiveItemStop IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidAlertGiveItemStop IsWorldTalkMechanic 
+	criteria ConceptAlertGiveItemStop IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidAlertGiveItemStop IsWorldTalkMechanic
 	ApplyContext "SaidAlertGiveItemStop:1:10"
 	Response PlayerAlertGiveItemStopMechanic
 }
@@ -11741,6 +11750,40 @@ Rule PlayerIncapacitatedInitialMechanic
 	criteria ConceptPlayerIncapacitated IsNotCoughing  IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic
 	ApplyContext "TalkMechanic:1:2"
 	Response PlayerIncapacitatedInitialMechanic
+}
+
+Response PlayerIncapacitatedInitialWitchMechanic
+{
+	scene "scenes/Mechanic/HurtCritical01.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Mechanic/HurtCritical02.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Mechanic/HurtCritical03.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Mechanic/HurtCritical04.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/Mechanic/HurtCritical05.vcd"  //[pain noise - loud major pain]
+	scene "scenes/Mechanic/HurtCritical06.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+}
+Rule PlayerIncapacitatedInitialWitchMechanic
+{
+	criteria ConceptPlayerIncapacitated IsMechanic IsWitchPresent IsWitchAggro IsCriticalPain
+	ApplyContext "TalkMechanic:1:2"
+	forceweight 30
+	Response PlayerIncapacitatedInitialWitchMechanic
+}
+
+Response WitchDownedMechanic
+{
+	scene "scenes/Mechanic/GrabbedBySmoker01.vcd"  //no, No,  No, NO!!!!!!!!
+	scene "scenes/Mechanic/GrabbedBySmoker01c.vcd"  //NO!
+	scene "scenes/Mechanic/GrabbedBySmoker02.vcd"  //no, No, NOOOOOOO!!!!!!!!!
+	scene "scenes/Mechanic/GrabbedBySmoker02a.vcd"  //NO!
+	scene "scenes/Mechanic/GrabbedBySmoker03.vcd"  //no, No,  No, NO, NO!!!!!!!!
+	scene "scenes/Mechanic/GrabbedBySmoker03a.vcd"  //Ah, NO!
+	scene "scenes/Mechanic/GrabbedBySmoker03b.vcd"  //NO!
+	scene "scenes/Mechanic/GrabbedBySmoker06.vcd"  //no, No,  No, NO!!!!!!!!
+}
+Rule WitchDownedMechanic
+{
+	criteria ConceptWitchDowned IsMechanic IsWitchPresent IsWitchAggro
+	Response WitchDownedMechanic
 }
 
 Response PlayerIncapacitatedInitialC1M2Mechanic
@@ -13379,7 +13422,7 @@ Rule C6M1TakePumpShotgunMechanic
 }
 
 Rule C6M1TakeChromeShotgunMechanic
-{ 
+{
 	criteria ConceptPlayerPickup IsMechanic IsPickedUpShotgun_Chrome IsTalk IsTalkMechanic IsWorldTalkMechanic isc6m1_riverbank IsJustSaidWorldC6M1_IntoTheStore
 	ApplyContext "JustSaidWorldC6M1_IntoTheStore:2:0"
 	applycontexttoworld
@@ -15320,7 +15363,7 @@ Response _introc1m1b06Mechanic
 {
 	scene "scenes/Mechanic/WorldC1M1B12.vcd"  then any _introc1m1last foo:0 -5.084 //All right, everybody calm down! That chopper looks like it's headin' to the evac center over at the mall.
 	scene "scenes/Mechanic/WorldC1M1B13.vcd"  then any _introc1m1last foo:0 -2.515 //That chopper looks like it's headin' to the evac center over at the mall.
-	scene "scenes/Mechanic/WorldC1M1B13.vcd"  then gambler _introc1m1b10 foo:0 -2.515 //That chopper looks like it's headin' to the evac center over at the mall.	
+	scene "scenes/Mechanic/WorldC1M1B13.vcd"  then gambler _introc1m1b10 foo:0 -2.515 //That chopper looks like it's headin' to the evac center over at the mall.
 	scene "scenes/Mechanic/WorldC1M1B14.vcd"  then any _introc1m1last foo:0 -4.592 //I bet that chopper's headin' to the evac station at the mall. We can still catch up to it if we hurry.
 	scene "scenes/Mechanic/WorldC1M1B16.vcd"  then self IntroEnd foo:0 0.1 //Hey, I bet it's headed to the mall. There's an evacuation center there. Grab some weapons and I'll lead the way.
 	scene "scenes/Mechanic/WorldC1M1B19.vcd"  then gambler _introc1m1b10 foo:0 0.1 //Looked like it was headin' to the mall across town.
@@ -15336,7 +15379,7 @@ Response _introc1m1b08Mechanic
 {
 	scene "scenes/Mechanic/WorldC1M1B12.vcd"  then any _introc1m1last foo:0 -5.084 //All right, everybody calm down! That chopper looks like it's headin' to the evac center over at the mall.
 	scene "scenes/Mechanic/WorldC1M1B13.vcd"  then any _introc1m1last foo:0 -2.515 //That chopper looks like it's headin' to the evac center over at the mall.
-	scene "scenes/Mechanic/WorldC1M1B13.vcd"  then any _introc1m1last foo:0 -2.515 //That chopper looks like it's headin' to the evac center over at the mall.	
+	scene "scenes/Mechanic/WorldC1M1B13.vcd"  then any _introc1m1last foo:0 -2.515 //That chopper looks like it's headin' to the evac center over at the mall.
 	scene "scenes/Mechanic/WorldC1M1B14.vcd"  then any _introc1m1lastweapons foo:0 -4.592 //I bet that chopper's headin' to the evac station at the mall. We can still catch up to it if we hurry.
 	scene "scenes/Mechanic/WorldC1M1B16.vcd"  then self IntroEnd foo:0 0.1 //Hey, I bet it's headed to the mall. There's an evacuation center there. Grab some weapons and I'll lead the way.
 	scene "scenes/Mechanic/WorldC1M1B19.vcd"  then any _introc1m1last foo:0 0.1 //Looked like it was headin' to the mall across town.
