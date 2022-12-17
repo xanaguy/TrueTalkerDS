@@ -20,7 +20,7 @@ Response C6M3PlayerNiceShotBiker
 }
 Rule C6M3PlayerNiceShotBiker
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsBiker IsSubjectDistNear1500 IsC6M3_Port IsTalk IsTalkBiker IsWorldTalkBiker IsNotSpeaking ChanceToFire70Percent
+	criteria ConceptPlayerNiceShot IsNotCoughing IsBiker IsSubjectDistNear1500 ThePassing3DS IsTalk IsTalkBiker IsWorldTalkBiker IsNotSpeaking ChanceToFire70Percent
 	Response C6M3PlayerNiceShotBiker
 }
 
@@ -95,17 +95,17 @@ Rule L4D1ReviveMeInterruptedMajorBiker
 
 Response L4D1ReviveMeInterruptedCriticalBiker
 {
-	scene "scenes/Biker/HurtCritical01.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical02.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical03.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical04.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical05.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical06.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical07.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical08.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical09.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical10.vcd"  //[Pain noise - loud major pain]
-	scene "scenes/Biker/HurtCritical11.vcd"  //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical01.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical02.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical03.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical04.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical05.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical06.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical07.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical08.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical09.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical10.vcd" predelay "0.75" //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical11.vcd" predelay "0.75" //[Pain noise - loud major pain]
 }
 Rule L4D1ReviveMeInterruptedCriticalBiker
 {
@@ -941,7 +941,7 @@ Response c6m3_outroL4D1Biker
 }
 Rule c6m3_outroL4D1Biker
 {
-	criteria Conceptc6m3_outro3 IsBiker isC6m3_port IsNotVersus HasAFrom IsNotIncapacitated ChanceToFire100Percent
+	criteria Conceptc6m3_outro3 IsBiker ThePassing3DS IsNotVersus HasAFrom IsNotIncapacitated ChanceToFire100Percent
 	forceweight 1
 	Response c6m3_outroL4D1Biker
 }
@@ -983,7 +983,7 @@ Response c6m3_outroL4D1AllBiker
 }
 Rule c6m3_outroL4D1AllBiker
 {
-	criteria Conceptc6m3_outro3 IsBiker isC6m3_port IsEveryoneAlive ChanceToFire20Percent IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsBiker ThePassing3DS IsEveryoneAlive ChanceToFire20Percent IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 8
 	Response c6m3_outroL4D1AllBiker
 }
@@ -994,7 +994,7 @@ Response c6m3_outroL4D1CoachBiker
 }
 Rule c6m3_outroL4D1CoachBiker
 {
-	criteria Conceptc6m3_outro3 IsBiker isC6m3_port IsCoachAlive ChanceToFire40Percent IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsBiker ThePassing3DS IsCoachAlive ChanceToFire40Percent IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 6
 	Response c6m3_outroL4D1CoachBiker
 }
@@ -1008,7 +1008,7 @@ Response c6m3_outroL4D1CopGibbsBiker
 }
 Rule c6m3_outroL4D1CopGibbsBiker
 {
-	criteria Conceptc6m3_outro3 IsBiker isC6m3_port IsFrancisIntroActor ChanceToFire10Percent IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsBiker ThePassing3DS IsFrancisIntroActor ChanceToFire10Percent IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 10
 	Response c6m3_outroL4D1CopGibbsBiker
 }
@@ -1019,7 +1019,7 @@ Response c6m3_outroL4D1GamblerBiker
 }
 Rule c6m3_outroL4D1GamblerBiker
 {
-	criteria Conceptc6m3_outro3 IsBiker isC6m3_port IsGamblerAlive ChanceToFire50Percent IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsBiker ThePassing3DS IsGamblerAlive ChanceToFire50Percent IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 5
 	Response c6m3_outroL4D1GamblerBiker
 }
@@ -1031,7 +1031,7 @@ Response c6m3_outroL4D1MechanicBiker
 }
 Rule c6m3_outroL4D1MechanicBiker
 {
-	criteria Conceptc6m3_outro3 IsBiker isC6m3_port IsMechanicAlive ChanceToFire60Percent IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsBiker ThePassing3DS IsMechanicAlive ChanceToFire60Percent IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 4
 	Response c6m3_outroL4D1MechanicBiker
 }
@@ -1046,7 +1046,7 @@ Response c6m3_outroL4D1ProducerBiker
 }
 Rule c6m3_outroL4D1ProducerBiker
 {
-	criteria Conceptc6m3_outro3 IsBiker isC6m3_port IsProducerAlive ChanceToFire30Percent IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsBiker ThePassing3DS IsProducerAlive ChanceToFire30Percent IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 7
 	Response c6m3_outroL4D1ProducerBiker
 }
@@ -1061,7 +1061,7 @@ Response IncapBounce2Biker
 }
 Rule IncapBounce2Biker
 {
-	criteria ConceptInCapBounce2 IsBiker isC6m3_port HasAFrom
+	criteria ConceptInCapBounce2 IsBiker ThePassing3DS HasAFrom
 	Response IncapBounce2Biker
 }
 
@@ -1117,7 +1117,7 @@ Response C6M3_BridgeGettoCarBiker
 }
 Rule C6M3_BridgeGettoCarBiker
 {
-	criteria ConceptGetToVehicle IsBiker Isc6m3_port IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsNotInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockBiker IsNotSpeakingWeight0
+	criteria ConceptGetToVehicle IsBiker ThePassing3DS IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsNotInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockBiker IsNotSpeakingWeight0
 	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockBiker:1:30"
 	applycontexttoworld
 	Response C6M3_BridgeGettoCarBiker
@@ -3819,7 +3819,7 @@ Response L4D1SpottedTankBiker
 }
 Rule L4D1SpottedTankBiker
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeTank IsNotCoughing IsBiker IsTalk IsTalkBiker IsWorldTalkBiker IsNotIncapacitated Isc6m3_port IsNotSpeakingWeight0 IsNotVersus IsNotSurvival _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeTank IsNotCoughing IsBiker IsTalk IsTalkBiker IsWorldTalkBiker IsNotIncapacitated ThePassing3DS IsNotSpeakingWeight0 IsNotVersus IsNotSurvival _auto_NotSpottedVehicle
 	ApplyContext "SaidTankWarn:1:20,SaidTankWarn2:1:60"
 	applycontexttoworld
 	Response L4D1SpottedTankBiker
@@ -3827,7 +3827,7 @@ Rule L4D1SpottedTankBiker
 
 Rule L4D1SpottedTank2Biker
 {
-	criteria ConceptPlayerWarnTank IsNotCoughing IsBiker IsTalk IsTalkBiker IsWorldTalkBiker IsNotIncapacitated Isc6m3_port IsNotVersus IsNotSurvival IsNotSpeaking _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnTank IsNotCoughing IsBiker IsTalk IsTalkBiker IsWorldTalkBiker IsNotIncapacitated ThePassing3DS IsNotVersus IsNotSurvival IsNotSpeaking _auto_NotSpottedVehicle
 	Response L4D1SpottedTankBiker
 }
 
@@ -4367,6 +4367,13 @@ Rule L4D1PlayerHelpIncappedLethargicBiker
 	Response L4D1PlayerHelpIncappedLethargicBiker
 }
 
+Rule L4D1PlayerHelpIncappedWitchBiker
+{
+	criteria ConceptPlayerHelp IsBiker IsIncapacitated IsWitchPresent IsWitchAggro
+	ApplyContext "CalledForHelp:1:10"
+	forceweight 30
+	Response NoResponse
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // PlayerIncappedResponse
@@ -7190,6 +7197,39 @@ Rule L4D1PlayerIncapacitatedInitialBiker
 	Response L4D1PlayerIncapacitatedInitialBiker
 }
 
+Response L4D1PlayerIncapacitatedInitialWitchBiker
+{
+	scene "scenes/Biker/HurtCritical01.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical02.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical03.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical04.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical05.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical06.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical07.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical08.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical09.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical10.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Biker/HurtCritical11.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+}
+Rule L4D1PlayerIncapacitatedInitialWitchBiker
+{
+	criteria ConceptPlayerIncapacitated IsBiker IsWitchPresent IsWitchAggro IsCriticalPain
+	ApplyContext "TalkBiker:1:2"
+	forceweight 30
+	Response L4D1PlayerIncapacitatedInitialWitchBiker
+}
+
+Response L4D1WitchDownedBiker
+{
+	scene "scenes/Biker/GrabbedBySmoker01a.vcd"  //no, No, NO, NOOOOOOO!!!!!!!!!
+	scene "scenes/Biker/GrabbedBySmoker02a.vcd"  //no, No, NO, NOOOOOOO!!!!!!!!!
+}
+Rule L4D1WitchDownedBiker
+{
+	criteria ConceptWitchDowned IsBiker IsWitchPresent IsWitchAggro
+	Response L4D1WitchDownedBiker
+}
+
 Response L4D1PlayerKillConfirmationBiker
 {
 	scene "scenes/Biker/KillConfirmation01.vcd"  then Any PlayerNiceShot foo:0 -0.679 //Got it!
@@ -7249,7 +7289,7 @@ Response L4D1PlayerKillConfirmationTankBiker
 }
 Rule L4D1PlayerKillConfirmationTankBiker
 {
-	criteria ConceptKilledZombie IsNotCoughing IsBiker IsTalk IsTalkBiker IsWorldTalkBiker SubjectIsTank ChanceToFire30Percent Isc6m3_port
+	criteria ConceptKilledZombie IsNotCoughing IsBiker IsTalk IsTalkBiker IsWorldTalkBiker SubjectIsTank ChanceToFire30Percent ThePassing3DS
 	Response L4D1PlayerKillConfirmationTankBiker
 }
 

@@ -60,6 +60,7 @@ Criterion "_auto_NotDoorOpen" "world_auto_DoorOpen" "<1" "required" weight 1
 Criterion "_auto_NotDownHole" "world_auto_DownHole" "<1" "required" weight 1
 Criterion "_auto_NotFinaleStarted" "world_auto_Finale" "<1" "required" weight 1
 Criterion "_auto_IsFinaleStarted" "world_auto_Finale" "1" "required" weight 1
+Criterion "_auto_IsFinaleStartedV2" "world_auto_Finale" "<=1" "required" weight 1
 Criterion "_auto_HasSpottedVehicle" "world_auto_Finale" "2" "required" weight 1
 Criterion "_auto_NotSpottedVehicle" "world_auto_Finale" "!=2" "required" weight 1
 Criterion "_auto_NotEscapeReady" "world_auto_Escape" "<1" "required" weight 1

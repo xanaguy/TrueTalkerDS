@@ -129,10 +129,22 @@ Criterion "ThePassing" "campaign" "l4d2_6" required
 Criterion "Isc6m1_riverbank"  "map"  "c6m1_riverbank" required weight 100
 Criterion "IsNotc6m1_riverbank" "map" "!=c6m1_riverbank"   required
 
+Criterion "Isc6m1_riverbank_original"  "map"  "c6m1_riverbank_original" required weight 100
+Criterion "IsNotc6m1_riverbank_original" "map" "!=c6m1_riverbank_original"   required
+
+Criterion "ThePassing1DS" { Isc6m1_riverbank Isc6m1_riverbank_original } "required" weight 100
+
 Criterion "isc6m2_bedlam"  "map"  "c6m2_bedlam" required weight 100
+Criterion "isc6m2_bedlam_original"  "map"  "c6m2_bedlam_original" required weight 100
+Criterion "ThePassing2DS" { isc6m2_bedlam isc6m2_bedlam_original } "required" weight 100
 
 Criterion "Isc6m3_port"  "map"  "c6m3_port" required weight 100
 Criterion "IsNotc6m3_port"  "map"  "!=c6m3_port" required
+
+Criterion "Isc6m3_port_original"  "map"  "c6m3_port_original" required weight 100
+Criterion "IsNotc6m3_port_original"  "map"  "!=c6m3_port_original" required
+
+Criterion "ThePassing3DS" { Isc6m3_port Isc6m3_port_original } "required" weight 100
 
 Criterion "IsNotSaidInCapBounce"  "worldSaidInCapBounce"  "!=1" required
 Criterion "ConceptInCapBounce2"  "Concept"  "InCapBounce2" required

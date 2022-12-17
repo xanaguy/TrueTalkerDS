@@ -24,7 +24,7 @@ Response C6M3PlayerNiceShotTeenGirl
 }
 Rule C6M3PlayerNiceShotTeenGirl
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsTeenGirl IssuerNotSoClose HasAFrom IsC6M3_Port IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsNotSpeaking ChanceToFire70Percent
+	criteria ConceptPlayerNiceShot IsNotCoughing IsTeenGirl IssuerNotSoClose HasAFrom ThePassing3DS IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsNotSpeaking ChanceToFire70Percent
 	Response C6M3PlayerNiceShotTeenGirl
 }
 
@@ -900,7 +900,7 @@ Response c6m3_outroL4D1TeenGirl
 }
 Rule c6m3_outroL4D1TeenGirl
 {
-	criteria Conceptc6m3_outro3 IsTeenGirl isC6m3_port IsNotVersus HasAFrom IsNotIncapacitated ChanceToFire100Percent
+	criteria Conceptc6m3_outro3 IsTeenGirl ThePassing3DS IsNotVersus HasAFrom IsNotIncapacitated ChanceToFire100Percent
 	forceweight 1
 	Response c6m3_outroL4D1TeenGirl
 }
@@ -981,7 +981,7 @@ Response c6m3_outroL4D1AllTeenGirl
 }
 Rule c6m3_outroL4D1AllTeenGirl
 {
-	criteria Conceptc6m3_outro3 IsTeenGirl isC6m3_port IsEveryoneAlive ChanceToFire20Percent IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsTeenGirl ThePassing3DS IsEveryoneAlive ChanceToFire20Percent IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 8
 	Response c6m3_outroL4D1AllTeenGirl
 }
@@ -992,7 +992,7 @@ Response c6m3_outroL4D1MechanicTeenGirl
 }
 Rule c6m3_outroL4D1MechanicTeenGirl
 {
-	criteria Conceptc6m3_outro3 IsTeenGirl isC6m3_port IsMechanicAlive ChanceToFire30Percent IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsTeenGirl ThePassing3DS IsMechanicAlive ChanceToFire30Percent IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 7
 	Response c6m3_outroL4D1MechanicTeenGirl
 }
@@ -1007,7 +1007,7 @@ Response c6m3_outroL4D1MechanicZoeyTeenGirl
 }
 Rule c6m3_outroL4D1MechanicZoeyTeenGirl
 {
-	criteria Conceptc6m3_outro3 IsTeenGirl isC6m3_port IsZoeyIntroActor ChanceToFire100Percent IsMechanicAlive IsNotVersus HasAFrom IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsTeenGirl ThePassing3DS IsZoeyIntroActor ChanceToFire100Percent IsMechanicAlive IsNotVersus HasAFrom IsNotIncapacitated
 	forceweight 2
 	Response c6m3_outroL4D1MechanicZoeyTeenGirl
 }
@@ -1021,7 +1021,7 @@ Response IncapBounce2TeenGirl
 }
 Rule IncapBounce2TeenGirl
 {
-	criteria ConceptIncapBounce2 IsTeenGirl isC6m3_port HasAFrom
+	criteria ConceptIncapBounce2 IsTeenGirl ThePassing3DS HasAFrom
 	Response IncapBounce2TeenGirl
 }
 
@@ -3275,7 +3275,7 @@ Response L4D1SpottedTankTeenGirl
 }
 Rule L4D1SpottedTankTeenGirl
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeTank IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsNotIncapacitated Isc6m3_port IsNotSpeakingWeight0 IsNotVersus IsNotSurvival _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeTank IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsNotIncapacitated ThePassing3DS IsNotSpeakingWeight0 IsNotVersus IsNotSurvival _auto_NotSpottedVehicle
 	ApplyContext "SaidTankWarn:1:20,SaidTankWarn2:1:60"
 	applycontexttoworld
 	Response L4D1SpottedTankTeenGirl
@@ -3283,7 +3283,7 @@ Rule L4D1SpottedTankTeenGirl
 
 Rule L4D1SpottedTank2TeenGirl
 {
-	criteria ConceptPlayerWarnTank IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsNotIncapacitated Isc6m3_port IsNotVersus IsNotSurvival IsNotSpeaking _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnTank IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsNotIncapacitated ThePassing3DS IsNotVersus IsNotSurvival IsNotSpeaking _auto_NotSpottedVehicle
 	Response L4D1SpottedTankTeenGirl
 }
 
@@ -3776,6 +3776,14 @@ Rule L4D1PlayerHelpIncappedLethargicTeenGirl
 	criteria ConceptPlayerHelp IsTeenGirl IsNotCoughing IsTalk IsTalkTeenGirl IsIncapacitated IsIncappedLethargic NotCalledForHelpRecently IsWorldTalkTeenGirl
 	ApplyContext "CalledForHelp:1:30"
 	Response L4D1PlayerHelpIncappedLethargicTeenGirl
+}
+
+Rule L4D1PlayerHelpIncappedWitchTeenGirl
+{
+	criteria ConceptPlayerHelp IsTeenGirl IsIncapacitated IsWitchPresent IsWitchAggro
+	ApplyContext "CalledForHelp:1:10"
+	forceweight 30
+	Response NoResponse
 }
 
 
@@ -6404,6 +6412,34 @@ Rule L4D1PlayerIncapacitatedInitialTeenGirl
 	criteria ConceptPlayerIncapacitated IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl
 	ApplyContext "TalkTeenGirl:1:2"
 	Response L4D1PlayerIncapacitatedInitialTeenGirl
+}
+
+Response L4D1PlayerIncapacitatedInitialWitchTeenGirl
+{
+	scene "scenes/TeenGirl/HurtCritical01.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/TeenGirl/HurtCritical02.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/TeenGirl/HurtCritical03.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/TeenGirl/HurtCritical04.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/TeenGirl/HurtCritical05.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/TeenGirl/HurtCritical06.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+	scene "scenes/TeenGirl/HurtCritical07.vcd" then self WitchDowned foo:0 0.5 //[pain noise - loud major pain]
+}
+Rule L4D1PlayerIncapacitatedInitialWitchTeenGirl
+{
+	criteria ConceptPlayerIncapacitated IsTeenGirl IsWitchPresent IsWitchAggro IsCriticalPain
+	ApplyContext "TalkTeenGirl:1:2"
+	forceweight 30
+	Response L4D1PlayerIncapacitatedInitialWitchTeenGirl
+}
+
+Response L4D1WitchDownedTeenGirl
+{
+	scene "scenes/TeenGirl/FallShort02.vcd"  //Oh no!
+}
+Rule L4D1WitchDownedTeenGirl
+{
+	criteria ConceptWitchDowned IsTeenGirl IsWitchPresent IsWitchAggro
+	Response L4D1WitchDownedTeenGirl
 }
 
 Response L4D1PlayerKillConfirmationTeenGirl

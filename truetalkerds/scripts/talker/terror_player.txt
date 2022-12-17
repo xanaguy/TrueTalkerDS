@@ -588,6 +588,7 @@ criterion "ConceptPlayerReviveFriendCritical"	"Concept" "PlayerReviveFriendCriti
 criterion "ConceptPlayerHealing"		"Concept" "PlayerHealing"		required
 criterion "IsReviveTalk"		"ReviveTalk" "1"		required weight 5
 criterion "IsEllisCrybaby"		"worldEllisCrying" "1"		required weight 5
+criterion "ConceptWitchDowned"		"Concept" "WitchDowned"		required
 
 Criterion "IsNotAskedForCover" "AskForCover" "!=1" "required" weight 0
 
@@ -1284,7 +1285,11 @@ Criterion "IsNotSaidTankWarn" "worldWarnHeardTank" "!=1" "required" weight 0
 Criterion "IsNotSaidWitchWarn" "worldWarnHeardWitch" "!=1" "required" weight 0
 Criterion "SawManyMudMen" "worldSawMudMen" ">3" "required" weight 0
 Criterion "SawFirstMudMen" "worldSawMudMen" "<1" "required" weight 0
+Criterion "SickOfMudMen" "worldSickOfMudMen" "<1" "required" weight 0
 Criterion "SawFirstClown" "worldSawClowns" "<1" "required" weight 0
+Criterion "SawFirstArmored" "worldSawArmored" "<1" "required" weight 0
+Criterion "SawFirstHazmat" "worldSawHazmat" "<1" "required" weight 0
+Criterion "SawJimmyGibbs" "worldSawJimmyGibbs" "<1" "required" weight 0
 
 Criterion "IsNotSaidSpecialWarn" "worldSaidSpecialWarn" "!=1" "required" weight 0
 
@@ -1904,26 +1909,33 @@ Criterion "DeadCenter" "campaign" "l4d2_1" "required"
 //C1M1
 Criterion "ismap_c1m1_hotel" "map" "c1m1_hotel" "required" weight 100
 Criterion "ismap_c1m1d_hotel" "map" "c1m1d_hotel" "required" weight 100
-criterion "DeadCenter1DS" { ismap_c1m1_hotel ismap_c1m1d_hotel } required weight 100
+Criterion "ismap_c1m1_hotel_2009" "map" "c1m1_hotel_2009" "required" weight 100
+criterion "DeadCenter1DS" { ismap_c1m1_hotel ismap_c1m1d_hotel ismap_c1m1_hotel_2009 } required weight 100
 Criterion "isNotmap_c1m1_hotel" "map" "!=c1m1_hotel" "required"
 Criterion "isNotmap_c1m1d_hotel" "map" "!=c1m1d_hotel" "required"
+Criterion "isNotmap_c1m1_hotel_2009" "map" "!=c1m1_hotel_2009" "required"
 criterion "ConceptIntroC1M1"   "Concept" "introC1M1"	  required
 
 //C1M2
 Criterion "ismap_c1m2_streets" "map" "c1m2_streets" "required" weight 100
 Criterion "ismap_c1m2d_streets" "map" "c1m2d_streets" "required" weight 100
-criterion "DeadCenter2DS" { ismap_c1m2_streets ismap_c1m2d_streets } required weight 100
+Criterion "ismap_c1m2_streets_2009" "map" "c1m2_streets_2009" "required" weight 100
+criterion "DeadCenter2DS" { ismap_c1m2_streets ismap_c1m2d_streets ismap_c1m2_streets_2009 } required weight 100
 Criterion "isNotmap_c1m2_streets" "map" "!=c1m2_streets" "required"
 Criterion "isNotmap_c1m2d_streets" "map" "!=c1m2d_streets" "required"
+Criterion "isNotmap_c1m2_streets_2009" "map" "!=c1m2_streets_2009" "required"
+criterion "WhitakerAddonException" { ismap_c1m2d_streets ismap_c1m2_streets_2009 } required weight 100
 
 //C1M3
 Criterion "ismap_c1m3_mall" "map" "c1m3_mall" "required" weight 100
 Criterion "ismap_c1m3d_mall" "map" "c1m3d_mall" "required" weight 100
+Criterion "ismap_c1m3_mall_2009" "map" "c1m3_mall_2009" "required" weight 100
 criterion "DeadCenter3DS" { ismap_c1m3_mall ismap_c1m3d_mall } required weight 100
 
 //C1M4
 Criterion "ismap_c1m4_atrium" "map" "c1m4_atrium" "required" weight 100
 Criterion "ismap_c1m4d_atrium" "map" "c1m4d_atrium" "required" weight 100
+Criterion "ismap_c1m4_atrium_2009" "map" "c1m4_atrium_2009" "required" weight 100
 criterion "DeadCenter4DS" { ismap_c1m4_atrium ismap_c1m4d_atrium } required weight 100
 Criterion "IsNotSaidc1m4NearFinale" "worldSaidc1m4NearFinale" "!=1" "required"
 Criterion "NotStartedElevator" "worldElevatorStart" "!=1" "required"
@@ -1931,7 +1943,7 @@ Criterion "ElevatorTimeUp" "worldElevatorTimer" "!=1" "required" weight 1
 Criterion "ElevatorTimeNotUp" "worldElevatorTimer" "1" "required" weight 1
 
 //C1 Special Criteria
-criterion "C1M1orC1M2" { ismap_c1m1_hotel ismap_c1m1d_hotel ismap_c1m2_streets ismap_c1m2d_streets } required weight 100
+criterion "C1M1orC1M2" { ismap_c1m1_hotel ismap_c1m1d_hotel ismap_c1m1_hotel_2009 ismap_c1m2_streets ismap_c1m2d_streets ismap_c1m2_streets_2009 } required weight 100
 criterion "ConceptNickC1Attitude"	"Concept" "NickC1Attitude"		required
 
 //Dark Carnival
@@ -1940,18 +1952,24 @@ Criterion "DarkCarnival" "campaign" "l4d2_2" "required"
 
 //C2M1
 Criterion "ismap_c2m1" "map" "c2m1_highway" "required" weight 100
+Criterion "ismap_c2m1_2009" "map" "c2m1_highway_2009" "required" weight 100
+Criterion "DarkCarnival1DS" { ismap_c2m1 ismap_c2m1_2009 } required weight 100
 criterion "ConceptIntroC2M1"   "Concept" "introC2M1"	  required
 criterion "ConceptC2M1Falling"   "Concept" "C2M1Falling"	  required
 criterion "ConceptC2M1DoneFalling"   "Concept" "C2M1DoneFalling"	  required
 
 //C2M2
 Criterion "ismap_c2m2" "map" "c2m2_fairgrounds" "required" weight 100
+Criterion "ismap_c2m2_2009" "map" "c2m2_fairgrounds_2009" "required" weight 100
+Criterion "DarkCarnival2DS" { ismap_c2m2 ismap_c2m2_2009 } required weight 100
 criterion "Conceptc2m2CarouselStart"   "Concept" "c2m2CarouselStart"	  required
 criterion "Conceptc2m2CarouselEnd"   "Concept" "c2m2CarouselEnd"	  required
 Criterion "EllisNotTall" "worldEllisTallJoke" "1" "required" weight 1
 
 //C2M3
 Criterion "ismap_c2m3" "map" "c2m3_coaster" "required" weight 100
+Criterion "ismap_c2m3_2009" "map" "c2m3_coaster_2009" "required" weight 100
+Criterion "DarkCarnival3DS" { ismap_c2m3 ismap_c2m3_2009 } required weight 100
 criterion "Conceptc2m3CoasterStart"   "Concept" "c2m3CoasterStart"	  required
 criterion "Conceptc2m3CoasterEnd"   "Concept" "c2m3CoasterEnd"	  required
 criterion "Conceptc2m3SeeChopper"   "Concept" "C2M3SeeChopper"	  required
@@ -1964,6 +1982,8 @@ criterion "ConceptC2M3CloseToSafeHouse"   "Concept" "C2M3CloseToSafeHouse"	  req
 
 //C2M4
 Criterion "ismap_c2m4" "map" "c2m4_barns" "required" weight 100
+Criterion "ismap_c2m4_2009" "map" "c2m4_barns_2009" "required" weight 100
+Criterion "DarkCarnival4DS" { ismap_c2m4 ismap_c2m4_2009 } required weight 100
 criterion "Conceptc2m4SeeChopper"   "Concept" "C2M4SeeChopper"	  required
 criterion "Conceptc2m4NearGate"   "Concept" "c2m4NearGate"	  required
 criterion "Conceptc2m4AwayFromGate"   "Concept" "c2m4AwayFromGate"	  required
@@ -1973,6 +1993,8 @@ criterion "ConceptC2M4ButtonPressed"   "Concept" "C2M4ButtonPressed"	  required
 
 //C2M5
 Criterion "ismap_c2m5" "map" "c2m5_concert" "required" weight 100
+Criterion "ismap_c2m5_2009" "map" "c2m5_concert_2009" "required" weight 100
+Criterion "DarkCarnival5DS" { ismap_c2m5 ismap_c2m5_2009 } required weight 100
 criterion "Conceptc2m5Button1"   "Concept" "c2m5Button1"	  required
 criterion "Conceptc2m5Button2"   "Concept" "c2m5Button2"	  required
 criterion "ConceptC2m5ChopperReady"   "Concept" "C2m5ChopperReady"	  required
@@ -1990,35 +2012,39 @@ Criterion "SwampFever" "campaign" "l4d2_3" "required"
 //C3M1
 criterion "ismap_c3m1_plankcountry"   "map" "c3m1_plankcountry" required weight 100
 criterion "ismap_c3m1_plankcountry_night"   "map" "c3m1_plankcountry_night" required weight 100
-Criterion "IsInPlankcountry" { ismap_c3m1_plankcountry ismap_c3m1_plankcountry_night } required weight 100
+criterion "ismap_c3m1_plankcountry_2009"   "map" "c3m1_plankcountry_2009" required weight 100
+Criterion "IsInPlankcountry" { ismap_c3m1_plankcountry ismap_c3m1_plankcountry_night ismap_c3m1_plankcountry_2009 } required weight 100
 criterion "ConceptIntroC3M1"   "Concept" "introC3M1"	  required
 
 //C3M2
 criterion "Conceptc3m2disgust"   "Concept" "c3m2disgust"	  required
 criterion "ismapc3m2_swamp" "map" "c3m2_swamp" required weight 100
 criterion "ismapc3m2_swamp_night" "map" "c3m2_swamp_night" required weight 100
+criterion "ismapc3m2_swamp_2009" "map" "c3m2_swamp_2009" required weight 100
 Criterion "IsNotSaidC3M2Disgusted" "worldSaidC3M2Disgusted" "!=1" required
-Criterion "IsInSwamps" { ismapc3m2_swamp ismapc3m2_swamp_night } required weight 100
+Criterion "IsInSwamps" { ismapc3m2_swamp ismapc3m2_swamp_night ismapc3m2_swamp_2009 } required weight 100
 
 //C3M3
 criterion "ConceptC3M3BridgeButton"   "Concept" "C3M3BridgeButton"	  required
 criterion "ismapc3m3_shantytown"   "map" "c3m3_shantytown"	  required weight 100
 criterion "ismapc3m3_shantytown_night"   "map" "c3m3_shantytown_night"	  required weight 100
+criterion "ismapc3m3_shantytown_2009"   "map" "c3m3_shantytown_2009"	  required weight 100
 criterion "IsNotSaidC3M3BridgeButton"   "worldSaidC3M3BridgeButton" "!=1"	  required
 criterion "IsSaidC3M3BridgeButton"   "worldSaidC3M3BridgeButton" "1"	  required
-Criterion "IsInShantytown" { ismapc3m3_shantytown ismapc3m3_shantytown_night } required weight 100
+Criterion "IsInShantytown" { ismapc3m3_shantytown ismapc3m3_shantytown_night ismapc3m3_shantytown_2009 } required weight 100
 
 //C3M4
 criterion "ismapc3m4_plantation"   "map" "c3m4_plantation"	  "required" weight 100
 criterion "ismapc3m4_plantation_night"   "map" "c3m4_plantation_night"	  "required" weight 100
+criterion "ismapc3m4_plantation_2009"   "map" "c3m4_plantation_2009"	  "required" weight 100
 criterion "ConceptC3M4Button1"   "Concept" "C3M4Button1"	  required
 criterion "ConceptC3M4Button1A"   "Concept" "C3M4Button1A"	  required
 criterion "ConceptC3M4Button2"   "Concept" "C3M4Button2"	  required
 criterion "ConceptC3M4Outro"   "Concept" "C3M4Outro"	  required
-Criterion "IsAtPlantation" { ismapc3m4_plantation ismapc3m4_plantation_night } required weight 100
+Criterion "IsAtPlantation" { ismapc3m4_plantation ismapc3m4_plantation_night ismapc3m4_plantation_2009 } required weight 100
 
 //C3 Special Criteria
-Criterion "IsInSwamp" { ismapc3m2_swamp ismapc3m3_shantytown ismapc3m2_swamp_night ismapc3m3_shantytown_night } required weight 100
+Criterion "IsInSwamp" { ismapc3m2_swamp ismapc3m3_shantytown ismapc3m2_swamp_night ismapc3m3_shantytown_night ismapc3m2_swamp_2009 ismapc3m3_shantytown_2009 } required weight 100
 
 //Hard Rain
 
@@ -2032,7 +2058,8 @@ criterion "ConceptC4ExitCover"   "Concept" "C4ExitCover"	  required
 //C4M1
 Criterion "ismap_c4m1_milltown_a" "map" "c4m1_milltown_a" "required" weight 100
 Criterion "ismap_dprm1_milltown_a" "map" "dprm1_milltown_a" "required" weight 100
-criterion "C4M1orDPRM1" { ismap_c4m1_milltown_a ismap_dprm1_milltown_a } required weight 100
+Criterion "ismap_c4m1_milltown_a_2009" "map" "c4m1_milltown_a_2009" "required" weight 100
+criterion "HardRain1DS" { ismap_c4m1_milltown_a ismap_dprm1_milltown_a ismap_c4m1_milltown_a_2009 } required weight 100
 criterion "ConceptIntroC4M1"   "Concept" "introC4M1"	  required
 Criterion "IsSaidc4m1_nogas" "worldSaidc4m1_nogas" "1" "required" weight 1
 Criterion "Isc4m1IToldYouSo" "worldc4m1IToldYouSo" "1" "required" weight 10
@@ -2044,9 +2071,11 @@ Criterion "IsNotSaidc4m1_rainresponse" "worldSaidc4m1_rainresponse" "!=1" requir
 //C4M2
 Criterion "ismap_c4m2_sugarmill_a" "map" "c4m2_sugarmill_a" "required" weight 100
 Criterion "ismap_dprm2_sugarmill_a" "map" "dprm2_sugarmill_a" "required" weight 100
-Criterion "IsNotmap_c4m2" "map" "!=c4m2_sugarmill_a" required 
-Criterion "IsNotmap_dprm2" "map" "!=dprm2_sugarmill_a" required 
-criterion "C4M2orDPRM2" { ismap_c4m2_sugarmill_a ismap_dprm2_sugarmill_a } required weight 100
+Criterion "ismap_c4m2_sugarmill_a_2009" "map" "c4m2_sugarmill_a_2009" "required" weight 100
+Criterion "IsNotmap_c4m2" "map" "!=c4m2_sugarmill_a" required
+Criterion "IsNotmap_dprm2" "map" "!=dprm2_sugarmill_a" required
+Criterion "IsNotmap_c4m2_2009" "map" "!=c4m2_sugarmill_a_2009" required  
+criterion "HardRain2DS" { ismap_c4m2_sugarmill_a ismap_dprm2_sugarmill_a ismap_c4m2_sugarmill_a_2009 } required weight 100
 criterion "Conceptc4m2_enter_canefield"   "Concept" "c4m2_enter_canefield"	  required
 criterion "Conceptc4m2_exit_canefield"   "Concept" "c4m2_exit_canefield"	  required
 criterion "Conceptc4m2_elevator_top_button"   "Concept" "c4m2_elevator_top_button"	  required
@@ -2061,24 +2090,27 @@ Criterion "NotSaidLotsOfWitches" "worldSaidLotsOfWitches" "<1" "required" weight
 //C4M3
 Criterion "isc4m3" "map" "c4m3_sugarmill_b" "required" weight 100
 Criterion "isdprm3" "map" "dprm3_sugarmill_b" "required" weight 100
-criterion "C4M3orDPRM3" { isc4m3 isdprm3 } required weight 100
+Criterion "isc4m3_2009" "map" "c4m3_sugarmill_b_2009" "required" weight 100
+criterion "HardRain3DS" { isc4m3 isdprm3 isc4m3_2009 } required weight 100
 
 //C4M4
 Criterion "isc4m4" "map" "c4m4_milltown_b" "required" weight 100
 Criterion "isdprm4" "map" "dprm4_milltown_b" "required" weight 100
-criterion "C4M4orDPRM4" { isc4m4 isdprm4 } required weight 100
+Criterion "isc4m4_2009" "map" "c4m4_milltown_b_2009" "required" weight 100
+criterion "HardRain4DS" { isc4m4 isdprm4 } required weight 100
 
 //C4M5
 Criterion "isc4m5" "map" "c4m5_milltown_escape" "required" weight 100
 Criterion "isdprm5" "map" "dprm5_milltown_escape" "required" weight 100
-criterion "C4M5orDPRM5" { isc4m5 isdprm5 } required weight 100
+Criterion "isc4m5_2009" "map" "c4m5_milltown_escape_2009" "required" weight 100
+criterion "HardRain5DS" { isc4m5 isdprm5 isc4m5_2009 } required weight 100
 criterion "ConceptC4BoatComing"   "Concept" "C4BoatComing"	  required
 criterion "ConceptC4BoatArrived"   "Concept" "C4BoatArrived"	  required
 criterion "ConceptC4BoatArrived2"   "Concept" "C4BoatArrived2"	  required
 criterion "ConceptC4M5Outro"  "concept" "C4M5Outro" required
 
 //C4 Special Criteria
-Criterion "isCampaign4" { isc4m3 isc4m4 isc4m5 isdprm3 isdprm4 isdprm5 } "required" weight 100
+Criterion "isCampaign4" { isc4m3 isc4m4 isc4m5 isdprm3 isdprm4 isdprm5 isc4m3_2009 isc4m4_2009 isc4m5_2009 } "required" weight 100
 
 //The Parish
 
@@ -2088,7 +2120,8 @@ Criterion "TheParish" "campaign" "l4d2_5" "required"
 Criterion "ismap_c5m1_waterfront" "map" "c5m1_waterfront" "required" weight 100
 Criterion "ismap_c5m1_waterfront_facelift" "map" "c5m1_waterfront_fixed" "required" weight 100
 Criterion "ismap_c5m1_darkwaterfront" "map" "c5m1_darkwaterfront" "required" weight 100
-Criterion "TheParish1DS" { ismap_c5m1_waterfront ismap_c5m1_waterfront_facelift ismap_c5m1_darkwaterfront } "required" weight 100
+Criterion "ismap_c5m1_waterfront_2009" "map" "c5m1_waterfront_2009" "required" weight 100
+Criterion "TheParish1DS" { ismap_c5m1_waterfront ismap_c5m1_waterfront_facelift ismap_c5m1_darkwaterfront ismap_c5m1_waterfront_2009 } "required" weight 100
 
 criterion "ConceptIntroC5M1"   "concept" "introC5M1"	  required
 criterion "ConceptC5M1Flyby"  "concept" "C5M1Flyby" required
@@ -2097,6 +2130,7 @@ criterion "ConceptC5M1Flyby"  "concept" "C5M1Flyby" required
 criterion "IsMapc5m2_park"  "map" "c5m2_park" required weight 100
 Criterion "IsMapc5m2_park_facelift" "map" "c5m2_park_fixed" "required" weight 100
 criterion "IsMapc5m2_darkpark"  "map" "c5m2_darkpark" required weight 100
+criterion "IsMapc5m2_park_2009"  "map" "c5m2_park_2009" required weight 100
 Criterion "TheParish2DS" { IsMapc5m2_park IsMapc5m2_park_facelift IsMapc5m2_darkpark } "required" weight 100
 
 //C5M3
@@ -2109,8 +2143,10 @@ criterion "IsNotc5m3_cemetery_facelift"  "map" "!=c5m3_cemetery_fixed" required
 criterion "IsMapc5m3_darkcemetery"  "map" "c5m3_darkcemetery" required weight 100
 criterion "IsNotc5m3_darkcemetery"  "map" "!=c5m3_darkcemetery" required
 
+criterion "IsMapc5m3_cemetery_2009"  "map" "c5m3_cemetery_2009" required weight 100
+criterion "IsNotc5m3_cemetery_2009"  "map" "!=c5m3_cemetery_2009" required
 
-Criterion "TheParish3DS" { IsMapc5m3_cemetery IsMapc5m3_cemetery_facelift IsMapc5m3_darkcemetery } "required" weight 100
+Criterion "TheParish3DS" { IsMapc5m3_cemetery IsMapc5m3_cemetery_facelift IsMapc5m3_darkcemetery IsMapc5m3_cemetery_2009 } "required" weight 100
 
 criterion "ConceptC5M3FirstInAlarmField"  "concept" "C5M3FirstInAlarmField" required
 criterion "ConceptC5M3InAlarmField"  "concept" "C5M3InAlarmField" required
@@ -2127,6 +2163,7 @@ criterion "ConceptC5M3BridgeCondition"  "concept" "C5M3BridgeCondition" required
 criterion "IsMapc5m4_quarter"  "map" "c5m4_quarter" required weight 100
 criterion "IsMapc5m4_quarter_facelift"  "map" "c5m4_quarter_fixed" required weight 100
 criterion "IsMapc5m4_darkquarter"  "map" "c5m4_darkquarter" required weight 100
+criterion "IsMapc5m4_quarter_2009"  "map" "c5m4_quarter_2009" required weight 100
 Criterion "TheParish4DS" { IsMapc5m4_quarter IsMapc5m4_quarter_facelift IsMapc5m4_darkquarter } "required" weight 100
 
 
@@ -2137,7 +2174,8 @@ criterion "Conceptc5m4bombinginterior"  "concept" "c5m4bombinginterior" required
 criterion "IsMapc5m5_bridge"  "map" "c5m5_bridge" required weight 100
 criterion "IsMapc5m5_bridge_facelift"  "map" "c5m5_bridge_fixed" required weight 100
 criterion "IsMapc5m5_darkbridge"  "map" "c5m5_darkbridge" required weight 100
-Criterion "TheParish5DS" { IsMapc5m5_bridge IsMapc5m5_bridge_facelift IsMapc5m5_darkbridge } "required" weight 100
+criterion "IsMapc5m5_bridge_2009"  "map" "c5m5_bridge_2009" required weight 100
+Criterion "TheParish5DS" { IsMapc5m5_bridge IsMapc5m5_bridge_facelift IsMapc5m5_darkbridge IsMapc5m5_bridge_2009 } "required" weight 100
 
 criterion "ConceptC5M5Button"  "concept" "C5M5Button" required
 criterion "ConceptC5M5Button1"  "concept" "C5M5Button1" required
@@ -2156,7 +2194,7 @@ Criterion "CanSpeakC5M5SurvivorOutro" "worldC5M5SurvivorOutro" "1" required
 Criterion "IsNotSaidGoingToDieC5M5" "SaidGoingToDieC5M5" "!=1" required
 
 //C5 Special Criteria
-Criterion "isCampaign5" { IsMapc5m2_park IsMapc5m3_cemetery IsMapc5m4_quarter } "required" weight 100
+Criterion "isCampaign5" { IsMapc5m2_park IsMapc5m2_park_facelift IsMapc5m2_darkpark IsMapc5m2_park_2009 IsMapc5m3_cemetery IsMapc5m3_cemetery_facelift IsMapc5m3_darkcemetery IsMapc5m3_cemetery_2009 IsMapc5m4_quarter IsMapc5m4_quarter_facelift IsMapc5m4_darkquarter IsMapc5m4_quarter_2009 } "required" weight 100
 
 //Orator Test Concept
 criterion "ConceptOratorTest"   "Concept" "OratorTest"	  required
@@ -2325,17 +2363,14 @@ rule Airport04PathClearVan
 Criterion "TheSacrifice" "campaign" "l4d2_7" "required"
 
 criterion "ismapc7m1_docks"  "map" "c7m1_docks" required weight 100
-criterion "ismapc7m1_docks_trueexpressiveending"  "map" "c7m1_docks_trueexpressiveending" required weight 100
-criterion "C7M1VanillaOrC7M1TrueEnding" { ismapc7m1_docks ismapc7m1_docks_trueexpressiveending } required weight 100
+//criterion "C7M1VanillaOrC7M1TrueEnding" { ismapc7m1_docks ismapc7m1_docks_trueexpressiveending } required weight 100
 
 criterion "ismapc7m2_barge"  "map" "c7m2_barge" required weight 100 
-criterion "ismapc7m2_barge_trueexpressiveending"  "map" "c7m2_barge_trueexpressiveending" required weight 100
-criterion "C7M2VanillaOrC7M2TrueEnding" { ismapc7m2_barge ismapc7m2_barge_trueexpressiveending } required weight 100
+//criterion "C7M2VanillaOrC7M2TrueEnding" { ismapc7m2_barge ismapc7m2_barge_trueexpressiveending } required weight 100
 
 criterion "ismapc7m3_port"  "map" "c7m3_port" required weight 100
 criterion "ismapc7m3_port_trueending"  "map" "c7m3_port_trueending" required weight 100
-criterion "ismapc7m3_port_trueexpressiveending"  "map" "c7m3_port_trueexpressiveending" required weight 100
-criterion "C7M3VanillaOrC7M3TrueEnding" { ismapc7m3_port ismapc7m3_port_trueending ismapc7m3_port_trueexpressiveending } required weight 100
+criterion "C7M3VanillaOrC7M3TrueEnding" { ismapc7m3_port ismapc7m3_port_trueending } required weight 100
 
 
 //Cold Stream

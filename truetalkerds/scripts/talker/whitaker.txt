@@ -597,6 +597,42 @@ Rule C1M2GunRoomDoorCDEnd2Whitaker
 }
 
 //--------------------------------------------------------------------------------------------------------------
+// Whitaker for addon C1M2 variants
+//--------------------------------------------------------------------------------------------------------------
+Response C1M2GunRoomDoorAddonWhit
+{
+	sequential
+	norepeat
+	scene "scenes/npcs/Whitaker_ComeUpstairsLongerD01.vcd"  then orator C1M2GunRoomDoor foo:0 0 //Hello there.
+	scene "scenes/npcs/Whitaker_WayBlockedLongerE01.vcd"  then orator C1M2GunRoomDoor foo:0 0 //I've barricaded myself on the roof with ample provisions.
+	scene "scenes/npcs/Whitaker_WayBlockedLongerE02.vcd"  then orator C1M2GunRoomDoor foo:0 0 //But in my haste I forgot cola.
+	scene "scenes/npcs/Whitaker_WayBlockedLongerF01.vcd"  then any C1M2FirstOutsideResponse foo:0 0 //So here is my proposition: If you go find me some cola at yonder food store, I'll clear a path to the mall for you.
+}
+Rule C1M2GunRoomDoorAddonWhit
+{
+	criteria ConceptC1M2GunRoomDoor WhitakerAddonException AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "Talk:1:7.713,_auto_C1M2GunRoomDoorWhit:1:0"
+	applycontexttoworld
+	Response C1M2GunRoomDoorAddonWhit
+}
+
+Rule C1M2FirstOutsideStartAddonWhit
+{
+	criteria ConceptC1M2FirstOutside IsWhitaker WhitakerAddonException AutoIsNotScavenge AutoIsNotSurvival IsNotSaidC1M2AlarmSetoff
+	ApplyContext "C1M2FirstOutside:1:0"
+	applycontexttoworld
+	Response OratorBlank
+}
+
+Rule C1M2ColaInDoorAddonWhitaker
+{
+	criteria ConceptC1M2ColaInDoor WhitakerAddonException IsNotSaidC1M2ColaInDoor ColaDelivered AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidC1M2ColaInDoor:1:0"
+	applycontexttoworld
+	Response OratorBlank
+}
+
+//--------------------------------------------------------------------------------------------------------------
 // The alarm goes off...
 //--------------------------------------------------------------------------------------------------------------
 
@@ -607,6 +643,14 @@ Response C1M2AlarmDoorStore_Doors
 Rule C1M2AlarmDoorStore_Doors
 {
 	criteria ConceptC1M2AlarmDoor IsWhitaker IsNotSaidC1M2AlarmSetoff
+	ApplyContext "C1M2AlarmSetOff:1:0,WarnMegaMob:1:300,SaidSpecialWarn:1:30"
+	applycontexttoworld
+	Response C1M2AlarmDoorStore_Doors
+}
+
+Rule C1M2AlarmDoorStore_DoorsAddon
+{
+	criteria ConceptC1M2AlarmDoor IsWhitaker WhitakerAddonException IsNotSaidC1M2AlarmSetoff
 	ApplyContext "C1M2AlarmSetOff:1:0,WarnMegaMob:1:300,SaidSpecialWarn:1:30"
 	applycontexttoworld
 	Response C1M2AlarmDoorStore_Doors

@@ -46,7 +46,7 @@ Response C4M3SaferoomMechanic
 }
 Rule C4M3SaferoomMechanic
 {
-	criteria ConceptTalkIdle IsMechanic NotInCombat IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea C4M3orDPRM3 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomQuiet _auto_IsSafeRoomStart IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic NotInCombat IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea HardRain3DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomQuiet _auto_IsSafeRoomStart IsNotSpeakingWeight0
 	ApplyContext "_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response C4M3SaferoomMechanic
@@ -60,7 +60,7 @@ Response L4D1PlayerNiceShotFrancisC6M3Mechanic
 }
 Rule L4D1PlayerNiceShotFrancisC6M3Mechanic
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose IsC6M3_Port IsTalk IsTalkMechanic IsWorldTalkMechanic SubjectIsBiker ChanceToFire70Percent IsNotSpeaking
+	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose ThePassing3DS IsTalk IsTalkMechanic IsWorldTalkMechanic SubjectIsBiker ChanceToFire70Percent IsNotSpeaking
 	Response L4D1PlayerNiceShotFrancisC6M3Mechanic
 }
 
@@ -86,7 +86,7 @@ Response L4D1PlayerNiceShotLouisC6M3Mechanic
 }
 Rule L4D1PlayerNiceShotLouisC6M3Mechanic
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose IsC6M3_Port IsTalk IsTalkMechanic IsWorldTalkMechanic SubjectIsManager ChanceToFire70Percent IsNotSpeaking
+	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose ThePassing3DS IsTalk IsTalkMechanic IsWorldTalkMechanic SubjectIsManager ChanceToFire70Percent IsNotSpeaking
 	Response L4D1PlayerNiceShotLouisC6M3Mechanic
 }
 
@@ -108,7 +108,7 @@ Response L4D1PlayerNiceShotZoeyC6M3Mechanic
 }
 Rule L4D1PlayerNiceShotZoeyC6M3Mechanic
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose IsC6M3_Port IsTalk IsTalkMechanic IsWorldTalkMechanic SubjectIsTeenGirl ChanceToFire70Percent IsFrancisIntroActor IsNotSpeaking
+	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose ThePassing3DS IsTalk IsTalkMechanic IsWorldTalkMechanic SubjectIsTeenGirl ChanceToFire70Percent IsFrancisIntroActor IsNotSpeaking
 	Response L4D1PlayerNiceShotZoeyC6M3Mechanic
 }
 
@@ -126,7 +126,7 @@ Response L4D1PlayerNiceShotZoeyC6M3IntroMechanic
 }
 Rule L4D1PlayerNiceShotZoeyC6M3IntroMechanic
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose IsC6M3_Port IsTalk IsTalkMechanic IsWorldTalkMechanic SubjectIsTeenGirl ChanceToFire70Percent IsZoeyIntroActor IsNotSpeaking
+	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose ThePassing3DS IsTalk IsTalkMechanic IsWorldTalkMechanic SubjectIsTeenGirl ChanceToFire70Percent IsZoeyIntroActor IsNotSpeaking
 	Response L4D1PlayerNiceShotZoeyC6M3IntroMechanic
 }
 
@@ -158,7 +158,7 @@ Rule PlayerNiceShotMechanic
 
 Rule L4D1PlayerNiceShotMechanic
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose IsC6M3_Port SubjectIsNotProducer SubjectIsNotGambler SubjectIsNotCoach IsTalk IsTalkMechanic ChanceToFire30Percent IsWorldTalkMechanic
+	criteria ConceptPlayerNiceShot IsNotCoughing IsMechanic HasAFrom IssuerNotSoClose ThePassing3DS SubjectIsNotProducer SubjectIsNotGambler SubjectIsNotCoach IsTalk IsTalkMechanic ChanceToFire30Percent IsWorldTalkMechanic
 	Response PlayerNiceShotMechanic
 }
 
@@ -640,6 +640,18 @@ Rule PlayerPlayerUsingColaBottlesMechanic
 	Response NoResponse
 }
 
+Response PlayerPlayerUsingColaBottlesAddonMechanic
+{
+	print " " then orator whitakerputcola foo:0 0 //Blank
+}
+Rule PlayerPlayerUsingColaBottlesAddonMechanic
+{
+	criteria ConceptPlayerUsingColaBottles IsMechanic WhitakerAddonException IsNotSaidPlayerUsingColaBottles
+	ApplyContext "SaidPlayerUsingColaBottles:1:20,WhoPutCola:Mechanic:35"
+	applycontexttoworld
+	Response PlayerPlayerUsingColaBottlesAddonMechanic
+}
+
 Response PlayerRelaxedSighMechanic
 {
 	scene "scenes/Mechanic/PainRelieftFirstAid01.vcd"  //Oooh yeah.
@@ -838,7 +850,7 @@ Response ItemDonorProducerMechanic
 }
 Rule ItemDonorProducerMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsDonorProducer ChanceToFire30Percent isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsPickedUpValidHealingItem
+	criteria ConceptPlayerPickup IsMechanic IsDonorProducer ChanceToFire30Percent isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsPickedUpValidHealingItem
 	ApplyContext "TalkMechanic:1:3"
 	applycontexttoworld
 	Response ItemDonorProducerMechanic
@@ -854,7 +866,7 @@ Response ItemDonorCoachMechanic
 }
 Rule ItemDonorCoachMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsDonorCoach ChanceToFire30Percent isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsPickedUpValidHealingItem
+	criteria ConceptPlayerPickup IsMechanic IsDonorCoach ChanceToFire30Percent isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsPickedUpValidHealingItem
 	ApplyContext "TalkMechanic:1:3"
 	applycontexttoworld
 	Response ItemDonorCoachMechanic
@@ -870,7 +882,7 @@ Response ItemDonorGamblerMechanic
 }
 Rule ItemDonorGamblerMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsDonorGambler ChanceToFire30Percent isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsPickedUpValidHealingItem
+	criteria ConceptPlayerPickup IsMechanic IsDonorGambler ChanceToFire30Percent isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsPickedUpValidHealingItem
 	ApplyContext "TalkMechanic:1:3"
 	applycontexttoworld
 	Response ItemDonorGamblerMechanic
@@ -1312,7 +1324,7 @@ Response C6M3GasPourMechanic
 }
 Rule C6M3GasPourMechanic
 {
-	criteria ConceptPlayerPourStarted IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotScavenge isC6M3_Port ChanceToFire70Percent
+	criteria ConceptPlayerPourStarted IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotScavenge ThePassing3DS ChanceToFire70Percent
 	ApplyContext "TalkMechanic:1:2"
 	Response C6M3GasPourMechanic
 }
@@ -1363,7 +1375,7 @@ Response C2M2CarouselIdleMechanic
 }
 Rule C2M2CarouselIdleMechanic
 {
-	criteria ConceptTalkIdle IsMechanic ChanceToFire30Percent IsNotIncapacitated ismap_c2m2 IsNotInSafeSpot IsNotSaidSafeSpotAhead AutoIsNotScavenge AutoIsNotSurvival _auto_IsAlarm _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic ChanceToFire30Percent IsNotIncapacitated DarkCarnival2DS IsNotInSafeSpot IsNotSaidSafeSpotAhead AutoIsNotScavenge AutoIsNotSurvival _auto_IsAlarm _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
 	ApplyContext "_auto_TimerLockA:1:13,_auto_TimerLockMechanic:1:30"
 	applycontexttoworld
 	Response C2M2CarouselIdleMechanic
@@ -1381,7 +1393,7 @@ Response C2M3RubbleNagIdleMechanic
 }
 Rule C2M3RubbleNagIdleMechanic
 {
-	criteria ConceptTalkIdle IsMechanic ChanceToFire50Percent IsNotIncapacitated ismap_c2m3 AutoIsNotScavenge AutoIsNotSurvival _auto_IsTeamNearCoaster _auto_NotAlarm _auto_NotTimerLockA _auto_NotTimerLockMechanic _auto_IsCoasterExpo IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic ChanceToFire50Percent IsNotIncapacitated DarkCarnival3DS AutoIsNotScavenge AutoIsNotSurvival _auto_IsTeamNearCoaster _auto_NotAlarm _auto_NotTimerLockA _auto_NotTimerLockMechanic _auto_IsCoasterExpo IsNotSpeakingWeight0
 	ApplyContext "Talk:1:0.903,_auto_TimerLockA:1:10,_auto_TimerLockMechanic:1:13"
 	applycontexttoworld
 	Response C2M3RubbleNagIdleMechanic
@@ -1732,7 +1744,7 @@ Response C2M4Gate000Mechanic
 }
 Rule C2M4Gate000Mechanic
 {
-	criteria ConceptC2M4Gate000 IsMechanic HasAFrom IsNotIncapacitated ismap_c2m4 NotInCombat TimeSinceGroupInCombat02 AutoIsNotScavenge AutoIsNotSurvival _auto_IsNearGate _auto_NotNearGateNag _auto_NotTimerLockA _auto_NotTimerLockMechanic _auto_NotButtonPressed IsNotSpeakingWeight0
+	criteria ConceptC2M4Gate000 IsMechanic HasAFrom IsNotIncapacitated DarkCarnival4DS NotInCombat TimeSinceGroupInCombat02 AutoIsNotScavenge AutoIsNotSurvival _auto_IsNearGate _auto_NotNearGateNag _auto_NotTimerLockA _auto_NotTimerLockMechanic _auto_NotButtonPressed IsNotSpeakingWeight0
 	ApplyContext "Talk:1:1.116,_auto_TimerLockA:1:20,_auto_TimerLockMechanic:1:23,_auto_NearGateNag:1:0"
 	applycontexttoworld
 	Response C2M4Gate000Mechanic
@@ -1745,7 +1757,7 @@ Response C2M4GateIdleMechanic
 }
 Rule C2M4GateIdleMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsNotIncapacitated ismap_c2m4 NotInCombat TimeSinceGroupInCombat02 AutoIsNotScavenge AutoIsNotSurvival _auto_IsNearGateNag _auto_IsNearGate _auto_NotTimerLockA _auto_NotTimerLockMechanic _auto_NotButtonPressed IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic IsNotIncapacitated DarkCarnival4DS NotInCombat TimeSinceGroupInCombat02 AutoIsNotScavenge AutoIsNotSurvival _auto_IsNearGateNag _auto_IsNearGate _auto_NotTimerLockA _auto_NotTimerLockMechanic _auto_NotButtonPressed IsNotSpeakingWeight0
 	ApplyContext "Talk:1:1.645,_auto_TimerLockA:1:20,_auto_TimerLockMechanic:1:23"
 	applycontexttoworld
 	Response C2M4GateIdleMechanic
@@ -1787,7 +1799,7 @@ Response C2M5_Button2YellMechanic
 }
 Rule C2M5_Button2YellMechanic
 {
-	criteria ConceptFinaleTriggered IsMechanic IsTriggeredByMechanic ismap_c2m5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
+	criteria ConceptFinaleTriggered IsMechanic IsTriggeredByMechanic DarkCarnival5DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "_auto_Finale:1:0,Talk:1:5,WarnMegaMob:1:0,SaidSpecialWarn:1:0,_auto_Button2:1:0,_auto_ConcertLive:1:0"
 	applycontexttoworld
 	Response C2M5_Button2YellMechanic
@@ -1800,7 +1812,7 @@ Response C2M5_ChoppercomingMechanic
 }
 Rule C2M5_ChoppercomingMechanic
 {
-	criteria ConceptFinalVehicleSpotted IsMechanic ismap_c2m5 IsNotIncapacitated _auto_IsFinaleStarted
+	criteria ConceptFinalVehicleSpotted IsMechanic DarkCarnival5DS IsNotIncapacitated _auto_IsFinaleStarted
 	ApplyContext "_auto_Finale:2:0,_auto_ConcertLive:0:0"
 	applycontexttoworld
 	Response C2M5_ChoppercomingMechanic
@@ -2050,7 +2062,7 @@ Response C2M5LeaveSafeMechanic
 }
 Rule C2M5LeaveSafeMechanic
 {
-	criteria ConceptSurvivorLeavingInitialCheckpoint IsMechanic IsNotAlone ismap_c2m5 IsNotSaidLeavingSafeArea
+	criteria ConceptSurvivorLeavingInitialCheckpoint IsMechanic IsNotAlone DarkCarnival5DS IsNotSaidLeavingSafeArea _auto_NotTellingStory
 	ApplyContext "Talk:0:0,SaidLeavingSafeArea:1:0"
 	applycontexttoworld
 	Response C2M5LeaveSafeMechanic
@@ -2058,6 +2070,7 @@ Rule C2M5LeaveSafeMechanic
 
 Response C2M5ReloadingTankMechanic
 {
+	norepeat
 	scene "scenes/Mechanic/WorldC2M5B54.vcd"  //Kill the Tank so he can land!
 	scene "scenes/Mechanic/WorldC2M5B55.vcd"  //He can't lank until we kill the Tank!
 	scene "scenes/Mechanic/WorldC2M5B56.vcd"  //He ain't gonna land until we kill the Tank, man. Kill the Tank!
@@ -2531,7 +2544,7 @@ Response C4M2IdleWitchville01Mechanic
 }
 Rule C4M2IdleWitchville01Mechanic
 {
-	criteria ConceptPlayerWarnHearZombie IsWitchClass IsSurvivor C4M2orDPRM2 IsNotSpeaking IsNotAlone IsClosestSurvivorNear1200 IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic NotInCombat IsWorldTalkMechanic NotSaidLotsOfWitches IsNotSaidSafeSpotAhead _auto_IsMechanicInWitchville
+	criteria ConceptPlayerWarnHearZombie IsWitchClass IsSurvivor HardRain2DS IsNotSpeaking IsNotAlone IsClosestSurvivorNear1200 IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic NotInCombat IsWorldTalkMechanic NotSaidLotsOfWitches IsNotSaidSafeSpotAhead _auto_IsMechanicInWitchville
 	ApplyContext "SaidWitchWarn:1:20,WarnHeardWitch:1:300,SaidLotsOfWitches:1:90"
 	applycontexttoworld
 	Response C4M2IdleWitchville01Mechanic
@@ -2544,7 +2557,7 @@ Response C4M2IdleWitchville02Mechanic
 }
 Rule C4M2IdleWitchville02Mechanic
 {
-	criteria ConceptPlayerWarnHearZombie IsWitchClass IsSurvivor C4M2orDPRM2 IsNotSpeaking IsGamblerAlive IsMechanic IsNotIncapacitated IsTalkMechanic NotInCombat IsWorldTalkMechanic IsGamblerNear400 ChanceToFire10Percent NotSaidLotsOfWitches IsNotSaidSafeSpotAhead _auto_IsMechanicInWitchville
+	criteria ConceptPlayerWarnHearZombie IsWitchClass IsSurvivor HardRain2DS IsNotSpeaking IsGamblerAlive IsMechanic IsNotIncapacitated IsTalkMechanic NotInCombat IsWorldTalkMechanic IsGamblerNear400 ChanceToFire10Percent NotSaidLotsOfWitches IsNotSaidSafeSpotAhead _auto_IsMechanicInWitchville
 	ApplyContext "SaidWitchWarn:1:20,WarnHeardWitch:1:300,SaidLotsOfWitches:1:90"
 	applycontexttoworld
 	Response C4M2IdleWitchville02Mechanic
@@ -2573,7 +2586,7 @@ Response C4M5BoatNagsMechanic
 }
 Rule C4M5BoatNagsMechanic
 {
-	criteria ConceptGetToVehicle IsMechanic C4M5orDPRM5 IsNotCoughing IsNotIncapacitated NoOneInSafeSpot IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsNotInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
+	criteria ConceptGetToVehicle IsMechanic HardRain5DS IsNotCoughing IsNotIncapacitated NoOneInSafeSpot IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsNotInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
 	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockMechanic:1:30"
 	applycontexttoworld
 	Response C4M5BoatNagsMechanic
@@ -2586,7 +2599,7 @@ Response C4M5InBoatNagsMechanic
 }
 Rule C4M5InBoatNagsMechanic
 {
-	criteria ConceptGetToVehicle IsMechanic C4M5orDPRM5 IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
+	criteria ConceptGetToVehicle IsMechanic HardRain5DS IsNotCoughing IsNotIncapacitated IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
 	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockMechanic:1:30"
 	applycontexttoworld
 	Response C4M5InBoatNagsMechanic
@@ -3136,7 +3149,7 @@ Response PlayerRemarkc5m3manholeMechanic
 Rule PlayerRemarkc5m3manholeMechanic
 {
 	criteria ConceptRemark IsMechanic Isc5m3manhole IsNotSaidc5m3manhole IsNotCoughing NotInCombat IsTalk IsTalkMechanic IsWorldTalkMechanic IsSubjectNear300 AutoIsNotScavenge AutoIsNotSurvival _auto_NotInSewer IsNotSpeakingWeight0
-	ApplyContext "Saidc5m3manhole:1:0,Talk:1:12,_auto_TellingStory:1:0"
+	ApplyContext "Saidc5m3manhole:1:0,Talk:1:12,_auto_TellingStory:1:0,_auto_DidInterrupt:0:0"
 	applycontexttoworld
 	forceweight 100
 	Response PlayerRemarkc5m3manholeMechanic
@@ -3250,8 +3263,6 @@ Rule C5M4BombIntAMechanic
 
 Response C5M4BombInt02Mechanic
 {
-	norepeat
-	scene "scenes/Mechanic/World301.vcd"  //I'm all turned around.  Where's the bridge?
 	scene "scenes/Mechanic/WorldC5M4B05.vcd"  //They must not see us.
 }
 Rule C5M4BombInt02Mechanic
@@ -3298,6 +3309,7 @@ Response PlayerRemarkc5m4alleyMechanic
 {
 	scene "scenes/Mechanic/World311.vcd"  //Man, I don't know which way to go.
 	scene "scenes/Mechanic/World312.vcd"  //Never been through so many back alley's in my life.
+	scene "scenes/Mechanic/World301.vcd"  //I'm all turned around.  Where's the bridge?
 }
 Rule PlayerRemarkc5m4alleyMechanic
 {
@@ -3649,6 +3661,14 @@ Response C5M5LeaveSafeAloneMechanic
 Rule C5M5LeaveSafeAloneMechanic
 {
 	criteria ConceptSurvivorLeavingInitialCheckpoint IsMechanic IsAlone TheParish5DS IsNotSaidLeavingSafeArea
+	ApplyContext "Talk:0:0,SaidLeavingSafeArea:1:0,_auto_TimerLockA:1:5,_auto_SoldierChatter:1:0"
+	applycontexttoworld
+	Response C5M5LeaveSafeAloneMechanic
+}
+
+Rule C5M5LeaveSafeAloneStoryMechanic
+{
+	criteria ConceptSurvivorLeavingInitialCheckpoint IsMechanic IsMapc5m5_bridge IsNotSaidLeavingSafeArea _auto_IsTellingStory
 	ApplyContext "Talk:0:0,SaidLeavingSafeArea:1:0,_auto_TimerLockA:1:5,_auto_SoldierChatter:1:0"
 	applycontexttoworld
 	Response C5M5LeaveSafeAloneMechanic
@@ -4008,7 +4028,7 @@ Response LeavingC6M1StartMechanic
 }
 Rule LeavingC6M1StartMechanic
 {
-	criteria ConceptSurvivorLeavingCheckpoint IsNotSaidLeavingSafeArea IsMechanic IsNotAlone YesHasFirstAidKit isc6m1_riverbank AutoIsNotScavenge AutoIsNotSurvival IsNotSpeaking
+	criteria ConceptSurvivorLeavingCheckpoint IsNotSaidLeavingSafeArea IsMechanic IsNotAlone YesHasFirstAidKit ThePassing1DS AutoIsNotScavenge AutoIsNotSurvival IsNotSpeaking
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:0:0"
 	applycontexttoworld
 	Response LeavingC6M1StartMechanic
@@ -4020,7 +4040,7 @@ Response LeavingC6M1StartnoHealthMechanic
 }
 Rule LeavingC6M1StartnoHealthMechanic
 {
-	criteria ConceptSurvivorLeavingCheckpoint IsNotSaidLeavingSafeArea IsMechanic IsNotAlone NoHasFirstAidKit isc6m1_riverbank AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptSurvivorLeavingCheckpoint IsNotSaidLeavingSafeArea IsMechanic IsNotAlone NoHasFirstAidKit ThePassing1DS AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:0:0"
 	applycontexttoworld
 	Response LeavingC6M1StartnoHealthMechanic
@@ -4158,7 +4178,7 @@ Response C6M2LeavingSafeRoomMechanic
 }
 Rule C6M2LeavingSafeRoomMechanic
 {
-	criteria ConceptSurvivorLeavingInitialCheckpoint IsMechanic IsNotAlone IsNotSaidLeavingSafeArea isc6m2_bedlam AutoIsNotScavenge AutoIsNotSurvival _auto_NotTellingStory
+	criteria ConceptSurvivorLeavingInitialCheckpoint IsMechanic IsNotAlone IsNotSaidLeavingSafeArea ThePassing2DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotTellingStory
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:1:3"
 	applycontexttoworld
 	Response C6M2LeavingSafeRoomMechanic
@@ -4181,7 +4201,7 @@ Response DLC1_C6M2_SafeRoomConvoProducerStartMechanic
 }
 Rule DLC1_C6M2_SafeRoomConvoProducerStartMechanic
 {
-	criteria ConceptTalkIdle IsMechanic NotInCombat Isc6m2_bedlam IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival IsProducerAlive ChanceToFire50Percent _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic NotInCombat ThePassing2DS IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival IsProducerAlive ChanceToFire50Percent _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response DLC1_C6M2_SafeRoomConvoProducerStartMechanic
@@ -4204,7 +4224,7 @@ Response DLC1_C6M2_SafeRoomConvoZoeyStartMechanic
 }
 Rule DLC1_C6M2_SafeRoomConvoZoeyStartMechanic
 {
-	criteria ConceptTalkIdle IsMechanic NotInCombat Isc6m2_bedlam IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival IsZoeyIntroActor IsProducerAlive ChanceToFire50Percent _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic NotInCombat ThePassing2DS IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival IsZoeyIntroActor IsProducerAlive ChanceToFire50Percent _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "_auto_SafeRoomStart:2:0,MentionedZoeyC6M2:1:0"
 	applycontexttoworld
 	Response DLC1_C6M2_SafeRoomConvoZoeyStartMechanic
@@ -4218,7 +4238,7 @@ Response DLC1_C6M2_SafeRoomConvo08Mechanic
 }
 Rule DLC1_C6M2_SafeRoomConvo08Mechanic
 {
-	criteria ConceptTalkIdle IsMechanic NotInCombat Isc6m2_bedlam IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic NotInCombat ThePassing2DS IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response DLC1_C6M2_SafeRoomConvo08Mechanic
@@ -4328,7 +4348,7 @@ Rule DLC1_C6M2_SafeRoomConvo19eMechanic
 
 Response DLC1_C6M2_SafeRoomConvo19gMechanic
 {
-	scene "scenes/Mechanic/DLC1_C6M2_SafeRoomConv21.vcd" then self IntroEnd foo:0 0.1 //Naw, he gained like thirty pounds. But he invented a shitload of tasty drinks. I was always partial to Keith's Kiwi Kamikaze.
+	scene "scenes/Mechanic/DLC1_C6M2_SafeRoomConvo21.vcd" then self IntroEnd foo:0 0.1 //Naw, he gained like thirty pounds. But he invented a shitload of tasty drinks. I was always partial to Keith's Kiwi Kamikaze.
 }
 Rule DLC1_C6M2_SafeRoomConvo19gMechanic
 {
@@ -4408,7 +4428,7 @@ Response C6M3_BridgeGettoCarMechanic
 }
 Rule C6M3_BridgeGettoCarMechanic
 {
-	criteria ConceptGetToVehicle IsMechanic Isc6m3_port IsNotCoughing IsNotIncapacitated NoOneInSafeSpot IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsNotInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
+	criteria ConceptGetToVehicle IsMechanic ThePassing3DS IsNotCoughing IsNotIncapacitated NoOneInSafeSpot IsNotAlone IsTalk AutoIsNotScavenge AutoIsNotSurvival IsNotInRescueVehicle _auto_IsEscapeReady _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
 	ApplyContext "_auto_TimerLockA:1:10,_auto_TimerLockMechanic:1:30"
 	applycontexttoworld
 	Response C6M3_BridgeGettoCarMechanic
@@ -4424,7 +4444,7 @@ Response C6M3_elevatorMechanic
 }
 Rule C6M3_elevatorMechanic
 {
-	criteria Conceptc6m3_elevator IsMechanic IsC6M3_port IsNotSaidC6M3Elevator AutoIsNotScavenge AutoIsNotSurvival
+	criteria Conceptc6m3_elevator IsMechanic ThePassing3DS IsNotSaidC6M3Elevator AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidC6M3Elevator:1:0,Talk:1:10"
 	applycontexttoworld
 	Response C6M3_elevatorMechanic
@@ -4438,7 +4458,7 @@ Response C6M3_elevatorZoeyMechanic
 }
 Rule C6M3_elevatorZoeyMechanic
 {
-	criteria Conceptc6m3_elevator IsMechanic IsC6M3_port IsNotSaidC6M3Elevator IsZoeyIntroActor IsNotVersus AutoIsNotScavenge AutoIsNotSurvival
+	criteria Conceptc6m3_elevator IsMechanic ThePassing3DS IsNotSaidC6M3Elevator IsZoeyIntroActor IsNotVersus AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidC6M3Elevator:1:0,Talk:1:10"
 	applycontexttoworld
 	Response C6M3_elevatorZoeyMechanic
@@ -4452,7 +4472,7 @@ Response C6M3_GivenItemBikerMechanic
 }
 Rule C6M3_GivenItemBikerMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsDonorBiker isc6m3_port
+	criteria ConceptPlayerPickup IsMechanic IsDonorBiker ThePassing3DS
 	Response C6M3_GivenItemBikerMechanic
 }
 
@@ -4465,7 +4485,7 @@ Response C6M3_GivenItemTeenGirlMechanic
 }
 Rule C6M3_GivenItemTeenGirlMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsDonorTeenGirl isc6m3_port
+	criteria ConceptPlayerPickup IsMechanic IsDonorTeenGirl ThePassing3DS
 	Response C6M3_GivenItemTeenGirlMechanic
 }
 
@@ -4478,7 +4498,7 @@ Response C6M3_GivenItemTeenGirlIntroMechanic
 }
 Rule C6M3_GivenItemTeenGirlIntroMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsDonorTeenGirl isc6m3_port IsZoeyIntroActor
+	criteria ConceptPlayerPickup IsMechanic IsDonorTeenGirl ThePassing3DS IsZoeyIntroActor
 	Response C6M3_GivenItemTeenGirlIntroMechanic
 }
 
@@ -4575,7 +4595,7 @@ Response DLC1_C6M3_SafeRoomConvoFrancisStartMechanic
 }
 Rule DLC1_C6M3_SafeRoomConvoFrancisStartMechanic
 {
-	criteria ConceptTalkIdle IsMechanic NotInCombat isC6m3_port IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival IsFrancisIntroActor IsProducerAlive _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic NotInCombat ThePassing3DS IsInStartArea IsEveryoneAlive IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival IsFrancisIntroActor IsProducerAlive _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response DLC1_C6M3_SafeRoomConvoFrancisStartMechanic
@@ -4679,7 +4699,7 @@ Response IncapBounceMechanic
 }
 Rule IncapBounceMechanic
 {
-	criteria ConceptSurvivorIncapacitated IsMechanic IsNotSaidInCapBounce isC6m3_port
+	criteria ConceptSurvivorIncapacitated IsMechanic IsNotSaidInCapBounce ThePassing3DS
 	ApplyContext "SaidInCapBounce:1:30"
 	applycontexttoworld
 	Response IncapBounceMechanic
@@ -4741,7 +4761,7 @@ Response C1M2EllisStoryMechanic
 }
 Rule C1M2EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking DeadCenter2DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking DeadCenter2DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4754,7 +4774,7 @@ Response C1M3EllisStoryMechanic
 }
 Rule C1M3EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking DeadCenter3DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking DeadCenter3DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4767,7 +4787,7 @@ Response C1M4EllisStoryMechanic
 }
 Rule C1M4EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking DeadCenter4DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking DeadCenter4DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4781,7 +4801,7 @@ Response C2M2EllisStoryMechanic
 }
 Rule C2M2EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking ismap_c2m2 IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking DarkCarnival2DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4795,7 +4815,7 @@ Response C2M3EllisStoryMechanic
 }
 Rule C2M3EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking ismap_c2m3 IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking DarkCarnival3DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4809,7 +4829,7 @@ Response C2M4EllisStoryMechanic
 }
 Rule C2M4EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking ismap_c2m4 IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking DarkCarnival4DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4822,7 +4842,7 @@ Response C2M5EllisStoryMechanic
 }
 Rule C2M5EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking ismap_c2m5 IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking DarkCarnival5DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4835,7 +4855,7 @@ Response C3M2EllisStoryMechanic
 }
 Rule C3M2EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking IsInSwamps IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking IsInSwamps IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4848,7 +4868,7 @@ Response C3M3EllisStoryMechanic
 }
 Rule C3M3EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking IsInShantytown IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking IsInShantytown IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4861,7 +4881,7 @@ Response C3M4EllisStoryMechanic
 }
 Rule C3M4EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking IsAtPlantation IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking IsAtPlantation IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4874,7 +4894,7 @@ Response C4M2EllisStoryMechanic
 }
 Rule C4M2EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking C4M2orDPRM2 IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking HardRain2DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4887,7 +4907,7 @@ Response C4M3EllisStoryMechanic
 }
 Rule C4M3EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking C4M3orDPRM3 IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking HardRain3DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4900,7 +4920,7 @@ Response C4M4EllisStoryMechanic
 }
 Rule C4M4EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking C4M4orDPRM4 IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking HardRain4DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4913,7 +4933,7 @@ Response C5M2EllisStoryMechanic
 }
 Rule C5M2EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking TheParish2DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking TheParish2DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4926,7 +4946,7 @@ Response C5M3EllisStoryMechanic
 }
 Rule C5M3EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking TheParish3DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking TheParish3DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4939,7 +4959,7 @@ Response C5M4EllisStoryMechanic
 }
 Rule C5M4EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking TheParish4DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking TheParish4DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4952,7 +4972,7 @@ Response C5M5EllisStoryMechanic
 }
 Rule C5M5EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking TheParish5DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking TheParish5DS IsACoopMode ChanceToFire10Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -4969,7 +4989,7 @@ Response C6M2EllisStoryMechanic
 }
 Rule C6M2EllisStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotSpeaking isc6m2_bedlam IsACoopMode ChanceToFire20Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotSaidLeavingSafeArea IsNotAlone IsNotSpeaking ThePassing2DS IsACoopMode ChanceToFire20Percent IsNotSrcGrp_ELLISSTORY _auto_IsStoryWait _auto_NotStoryGate
 	ApplyContext "_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0"
 	applycontexttoworld
 	Response C6M2EllisStoryMechanic
@@ -4992,7 +5012,7 @@ Response C6M3EllisBridgeStoryMechanic
 }
 Rule C6M3EllisBridgeStoryMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsNotSpeaking isc6m3_port IsACoopMode IsNotInStartArea ChanceToFire20Percent IsSaidFinaleExchange IsEndEllisBridgeStoryStart IsNotSaidEllisBridgeStoryStart IsNotSaidC6M3Elevator
+	criteria ConceptTalkIdle IsMechanic IsNotSpeaking ThePassing3DS IsACoopMode IsNotInStartArea ChanceToFire20Percent IsSaidFinaleExchange IsEndEllisBridgeStoryStart IsNotSaidEllisBridgeStoryStart IsNotSaidC6M3Elevator IsBikerAlive IsManagerAlive IsTeenGirlAlive
 	ApplyContext "Talk:1:0,_auto_TellingStory:1:0,SrcGrp_ELLISSTORY:1:0,SaidEllisBridgeStoryStart:1:0"
 	applycontexttoworld
 	forceweight 1
@@ -5054,7 +5074,7 @@ Response c6m3_outroMechanic
 }
 Rule c6m3_outroMechanic
 {
-	criteria Conceptc6m3_outro3 IsMechanic isC6m3_port IsNotVersus HasAFrom IsNotIncapacitated ChanceToFire100Percent
+	criteria Conceptc6m3_outro3 IsMechanic ThePassing3DS IsNotVersus HasAFrom IsNotIncapacitated ChanceToFire100Percent
 	forceweight 1
 	Response c6m3_outroMechanic
 }
@@ -5074,7 +5094,7 @@ Response c6m3_outroZoeyOutroMechanic
 }
 Rule c6m3_outroZoeyOutroMechanic
 {
-	criteria Conceptc6m3_outro3 IsMechanic isC6m3_port IsZoeyIntroActor IsNotVersus HasAFrom IsNotIncapacitated ChanceToFire100Percent
+	criteria Conceptc6m3_outro3 IsMechanic ThePassing3DS IsZoeyIntroActor IsNotVersus HasAFrom IsNotIncapacitated ChanceToFire100Percent
 	forceweight 2
 	Response c6m3_outroZoeyOutroMechanic
 }
@@ -5845,7 +5865,7 @@ Response SurvivorSpottedFirstClownMechanic
 }
 Rule SurvivorSpottedFirstClownMechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeClown IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidClownWarn ismap_c2m2 SawFirstClown IsNotSpeakingWeight0
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeClown IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated IsNotSaidClownWarn DarkCarnival2DS SawFirstClown IsNotSpeakingWeight0
 	ApplyContext "SaidClownWarn:1:20,SawClowns:++1"
 	applycontexttoworld
 	Response SurvivorSpottedFirstClownMechanic
@@ -6212,7 +6232,7 @@ Response L4D1SpottedTankMechanic
 }
 Rule L4D1SpottedTankMechanic
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeTank IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated Isc6m3_port IsNotSpeakingWeight0 IsNotVersus IsNotSurvival _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeTank IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated ThePassing3DS IsNotSpeakingWeight0 IsNotVersus IsNotSurvival _auto_NotSpottedVehicle
 	ApplyContext "SaidTankWarn:1:20,SaidTankWarn2:1:60"
 	applycontexttoworld
 	Response L4D1SpottedTankMechanic
@@ -6220,7 +6240,7 @@ Rule L4D1SpottedTankMechanic
 
 Rule L4D1SpottedTank2Mechanic
 {
-	criteria ConceptPlayerWarnTank IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated Isc6m3_port IsNotVersus IsNotSurvival IsNotSpeaking _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnTank IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotIncapacitated ThePassing3DS IsNotVersus IsNotSurvival IsNotSpeaking _auto_NotSpottedVehicle
 	Response L4D1SpottedTankMechanic
 }
 
@@ -6386,7 +6406,7 @@ Response PlayerFriendlyFireFromCoachMechanic
 }
 Rule PlayerFriendlyFireFromCoachMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsCoach ChanceToFire30Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsCoach ChanceToFire30Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromCoachMechanic
 }
@@ -6411,7 +6431,7 @@ Response PlayerFriendlyFireFromGamblerMechanic
 }
 Rule PlayerFriendlyFireFromGamblerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsGambler ChanceToFire50Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsGambler ChanceToFire50Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromGamblerMechanic
 }
@@ -6424,7 +6444,7 @@ Response PlayerFriendlyFireFromProducerMechanic
 }
 Rule PlayerFriendlyFireFromProducerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsProducer ChanceToFire30Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsProducer ChanceToFire30Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromProducerMechanic
 }
@@ -6475,7 +6495,7 @@ Response PlayerFriendlyFireTankMechanic
 }
 Rule PlayerFriendlyFireTankMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m2_streets isNotmap_c1m2d_streets _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankMechanic
 }
@@ -6487,7 +6507,7 @@ Response PlayerFriendlyFireTankCoachMechanic
 }
 Rule PlayerFriendlyFireTankCoachMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsCoach IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m2_streets isNotmap_c1m2d_streets _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsCoach IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankCoachMechanic
 }
@@ -6499,7 +6519,7 @@ Response PlayerFriendlyFireTankGamblerMechanic
 }
 Rule PlayerFriendlyFireTankGamblerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m2_streets isNotmap_c1m2d_streets _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGamblerMechanic
 }
@@ -6510,7 +6530,7 @@ Response PlayerFriendlyFireTankProducerMechanic
 }
 Rule PlayerFriendlyFireTankProducerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsProducer IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m2_streets isNotmap_c1m2d_streets _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsProducer IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankProducerMechanic
 }
@@ -6611,7 +6631,7 @@ Response C4M1IdleComment01Mechanic
 }
 Rule C4M1IdleComment01Mechanic
 {
-	criteria ConceptTalkIdle ChanceToFire40Percent IsSurvivor C4M1orDPRM1 IsSaidc4m1_nogas IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic NotInCombat IsWorldTalkMechanic TimeSinceGroupInCombat02 AutoIsNotScavenge AutoIsNotSurvival _auto_NotNoGasGate
+	criteria ConceptTalkIdle ChanceToFire40Percent IsSurvivor HardRain1DS IsSaidc4m1_nogas IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic NotInCombat IsWorldTalkMechanic TimeSinceGroupInCombat02 AutoIsNotScavenge AutoIsNotSurvival _auto_NotNoGasGate
 	ApplyContext "Talk:1:4.299,_auto_NoGasGate:2:0"
 	applycontexttoworld
 	Response C4M1IdleComment01Mechanic
@@ -6624,7 +6644,7 @@ Response C4M2IdleCommentCane01Mechanic
 }
 Rule C4M2IdleCommentCane01Mechanic
 {
-	criteria ConceptTalkIdle ChanceToFire60Percent IsSurvivor C4M2orDPRM2 IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival _auto_IsMechanicInCane _auto_NotCaneYellGated _auto_NotLastSurvivorTalkedMechanic
+	criteria ConceptTalkIdle ChanceToFire60Percent IsSurvivor HardRain2DS IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival _auto_IsMechanicInCane _auto_NotCaneYellGated _auto_NotLastSurvivorTalkedMechanic
 	ApplyContext "_auto_CaneYellGated:1:10,_auto_LastSurvivorTalkedMechanic:1:15"
 	applycontexttoworld
 	Response C4M2IdleCommentCane01Mechanic
@@ -6756,7 +6776,7 @@ Response PlayerWitchChasingMechanic
 }
 Rule PlayerWitchChasingMechanic
 {
-	criteria PlayerIsMoving IsMechanic IsWitchPresent SubjectIsNotWitch IsNotSaidWitchChasing IsSaidWitchAttacking IsTalkMechanic IsNotmap_c4m2 IsNotmap_dprm2 IsNotc6m1_riverbank IsWitchAggro
+	criteria PlayerIsMoving IsMechanic IsWitchPresent SubjectIsNotWitch IsNotSaidWitchChasing IsSaidWitchAttacking IsTalkMechanic IsNotmap_c4m2 IsNotmap_c4m2_2009 IsNotmap_dprm2 IsNotc6m1_riverbank IsNotc6m1_riverbank_original IsWitchAggro
 	ApplyContext "SaidWitchChasing:1:5,TalkMechanic:1:2"
 	Response PlayerWitchChasingMechanic
 }
@@ -6769,7 +6789,7 @@ Response PlayerWitchChasingC6M1Mechanic
 }
 Rule PlayerWitchChasingC6M1Mechanic
 {
-	criteria PlayerIsMoving IsMechanic IsWitchPresent SubjectIsNotWitch IsNotSaidWitchChasing IsSaidWitchAttacking IsTalkMechanic isc6m1_riverbank IsWitchAggro
+	criteria PlayerIsMoving IsMechanic IsWitchPresent SubjectIsNotWitch IsNotSaidWitchChasing IsSaidWitchAttacking IsTalkMechanic ThePassing1DS IsWitchAggro
 	ApplyContext "SaidWitchChasing:1:15,TalkMechanic:1:2,SaidWitchStartAttack:1:15"
 	forceweight 20
 	Response PlayerWitchChasingC6M1Mechanic
@@ -6782,7 +6802,7 @@ Response PlayerWitchStartAttackC6M1Mechanic
 }
 Rule PlayerWitchStartAttackC6M1Mechanic
 {
-	criteria IsFaultConcept IsMechanic IsFaultWitchHarassment Isc6m1_riverbank
+	criteria IsFaultConcept IsMechanic IsFaultWitchHarassment ThePassing1DS
 	ApplyContext "SaidWitchAttacking:1:15,TalkMechanic:1:4,SaidWitchStartAttack:1:15"
 	Response PlayerWitchStartAttackC6M1Mechanic
 }
@@ -6965,7 +6985,7 @@ Response SurvivorReloadingC4M2Mechanic
 }
 Rule SurvivorReloadingC4M2Mechanic
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkMechanic C4M2orDPRM2 IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsMechanicInWitchville
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkMechanic HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsMechanicInWitchville
 	Response SurvivorReloadingC4M2Mechanic
 }
 
@@ -7685,7 +7705,7 @@ Rule PlayerRemarkc2m3_coollightMechanic
 
 Response PlayerRemarkc2m3_coollightNickMechanic
 {
-	scene "scenes/Mechanic/WorldC2M302.vcd" then gambler _c2m3_coollight foo:0 0.1 //Dang, look at Nick's jacket.
+	scene "scenes/Mechanic/WorldC2M302.vcd" then gambler _c2m3_coollight02 foo:0 0.1 //Dang, look at Nick's jacket.
 }
 Rule PlayerRemarkc2m3_coollightNickMechanic
 {
@@ -9863,7 +9883,7 @@ Rule PlayerRemarkWorldC6M2_InJazzClubMechanic
 
 Response PlayerRemarkWorldC6M2_InSewer2Mechanic
 {
-	scene "scenes/Mechanic/DLC1_C6M2_Phase2InWater02.vcd"  then Producer WorldC6M2_InSewer202a foo:0 -4.622 //Oh man, I found a candy bar! [beat] Whup. False alarm.
+	scene "scenes/Mechanic/DLC1_C6M2_Phase2InWater02.vcd"  then any WorldC6M2_InSewer202a foo:0 -4.622 //Oh man, I found a candy bar! [beat] Whup. False alarm.
 }
 Rule PlayerRemarkWorldC6M2_InSewer2Mechanic
 {
@@ -9953,7 +9973,7 @@ Response C6M2FallingMechanic
 }
 Rule C6M2FallingMechanic
 {
-	criteria ConceptC2M1Falling IsMechanic isc6m2_bedlam AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptC2M1Falling IsMechanic ThePassing2DS AutoIsNotScavenge AutoIsNotSurvival
 	Response C6M2FallingMechanic
 }
 
@@ -10033,7 +10053,7 @@ Response PlayerRemarkWorldC6M2_Phase2DownMechanic
 }
 Rule PlayerRemarkWorldC6M2_Phase2DownMechanic
 {
-	criteria ConceptRemark IsMechanic IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing NotInCombat IsTalk IsTalkMechanic IsWorldTalkMechanic IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	criteria ConceptRemark IsMechanic IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing NotInCombat NotInIntenseCombat IsTalk IsTalkMechanic IsWorldTalkMechanic IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
 	ApplyContext "SaidWorldC6M2_Phase2Down:1:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_Phase2DownMechanic
@@ -10046,7 +10066,7 @@ Response PlayerRemarkWorldC6M2_Phase2DownIntenseMechanic
 }
 Rule PlayerRemarkWorldC6M2_Phase2DownIntenseMechanic
 {
-	criteria ConceptRemark IsMechanic IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing NotInCombat IsTalk IsTalkMechanic IsWorldTalkMechanic IsSubjectNear200 IntensityOver75 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	criteria ConceptRemark IsMechanic IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing InIntenseCombat IsTalk IsTalkMechanic IsWorldTalkMechanic IsSubjectNear200 IntensityOver75 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
 	ApplyContext "SaidWorldC6M2_Phase2Down:1:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_Phase2DownIntenseMechanic
@@ -10089,7 +10109,7 @@ Response PlayerRemarkWorldC6M2_TattooStoryMechanic
 Rule PlayerRemarkWorldC6M2_TattooStoryMechanic
 {
 	criteria ConceptRemark IsMechanic IsWorldC6M2_Tattoo IsNotSaidWorldC6M2_Tattoo ExtraWeight10 ChanceToFire10Percent IsNotCoughing NotInCombat IsTalk IsTalkMechanic IsWorldTalkMechanic IsSubjectNear300 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
-	ApplyContext "SaidWorldC6M2_Tattoo:1:0,_auto_TellingStory:1:14"
+	ApplyContext "SaidWorldC6M2_Tattoo:1:0,_auto_TellingStory:1:0,_auto_DidInterrupt:0:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_TattooStoryMechanic
 }
@@ -10247,7 +10267,7 @@ Response WorldC6M3LossMechanic
 }
 Rule WorldC6M3LossLouisMechanic
 {
-	criteria ConceptPlayerLook IsNotCoughing IsMechanic IsTalk IsTalkMechanic Isc6m3_port IsNotSmartLookAuto IsSubjectNone IsManagerNear500 IsWorldTalkMechanic _auto_SawC6M3Bill _auto_MechanicSawC6M3Bill
+	criteria ConceptPlayerLook IsNotCoughing IsMechanic IsTalk IsTalkMechanic ThePassing3DS IsNotSmartLookAuto IsSubjectNone IsManagerNear500 IsWorldTalkMechanic _auto_SawC6M3Bill _auto_MechanicSawC6M3Bill
 	ApplyContext "_auto_C6M3Bill:2:0,Talk:1:15"
 	applycontexttoworld
 	Response WorldC6M3LossMechanic
@@ -10255,7 +10275,7 @@ Rule WorldC6M3LossLouisMechanic
 
 Rule WorldC6M3LossLouis2Mechanic
 {
-	criteria ConceptPlayerLookHere IsNotCoughing IsMechanic IsTalk IsTalkMechanic Isc6m3_port IsNotSmartLookAuto IsSubjectNone IsManagerNear500 IsWorldTalkMechanic _auto_SawC6M3Bill _auto_MechanicSawC6M3Bill
+	criteria ConceptPlayerLookHere IsNotCoughing IsMechanic IsTalk IsTalkMechanic ThePassing3DS IsNotSmartLookAuto IsSubjectNone IsManagerNear500 IsWorldTalkMechanic _auto_SawC6M3Bill _auto_MechanicSawC6M3Bill
 	ApplyContext "_auto_C6M3Bill:2:0,Talk:1:15"
 	applycontexttoworld
 	Response WorldC6M3LossMechanic
@@ -10428,7 +10448,7 @@ Response PlayerHurryUpC4M2Mechanic
 }
 Rule PlayerHurryUpC4M2Mechanic
 {
-	criteria ConceptPlayerHurryUp IsMechanic IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsNotSaidSafeSpotAhead C4M2orDPRM2 IsNotZombiePresentTank IsWorldTalkMechanic IsNotSpeaking _auto_IsMechanicInWitchville
+	criteria ConceptPlayerHurryUp IsMechanic IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsNotSaidSafeSpotAhead HardRain2DS IsNotZombiePresentTank IsWorldTalkMechanic IsNotSpeaking _auto_IsMechanicInWitchville
 	Response PlayerHurryUpC4M2Mechanic
 }
 
@@ -10866,7 +10886,7 @@ Response PlayerShootCarNotMechanic
 }
 Rule PlayerShootCarNotMechanic
 {
-	criteria ConceptPanicEvent IsMechanic IsNotCoughing SubjectIsNotMechanic IsNotc5m3_cemetery IsNotc5m3_cemetery_facelift IsNotc5m3_darkcemetery IsTalk IsTalkMechanic IsCarAlarm ChanceToFire60Percent IsWorldTalkMechanic
+	criteria ConceptPanicEvent IsMechanic IsNotCoughing SubjectIsNotMechanic IsNotc5m3_cemetery IsNotc5m3_cemetery_facelift IsNotc5m3_darkcemetery IsNotc5m3_cemetery_2009 IsTalk IsTalkMechanic IsCarAlarm ChanceToFire60Percent IsWorldTalkMechanic
 	ApplyContext "Saidremark_caralarm:1:300"
 	applycontexttoworld
 	Response PlayerShootCarNotMechanic
@@ -10878,7 +10898,7 @@ Response PlayerShootCarMechanic
 }
 Rule PlayerShootCarMechanic
 {
-	criteria ConceptPanicEvent IsMechanic IsNotCoughing SubjectIsMechanic IsNotc5m3_cemetery IsNotc5m3_cemetery_facelift IsNotc5m3_darkcemetery IsTalk IsTalkMechanic IsCarAlarm IsWorldTalkMechanic
+	criteria ConceptPanicEvent IsMechanic IsNotCoughing SubjectIsMechanic IsNotc5m3_cemetery IsNotc5m3_cemetery_facelift IsNotc5m3_darkcemetery IsNotc5m3_cemetery_2009 IsTalk IsTalkMechanic IsCarAlarm IsWorldTalkMechanic
 	ApplyContext "Saidremark_caralarm:1:300"
 	applycontexttoworld
 	Response PlayerShootCarMechanic
@@ -11029,7 +11049,7 @@ Response PlayerHeardTankMechanic
 }
 Rule PlayerHeardTankMechanic
 {
-	criteria ConceptPlayerHeardTank IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m2_streets isNotmap_c1m2d_streets IsNotSpeaking _auto_NotSpottedVehicle
+	criteria ConceptPlayerHeardTank IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsNotSpeaking _auto_NotSpottedVehicle
 	Response PlayerHeardTankMechanic
 }
 
@@ -11041,7 +11061,7 @@ Response PlayerHeardWitchMechanic
 }
 Rule PlayerHeardWitchMechanic
 {
-	criteria ConceptPlayerHeardWitch IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m2_streets isNotmap_c1m2d_streets IsNotSpeaking _auto_NotSpottedVehicle
+	criteria ConceptPlayerHeardWitch IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsNotSpeaking _auto_NotSpottedVehicle
 	Response PlayerHeardWitchMechanic
 }
 
@@ -11116,7 +11136,7 @@ Response C6M3_PourFinishedMechanic
 }
 Rule C6M3_PourFinishedMechanic
 {
-	criteria ConceptPlayerPourFinished IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsL4D1Alive Isc6m3_port ChanceToFire20Percent
+	criteria ConceptPlayerPourFinished IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsL4D1Alive ThePassing3DS ChanceToFire20Percent
 	ApplyContext "Talk:1:3"
 	applycontexttoworld
 	Response C6M3_PourFinishedMechanic
@@ -11411,7 +11431,7 @@ Response C4M2LockTheDoorCheckPointMechanic
 }
 Rule C4M2LockTheDoorCheckPointMechanic
 {
-	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsMechanic IsInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic C4M2orDPRM2 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsMechanic IsInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic HardRain2DS AutoIsNotScavenge AutoIsNotSurvival
 	Response C4M2LockTheDoorCheckPointMechanic
 }
 
@@ -11602,7 +11622,7 @@ Response PlayerGetInsideCheckPointC2M2Mechanic
 }
 Rule PlayerGetInsideCheckPointC2M2Mechanic
 {
-	criteria ConceptPlayerGetInsideCheckPoint ismap_c2m2 IsNotCoughing IsMechanic IsInSafeSpot IsTalk IsTalkMechanic SomeoneOutsideSafeSpot IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerGetInsideCheckPoint DarkCarnival2DS IsNotCoughing IsMechanic IsInSafeSpot IsTalk IsTalkMechanic SomeoneOutsideSafeSpot IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	Response PlayerGetInsideCheckPointC2M2Mechanic
 }
 
@@ -11725,7 +11745,7 @@ Response PlayerGrenadeVomitJarTankMechanic
 }
 Rule PlayerGrenadeVomitJarTankMechanic
 {
-	criteria ConceptThrewGrenade IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsGrenadeVomitJar IsZombiePresentTank IsSaidTankWarn2 isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m2_streets isNotmap_c1m2d_streets IsWorldTalkMechanic _auto_NotSpottedVehicle
+	criteria ConceptThrewGrenade IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsGrenadeVomitJar IsZombiePresentTank IsSaidTankWarn2 isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsWorldTalkMechanic _auto_NotSpottedVehicle
 	Response PlayerGrenadeVomitJarTankMechanic
 }
 
@@ -11809,7 +11829,7 @@ Response PlayerKillConfirmationMechanic
 }
 Rule PlayerKillConfirmationMechanic
 {
-	criteria ConceptKilledZombie IsNotCoughing IsMechanic SubjectIsNotTank SubjectIsNotAWitch IsTalk IsTalkMechanic IsSubjectFar300 ChanceToFire40Percent isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsWorldTalkMechanic IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptKilledZombie IsNotCoughing IsMechanic SubjectIsNotTank SubjectIsNotAWitch IsTalk IsTalkMechanic IsSubjectFar300 ChanceToFire40Percent isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsWorldTalkMechanic IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	Response PlayerKillConfirmationMechanic
 }
 
@@ -11936,7 +11956,7 @@ Rule PlayerKillTankNotHealthyMechanic
 
 Response PlayerKillTankConfirmationC1M2Mechanic
 {
-	scene "scenes/Mechanic/Blank.vcd" then self C1M2TankInfo foo:0 0.1 //
+	print " " then self C1M2TankInfo foo:0 0.1 //
 }
 Rule PlayerKillTankConfirmationC1M2Mechanic
 {
@@ -12090,7 +12110,7 @@ Response PlayerSuggestHealthCoachMechanic
 }
 Rule PlayerSuggestHealthCoachMechanic
 {
-	criteria ConceptPlayerSuggestHealth IsMechanic HasAFrom IssuerReallyClose IsNotBeingHealed IsTalk IsTalkMechanic IsNotIncapacitated TimeSinceGroupInCombat20 IsNotSpeakingWeight0 FromIsCoach ChanceToFire50Percent IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel
+	criteria ConceptPlayerSuggestHealth IsMechanic HasAFrom IssuerReallyClose IsNotBeingHealed IsTalk IsTalkMechanic IsNotIncapacitated TimeSinceGroupInCombat20 IsNotSpeakingWeight0 FromIsCoach ChanceToFire50Percent IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009
 	ApplyContext "SuggestedHealth:1:120"
 	applycontexttoworld
 	Response PlayerSuggestHealthCoachMechanic
@@ -12104,7 +12124,7 @@ Response PlayerSuggestHealthGamblerMechanic
 }
 Rule PlayerSuggestHealthGamblerMechanic
 {
-	criteria ConceptPlayerSuggestHealth IsMechanic HasAFrom IssuerReallyClose IsNotBeingHealed IsTalk IsTalkMechanic IsNotIncapacitated TimeSinceGroupInCombat20 IsNotSpeakingWeight0 FromIsGambler ChanceToFire50Percent IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel
+	criteria ConceptPlayerSuggestHealth IsMechanic HasAFrom IssuerReallyClose IsNotBeingHealed IsTalk IsTalkMechanic IsNotIncapacitated TimeSinceGroupInCombat20 IsNotSpeakingWeight0 FromIsGambler ChanceToFire50Percent IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009
 	ApplyContext "SuggestedHealth:1:120"
 	applycontexttoworld
 	Response PlayerSuggestHealthGamblerMechanic
@@ -12119,7 +12139,7 @@ Response PlayerSuggestHealthProducerMechanic
 }
 Rule PlayerSuggestHealthProducerMechanic
 {
-	criteria ConceptPlayerSuggestHealth IsMechanic HasAFrom IssuerReallyClose IsNotBeingHealed IsTalk IsTalkMechanic IsNotIncapacitated TimeSinceGroupInCombat20 IsNotSpeakingWeight0 FromIsProducer ChanceToFire50Percent IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel
+	criteria ConceptPlayerSuggestHealth IsMechanic HasAFrom IssuerReallyClose IsNotBeingHealed IsTalk IsTalkMechanic IsNotIncapacitated TimeSinceGroupInCombat20 IsNotSpeakingWeight0 FromIsProducer ChanceToFire50Percent IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009
 	ApplyContext "SuggestedHealth:1:120"
 	applycontexttoworld
 	Response PlayerSuggestHealthProducerMechanic
@@ -12144,7 +12164,7 @@ Response PlayerTransitionMechanic
 }
 Rule PlayerTransitionMechanic
 {
-	criteria ConceptPlayerTransition IsNotCoughing IsMechanic IsNotSaidPlayerTransition IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotSomeoneDied isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerTransition IsNotCoughing IsMechanic IsNotSaidPlayerTransition IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotSomeoneDied isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidPlayerTransition:1:90"
 	applycontexttoworld
 	Response PlayerTransitionMechanic
@@ -12166,7 +12186,7 @@ Response PlayerTransitionCloseMechanic
 }
 Rule PlayerTransitionCloseMechanic
 {
-	criteria ConceptPlayerTransition IsNotCoughing IsMechanic IsNotSaidPlayerTransition IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotAlone IsSomeoneDied isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerTransition IsNotCoughing IsMechanic IsNotSaidPlayerTransition IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotAlone IsSomeoneDied isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidPlayerTransition:1:90"
 	applycontexttoworld
 	Response PlayerTransitionCloseMechanic
@@ -12216,7 +12236,7 @@ Response PlayerTransitionC2M1Mechanic
 }
 Rule PlayerTransitionC2M1Mechanic
 {
-	criteria ConceptPlayerTransition IsNotCoughing IsMechanic IsNotSaidPlayerTransition IsTalk IsTalkMechanic IsWorldTalkMechanic ismap_c2m1 IsNotAlone IsNotSomeoneDied AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerTransition IsNotCoughing IsMechanic IsNotSaidPlayerTransition IsTalk IsTalkMechanic IsWorldTalkMechanic DarkCarnival1DS IsNotAlone IsNotSomeoneDied AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidPlayerTransition:1:90"
 	applycontexttoworld
 	Response PlayerTransitionC2M1Mechanic
@@ -12243,7 +12263,7 @@ Response PlayerTransitionC6M2Mechanic
 }
 Rule PlayerTransitionC6M2Mechanic
 {
-	criteria ConceptPlayerTransition IsNotCoughing IsMechanic IsNotSaidPlayerTransition IsTalk IsTalkMechanic IsWorldTalkMechanic Isc6m2_bedlam IsZoeyIntroActor IsNotAlone IsNotSomeoneDied AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerTransition IsNotCoughing IsMechanic IsNotSaidPlayerTransition IsTalk IsTalkMechanic IsWorldTalkMechanic ThePassing2DS IsZoeyIntroActor IsNotAlone IsNotSomeoneDied AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidPlayerTransition:1:90"
 	applycontexttoworld
 	Response PlayerTransitionC6M2Mechanic
@@ -12427,7 +12447,7 @@ Response PlayerWarnHeardWitchMechanic
 }
 Rule PlayerWarnHeardWitchMechanic
 {
-	criteria ConceptPlayerWarnHearZombie IsWitchClass IsNotCoughing IsNotAlone IsClosestSurvivorNear1200 IsMechanic IsNotInCheckpoint IsNotInSafeSpot IsNotWarnHeardWitch NotInCombat IsNotSaidSpecialWarn IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotmap_c4m2 IsNotmap_dprm2 IsNotc6m1_riverbank _auto_NotAlarmV2 _auto_NotFinaleStarted
+	criteria ConceptPlayerWarnHearZombie IsWitchClass IsNotCoughing IsNotAlone IsClosestSurvivorNear1200 IsMechanic IsNotInCheckpoint IsNotInSafeSpot IsNotWarnHeardWitch NotInCombat IsNotSaidSpecialWarn IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotmap_c4m2 IsNotmap_dprm2 IsNotmap_c4m2_2009 IsNotc6m1_riverbank IsNotc6m1_riverbank_original _auto_NotAlarmV2 _auto_NotFinaleStarted
 	ApplyContext "WarnHeardWitch:1:300,SaidSpecialWarn:1:30"
 	applycontexttoworld
 	Response PlayerWarnHeardWitchMechanic
@@ -12487,7 +12507,7 @@ Response PlayerWarnWitchAngryMechanic
 }
 Rule PlayerWarnWitchAngryMechanic
 {
-	criteria ConceptWitchGettingAngry IsNotCoughing IsMechanic IsNotWarnAngryWitch IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotmap_c4m2 IsNotmap_dprm2 IsNotc6m1_riverbank
+	criteria ConceptWitchGettingAngry IsNotCoughing IsMechanic IsNotWarnAngryWitch IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotmap_c4m2 IsNotmap_dprm2 IsNotmap_c4m2_2009 IsNotc6m1_riverbank IsNotc6m1_riverbank_original
 	ApplyContext "WarnAngryWitch:1:5,SaidSpecialWarn:1:30"
 	applycontexttoworld
 	Response PlayerWarnWitchAngryMechanic
@@ -12745,7 +12765,7 @@ Response SurvivorNearCheckpointC2M1Mechanic
 }
 Rule SurvivorNearCheckpointC2M1Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic ismap_c2m1 IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic DarkCarnival1DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC2M1Mechanic
@@ -12757,7 +12777,7 @@ Response SurvivorNearCheckpointC2M2Mechanic
 }
 Rule SurvivorNearCheckpointC2M2Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic ismap_c2m2 IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic DarkCarnival2DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC2M2Mechanic
@@ -12770,7 +12790,7 @@ Response SurvivorNearCheckpointC2M3Mechanic
 }
 Rule SurvivorNearCheckpointC2M3Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic ismap_c2m3 IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic DarkCarnival3DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC2M3Mechanic
@@ -12783,7 +12803,7 @@ Response SurvivorNearCheckpointC2M4Mechanic
 }
 Rule SurvivorNearCheckpointC2M4Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic ismap_c2m4 IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic DarkCarnival4DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC2M4Mechanic
@@ -12833,13 +12853,13 @@ Rule PlayerRemarkC3M3SafeHouseAheadMechanic
 	Response SurvivorNearCheckpointC3M3Mechanic
 }
 
-//Rule SurvivorNearCheckpointC3M3Mechanic
-//{
-//	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic IsInShantytown IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
-//	ApplyContext "SaidSafeSpotAhead:1:0"
-//	applycontexttoworld
-//	Response SurvivorNearCheckpointC3M3Mechanic
-//}
+Rule SurvivorNearCheckpointC3M3Mechanic
+{
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic IsInShantytown IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	ApplyContext "SaidSafeSpotAhead:1:0"
+	applycontexttoworld
+	Response SurvivorNearCheckpointC3M3Mechanic
+}
 
 Response SurvivorNearCheckpointC4M1Mechanic
 {
@@ -12847,7 +12867,7 @@ Response SurvivorNearCheckpointC4M1Mechanic
 }
 Rule SurvivorNearCheckpointC4M1Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic C4M1orDPRM1 IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic HardRain1DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC4M1Mechanic
@@ -12859,7 +12879,7 @@ Response SurvivorNearCheckpointC4M2Mechanic
 }
 Rule SurvivorNearCheckpointC4M2Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic C4M2orDPRM2 IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic HardRain2DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC4M2Mechanic
@@ -12871,7 +12891,7 @@ Response SurvivorNearCheckpointC4M3Mechanic
 }
 Rule SurvivorNearCheckpointC4M3Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic C4M3orDPRM3 IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic HardRain3DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC4M3Mechanic
@@ -12883,7 +12903,7 @@ Response SurvivorNearCheckpointC4M4Mechanic
 }
 Rule SurvivorNearCheckpointC4M4Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic C4M4orDPRM4 IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic HardRain4DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC4M4Mechanic
@@ -12935,7 +12955,7 @@ Response SurvivorNearCheckpointC6M1Mechanic
 }
 Rule SurvivorNearCheckpointC6M1Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic Isc6m1_riverbank IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic ThePassing1DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC6M1Mechanic
@@ -12948,7 +12968,7 @@ Response SurvivorNearCheckpointC6M2Mechanic
 }
 Rule SurvivorNearCheckpointC6M2Mechanic
 {
-	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic Isc6m2_bedlam IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerNearCheckpoint IsNotCoughing IsMechanic IsNotSaidSafeSpotAhead IsNotAlone IsNotInCheckpoint IsTalk IsTalkMechanic ThePassing2DS IsWorldTalkMechanic AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidSafeSpotAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearCheckpointC6M2Mechanic
@@ -12984,7 +13004,7 @@ Response SurvivorNearFinaleC2M5Mechanic
 }
 Rule SurvivorNearFinaleC2M5Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic ismap_c2m5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic DarkCarnival5DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response SurvivorNearFinaleC2M5Mechanic
@@ -13005,7 +13025,7 @@ Rule SurvivorNearFinaleC3M4Mechanic
 
 Rule SurvivorNearFinaleC4M5Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic C4M5orDPRM5 AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic HardRain5DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -13021,7 +13041,7 @@ Rule SurvivorNearFinaleC5M5Mechanic
 
 Rule SurvivorNearFinaleC6M3Mechanic
 {
-	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic Isc6m3_port AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
+	criteria ConceptPlayerNearFinale IsNotCoughing IsMechanic IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic ThePassing3DS AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
 	ApplyContext "SaidFinaleAhead:1:0"
 	applycontexttoworld
 	Response NoResponse
@@ -13104,6 +13124,19 @@ Rule SurvivorVocalizeEmphaticGoMechanic
 {
 	criteria ConceptPlayerEmphaticGo IsMechanic IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotSpeaking
 	Response SurvivorVocalizeEmphaticGoMechanic
+}
+
+Response SurvivorVocalizeEmphaticGoC4M2Mechanic
+{
+	scene "scenes/Mechanic/EmphaticGoQuiet01.vcd"  //Let's go.
+	scene "scenes/Mechanic/EmphaticGoQuiet02.vcd"  //Move out.
+	scene "scenes/Mechanic/EmphaticGoQuiet03.vcd"  //Keep going.
+	scene "scenes/Mechanic/EmphaticGoQuiet04.vcd"  //Just run, damn it.
+}
+Rule SurvivorVocalizeEmphaticGoC4M2Mechanic
+{
+	criteria ConceptPlayerEmphaticGo IsMechanic IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotSpeaking HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsMechanicInWitchville
+	Response SurvivorVocalizeEmphaticGoC4M2Mechanic
 }
 
 Response SurvivorVocalizeGoingToDieMechanic
@@ -13326,7 +13359,7 @@ Response DoubleDeathProducerMechanic
 }
 Rule DoubleDeathProducerMechanic
 {
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedNearEnough IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsProducerAlive IsProducerNear400 IsWithOnlyThree ChanceToFire100Percent IsNotIncapacitated IsNotDeadProducer IsNotSaidFaultFriendlyFireGeneral IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel
+	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedNearEnough IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsProducerAlive IsProducerNear400 IsWithOnlyThree ChanceToFire100Percent IsNotIncapacitated IsNotDeadProducer IsNotSaidFaultFriendlyFireGeneral IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009
 	ApplyContext "SaidSomeoneDied:1:10"
 	applycontexttoworld
 	Response DoubleDeathProducerMechanic
@@ -13399,7 +13432,7 @@ Response C6M1TakeSubMachineGunMechanic
 }
 Rule C6M1TakeSubMachineGunMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsPickedUpSMG IsTalk IsTalkMechanic IsWorldTalkMechanic isc6m1_riverbank IsJustSaidWorldC6M1_IntoTheStore
+	criteria ConceptPlayerPickup IsMechanic IsPickedUpSMG IsTalk IsTalkMechanic IsWorldTalkMechanic ThePassing1DS IsJustSaidWorldC6M1_IntoTheStore
 	ApplyContext "JustSaidWorldC6M1_IntoTheStore:2:0"
 	applycontexttoworld
 	Response C6M1TakeSubMachineGunMechanic
@@ -13407,7 +13440,7 @@ Rule C6M1TakeSubMachineGunMechanic
 
 Rule C6M1TakeSubMachineGunSilencedMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsPickedUpSmg_silenced IsTalk IsTalkMechanic IsWorldTalkMechanic isc6m1_riverbank IsJustSaidWorldC6M1_IntoTheStore
+	criteria ConceptPlayerPickup IsMechanic IsPickedUpSmg_silenced IsTalk IsTalkMechanic IsWorldTalkMechanic ThePassing1DS IsJustSaidWorldC6M1_IntoTheStore
 	ApplyContext "JustSaidWorldC6M1_IntoTheStore:2:0"
 	applycontexttoworld
 	Response C6M1TakeSubMachineGunMechanic
@@ -13415,7 +13448,7 @@ Rule C6M1TakeSubMachineGunSilencedMechanic
 
 Rule C6M1TakePumpShotgunMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsPickedUpPumpShotgun IsTalk IsTalkMechanic IsWorldTalkMechanic isc6m1_riverbank IsJustSaidWorldC6M1_IntoTheStore
+	criteria ConceptPlayerPickup IsMechanic IsPickedUpPumpShotgun IsTalk IsTalkMechanic IsWorldTalkMechanic ThePassing1DS IsJustSaidWorldC6M1_IntoTheStore
 	ApplyContext "JustSaidWorldC6M1_IntoTheStore:2:0"
 	applycontexttoworld
 	Response C6M1TakeSubMachineGunMechanic
@@ -13423,7 +13456,7 @@ Rule C6M1TakePumpShotgunMechanic
 
 Rule C6M1TakeChromeShotgunMechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsPickedUpShotgun_Chrome IsTalk IsTalkMechanic IsWorldTalkMechanic isc6m1_riverbank IsJustSaidWorldC6M1_IntoTheStore
+	criteria ConceptPlayerPickup IsMechanic IsPickedUpShotgun_Chrome IsTalk IsTalkMechanic IsWorldTalkMechanic ThePassing1DS IsJustSaidWorldC6M1_IntoTheStore
 	ApplyContext "JustSaidWorldC6M1_IntoTheStore:2:0"
 	applycontexttoworld
 	Response C6M1TakeSubMachineGunMechanic
@@ -13431,7 +13464,7 @@ Rule C6M1TakeChromeShotgunMechanic
 
 Rule C6M1TakeCSSMP5Mechanic
 {
-	criteria ConceptPlayerPickup IsMechanic IsPickedUpSmg_mp5 IsTalk IsTalkMechanic IsWorldTalkMechanic isc6m1_riverbank IsJustSaidWorldC6M1_IntoTheStore
+	criteria ConceptPlayerPickup IsMechanic IsPickedUpSmg_mp5 IsTalk IsTalkMechanic IsWorldTalkMechanic ThePassing1DS IsJustSaidWorldC6M1_IntoTheStore
 	ApplyContext "JustSaidWorldC6M1_IntoTheStore:2:0"
 	applycontexttoworld
 	Response C6M1TakeSubMachineGunMechanic
@@ -13484,14 +13517,14 @@ Response SurvivorPickupAutoShotgunMechanic
 }
 Rule SurvivorPickupAutoShotgunMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpAutoShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpAutoShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupAutoShotgunMechanic
 }
 
 Rule SurvivorPickupSpasShotgunMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpShotgun_spas IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpShotgun_spas IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupAutoShotgunMechanic
 }
@@ -13509,7 +13542,7 @@ Response SurvivorPickupbaseball_batMechanic
 }
 Rule SurvivorPickupbaseball_batMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpbaseball_bat IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpbaseball_bat IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupbaseball_batMechanic
 }
@@ -13526,7 +13559,7 @@ Response SurvivorPickupShovelMechanic
 }
 Rule SurvivorPickupShovelMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpShovel IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpShovel IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupShovelMechanic
 }
@@ -13541,7 +13574,7 @@ Response SurvivorPickupchainsawMechanic
 }
 Rule SurvivorPickupchainsawMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpchainsaw IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpchainsaw IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupchainsawMechanic
 }
@@ -13552,7 +13585,7 @@ Response SurvivorPickupKnifeMechanic
 }
 Rule SurvivorPickupKnifeMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpKnife IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpKnife IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupKnifeMechanic
 }
@@ -13569,7 +13602,7 @@ Response SurvivorPickupcricket_batMechanic
 }
 Rule SurvivorPickupcricket_batMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpcricket_bat IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpcricket_bat IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupcricket_batMechanic
 }
@@ -13581,7 +13614,7 @@ Response SurvivorPickupPitchforkMechanic
 }
 Rule SurvivorPickupPitchforkMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpPitchfork IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpPitchfork IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupPitchforkMechanic
 }
@@ -13594,7 +13627,7 @@ Response SurvivorPickupCrowBarMechanic
 }
 Rule SurvivorPickupCrowBarMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpCrowBar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpCrowBar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupCrowBarMechanic
 }
@@ -13618,7 +13651,7 @@ Response SurvivorPickupelectric_guitarMechanic
 }
 Rule SurvivorPickupelectric_guitarMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpelectric_guitar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpelectric_guitar IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupelectric_guitarMechanic
 }
@@ -13634,7 +13667,7 @@ Response SurvivorPickupFireAxeMechanic
 }
 Rule SurvivorPickupFireAxeMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpFireAxe ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpFireAxe ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupFireAxeMechanic
 }
@@ -13680,7 +13713,7 @@ Response SurvivorPickupFryingPanMechanic
 }
 Rule SurvivorPickupFryingPanMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpFryingPan IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpFryingPan IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupFryingPanMechanic
 }
@@ -13694,7 +13727,7 @@ Response SurvivorPickupGolfCLubMechanic
 }
 Rule SurvivorPickupGolfCLubMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpGolfClub  IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpGolfClub  IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupGolfCLubMechanic
 }
@@ -13708,7 +13741,7 @@ Response SurvivorPickupGrenadeLauncherMechanic
 }
 Rule SurvivorPickupGrenadeLauncherMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpGrenadeLauncher NotPickedUpItem IsNotInSafeSpot  IsNotSpeaking IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpGrenadeLauncher NotPickedUpItem IsNotInSafeSpot  IsNotSpeaking IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupGrenadeLauncherMechanic
 }
@@ -13734,28 +13767,28 @@ Response SurvivorPickupHuntingRifleMechanic
 }
 Rule SurvivorPickupHuntingRifleMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpHuntingRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpHuntingRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupHuntingRifleMechanic
 }
 
 Rule SurvivorPickupMilitarySniperMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSniper_Military IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSniper_Military IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupHuntingRifleMechanic
 }
 
 Rule SurvivorPickupScoutSniperMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSniper_scout IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSniper_scout IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupHuntingRifleMechanic
 }
 
 Rule SurvivorPickupAWPSniperMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSniper_awp IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSniper_awp IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupHuntingRifleMechanic
 }
@@ -13770,7 +13803,7 @@ Response SurvivorPickupIncendiaryAmmoMechanic
 }
 Rule SurvivorPickupIncendiaryAmmoMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpIncendiaryAmmo IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpIncendiaryAmmo IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupIncendiaryAmmoMechanic
 }
@@ -13787,7 +13820,7 @@ Response SurvivorPickupKatanaMechanic
 }
 Rule SurvivorPickupKatanaMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpKatana IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpKatana IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupKatanaMechanic
 }
@@ -13814,7 +13847,7 @@ Response SurvivorPickupM60Mechanic
 }
 Rule SurvivorPickupM60Mechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpM60 IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpM60 IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupM60Mechanic
 }
@@ -13826,7 +13859,7 @@ Response SurvivorPickupMacheteMechanic
 }
 Rule SurvivorPickupMacheteMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpMachete IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpMachete IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupMacheteMechanic
 }
@@ -13840,7 +13873,7 @@ Response SurvivorPickupMagnumMechanic
 }
 Rule SurvivorPickupMagnumMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpMagnum IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpMagnum IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupMagnumMechanic
 }
@@ -13858,7 +13891,7 @@ Response SurvivorPickupMolotovMechanic
 }
 Rule SurvivorPickupMolotovMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpMolotov IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpMolotov IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupMolotovMechanic
 }
@@ -13884,7 +13917,7 @@ Response SurvivorPickupPipeBombMechanic
 }
 Rule SurvivorPickupPipeBombMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpPipeBomb IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpPipeBomb IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupPipeBombMechanic
 }
@@ -13897,14 +13930,14 @@ Response SurvivorPickupPumpShotgunMechanic
 }
 Rule SurvivorPickupPumpShotgunMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpPumpShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpPumpShotgun IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupPumpShotgunMechanic
 }
 
 Rule SurvivorPickupChromeShotgunMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpShotgun_Chrome IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpShotgun_Chrome IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupPumpShotgunMechanic
 }
@@ -13919,7 +13952,7 @@ Response SurvivorPickupRifleMechanic
 }
 Rule SurvivorPickupRifleMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpRifle IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupRifleMechanic
 }
@@ -13933,21 +13966,21 @@ Response SurvivorPickupDesertRifleMechanic
 }
 Rule SurvivorPickupDesertRifleMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpRifle_Desert IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpRifle_Desert IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupDesertRifleMechanic
 }
 
 Rule SurvivorPickupAK47RifleMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpRifle_AK47 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpRifle_AK47 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupDesertRifleMechanic
 }
 
 Rule SurvivorPickupSG552RifleMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpRifle_sg552 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpRifle_sg552 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupDesertRifleMechanic
 }
@@ -13961,7 +13994,7 @@ Response SurvivorPickupSecondPistolMechanic
 }
 Rule SurvivorPickupSecondPistolMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSecondPistol IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSecondPistol IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupSecondPistolMechanic
 }
@@ -13974,21 +14007,21 @@ Response SurvivorPickupSMGMechanic
 }
 Rule SurvivorPickupSMGMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSMG IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSMG IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupSMGMechanic
 }
 
 Rule SurvivorPickupSilencedSMGMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSMG_silenced IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSMG_silenced IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupSMGMechanic
 }
 
 Rule SurvivorPickupMP5SMGMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSMG_mp5 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpSMG_mp5 IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotInStartArea IsTalk IsTalkMechanic IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupSMGMechanic
 }
@@ -14001,7 +14034,7 @@ Response SurvivorPickuptonfaMechanic
 }
 Rule SurvivorPickuptonfaMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUptonfa IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUptonfa IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickuptonfaMechanic
 }
@@ -14014,7 +14047,7 @@ Response SurvivorPickupUpExplosiveAmmoMechanic
 }
 Rule SurvivorPickupUpExplosiveAmmoMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpExplosiveAmmo ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpExplosiveAmmo ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupUpExplosiveAmmoMechanic
 }
@@ -14026,7 +14059,7 @@ Response SurvivorPickupUpExplosivesMechanic
 }
 Rule SurvivorPickupUpExplosivesMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpUpgradePack_Explosive NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpUpgradePack_Explosive NotPickedUpItem IsNotInSafeSpot IsNotSpeaking  IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupUpExplosivesMechanic
 }
@@ -14038,7 +14071,7 @@ Response SurvivorPickupUpIncendiaryMechanic
 }
 Rule SurvivorPickupUpIncendiaryMechanic
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpUpgradePack_Incendiary IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsMechanic IsPickedUpUpgradePack_Incendiary IsNotSpeaking NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupUpIncendiaryMechanic
 }
@@ -15531,8 +15564,8 @@ Rule _C1M1_ElevatorHello3AliveName2RMechanic
 
 Response _C1M1_ElevatorHello3AliveName2Mechanic
 {
-	scene "scenes/Mechanic/WorldC1M1B91.vcd"  then any _C1M1_ElevatorHello3WhoIsDead foo:0 -0.911 //You can call me Ellis.
-	scene "scenes/Mechanic/WorldC1M1B93.vcd"  then any _C1M1_ElevatorHello3WhoIsDead foo:0 -2.554 //Ellis, my name is Ellis.
+	scene "scenes/Mechanic/WorldC1M1B91.vcd"  then any _C1M1_ElevatorHello3AliveWhoIsDead foo:0 -0.911 //You can call me Ellis.
+	scene "scenes/Mechanic/WorldC1M1B93.vcd"  then any _C1M1_ElevatorHello3AliveWhoIsDead foo:0 -2.554 //Ellis, my name is Ellis.
 }
 Rule _C1M1_ElevatorHello3AliveName2Mechanic
 {
@@ -15935,7 +15968,7 @@ Response C4FinaleStartMechanic
 }
 Rule C4FinaleStartMechanic
 {
-	criteria ConceptFinaleTriggered IsMechanic IsTriggeredByMechanic _auto_NotFinaleStarted C4M5orDPRM5 IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic
+	criteria ConceptFinaleTriggered IsMechanic IsTriggeredByMechanic _auto_NotFinaleStarted HardRain5DS IsTalk IsTalkMechanic IsNotIncapacitated IsWorldTalkMechanic
 	ApplyContext "_auto_Finale:1:0,_auto_NoLostCall:1:0"
 	applycontexttoworld
 	Response C4FinaleStartMechanic
@@ -16158,7 +16191,7 @@ Response PlayerCr0wnedBrideMechanic
 }
 Rule PlayerCr0wnedBrideMechanic
 {
-	criteria ConceptKilledZombie IsNotCoughing IsMechanic SubjectIsAWitch KilledByCr0wn IsNotWitchAggro ChanceToFire100Percent IsTalk IsTalkMechanic isc6m1_riverbank IsWorldTalkMechanic
+	criteria ConceptKilledZombie IsNotCoughing IsMechanic SubjectIsAWitch KilledByCr0wn IsNotWitchAggro ChanceToFire100Percent IsTalk IsTalkMechanic ThePassing1DS IsWorldTalkMechanic
 	forceweight 101
 	Response PlayerCr0wnedBrideMechanic
 }
@@ -16279,7 +16312,7 @@ Response Player.LostCallC6M3Mechanic
 }
 Rule Player.LostCallC6M3Mechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsClosestSurvivorFar3000 IsNotAlone IsNotSaidPlayerLostCall Isc6m3_port  ChanceToFire100Percent IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic IsClosestSurvivorFar3000 IsNotAlone IsNotSaidPlayerLostCall ThePassing3DS  ChanceToFire100Percent IsNotSpeakingWeight0
 	ApplyContext "SaidPlayerLostCall:1:50"
 	applycontexttoworld
 	Response Player.LostCallC6M3Mechanic
@@ -16312,7 +16345,7 @@ Response SurvivorSpottedChainsawMechanic
 }
 Rule SurvivorSpottedChainsawMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsChainsaw IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsChainsaw IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedChainsawMechanic
@@ -16320,7 +16353,7 @@ Rule SurvivorSpottedChainsawMechanic
 
 Rule SurvivorSpottedChainsawAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsChainsaw IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsChainsaw IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedChainsawMechanic
@@ -16336,7 +16369,7 @@ Response SurvivorSpottedcricket_batMechanic
 }
 Rule SurvivorSpottedcricket_batMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto Iscricket_bat IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto Iscricket_bat IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedcricket_batMechanic
@@ -16344,7 +16377,7 @@ Rule SurvivorSpottedcricket_batMechanic
 
 Rule SurvivorSpottedcricket_batAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot Iscricket_bat IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot Iscricket_bat IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedcricket_batMechanic
@@ -16357,7 +16390,7 @@ Response SurvivorSpottedcrowbarMechanic
 }
 Rule SurvivorSpottedcrowbarMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto Iscrowbar IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto Iscrowbar IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedcrowbarMechanic
@@ -16365,7 +16398,7 @@ Rule SurvivorSpottedcrowbarMechanic
 
 Rule SurvivorSpottedcrowbarAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot Iscrowbar IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot Iscrowbar IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedcrowbarMechanic
@@ -16379,7 +16412,7 @@ Response SurvivorSpottedGolfClubMechanic
 }
 Rule SurvivorSpottedGolfClubMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto  IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsGolfClub IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto  IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsGolfClub IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedGolfClubMechanic
@@ -16387,7 +16420,7 @@ Rule SurvivorSpottedGolfClubMechanic
 
 Rule SurvivorSpottedGolfClubAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsGolfClub IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsGolfClub IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedGolfClubMechanic
@@ -16400,7 +16433,7 @@ Response SurvivorSpottedGuitarMechanic
 }
 Rule SurvivorSpottedGuitarMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsGuitar IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsGuitar IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedGuitarMechanic
@@ -16408,7 +16441,7 @@ Rule SurvivorSpottedGuitarMechanic
 
 Rule SurvivorSpottedGuitarAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsGuitar IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsGuitar IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedGuitarMechanic
@@ -16421,7 +16454,7 @@ Response SurvivorSpottedKatanaMechanic
 }
 Rule SurvivorSpottedKatanaMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsKatana IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsKatana IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedKatanaMechanic
@@ -16429,7 +16462,7 @@ Rule SurvivorSpottedKatanaMechanic
 
 Rule SurvivorSpottedKatanaAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsKatana IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsKatana IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedKatanaMechanic
@@ -16478,7 +16511,7 @@ Response SurvivorSpottedM60Mechanic
 }
 Rule SurvivorSpottedM60Mechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsM60 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsM60 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedM60Mechanic
@@ -16486,7 +16519,7 @@ Rule SurvivorSpottedM60Mechanic
 
 Rule SurvivorSpottedM60AutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsM60 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsM60 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedM60Mechanic
@@ -16499,7 +16532,7 @@ Response SurvivorSpottedMacheteMechanic
 }
 Rule SurvivorSpottedMacheteMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsMachete IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsMachete IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMacheteMechanic
@@ -16507,7 +16540,7 @@ Rule SurvivorSpottedMacheteMechanic
 
 Rule SurvivorSpottedMacheteAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsMachete IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsMachete IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMacheteMechanic
@@ -16521,7 +16554,7 @@ Response SurvivorSpottedMagnumMechanic
 }
 Rule SurvivorSpottedMagnumMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsMagnum IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsMagnum IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMagnumMechanic
@@ -16529,7 +16562,7 @@ Rule SurvivorSpottedMagnumMechanic
 
 Rule SurvivorSpottedMagnumAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsMagnum IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsMagnum IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMagnumMechanic
@@ -16537,7 +16570,7 @@ Rule SurvivorSpottedMagnumAutoMechanic
 
 Rule SurvivorSpottedSecondPistolMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSecondPistol IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSecondPistol IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMagnumMechanic
@@ -16545,7 +16578,7 @@ Rule SurvivorSpottedSecondPistolMechanic
 
 Rule SurvivorSpottedSecondPistolAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSecondPistol IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSecondPistol IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMagnumMechanic
@@ -16558,7 +16591,7 @@ Response SurvivorSpottedtonfaMechanic
 }
 Rule SurvivorSpottedtonfaMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto Istonfa IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto Istonfa IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedtonfaMechanic
@@ -16566,7 +16599,7 @@ Rule SurvivorSpottedtonfaMechanic
 
 Rule SurvivorSpottedtonfaAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot Istonfa IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot Istonfa IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedtonfaMechanic
@@ -16582,7 +16615,7 @@ Response SurvivorSpottedShotgunMechanic
 
 Rule SurvivorSpottedAutoShotgunMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsAutoShotgun IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsAutoShotgun IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedShotgunMechanic
@@ -16590,7 +16623,7 @@ Rule SurvivorSpottedAutoShotgunMechanic
 
 Rule SurvivorSpottedAutoShotgunAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsAutoShotgun IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsAutoShotgun IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedShotgunMechanic
@@ -16598,7 +16631,7 @@ Rule SurvivorSpottedAutoShotgunAutoMechanic
 
 Rule SurvivorSpottedPumpShotgunMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsPumpShotgun IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsPumpShotgun IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedShotgunMechanic
@@ -16606,7 +16639,7 @@ Rule SurvivorSpottedPumpShotgunMechanic
 
 Rule SurvivorSpottedPumpShotgunAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsPumpShotgun IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsPumpShotgun IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedShotgunMechanic
@@ -16614,7 +16647,7 @@ Rule SurvivorSpottedPumpShotgunAutoMechanic
 
 Rule SurvivorSpottedShotgun_ChromeMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsShotgun_Chrome IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsShotgun_Chrome IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedShotgunMechanic
@@ -16622,7 +16655,7 @@ Rule SurvivorSpottedShotgun_ChromeMechanic
 
 Rule SurvivorSpottedShotgun_spasMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto  IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsShotgun_spas IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto  IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsShotgun_spas IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedShotgunMechanic
@@ -16630,7 +16663,7 @@ Rule SurvivorSpottedShotgun_spasMechanic
 
 Rule SurvivorSpottedShotgun_spasAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsShotgun_spas IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsShotgun_spas IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedShotgunMechanic
@@ -16646,7 +16679,7 @@ Response SurvivorSpottedSMGMechanic
 
 Rule SurvivorSpottedSMGMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSMG IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSMG IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedSMGMechanic
@@ -16654,7 +16687,7 @@ Rule SurvivorSpottedSMGMechanic
 
 Rule SurvivorSpottedSMGAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSMG IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSMG IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedSMGMechanic
@@ -16662,7 +16695,7 @@ Rule SurvivorSpottedSMGAutoMechanic
 
 Rule SurvivorSpottedSMG_silencedMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSmg_silenced IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSmg_silenced IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedSMGMechanic
@@ -16670,7 +16703,7 @@ Rule SurvivorSpottedSMG_silencedMechanic
 
 Rule SurvivorSpottedSMG_silencedAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSmg_silenced IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSmg_silenced IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedSMGMechanic
@@ -16678,7 +16711,7 @@ Rule SurvivorSpottedSMG_silencedAutoMechanic
 
 Rule SurvivorSpottedMP5SMGMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSMG_mp5 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSMG_mp5 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedSMGMechanic
@@ -16686,7 +16719,7 @@ Rule SurvivorSpottedMP5SMGMechanic
 
 Rule SurvivorSpottedMP5SMGAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSMG_mp5 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSMG_mp5 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedSMGMechanic
@@ -16702,7 +16735,7 @@ Response SurvivorSpottedHuntingRifleMechanic
 }
 Rule SurvivorSpottedHuntingRifleMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsHuntingRifle IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsHuntingRifle IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedHuntingRifleMechanic
@@ -16710,7 +16743,7 @@ Rule SurvivorSpottedHuntingRifleMechanic
 
 Rule SurvivorSpottedHuntingRifleAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto  IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsHuntingRifle IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto  IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsHuntingRifle IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedHuntingRifleMechanic
@@ -16729,7 +16762,7 @@ Response SurvivorSpottedWeaponMechanic
 
 Rule SurvivorSpottedRifleMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsRifle IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsRifle IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16737,7 +16770,7 @@ Rule SurvivorSpottedRifleMechanic
 
 Rule SurvivorSpottedRifleAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsRifle IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsRifle IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16745,7 +16778,7 @@ Rule SurvivorSpottedRifleAutoMechanic
 
 Rule SurvivorSpottedRifle_AK47Mechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsRifle_AK47 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsRifle_AK47 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16753,7 +16786,7 @@ Rule SurvivorSpottedRifle_AK47Mechanic
 
 Rule SurvivorSpottedRifle_AK47AutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsRifle_AK47 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsRifle_AK47 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16761,7 +16794,7 @@ Rule SurvivorSpottedRifle_AK47AutoMechanic
 
 Rule SurvivorSpottedRifle_desertMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsRifle_desert IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsRifle_desert IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16769,7 +16802,7 @@ Rule SurvivorSpottedRifle_desertMechanic
 
 Rule SurvivorSpottedRifle_desertAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsRifle_desert IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsRifle_desert IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16777,7 +16810,7 @@ Rule SurvivorSpottedRifle_desertAutoMechanic
 
 Rule SurvivorSpottedRifle_SG552Mechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsRifle_sg552 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsRifle_sg552 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16785,7 +16818,7 @@ Rule SurvivorSpottedRifle_SG552Mechanic
 
 Rule SurvivorSpottedRifle_SG552AutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsRifle_sg552 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsRifle_sg552 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16793,7 +16826,7 @@ Rule SurvivorSpottedRifle_SG552AutoMechanic
 
 Rule SurvivorSpottedMilitarySniperMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSniper_military IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSniper_military IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16801,7 +16834,7 @@ Rule SurvivorSpottedMilitarySniperMechanic
 
 Rule SurvivorSpottedMilitarySniperAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto  IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSniper_military IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto  IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSniper_military IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16809,7 +16842,7 @@ Rule SurvivorSpottedMilitarySniperAutoMechanic
 
 Rule SurvivorSpottedScoutSniperMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSniper_scout IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSniper_scout IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16817,7 +16850,7 @@ Rule SurvivorSpottedScoutSniperMechanic
 
 Rule SurvivorSpottedScoutSniperAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSniper_scout IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSniper_scout IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16825,7 +16858,7 @@ Rule SurvivorSpottedScoutSniperAutoMechanic
 
 Rule SurvivorSpottedAWPSniperMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSniper_awp IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsSniper_awp IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16833,7 +16866,7 @@ Rule SurvivorSpottedAWPSniperMechanic
 
 Rule SurvivorSpottedAWPSniperAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSniper_awp IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSniper_awp IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponMechanic
@@ -16851,7 +16884,7 @@ Response SurvivorSpottedMeleeWeaponMechanic
 
 Rule SurvivorSpottedBaseBallBatMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto Isbaseball_bat IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto Isbaseball_bat IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16859,7 +16892,7 @@ Rule SurvivorSpottedBaseBallBatMechanic
 
 Rule SurvivorSpottedBaseBallBatAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot Isbaseball_bat IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot Isbaseball_bat IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16867,7 +16900,7 @@ Rule SurvivorSpottedBaseBallBatAutoMechanic
 
 Rule SurvivorSpottedFryingPanMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsFryingPan IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsFryingPan IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16875,7 +16908,7 @@ Rule SurvivorSpottedFryingPanMechanic
 
 Rule SurvivorSpottedFryingPanAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsFryingPan IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsFryingPan IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16883,7 +16916,7 @@ Rule SurvivorSpottedFryingPanAutoMechanic
 
 Rule SurvivorSpottedAxeMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsFireAxe IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsFireAxe IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16891,7 +16924,7 @@ Rule SurvivorSpottedAxeMechanic
 
 Rule SurvivorSpottedAxeAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsFireAxe IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsFireAxe IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16899,7 +16932,7 @@ Rule SurvivorSpottedAxeAutoMechanic
 
 Rule SurvivorSpottedShovelMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsShovel IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsShovel IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16907,7 +16940,7 @@ Rule SurvivorSpottedShovelMechanic
 
 Rule SurvivorSpottedShovelAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsShovel IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsShovel IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16915,7 +16948,7 @@ Rule SurvivorSpottedShovelAutoMechanic
 
 Rule SurvivorSpottedPitchforkMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsPitchfork IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsNotSmartLookAuto IsPitchfork IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16923,7 +16956,7 @@ Rule SurvivorSpottedPitchforkMechanic
 
 Rule SurvivorSpottedPitchforkAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsPitchfork IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsPitchfork IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16931,7 +16964,7 @@ Rule SurvivorSpottedPitchforkAutoMechanic
 
 Rule SurvivorSpottedKnifeMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsKnife IsNotSmartLookAuto IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsKnife IsNotSmartLookAuto IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16939,7 +16972,7 @@ Rule SurvivorSpottedKnifeMechanic
 
 Rule SurvivorSpottedKnifeAutoMechanic
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsKnife IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsNotSaidSomeoneDied IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsKnife IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedMeleeWeaponMechanic
@@ -16951,7 +16984,7 @@ Rule SurvivorSpottedKnifeAutoMechanic
 //--------------------------------------------------------------------------------------------------------------
 Rule C2M3AlarmOffNagMechanic
 {
-	criteria ConceptTalkIdle IsMechanic ChanceToFire50Percent IsNotIncapacitated ismap_c2m3 AutoIsNotScavenge AutoIsNotSurvival _auto_IsAlarm _auto_IsTracksOK _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic ChanceToFire50Percent IsNotIncapacitated DarkCarnival3DS AutoIsNotScavenge AutoIsNotSurvival _auto_IsAlarm _auto_IsTracksOK _auto_NotTimerLockA _auto_NotTimerLockMechanic IsNotSpeakingWeight0
 	ApplyContext "_auto_TimerLockA:1:8,_auto_TimerLockMechanic:1:11"
 	applycontexttoworld
 	Response PlayerRemarkc2m3_coasteroffMechanic

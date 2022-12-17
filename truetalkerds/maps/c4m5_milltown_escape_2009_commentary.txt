@@ -1,0 +1,148 @@
+"Entities"
+{
+
+// MAP UPDATE
+
+"entity"
+{
+	"classname" "env_player_blocker"
+	"initialstate" "1"
+	"maxs" "400 200 3000"
+	"mins" "-500 -528 -80"
+	"origin" "-7580.84 6948.33 -303"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"initialstate" "1"
+	"maxs" "50 1200 3000"
+	"mins" "-50 -52 -80"
+	"origin" "-957.801 3798.52 351.499"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"BlockType" "1"
+	"initialstate" "1"
+	"maxs" "275 200 3000"
+	"mins" "-50 -150 0"
+	"origin" "-6376 6720 265.496"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"BlockType" "1"
+	"initialstate" "1"
+	"maxs" "275 200 3000"
+	"mins" "-50 -150 0"
+	"origin" "-4840 6800 281.496"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"BlockType" "1"
+	"initialstate" "1"
+	"maxs" "350 300 3000"
+	"mins" "0 -100 0"
+	"origin" "-7144 8120 249.496"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"BlockType" "1"
+	"initialstate" "1"
+	"maxs" "300 200 3000"
+	"mins" "-50 -120 0"
+	"origin" "-4800 8480 281.496"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"BlockType" "1"
+	"initialstate" "1"
+	"maxs" "300 200 3000"
+	"mins" "-50 -120 0"
+	"origin" "-5520 7936 281.496"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"BlockType" "1"
+	"initialstate" "1"
+	"maxs" "200 200 3000"
+	"mins" "0 -100 0"
+	"origin" "-6900.06 7183.3 249.496"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"initialstate" "1"
+	"maxs" "50 300 2000"
+	"mins" "-50 -52 -80"
+	"origin" "-2852.78 5296.57 290.201"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_player_blocker"
+	"initialstate" "1"
+	"maxs" "50 1000 2000"
+	"mins" "-50 -52 -80"
+	"origin" "-2948.78 5232.57 290.201"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_physics_blocker"
+	"angles" "0 30 0"
+	"BlockType" "4"
+	"boxmaxs" "70 10 10"
+	"boxmins" "0 -5 0"
+	"initialstate" "1"
+	"origin" "-6577 7549 169.753"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_physics_blocker"
+	"angles" "0 30 0"
+	"BlockType" "4"
+	"boxmaxs" "70 8 10"
+	"boxmins" "0 -10 0"
+	"initialstate" "1"
+	"origin" "-6582 7554 161.753"
+	"mapupdate" "1"
+}
+"entity"
+{
+	"classname" "env_physics_blocker"
+	"angles" "0 30 0"
+	"BlockType" "4"
+	"boxmaxs" "70 5 10"
+	"boxmins" "0 -10 0"
+	"initialstate" "1"
+	"origin" "-6586 7562 153.753"
+	"mapupdate" "1"
+}
+
+
+	
+//
+
+	"entity"
+	{
+		"classname" "info_remarkable"
+		"targetname" "c4m5_burgertank"
+		"origin" "-5442.2700195313 7280.3999023438 256.5899963379"
+		"angles" "0 172.1809997559 0"
+		"contextsubject" "c4m5_burgertank"
+	}
+}

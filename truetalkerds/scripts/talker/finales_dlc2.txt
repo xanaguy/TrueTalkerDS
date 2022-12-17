@@ -3942,8 +3942,8 @@ Rule ConceptBlock694
 //--------------------------------------------------------------------------------------------------------------
 Response ConceptBlock958
 {
-	scene "scenes/NamVet/GettingRevived11.vcd" then subject NamVetWhoAreYou foo:0 -1.643 // [confused from hit on head] Who are you?
-	scene "scenes/NamVet/GettingRevived12.vcd" then subject NamVetWhoAreYou foo:0 -1.365 //[confused from hit on head] Mother?
+	scene "scenes/NamVet/GettingRevived11.vcd" then from NamVetWhoAreYou foo:0 -1.643 // [confused from hit on head] Who are you?
+	scene "scenes/NamVet/GettingRevived12.vcd" then from NamVetWhoAreYou foo:0 -1.365 //[confused from hit on head] Mother?
 }
 Rule ConceptBlock958
 {

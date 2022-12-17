@@ -21,7 +21,7 @@ Response C6M3PlayerNiceShotManager
 }
 Rule C6M3PlayerNiceShotManager
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsManager IssuerNotSoClose HasAFrom IsC6M3_Port IsTalk IsTalkManager IsWorldTalkManager IsNotSpeaking ChanceToFire70Percent
+	criteria ConceptPlayerNiceShot IsNotCoughing IsManager IssuerNotSoClose HasAFrom ThePassing3DS IsTalk IsTalkManager IsWorldTalkManager IsNotSpeaking ChanceToFire70Percent
 	Response C6M3PlayerNiceShotManager
 }
 
@@ -540,7 +540,7 @@ Response c6m3_outroL4D1Manager
 }
 Rule c6m3_outroL4D1Manager
 {
-	criteria Conceptc6m3_outro3 IsManager isC6m3_port HasAFrom IsNotVersus IsNotIncapacitated ChanceToFire100Percent
+	criteria Conceptc6m3_outro3 IsManager ThePassing3DS HasAFrom IsNotVersus IsNotIncapacitated ChanceToFire100Percent
 	applycontexttoworld
 	forceweight 1
 	Response c6m3_outroL4D1Manager
@@ -577,7 +577,7 @@ Response c6m3_outroL4D1AllManager
 }
 Rule c6m3_outroL4D1AllManager
 {
-	criteria Conceptc6m3_outro3 IsManager isC6m3_port HasAFrom IsEveryoneAlive ChanceToFire20Percent IsNotVersus IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsManager ThePassing3DS HasAFrom IsEveryoneAlive ChanceToFire20Percent IsNotVersus IsNotIncapacitated
 	forceweight 8
 	Response c6m3_outroL4D1AllManager
 }
@@ -589,7 +589,7 @@ Response c6m3_outroL4D1CoachManager
 }
 Rule c6m3_outroL4D1CoachManager
 {
-	criteria Conceptc6m3_outro3 IsManager isC6m3_port HasAFrom IsCoachAlive ChanceToFire30Percent IsNotVersus IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsManager ThePassing3DS HasAFrom IsCoachAlive ChanceToFire30Percent IsNotVersus IsNotIncapacitated
 	forceweight 7
 	Response c6m3_outroL4D1CoachManager
 }
@@ -601,7 +601,7 @@ Response c6m3_outroL4D1GamblerManager
 }
 Rule c6m3_outroL4D1GamblerManager
 {
-	criteria Conceptc6m3_outro3 IsManager isC6m3_port HasAFrom IsGamblerAlive ChanceToFire40Percent IsNotVersus IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsManager ThePassing3DS HasAFrom IsGamblerAlive ChanceToFire40Percent IsNotVersus IsNotIncapacitated
 	forceweight 6
 	Response c6m3_outroL4D1GamblerManager
 }
@@ -612,7 +612,7 @@ Response c6m3_outroL4D1MechanicManager
 }
 Rule c6m3_outroL4D1MechanicManager
 {
-	criteria Conceptc6m3_outro3 IsManager isC6m3_port HasAFrom IsMechanicAlive ChanceToFire50Percent IsNotVersus IsNotIncapacitated
+	criteria Conceptc6m3_outro3 IsManager ThePassing3DS HasAFrom IsMechanicAlive ChanceToFire50Percent IsNotVersus IsNotIncapacitated
 	forceweight 5
 	Response c6m3_outroL4D1MechanicManager
 }
@@ -624,7 +624,7 @@ Response IncapBounce2Manager
 }
 Rule IncapBounce2Manager
 {
-	criteria ConceptInCapBounce2 IsManager isC6m3_port HasAFrom
+	criteria ConceptInCapBounce2 IsManager ThePassing3DS HasAFrom
 	Response IncapBounce2Manager
 }
 
@@ -639,7 +639,7 @@ Response C6M3LureTanksHereManager
 }
 Rule C6M3LureTanksHereManager
 {
-	criteria ConceptC6M3LureTanksHere IsManager HasAFrom Isc6m3_port _auto_NotSpottedVehicle
+	criteria ConceptC6M3LureTanksHere IsManager HasAFrom ThePassing3DS _auto_NotSpottedVehicle
 	Response C6M3LureTanksHereManager
 }
 
@@ -3020,7 +3020,7 @@ Response L4D1SpottedTankManager
 }
 Rule L4D1SpottedTankManager
 {
-	criteria ConceptPlayerWarnSpecial IsSpecialTypeTank IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager IsNotIncapacitated Isc6m3_port IsNotSpeakingWeight0 IsNotVersus IsNotSurvival _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnSpecial IsSpecialTypeTank IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager IsNotIncapacitated ThePassing3DS IsNotSpeakingWeight0 IsNotVersus IsNotSurvival _auto_NotSpottedVehicle
 	ApplyContext "SaidTankWarn:1:20,SaidTankWarn2:1:60"
 	applycontexttoworld
 	Response L4D1SpottedTankManager
@@ -3028,7 +3028,7 @@ Rule L4D1SpottedTankManager
 
 Rule L4D1SpottedTank2Manager
 {
-	criteria ConceptPlayerWarnTank IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager IsNotIncapacitated Isc6m3_port IsNotVersus IsNotSurvival IsNotSpeaking _auto_NotSpottedVehicle
+	criteria ConceptPlayerWarnTank IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager IsNotIncapacitated ThePassing3DS IsNotVersus IsNotSurvival IsNotSpeaking _auto_NotSpottedVehicle
 	ApplyContext "SaidTankWarn:1:20,SaidTankWarn2:1:60"
 	applycontexttoworld
 	Response L4D1SpottedTankManager
@@ -3509,7 +3509,13 @@ Rule L4D1PlayerHelpIncappedLethargicManager
 	Response L4D1PlayerHelpIncappedLethargicManager
 }
 
-
+Rule L4D1PlayerHelpIncappedWitchManager
+{
+	criteria ConceptPlayerHelp IsManager IsIncapacitated IsWitchPresent IsWitchAggro
+	ApplyContext "CalledForHelp:1:10"
+	forceweight 30
+	Response NoResponse
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // PlayerIncappedResponse
@@ -5928,6 +5934,33 @@ Rule L4D1PlayerIncapacitatedInitialManager
 	Response L4D1PlayerIncapacitatedInitialManager
 }
 
+Response L4D1PlayerIncapacitatedInitialWitchManager
+{
+	scene "scenes/Manager/HurtCritical01.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Manager/HurtCritical02.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Manager/HurtCritical03.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Manager/HurtCritical04.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+	scene "scenes/Manager/HurtCritical05.vcd" then self WitchDowned foo:0 0.5 //[Pain noise - loud major pain]
+}
+Rule L4D1PlayerIncapacitatedInitialWitchManager
+{
+	criteria ConceptPlayerIncapacitated IsManager IsWitchPresent IsWitchAggro IsCriticalPain
+	ApplyContext "TalkManager:1:2"
+	forceweight 30
+	Response L4D1PlayerIncapacitatedInitialWitchManager
+}
+
+Response L4D1WitchDownedManager
+{
+	scene "scenes/Manager/GrabbedBySmoker01a.vcd"  //no, No, NO, NO!!!!!
+	scene "scenes/Manager/GrabbedBySmoker02a.vcd"  //no, No, NO, NOOOOOOO!!!!!!!!!
+}
+Rule L4D1WitchDownedManager
+{
+	criteria ConceptWitchDowned IsManager IsWitchPresent IsWitchAggro
+	Response L4D1WitchDownedManager
+}
+
 Response L4D1PlayerKillConfirmationManager
 {
 	scene "scenes/Manager/KillConfirmation01.vcd"  then Any PlayerNiceShot foo:0 -0.960 //Got it!
@@ -5982,7 +6015,7 @@ Response L4D1PlayerKillTankConfirmationBillManager
 }
 Rule L4D1PlayerKillTankConfirmationBillManager
 {
-	criteria ConceptKilledZombie IsNotCoughing IsManager IsTalk IsTalkManager SubjectIsTank NotNamVetAlive IsNotc6m3_port IsNotSaidTankDead IsNotAlone IsNotIncapacitated IsWorldTalkManager _auto_NotFinaleStarted
+	criteria ConceptKilledZombie IsNotCoughing IsManager IsTalk IsTalkManager SubjectIsTank NotNamVetAlive IsNotc6m3_port IsNotc6m3_port_original IsNotSaidTankDead IsNotAlone IsNotIncapacitated IsWorldTalkManager _auto_NotFinaleStarted
 	ApplyContext "SaidTankDead:1:60,TalkManager:1:5"
 	applycontexttoworld
 	Response L4D1PlayerKillTankConfirmationBillManager
@@ -6033,7 +6066,7 @@ Response L4D1PlayerKillConfirmationTankC6M3Manager
 }
 Rule L4D1PlayerKillConfirmationTankC6M3Manager
 {
-	criteria ConceptKilledZombie IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager SubjectIsTank ChanceToFire30Percent Isc6m3_port
+	criteria ConceptKilledZombie IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager SubjectIsTank ChanceToFire30Percent ThePassing3DS
 	Response L4D1PlayerKillConfirmationTankC6M3Manager
 }
 
