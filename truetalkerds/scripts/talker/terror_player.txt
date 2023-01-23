@@ -2363,10 +2363,8 @@ rule Airport04PathClearVan
 Criterion "TheSacrifice" "campaign" "l4d2_7" "required"
 
 criterion "ismapc7m1_docks"  "map" "c7m1_docks" required weight 100
-//criterion "C7M1VanillaOrC7M1TrueEnding" { ismapc7m1_docks ismapc7m1_docks_trueexpressiveending } required weight 100
 
 criterion "ismapc7m2_barge"  "map" "c7m2_barge" required weight 100 
-//criterion "C7M2VanillaOrC7M2TrueEnding" { ismapc7m2_barge ismapc7m2_barge_trueexpressiveending } required weight 100
 
 criterion "ismapc7m3_port"  "map" "c7m3_port" required weight 100
 criterion "ismapc7m3_port_trueending"  "map" "c7m3_port_trueending" required weight 100
@@ -2692,6 +2690,9 @@ criterion "IsJSGone2"  "map" "jsgone02_end" required weight 100
 criterion "IsPlanB01"  "map" "l4d2_planb1_v051" required weight 100
 criterion "IsPlanB02"  "map" "l4d2_planb2_v051" required weight 100
 criterion "IsPlanB03"  "map" "l4d2_planb3_v051" required weight 100
+
+//Precinct 84 (2018)
+criterion "IsPrecinct84Finale"  "map" "p84m4_station" required weight 100
 
 //Moved from gambler's first text file to keep my sanity.
 criterion "IsNotSrcGrp_ELLISSTORYINIT" "worldSrcGrp_ELLISSTORYINIT" "<1" required

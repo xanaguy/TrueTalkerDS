@@ -1461,7 +1461,7 @@ Response C7M2SafeRoomBiker
 }
 Rule C7M2SafeRoomBiker
 {
-	criteria ConceptTalkIdle IsBiker NotInCombat C7M2VanillaOrC7M2TrueEnding IsInStartArea IsEveryoneAlive AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSaidLeavingSafeArea IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsBiker NotInCombat ismapc7m2_barge IsInStartArea IsEveryoneAlive AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSaidLeavingSafeArea IsNotSpeakingWeight0
 	ApplyContext "_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response C7M2SafeRoomBiker
@@ -10552,6 +10552,19 @@ Rule NearFinalePlanBBiker
 	applycontexttoworld
 	Response NoResponse
 }
+
+//--------------------------------------------------------------------------------------------------------------
+// Precinct 84 (2018)
+//--------------------------------------------------------------------------------------------------------------
+
+Rule NearFinalePrecinct84Biker
+{
+	criteria ConceptPlayerNearFinale IsNotCoughing IsBiker IsNotSaidFinaleAhead NotInCombat IsTalk IsTalkBiker IsNotIncapacitated IsWorldTalkBiker IsPrecinct84Finale AutoIsNotScavenge AutoIsNotSurvival _auto_NotFinaleStarted
+	ApplyContext "SaidFinaleAhead:1:0"
+	applycontexttoworld
+	Response L4D1PlayerRemarkairport03_05Biker
+}
+
 
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
