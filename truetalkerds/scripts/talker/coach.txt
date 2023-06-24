@@ -5612,7 +5612,7 @@ Response PlayerAlertGiveItemCoach
 }
 Rule PlayerAlertGiveItemCoach
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat IsNotSpeaking
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat NotTankAggro IsNotSpeaking
 	Response PlayerAlertGiveItemCoach
 }
 
@@ -5624,7 +5624,7 @@ Response PlayerAlertGiveItemC1Coach
 }
 Rule PlayerAlertGiveItemC1Coach
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat IsNotSpeaking NoKnowNames DeadCenter1DS
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat NotTankAggro IsNotSpeaking NoKnowNames DeadCenter1DS
 	Response PlayerAlertGiveItemC1Coach
 }
 
@@ -5638,7 +5638,7 @@ Response PlayerAlertGiveItemCombatCoach
 }
 Rule PlayerAlertGiveItemCombatCoach
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsCoach IsTalk IsTalkCoach InIntenseCombat IsWorldTalkCoach
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsCoach IsTalk IsTalkCoach ActiveCombatSituation IsWorldTalkCoach
 	Response PlayerAlertGiveItemCombatCoach
 }
 
@@ -5679,7 +5679,7 @@ Response PlayerFriendlyFireCoach
 }
 Rule PlayerFriendlyFireCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach IsWorldTalkCoach IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach IsWorldTalkCoach NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireCoach
 }
@@ -5696,7 +5696,7 @@ Response PlayerFriendlyFireC1Coach
 }
 Rule PlayerFriendlyFireC1Coach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsWorldTalkCoach IsNotOnThirdStrike IsNotZombiePresentTank NoKnowNames DeadCenter1DS _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsWorldTalkCoach IsNotOnThirdStrike NotTankAggro NoKnowNames DeadCenter1DS _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireC1Coach
 }
@@ -5710,7 +5710,7 @@ Response PlayerFriendlyFire2Coach
 }
 Rule PlayerFriendlyFire2Coach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsTalk IsTalkCoach IsOnThirdStrike IsNotZombiePresentTank IsWorldTalkCoach _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsTalk IsTalkCoach IsOnThirdStrike NotTankAggro IsWorldTalkCoach _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFire2Coach
 }
@@ -5724,7 +5724,7 @@ Response PlayerFriendlyFireFromGamblerCoach
 }
 Rule PlayerFriendlyFireFromGamblerCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsGambler ChanceToFire50Percent IsWorldTalkCoach IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsGambler ChanceToFire50Percent IsWorldTalkCoach NotTankAggro isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromGamblerCoach
 }
@@ -5741,7 +5741,7 @@ Response PlayerFriendlyFireFromMechanicCoach
 }
 Rule PlayerFriendlyFireFromMechanicCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsMechanic ChanceToFire50Percent IsWorldTalkCoach IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsMechanic ChanceToFire50Percent IsWorldTalkCoach NotTankAggro isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromMechanicCoach
 }
@@ -5754,7 +5754,7 @@ Response PlayerFriendlyFireFromMechanicC1Coach
 }
 Rule PlayerFriendlyFireFromMechanicC1Coach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsMechanic ChanceToFire50Percent IsWorldTalkCoach IsNotZombiePresentTank DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsMechanic ChanceToFire50Percent IsWorldTalkCoach NotTankAggro DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromMechanicC1Coach
 }
@@ -5770,7 +5770,7 @@ Response PlayerFriendlyFireFromProducerCoach
 }
 Rule PlayerFriendlyFireFromProducerCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsProducer ChanceToFire50Percent IsNotZombiePresentTank IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsProducer ChanceToFire50Percent NotTankAggro IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromProducerCoach
 }
@@ -5782,7 +5782,7 @@ Response PlayerFriendlyFireFromProducerC1Coach
 }
 Rule PlayerFriendlyFireFromProducerC1Coach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsProducer ChanceToFire50Percent IsWorldTalkCoach IsNotZombiePresentTank DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkCoach SubjectIsProducer ChanceToFire50Percent IsWorldTalkCoach NotTankAggro DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromProducerC1Coach
 }
@@ -5794,7 +5794,7 @@ Response PlayerFriendlyFireNoBulletCoach
 }
 Rule PlayerFriendlyFireNoBulletCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkCoach IsWorldTalkCoach IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkCoach IsWorldTalkCoach NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireNoBulletCoach
 }
@@ -5810,7 +5810,7 @@ Response PlayerFriendlyFireNoBulletC1Coach
 }
 Rule PlayerFriendlyFireNoBulletC1Coach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkCoach IsWorldTalkCoach IsNotZombiePresentTank DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkCoach IsWorldTalkCoach NotTankAggro DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireNoBulletC1Coach
 }
@@ -5824,7 +5824,7 @@ Response PlayerFriendlyFireTankCoach
 }
 Rule PlayerFriendlyFireTankCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsZombiePresentTank IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankCoach
 }
@@ -5835,7 +5835,7 @@ Response PlayerFriendlyFireTankC1Coach
 }
 Rule PlayerFriendlyFireTankC1Coach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsZombiePresentTank IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkCoach C1M1orC1M2 IsNotSurvival _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkCoach C1M1orC1M2 IsNotSurvival _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankC1Coach
 }
@@ -5846,7 +5846,7 @@ Response PlayerFriendlyFireTankGamblerCoach
 }
 Rule PlayerFriendlyFireTankGamblerCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGamblerCoach
 }
@@ -5857,7 +5857,7 @@ Response PlayerFriendlyFireTankMechanicCoach
 }
 Rule PlayerFriendlyFireTankMechanicCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsMechanic IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsMechanic IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankMechanicCoach
 }
@@ -5868,7 +5868,7 @@ Response PlayerFriendlyFireTankProducerCoach
 }
 Rule PlayerFriendlyFireTankProducerCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsProducer IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsProducer IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankProducerCoach
 }
@@ -6023,7 +6023,7 @@ Response PlayerReloadingC502RunCoach
 }
 Rule PlayerReloadingC502RunCoach
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated TheParish2DS IsTalk IsTalkCoach IsWorldTalkCoach IsNotZombiePresentTank ChanceToFire50Percent _auto_IsAlarm
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated TheParish2DS IsTalk IsTalkCoach IsWorldTalkCoach NotTankAggro ChanceToFire50Percent _auto_IsAlarm
 	Response PlayerReloadingC502RunCoach
 }
 
@@ -6038,7 +6038,7 @@ Response PlayerReloadingTankCoach
 }
 Rule PlayerReloadingTankCoach
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach IsNotSaidReloadingTank IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkCoach _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach IsNotSaidReloadingTank IsTankAggro IsSaidTankWarn2 IsWorldTalkCoach _auto_NotSpottedVehicle
 	ApplyContext "SaidReloadingTank:1:10,SaidTankWarn2:1:20"
 	applycontexttoworld
 	Response PlayerReloadingTankCoach
@@ -6053,7 +6053,7 @@ Response PlayerReloadingTankC1Coach
 }
 Rule PlayerReloadingTankC1Coach
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach IsNotSaidReloadingTank IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkCoach C1M1orC1M2 IsNotSurvival
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach IsNotSaidReloadingTank IsTankAggro IsSaidTankWarn2 IsWorldTalkCoach C1M1orC1M2 IsNotSurvival
 	ApplyContext "SaidReloadingTank:1:10,SaidTankWarn2:1:20"
 	applycontexttoworld
 	Response PlayerReloadingTankC1Coach
@@ -6309,7 +6309,7 @@ Response SurvivorReloadingCoach
 }
 Rule SurvivorReloadingCoach
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkCoach ChanceToFire50Percent IsNotZombiePresentTank NotInIntenseCombat _auto_NotCoachInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkCoach ChanceToFire50Percent NotTankAggro NotInIntenseCombat _auto_NotCoachInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
 	Response SurvivorReloadingCoach
 }
 
@@ -6326,7 +6326,7 @@ Response SurvivorReloadingIntenseCoach
 }
 Rule SurvivorReloadingIntenseCoach
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkCoach ChanceToFire50Percent IsNotZombiePresentTank InIntenseCombat _auto_NotCoachInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkCoach ChanceToFire50Percent NotTankAggro InIntenseCombat _auto_NotCoachInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
 	Response SurvivorReloadingIntenseCoach
 }
 
@@ -6341,7 +6341,7 @@ Response SurvivorReloadingC4M2Coach
 }
 Rule SurvivorReloadingC4M2Coach
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkCoach ChanceToFire50Percent HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsCoachInWitchville
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsCoach IsNotIncapacitated IsTalk IsTalkCoach RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkCoach ChanceToFire50Percent HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsCoachInWitchville
 	Response SurvivorReloadingC4M2Coach
 }
 
@@ -7601,7 +7601,7 @@ Response PlayerRemarkC3M2PlaneDoorNagaCoach
 }
 Rule PlayerRemarkC3M2PlaneDoorNagaCoach
 {
-	criteria ConceptTalkIdle IsCoach IsNotCoughing IsTalk IsTalkCoach IsSaidC3M2PlaneDoorNag IsInSwamps IsNotSaidC3M2OpenDoor IsNotZombiePresentTank AutoIsNotScavenge AutoIsNotSurvival IsWorldTalkCoach IsNotSpeakingWeight0 _auto_NotTimerLockA _auto_NotTimerLockCoach
+	criteria ConceptTalkIdle IsCoach IsNotCoughing IsTalk IsTalkCoach IsSaidC3M2PlaneDoorNag IsInSwamps IsNotSaidC3M2OpenDoor NotTankAggro AutoIsNotScavenge AutoIsNotSurvival IsWorldTalkCoach IsNotSpeakingWeight0 _auto_NotTimerLockA _auto_NotTimerLockCoach
 	ApplyContext "_auto_TimerLockA:1:20,_auto_TimerLockCoach:1:40,Talk:1:1.652"
 	applycontexttoworld
 	Response PlayerRemarkC3M2PlaneDoorNagaCoach
@@ -9235,7 +9235,7 @@ Response PlayerRemarkWorldC6M2_Phase2DownCoach
 }
 Rule PlayerRemarkWorldC6M2_Phase2DownCoach
 {
-	criteria ConceptRemark IsCoach IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing NotInCombat NotInIntenseCombat IsTalk IsTalkCoach IsWorldTalkCoach IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	criteria ConceptRemark IsCoach IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing NotInCombat NotInIntenseCombat NotTankAggro IsTalk IsTalkCoach IsWorldTalkCoach IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
 	ApplyContext "SaidWorldC6M2_Phase2Down:1:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_Phase2DownCoach
@@ -9250,7 +9250,7 @@ Response PlayerRemarkWorldC6M2_Phase2DownIntenseCoach
 }
 Rule PlayerRemarkWorldC6M2_Phase2DownIntenseCoach
 {
-	criteria ConceptRemark IsCoach IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing InIntenseCombat IsTalk IsTalkCoach IsWorldTalkCoach IsSubjectNear200 IntensityOver75 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	criteria ConceptRemark IsCoach IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing ActiveCombatSituation IsTalk IsTalkCoach IsWorldTalkCoach IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
 	ApplyContext "SaidWorldC6M2_Phase2Down:1:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_Phase2DownIntenseCoach
@@ -9827,7 +9827,7 @@ Response PlayerHurryUpC4M2Coach
 }
 Rule PlayerHurryUpC4M2Coach
 {
-	criteria ConceptPlayerHurryUp IsCoach IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkCoach HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank IsWorldTalkCoach _auto_IsCoachInWitchville IsNotSpeaking
+	criteria ConceptPlayerHurryUp IsCoach IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkCoach HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro IsWorldTalkCoach _auto_IsCoachInWitchville IsNotSpeaking
 	Response PlayerHurryUpC4M2Coach
 }
 
@@ -12574,7 +12574,7 @@ Response SurvivorVocalizeEmphaticGoC4M2Coach
 }
 Rule SurvivorVocalizeEmphaticGoC4M2Coach
 {
-	criteria ConceptPlayerEmphaticGo IsCoach IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkCoach IsWorldTalkCoach IsNotSpeaking HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsCoachInWitchville
+	criteria ConceptPlayerEmphaticGo IsCoach IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkCoach IsWorldTalkCoach IsNotSpeaking HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsCoachInWitchville
 	Response SurvivorVocalizeEmphaticGoC4M2Coach
 }
 
@@ -13494,7 +13494,7 @@ Response PlayerHealOtherCoach
 }
 Rule PlayerHealOtherCoach
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsCoach IsTalk IsTalkCoach NotInIntenseCombat IsWorldTalkCoach
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsCoach IsTalk IsTalkCoach NotInIntenseCombat NotTankAggro IsWorldTalkCoach
 	ApplyContext "TalkCoach:1:5"
 	Response PlayerHealOtherCoach
 }
@@ -13507,7 +13507,7 @@ Response PlayerHealOtherC1Coach
 }
 Rule PlayerHealOtherC1Coach
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsCoach IsTalk IsTalkCoach NotInIntenseCombat IsWorldTalkCoach DeadCenter1DS
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsCoach IsTalk IsTalkCoach NotInIntenseCombat NotTankAggro IsWorldTalkCoach DeadCenter1DS
 	ApplyContext "TalkCoach:1:5"
 	Response PlayerHealOtherC1Coach
 }
@@ -13523,16 +13523,8 @@ Response PlayerHealOtherCombatCoach
 }
 Rule PlayerHealOtherCombatCoach
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing IsCoach IsTalk IsTalkCoach InIntenseCombat IsWorldTalkCoach
+	criteria ConceptPlayerHealingOther IsNotCoughing IsCoach IsTalk IsTalkCoach ActiveCombatSituation IsWorldTalkCoach
 	ApplyContext "TalkCoach:1:5"
-	Response PlayerHealOtherCombatCoach
-}
-
-Rule PlayerHealOtherTankCoach
-{
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsCoach IsTalk IsTalkCoach IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkCoach
-	ApplyContext "TalkCoach:1:5"
-	forceweight 30
 	Response PlayerHealOtherCombatCoach
 }
 
@@ -13542,7 +13534,7 @@ Response PlayerHealMechanicCombatCoach
 }
 Rule PlayerHealMechanicCombatCoach
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing IsCoach IsTalk IsTalkCoach InIntenseCombat SubjectIsMechanic ChanceToFire30Percent IsWorldTalkCoach
+	criteria ConceptPlayerHealingOther IsNotCoughing IsCoach IsTalk IsTalkCoach ActiveCombatSituation SubjectIsMechanic ChanceToFire30Percent IsWorldTalkCoach
 	ApplyContext "TalkCoach:1:5"
 	Response PlayerHealMechanicCombatCoach
 }
@@ -13557,7 +13549,7 @@ Response PlayerLedgeSaveCoach
 }
 Rule PlayerLedgeSaveCoach
 {
-	criteria ConceptPlayerLedgeSave IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkCoach:1:5"
 	Response PlayerLedgeSaveCoach
 }
@@ -13589,7 +13581,7 @@ Response PlayerReviveFriendCoach
 }
 Rule PlayerReviveFriendCoach
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkCoach:1:2"
 	Response PlayerReviveFriendCoach
 }
@@ -13602,7 +13594,7 @@ Response PlayerReviveFriendFFCoach
 }
 Rule PlayerReviveFriendFFCoach
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsCoach IsTalk IsTalkCoach IsShotTeammateCoach IsWorldTalkCoach NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsCoach IsTalk IsTalkCoach IsShotTeammateCoach IsWorldTalkCoach NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkCoach:1:5"
 	forceweight 20
 	Response PlayerReviveFriendFFCoach
@@ -13610,7 +13602,7 @@ Rule PlayerReviveFriendFFCoach
 
 Rule PlayerReviveFriendCriticalFFCoach
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsCoach IsTalk IsTalkCoach IsShotTeammateCoach IsWorldTalkCoach NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsCoach IsTalk IsTalkCoach IsShotTeammateCoach IsWorldTalkCoach NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkCoach:1:5"
 	forceweight 20
 	Response PlayerReviveFriendFFCoach
@@ -13682,7 +13674,7 @@ Response PlayerReviveFriendCriticalCoach
 }
 Rule PlayerReviveFriendCriticalCoach
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkCoach:1:5"
 	Response PlayerReviveFriendCriticalCoach
 }
@@ -13699,41 +13691,40 @@ Response PlayerReviveFriendLoudCoach
 }
 Rule PlayerReviveFriendLoudCoach
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsCoach IsZombiePresentTank InIntenseCombat IsTalk IsTalkCoach IsWorldTalkCoach _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsCoach ActiveCombatSituation IsTalk IsTalkCoach IsWorldTalkCoach _auto_NotSpottedVehicle
 	ApplyContext "TalkCoach:1:5"
 	Response PlayerReviveFriendLoudCoach
 }
 
 Rule PlayerLedgeSaveCriticalCoach
 {
-	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsCoach IsTalk IsTalkCoach IsWorldTalkCoach _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkCoach:1:5"
 	Response PlayerLedgeSaveCoach
+}
+
+Rule PlayerLedgeSaveLoudCoach
+{
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkCoach:1:5"
+	Response PlayerReviveFriendLoudCoach
+}
+
+Rule PlayerLedgeSaveLoudCriticalCoach
+{
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing IsCoach IsTalk IsTalkCoach IsWorldTalkCoach ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkCoach:1:5"
+	Response PlayerReviveFriendLoudCoach
 }
 
 
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer - ZRescue
 //--------------------------------------------------------------------------------------------------------------
-Rule PlayerReviveFriendLoud2Coach
-{
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsCoach InIntenseCombat IsTalk IsTalkCoach IsWorldTalkCoach _auto_NotSpottedVehicle
-	ApplyContext "TalkCoach:1:5"
-	Response PlayerReviveFriendLoudCoach
-}
-
 Rule PlayerReviveFriendLoudCritCoach
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsCoach InIntenseCombat IsTalk IsTalkCoach IsWorldTalkCoach _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsCoach ActiveCombatSituation IsTalk IsTalkCoach IsWorldTalkCoach _auto_NotSpottedVehicle
 	ApplyContext "TalkCoach:1:5"
-	Response PlayerReviveFriendLoudCoach
-}
-
-Rule PlayerReviveFriendLoudCrit2Coach
-{
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsCoach IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkCoach IsWorldTalkCoach _auto_NotSpottedVehicle
-	ApplyContext "TalkCoach:1:5"
-	forceweight 30
 	Response PlayerReviveFriendLoudCoach
 }
 
@@ -16615,9 +16606,25 @@ Rule JSGone2escapeCoach
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
+Rule CampaignStartCoach
+{
+	criteria ConceptTalkIdle IsCoach IsInStartArea IsChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	ApplyContext "Talk:1:60,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:20"
+	applycontexttoworld
+	Response CustomTalkerEnable
+}
+
+Rule NoIntroChapter1Coach
+{
+	criteria ConceptTalkIdle IsCoach NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
 Rule SafeRoomStartCoach
 {
-	criteria ConceptTalkIdle IsCoach IsInStartArea AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	criteria ConceptTalkIdle IsCoach IsInStartArea IsNotChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable

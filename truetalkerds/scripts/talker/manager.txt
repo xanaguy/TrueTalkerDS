@@ -3112,7 +3112,7 @@ Response L4D1PlayerFriendlyFireManager
 }
 Rule L4D1PlayerFriendlyFireManager
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkManager IsWorldTalkManager IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkManager IsWorldTalkManager NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireManager
 }
@@ -3126,7 +3126,7 @@ Response L4D1PlayerFriendlyFire2Manager
 }
 Rule L4D1PlayerFriendlyFire2Manager
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkManager IsWorldTalkManager IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkManager IsWorldTalkManager NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFire2Manager
 }
@@ -3144,7 +3144,7 @@ Response L4D1PlayerFriendlyFireFromBillManager
 }
 Rule L4D1PlayerFriendlyFireFromBillManager
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkManager IsNotOnThirdStrike SubjectIsNamVet ChanceToFire30Percent IsWorldTalkManager IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkManager IsNotOnThirdStrike SubjectIsNamVet ChanceToFire30Percent IsWorldTalkManager NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireFromBillManager
 }
@@ -3159,7 +3159,7 @@ Response L4D1PlayerFriendlyFireFromFrancisManager
 }
 Rule L4D1PlayerFriendlyFireFromFrancisManager
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkManager IsNotOnThirdStrike SubjectIsBiker ChanceToFire30Percent IsWorldTalkManager IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkManager IsNotOnThirdStrike SubjectIsBiker ChanceToFire30Percent IsWorldTalkManager NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireFromFrancisManager
 }
@@ -3172,7 +3172,7 @@ Response L4D1PlayerFriendlyFireFromZoeyManager
 }
 Rule L4D1PlayerFriendlyFireFromZoeyManager
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkManager IsNotOnThirdStrike SubjectIsTeenGirl ChanceToFire30Percent IsWorldTalkManager IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkManager IsNotOnThirdStrike SubjectIsTeenGirl ChanceToFire30Percent IsWorldTalkManager NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireFromZoeyManager
 }
@@ -3188,7 +3188,7 @@ Response L4D1PlayerFriendlyFireNoBulletManager
 }
 Rule L4D1PlayerFriendlyFireNoBulletManager
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkManager IsWorldTalkManager IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkManager IsWorldTalkManager NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireNoBulletManager
 }
@@ -3428,7 +3428,7 @@ Response L4D1SurvivorReloadingManager
 }
 Rule L4D1SurvivorReloadingManager
 {
-	criteria ConceptPlayerReloading IsASurvivor IsNotSpeaking IsManager IsNotIncapacitated IsTalk IsTalkManager RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkManager IsNotZombiePresentTank ChanceToFire50Percent _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsASurvivor IsNotSpeaking IsManager IsNotIncapacitated IsTalk IsTalkManager RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkManager NotTankAggro ChanceToFire50Percent _auto_NotSpottedVehicle
 	Response L4D1SurvivorReloadingManager
 }
 
@@ -4898,7 +4898,7 @@ Response PlayerRemarkc7m1_tankcarManager
 }
 Rule PlayerRemarkc7m1_tankcarManager
 {
-	criteria ConceptRemark IsManager Isc7m1_tankcar IsNotSaidc7m1_tankcar IsNotCoughing NotInCombat IsTalk IsTalkManager IsWorldTalkManager IsSubjectNear400 IsNotZombiePresentTank _auto_SaidC7M1OpenTankDoor IsNotSpeakingWeight0 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptRemark IsManager Isc7m1_tankcar IsNotSaidc7m1_tankcar IsNotCoughing NotInCombat IsTalk IsTalkManager IsWorldTalkManager IsSubjectNear400 NotTankAggro _auto_SaidC7M1OpenTankDoor IsNotSpeakingWeight0 AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "Saidc7m1_tankcar:1:0"
 	applycontexttoworld
 	Response PlayerRemarkc7m1_tankcarManager
@@ -4910,7 +4910,7 @@ Response PlayerRemarkc7m1_tankcarFrancisManager
 }
 Rule PlayerRemarkc7m1_tankcarFrancisManager
 {
-	criteria ConceptRemark IsManager Isc7m1_tankcar IsNotSaidc7m1_tankcar IsNotCoughing NotInCombat IsTalk IsTalkManager IsBikerAlive IsWorldTalkManager IsSubjectNear400 IsNotZombiePresentTank ChanceToFire20Percent _auto_SaidC7M1OpenTankDoor IsNotSpeakingWeight0
+	criteria ConceptRemark IsManager Isc7m1_tankcar IsNotSaidc7m1_tankcar IsNotCoughing NotInCombat IsTalk IsTalkManager IsBikerAlive IsWorldTalkManager IsSubjectNear400 NotTankAggro ChanceToFire20Percent _auto_SaidC7M1OpenTankDoor IsNotSpeakingWeight0
 	ApplyContext "Saidc7m1_tankcar:1:0"
 	applycontexttoworld
 	Response PlayerRemarkc7m1_tankcarFrancisManager
@@ -5915,7 +5915,7 @@ Rule L4D1PlayerGrenadeManager
 //}
 //Rule L4D1PlayerGrenadeCarefulManager
 //{
-//	criteria ConceptGrenadeCareful IsNotCoughing IsManager IsWitchPresent NotInCombat IssuerClose HasAFrom IsTalk IsTalkManager IsWorldTalkManager IsNotZombiePresentTank
+//	criteria ConceptGrenadeCareful IsNotCoughing IsManager IsWitchPresent NotInCombat IssuerClose HasAFrom IsTalk IsTalkManager IsWorldTalkManager NotTankAggro
 //	Response L4D1PlayerGrenadeCarefulManager
 //}
 
@@ -7553,7 +7553,7 @@ Response L4D1PlayerReviveFriendManager
 }
 Rule L4D1PlayerReviveFriendManager
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsManager IsTalk IsTalkManager IsWorldTalkManager NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing  IsManager IsTalk IsTalkManager IsWorldTalkManager NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkManager:1:2"
 	Response L4D1PlayerReviveFriendManager
 }
@@ -7568,7 +7568,7 @@ Response L4D1PlayerReviveFriendCriticalManager
 }
 Rule L4D1PlayerReviveFriendCriticalManager
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsManager IsTalk IsTalkManager IsWorldTalkManager NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsManager IsTalk IsTalkManager IsWorldTalkManager NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkManager:1:2"
 	Response L4D1PlayerReviveFriendCriticalManager
 }
@@ -7586,30 +7586,15 @@ Response L4D1PlayerReviveFriendLoudManager
 }
 Rule L4D1PlayerReviveFriendLoudManager
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsManager InIntenseCombat IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
-	ApplyContext "TalkManager:1:2"
-	Response L4D1PlayerReviveFriendLoudManager
-}
-
-Rule L4D1PlayerReviveFriendLoud2Manager
-{
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsManager IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsManager ActiveCombatSituation IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
 	ApplyContext "TalkManager:1:2"
 	Response L4D1PlayerReviveFriendLoudManager
 }
 
 Rule L4D1PlayerReviveFriendLoudCritManager
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsManager InIntenseCombat IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsManager ActiveCombatSituation IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
 	ApplyContext "TalkManager:1:2"
-	Response L4D1PlayerReviveFriendLoudManager
-}
-
-Rule L4D1PlayerReviveFriendLoudCrit2Manager
-{
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsManager IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
-	ApplyContext "TalkManager:1:2"
-	forceweight 30
 	Response L4D1PlayerReviveFriendLoudManager
 }
 
@@ -7620,7 +7605,7 @@ Response L4D1PlayerReviveFriendLoudFrancisManager
 }
 Rule L4D1PlayerReviveFriendLoudFrancisManager
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsManager InIntenseCombat IsTalk IsTalkManager ChanceToFire10Percent SubjectIsBiker IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing  IsManager ActiveCombatSituation IsTalk IsTalkManager ChanceToFire10Percent SubjectIsBiker IsWorldTalkManager _auto_NotSpottedVehicle
 	ApplyContext "TalkManager:1:2"
 	Response L4D1PlayerReviveFriendLoudFrancisManager
 }
@@ -7631,7 +7616,7 @@ Response L4D1PlayerReviveFriendLoudZoeyManager
 }
 Rule L4D1PlayerReviveFriendLoudZoeyManager
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsManager InIntenseCombat IsTalk IsTalkManager ChanceToFire10Percent SubjectIsTeenGirl IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing  IsManager ActiveCombatSituation IsTalk IsTalkManager ChanceToFire10Percent SubjectIsTeenGirl IsWorldTalkManager _auto_NotSpottedVehicle
 	ApplyContext "TalkManager:1:2"
 	Response L4D1PlayerReviveFriendLoudZoeyManager
 }
@@ -7694,14 +7679,28 @@ Response PlayerLedgeSaveManager
 }
 Rule PlayerLedgeSaveManager
 {
-	criteria ConceptPlayerLedgeSave IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkManager:1:5"
 	Response PlayerLedgeSaveManager
 }
 
 Rule L4D1PlayerLedgeSaveCriticalManager
 {
-	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsManager IsTalk IsTalkManager IsWorldTalkManager _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsManager IsTalk IsTalkManager IsWorldTalkManager NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
+	ApplyContext "TalkManager:1:5"
+	Response PlayerLedgeSaveManager
+}
+
+Rule PlayerLedgeSaveLoudManager
+{
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsManager IsTalk IsTalkManager IsWorldTalkManager ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkManager:1:5"
+	Response PlayerLedgeSaveManager
+}
+
+Rule L4D1PlayerLedgeSaveLoudCriticalManager
+{
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsManager IsTalk IsTalkManager IsWorldTalkManager ActiveCombatSituation _auto_NotSpottedVehicle
 	ApplyContext "TalkManager:1:5"
 	Response PlayerLedgeSaveManager
 }
@@ -9200,9 +9199,25 @@ Rule NearFinalePlanBManager
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
+Rule CampaignStartManager
+{
+	criteria ConceptTalkIdle IsManager IsInStartArea IsChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	ApplyContext "Talk:1:60,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:20"
+	applycontexttoworld
+	Response CustomTalkerEnable
+}
+
+Rule NoIntroChapter1Manager
+{
+	criteria ConceptTalkIdle IsManager NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
 Rule SafeRoomStartManager
 {
-	criteria ConceptTalkIdle IsManager IsInStartArea AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	criteria ConceptTalkIdle IsManager IsInStartArea IsNotChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable

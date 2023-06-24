@@ -3584,7 +3584,7 @@ Response PlayerC5M5TruckGambler
 }
 Rule PlayerC5M5TruckGambler
 {
-	criteria ConceptC5M5Truck IsGambler IsNotSaidC5M5Truck IsNotCoughing IsTalk IsTalkGambler IsWorldTalkGambler IsNotZombiePresentTank _auto_IsFinaleStarted AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptC5M5Truck IsGambler IsNotSaidC5M5Truck IsNotCoughing IsTalk IsTalkGambler IsWorldTalkGambler NotTankAggro _auto_IsFinaleStarted AutoIsNotScavenge AutoIsNotSurvival
 	ApplyContext "SaidC5M5Truck:1:0"
 	applycontexttoworld
 	Response PlayerC5M5TruckGambler
@@ -5779,7 +5779,7 @@ Response PlayerAlertGiveItemGambler
 }
 Rule PlayerAlertGiveItemGambler
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat IsNotSpeaking
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat NotTankAggro IsNotSpeaking
 	Response PlayerAlertGiveItemGambler
 }
 
@@ -5790,7 +5790,7 @@ Response PlayerAlertGiveItemC1Gambler
 }
 Rule PlayerAlertGiveItemC1Gambler
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat C1M1orC1M2 IsNotSurvival IsNotSpeaking
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat NotTankAggro C1M1orC1M2 IsNotSurvival IsNotSpeaking
 	Response PlayerAlertGiveItemC1Gambler
 }
 
@@ -5802,14 +5802,7 @@ Response PlayerAlertGiveItemCombatGambler
 }
 Rule PlayerAlertGiveItemCombatGambler
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsGambler IsTalk IsTalkGambler InIntenseCombat IsWorldTalkGambler IsNotSpeaking
-	Response PlayerAlertGiveItemCombatGambler
-}
-
-Rule PlayerAlertGiveItemTankGambler
-{
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsGambler IsTalk IsTalkGambler IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkGambler IsNotSpeaking
-	forceweight 30
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsGambler IsTalk IsTalkGambler ActiveCombatSituation IsWorldTalkGambler IsNotSpeaking
 	Response PlayerAlertGiveItemCombatGambler
 }
 
@@ -5855,7 +5848,7 @@ Response PlayerFriendlyFireGambler
 }
 Rule PlayerFriendlyFireGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler IsWorldTalkGambler IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler IsWorldTalkGambler NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireGambler
 }
@@ -5867,7 +5860,7 @@ Response PlayerFriendlyFire2Gambler
 }
 Rule PlayerFriendlyFire2Gambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsTalk IsTalkGambler IsOnThirdStrike IsWorldTalkGambler IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsTalk IsTalkGambler IsOnThirdStrike IsWorldTalkGambler NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFire2Gambler
 }
@@ -5884,7 +5877,7 @@ Response PlayerFriendlyFireC1Gambler
 }
 Rule PlayerFriendlyFireC1Gambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler IsWorldTalkGambler DeadCenter1DS NoKnowNames IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler IsWorldTalkGambler DeadCenter1DS NoKnowNames NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireC1Gambler
 }
@@ -5896,7 +5889,7 @@ Response PlayerFriendlyFireFromCoachGambler
 }
 Rule PlayerFriendlyFireFromCoachGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsCoach ChanceToFire50Percent IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsCoach ChanceToFire50Percent IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromCoachGambler
 }
@@ -5907,7 +5900,7 @@ Response PlayerFriendlyFireFromCoachNBGambler
 }
 Rule PlayerFriendlyFireFromCoachNBGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler SubjectIsCoach ChanceToFire50Percent IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler SubjectIsCoach ChanceToFire50Percent IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromCoachNBGambler
 }
@@ -5918,7 +5911,7 @@ Response PlayerFriendlyFireFromMechanicGambler
 }
 Rule PlayerFriendlyFireFromMechanicGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsMechanic ChanceToFire30Percent IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsMechanic ChanceToFire30Percent IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromMechanicGambler
 }
@@ -5931,7 +5924,7 @@ Response PlayerFriendlyFireFromMechanicC1Gambler
 }
 Rule PlayerFriendlyFireFromMechanicC1Gambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsMechanic ChanceToFire50Percent IsWorldTalkGambler DeadCenter1DS NoKnowNames IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsMechanic ChanceToFire50Percent IsWorldTalkGambler DeadCenter1DS NoKnowNames NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromMechanicC1Gambler
 }
@@ -5943,14 +5936,14 @@ Response PlayerFriendlyFireFromMechanicNBC1Gambler
 }
 Rule PlayerFriendlyFireFromMechanicNBC1Gambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler SubjectIsMechanic ChanceToFire50Percent IsWorldTalkGambler DeadCenter1DS NoKnowNames IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler SubjectIsMechanic ChanceToFire50Percent IsWorldTalkGambler DeadCenter1DS NoKnowNames NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromMechanicNBC1Gambler
 }
 
 Rule PlayerFriendlyFireFromMechanicNBGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler SubjectIsMechanic ChanceToFire50Percent IsWorldTalkGambler IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler SubjectIsMechanic ChanceToFire50Percent IsWorldTalkGambler NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromMechanicGambler
 }
@@ -5964,7 +5957,7 @@ Response PlayerFriendlyFireFromProducerGambler
 }
 Rule PlayerFriendlyFireFromProducerGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsProducer ChanceToFire30Percent IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsProducer ChanceToFire30Percent IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromProducerGambler
 }
@@ -5975,7 +5968,7 @@ Response PlayerFriendlyFireFromProducerC1Gambler
 }
 Rule PlayerFriendlyFireFromProducerC1Gambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsProducer ChanceToFire50Percent IsWorldTalkGambler DeadCenter1DS NoKnowNames IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkGambler SubjectIsProducer ChanceToFire50Percent IsWorldTalkGambler DeadCenter1DS NoKnowNames NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromProducerC1Gambler
 }
@@ -5988,7 +5981,7 @@ Response PlayerFriendlyFireFromProducerNBGambler
 }
 Rule PlayerFriendlyFireFromProducerNBGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler SubjectIsProducer ChanceToFire50Percent IsWorldTalkGambler IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler SubjectIsProducer ChanceToFire50Percent IsWorldTalkGambler NotTankAggro isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromProducerNBGambler
 }
@@ -5999,7 +5992,7 @@ Response PlayerFriendlyFireNoBulletGambler
 }
 Rule PlayerFriendlyFireNoBulletGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler IsWorldTalkGambler IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler IsWorldTalkGambler NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireNoBulletGambler
 }
@@ -6011,7 +6004,7 @@ Response PlayerFriendlyFireNoBulletC1Gambler
 }
 Rule PlayerFriendlyFireNoBulletC1Gambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler IsWorldTalkGambler IsNotZombiePresentTank DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkGambler IsWorldTalkGambler NotTankAggro DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireNoBulletC1Gambler
 }
@@ -6028,7 +6021,7 @@ Response PlayerFriendlyFireTankGambler
 }
 Rule PlayerFriendlyFireTankGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkGambler IsZombiePresentTank IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkGambler IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGambler
 }
@@ -6040,7 +6033,7 @@ Response PlayerFriendlyFireTankC1Gambler
 }
 Rule PlayerFriendlyFireTankC1Gambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkGambler IsZombiePresentTank IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkGambler C1M1orC1M2 IsNotSurvival _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkGambler IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkGambler C1M1orC1M2 IsNotSurvival _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankC1Gambler
 }
@@ -6198,7 +6191,7 @@ Response PlayerReloadingC502RunGambler
 }
 Rule PlayerReloadingC502RunGambler
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated TheParish2DS IsTalk IsTalkGambler IsWorldTalkGambler IsNotZombiePresentTank ChanceToFire50Percent _auto_IsAlarm
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated TheParish2DS IsTalk IsTalkGambler IsWorldTalkGambler NotTankAggro ChanceToFire50Percent _auto_IsAlarm
 	Response PlayerReloadingC502RunGambler
 }
 
@@ -6214,7 +6207,7 @@ Response PlayerReloadingTankGambler
 }
 Rule PlayerReloadingTankGambler
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler IsNotSaidReloadingTank IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler IsNotSaidReloadingTank IsTankAggro IsSaidTankWarn2 IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "SaidReloadingTank:1:10,SaidTankWarn2:1:20"
 	applycontexttoworld
 	Response PlayerReloadingTankGambler
@@ -6235,7 +6228,7 @@ Response PlayerReloadingTankC1Gambler
 }
 Rule PlayerReloadingTankC1Gambler
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler IsNotSaidReloadingTank IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkGambler C1M1orC1M2 IsNotSurvival
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler IsNotSaidReloadingTank IsTankAggro IsSaidTankWarn2 IsWorldTalkGambler C1M1orC1M2 IsNotSurvival
 	ApplyContext "SaidReloadingTank:1:10,SaidTankWarn2:1:20"
 	applycontexttoworld
 	Response PlayerReloadingTankC1Gambler
@@ -6468,7 +6461,7 @@ Response SurvivorReloadingGambler
 }
 Rule SurvivorReloadingGambler
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkGambler ChanceToFire50Percent IsNotZombiePresentTank NotInIntenseCombat _auto_NotGamblerInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkGambler ChanceToFire50Percent NotTankAggro NotInIntenseCombat _auto_NotGamblerInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
 	Response SurvivorReloadingGambler
 }
 
@@ -6482,7 +6475,7 @@ Response SurvivorReloadingIntenseGambler
 }
 Rule SurvivorReloadingIntenseGambler
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkGambler ChanceToFire50Percent IsNotZombiePresentTank InIntenseCombat _auto_NotGamblerInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkGambler ChanceToFire50Percent NotTankAggro InIntenseCombat _auto_NotGamblerInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
 	Response SurvivorReloadingIntenseGambler
 }
 
@@ -6494,7 +6487,7 @@ Response SurvivorReloadingC4M2Gambler
 }
 Rule SurvivorReloadingC4M2Gambler
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkGambler ChanceToFire50Percent IsWitchPresent IsWarnHeardWitch HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsGamblerInWitchville
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsGambler IsNotIncapacitated IsTalk IsTalkGambler RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkGambler ChanceToFire50Percent IsWitchPresent IsWarnHeardWitch HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsGamblerInWitchville
 	Response SurvivorReloadingC4M2Gambler
 }
 
@@ -7779,7 +7772,7 @@ Response PlayerRemarkC3M2PlaneDoorNagaGambler
 }
 Rule PlayerRemarkC3M2PlaneDoorNagaGambler
 {
-	criteria ConceptTalkIdle IsGambler IsNotCoughing IsTalk IsTalkGambler IsSaidC3M2PlaneDoorNag IsInSwamps IsNotSaidC3M2OpenDoor IsNotZombiePresentTank AutoIsNotScavenge AutoIsNotSurvival IsWorldTalkGambler IsNotSpeakingWeight0 _auto_NotTimerLockA _auto_NotTimerLockGambler
+	criteria ConceptTalkIdle IsGambler IsNotCoughing IsTalk IsTalkGambler IsSaidC3M2PlaneDoorNag IsInSwamps IsNotSaidC3M2OpenDoor NotTankAggro AutoIsNotScavenge AutoIsNotSurvival IsWorldTalkGambler IsNotSpeakingWeight0 _auto_NotTimerLockA _auto_NotTimerLockGambler
 	ApplyContext "_auto_TimerLockA:1:20,_auto_TimerLockGambler:1:40,Talk:1:1.377"
 	applycontexttoworld
 	Response PlayerRemarkC3M2PlaneDoorNagaGambler
@@ -9461,7 +9454,7 @@ Response PlayerRemarkWorldC6M2_Phase2DownIntenseGambler
 }
 Rule PlayerRemarkWorldC6M2_Phase2DownIntenseGambler
 {
-	criteria ConceptRemark IsGambler IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing InIntenseCombat IsTalk IsTalkGambler IsWorldTalkGambler IsSubjectNear200 IntensityOver75 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	criteria ConceptRemark IsGambler IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing ActiveCombatSituation IsTalk IsTalkGambler IsWorldTalkGambler IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
 	ApplyContext "SaidWorldC6M2_Phase2Down:1:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_Phase2DownIntenseGambler
@@ -9862,7 +9855,7 @@ Response PlayerHurryUpC4M2Gambler
 }
 Rule PlayerHurryUpC4M2Gambler
 {
-	criteria ConceptPlayerHurryUp IsGambler IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkGambler HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank IsWorldTalkGambler IsNotSpeaking _auto_IsGamblerInWitchville
+	criteria ConceptPlayerHurryUp IsGambler IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkGambler HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro IsWorldTalkGambler IsNotSpeaking _auto_IsGamblerInWitchville
 	Response PlayerHurryUpC4M2Gambler
 }
 
@@ -11143,7 +11136,7 @@ Rule PlayerGrabbedByJockeyC1Gambler
 //}
 //Rule GrenadeCarefulGambler
 //{
-//	criteria ConceptGrenadeCareful IsNotCoughing IsGambler IsWitchPresent NotInCombat HasAFrom IssuerClose IsTalk IsTalkGambler IsWorldTalkGambler IsNotZombiePresentTank
+//	criteria ConceptGrenadeCareful IsNotCoughing IsGambler IsWitchPresent NotInCombat HasAFrom IssuerClose IsTalk IsTalkGambler IsWorldTalkGambler NotTankAggro
 //	Response GrenadeCarefulGambler
 //}
 
@@ -12620,7 +12613,7 @@ Response SurvivorVocalizeEmphaticGoC4M2Gambler
 }
 Rule SurvivorVocalizeEmphaticGoC4M2Gambler
 {
-	criteria ConceptPlayerEmphaticGo IsGambler IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkGambler IsWorldTalkGambler IsNotSpeaking HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsGamblerInWitchville
+	criteria ConceptPlayerEmphaticGo IsGambler IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkGambler IsWorldTalkGambler IsNotSpeaking HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsGamblerInWitchville
 	Response SurvivorVocalizeEmphaticGoC4M2Gambler
 }
 
@@ -13694,7 +13687,7 @@ Response PlayerHealOtherGambler
 }
 Rule PlayerHealOtherGambler
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsGambler IsTalk IsTalkGambler NotInIntenseCombat IsWorldTalkGambler
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsGambler IsTalk IsTalkGambler NotInIntenseCombat NotTankAggro IsWorldTalkGambler
 	ApplyContext "TalkGambler:1:5"
 	Response PlayerHealOtherGambler
 }
@@ -13709,7 +13702,7 @@ Response PlayerHealOtherC1Gambler
 }
 Rule PlayerHealOtherC1Gambler
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat C1M1orC1M2 IsNotSurvival
+	criteria ConceptPlayerHealingOther IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat NotTankAggro C1M1orC1M2 IsNotSurvival
 	ApplyContext "TalkGambler:1:5"
 	Response PlayerHealOtherC1Gambler
 }
@@ -13724,16 +13717,8 @@ Response PlayerHealOtherCombatGambler
 }
 Rule PlayerHealOtherCombatGambler
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsGambler IsTalk IsTalkGambler InIntenseCombat IsWorldTalkGambler
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsGambler IsTalk IsTalkGambler ActiveCombatSituation IsWorldTalkGambler
 	ApplyContext "TalkGambler:1:5"
-	Response PlayerHealOtherCombatGambler
-}
-
-Rule PlayerHealOtherTankGambler
-{
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsGambler IsTalk IsTalkGambler IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkGambler
-	ApplyContext "TalkGambler:1:5"
-	forceweight 30
 	Response PlayerHealOtherCombatGambler
 }
 
@@ -13746,7 +13731,7 @@ Response PlayerLedgeSaveGambler
 }
 Rule PlayerLedgeSaveGambler
 {
-	criteria ConceptPlayerLedgeSave IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkGambler:1:5"
 	Response PlayerLedgeSaveGambler
 }
@@ -13845,7 +13830,7 @@ Response PlayerReviveFriendCriticalGambler
 }
 Rule PlayerReviveFriendCriticalGambler
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkGambler:1:5"
 	Response PlayerReviveFriendCriticalGambler
 }
@@ -13861,17 +13846,30 @@ Response PlayerReviveFriendLoudGambler
 }
 Rule PlayerReviveFriendLoudGambler
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsGambler IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkGambler IsWorldTalkGambler _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsGambler ActiveCombatSituation IsTalk IsTalkGambler IsWorldTalkGambler _auto_NotSpottedVehicle
 	ApplyContext "TalkGambler:1:5"
-	forceweight 30
+	Response PlayerReviveFriendLoudGambler
+}
+
+Rule PlayerLedgeSaveLoudGambler
+{
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkGambler:1:5"
 	Response PlayerReviveFriendLoudGambler
 }
 
 Rule PlayerLedgeSaveCriticalGambler
 {
-	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsGambler IsTalk IsTalkGambler IsWorldTalkGambler _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkGambler:1:5"
 	Response PlayerLedgeSaveGambler
+}
+
+Rule PlayerLedgeSaveLoudCriticalGambler
+{
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing IsGambler IsTalk IsTalkGambler IsWorldTalkGambler ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkGambler:1:5"
+	Response PlayerReviveFriendLoudGambler
 }
 
 Response PlayerReviveFriendFFGambler
@@ -13881,7 +13879,15 @@ Response PlayerReviveFriendFFGambler
 }
 Rule PlayerReviveFriendFFGambler
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsGambler IsTalk IsTalkGambler IsShotTeammateGambler IsWorldTalkGambler NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsGambler IsTalk IsTalkGambler IsShotTeammateGambler IsWorldTalkGambler NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
+	ApplyContext "TalkGambler:1:5"
+	forceweight 20
+	Response PlayerReviveFriendFFGambler
+}
+
+Rule PlayerReviveFriendCriticalFFGambler
+{
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsGambler IsTalk IsTalkGambler IsShotTeammateGambler IsWorldTalkGambler NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkGambler:1:5"
 	forceweight 20
 	Response PlayerReviveFriendFFGambler
@@ -13891,28 +13897,12 @@ Rule PlayerReviveFriendFFGambler
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer - ZRescue
 //--------------------------------------------------------------------------------------------------------------
-Rule L4D1PlayerReviveFriendLoud2Gambler
-{
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsGambler InIntenseCombat IsTalk IsTalkGambler IsWorldTalkGambler _auto_NotSpottedVehicle
-	ApplyContext "TalkGambler:1:5"
-	Response PlayerReviveFriendLoudGambler
-}
-
 Rule L4D1PlayerReviveFriendLoudCritGambler
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsGambler InIntenseCombat IsTalk IsTalkGambler IsWorldTalkGambler _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsGambler ActiveCombatSituation IsTalk IsTalkGambler IsWorldTalkGambler _auto_NotSpottedVehicle
 	ApplyContext "TalkGambler:1:5"
 	Response PlayerReviveFriendLoudGambler
 }
-
-Rule L4D1PlayerReviveFriendLoudCrit2Gambler
-{
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsGambler IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkGambler IsWorldTalkGambler _auto_NotSpottedVehicle
-	ApplyContext "TalkGambler:1:5"
-	forceweight 30
-	Response PlayerReviveFriendLoudGambler
-}
-
 
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer Convo (AUTO)
@@ -16979,9 +16969,25 @@ Rule JSGone2escapeGambler
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
+Rule CampaignStartGambler
+{
+	criteria ConceptTalkIdle IsGambler IsInStartArea IsChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	ApplyContext "Talk:1:60,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:20"
+	applycontexttoworld
+	Response CustomTalkerEnable
+}
+
+Rule NoIntroChapter1Gambler
+{
+	criteria ConceptTalkIdle IsGambler NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
 Rule SafeRoomStartGambler
 {
-	criteria ConceptTalkIdle IsGambler IsInStartArea AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	criteria ConceptTalkIdle IsGambler IsInStartArea IsNotChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable

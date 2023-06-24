@@ -6305,7 +6305,7 @@ Response PlayerAlertGiveItemMechanic
 }
 Rule PlayerAlertGiveItemMechanic
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsMechanic IsTalk IsTalkMechanic NotInIntenseCombat IsWorldTalkMechanic
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsMechanic IsTalk IsTalkMechanic NotInIntenseCombat NotTankAggro IsWorldTalkMechanic
 	Response PlayerAlertGiveItemMechanic
 }
 
@@ -6318,7 +6318,7 @@ Response PlayerAlertGiveItemCombatMechanic
 }
 Rule PlayerAlertGiveItemCombatMechanic
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsMechanic IsTalk IsTalkMechanic InIntenseCombat IsWorldTalkMechanic
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsMechanic IsTalk IsTalkMechanic ActiveCombatSituation IsWorldTalkMechanic
 	Response PlayerAlertGiveItemCombatMechanic
 }
 
@@ -6362,7 +6362,7 @@ Response PlayerFriendlyFireMechanic
 }
 Rule PlayerFriendlyFireMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic IsWorldTalkMechanic NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireMechanic
 }
@@ -6377,7 +6377,7 @@ Response PlayerFriendlyFire2Mechanic
 }
 Rule PlayerFriendlyFire2Mechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsOnThirdStrike IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsOnThirdStrike IsTalk IsTalkMechanic IsWorldTalkMechanic NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFire2Mechanic
 }
@@ -6395,7 +6395,7 @@ Response PlayerFriendlyFireC1Mechanic
 }
 Rule PlayerFriendlyFireC1Mechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotZombiePresentTank DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic IsWorldTalkMechanic NotTankAggro DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireC1Mechanic
 }
@@ -6406,7 +6406,7 @@ Response PlayerFriendlyFireFromCoachMechanic
 }
 Rule PlayerFriendlyFireFromCoachMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsCoach ChanceToFire30Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsCoach ChanceToFire30Percent IsWorldTalkMechanic NotTankAggro isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromCoachMechanic
 }
@@ -6417,7 +6417,7 @@ Response PlayerFriendlyFireFromCoachC1Mechanic
 }
 Rule PlayerFriendlyFireFromCoachC1Mechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsCoach ChanceToFire50Percent IsWorldTalkMechanic IsNotZombiePresentTank DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsCoach ChanceToFire50Percent IsWorldTalkMechanic NotTankAggro DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromCoachC1Mechanic
 }
@@ -6431,7 +6431,7 @@ Response PlayerFriendlyFireFromGamblerMechanic
 }
 Rule PlayerFriendlyFireFromGamblerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsGambler ChanceToFire50Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsGambler ChanceToFire50Percent IsWorldTalkMechanic NotTankAggro isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromGamblerMechanic
 }
@@ -6444,7 +6444,7 @@ Response PlayerFriendlyFireFromProducerMechanic
 }
 Rule PlayerFriendlyFireFromProducerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsProducer ChanceToFire30Percent IsWorldTalkMechanic IsNotZombiePresentTank isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsProducer ChanceToFire30Percent IsWorldTalkMechanic NotTankAggro isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromProducerMechanic
 }
@@ -6455,7 +6455,7 @@ Response PlayerFriendlyFireFromProducerC1Mechanic
 }
 Rule PlayerFriendlyFireFromProducerC1Mechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsProducer ChanceToFire50Percent IsWorldTalkMechanic IsNotZombiePresentTank DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkMechanic SubjectIsProducer ChanceToFire50Percent IsWorldTalkMechanic NotTankAggro DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireFromProducerC1Mechanic
 }
@@ -6468,7 +6468,7 @@ Response PlayerFriendlyFireNoBulletMechanic
 }
 Rule PlayerFriendlyFireNoBulletMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkMechanic IsWorldTalkMechanic NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireNoBulletMechanic
 }
@@ -6481,7 +6481,7 @@ Response PlayerFriendlyFireNoBulletC1Mechanic
 }
 Rule PlayerFriendlyFireNoBulletC1Mechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotZombiePresentTank DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeBullet IsNotDamageTypeExplosive IsTalk IsTalkMechanic IsWorldTalkMechanic NotTankAggro DeadCenter1DS NoKnowNames _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireNoBulletC1Mechanic
 }
@@ -6495,7 +6495,7 @@ Response PlayerFriendlyFireTankMechanic
 }
 Rule PlayerFriendlyFireTankMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankMechanic
 }
@@ -6507,7 +6507,7 @@ Response PlayerFriendlyFireTankCoachMechanic
 }
 Rule PlayerFriendlyFireTankCoachMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsCoach IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsCoach IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankCoachMechanic
 }
@@ -6519,7 +6519,7 @@ Response PlayerFriendlyFireTankGamblerMechanic
 }
 Rule PlayerFriendlyFireTankGamblerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGamblerMechanic
 }
@@ -6530,7 +6530,7 @@ Response PlayerFriendlyFireTankProducerMechanic
 }
 Rule PlayerFriendlyFireTankProducerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsProducer IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsProducer IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankProducerMechanic
 }
@@ -6690,7 +6690,7 @@ Response PlayerReloadingC502RunMechanic
 }
 Rule PlayerReloadingC502RunMechanic
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated TheParish2DS IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotZombiePresentTank ChanceToFire50Percent _auto_IsAlarm
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated TheParish2DS IsTalk IsTalkMechanic IsWorldTalkMechanic NotTankAggro ChanceToFire50Percent _auto_IsAlarm
 	Response PlayerReloadingC502RunMechanic
 }
 
@@ -6706,7 +6706,7 @@ Response PlayerReloadingTankMechanic
 }
 Rule PlayerReloadingTankMechanic
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic IsNotSaidReloadingTank IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkMechanic _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic IsNotSaidReloadingTank IsTankAggro IsSaidTankWarn2 IsWorldTalkMechanic _auto_NotSpottedVehicle
 	ApplyContext "SaidReloadingTank:1:10,SaidTankWarn2:1:20"
 	applycontexttoworld
 	Response PlayerReloadingTankMechanic
@@ -6720,7 +6720,7 @@ Response PlayerReloadingTankC1Mechanic
 }
 Rule PlayerReloadingTankC1Mechanic
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic IsNotSaidReloadingTank IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkMechanic C1M1orC1M2 IsNotSurvival
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic IsNotSaidReloadingTank IsTankAggro IsSaidTankWarn2 IsWorldTalkMechanic C1M1orC1M2 IsNotSurvival
 	ApplyContext "SaidReloadingTank:1:10,SaidTankWarn2:1:20"
 	applycontexttoworld
 	Response PlayerReloadingTankC1Mechanic
@@ -6960,7 +6960,7 @@ Response SurvivorReloadingMechanic
 }
 Rule SurvivorReloadingMechanic
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkMechanic IsNotZombiePresentTank NotInIntenseCombat _auto_NotMechanicInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkMechanic NotTankAggro NotInIntenseCombat _auto_NotMechanicInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
 	Response SurvivorReloadingMechanic
 }
 
@@ -6974,7 +6974,7 @@ Response SurvivorReloadingIntenseMechanic
 }
 Rule SurvivorReloadingIntenseMechanic
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkMechanic IsNotZombiePresentTank InIntenseCombat _auto_NotMechanicInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkMechanic NotTankAggro InIntenseCombat _auto_NotMechanicInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
 	Response SurvivorReloadingIntenseMechanic
 }
 
@@ -6985,7 +6985,7 @@ Response SurvivorReloadingC4M2Mechanic
 }
 Rule SurvivorReloadingC4M2Mechanic
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkMechanic HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsMechanicInWitchville
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsMechanic IsNotIncapacitated IsTalk IsTalkMechanic RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkMechanic HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsMechanicInWitchville
 	Response SurvivorReloadingC4M2Mechanic
 }
 
@@ -8083,7 +8083,7 @@ Response PlayerRemarkC3M2PlaneDoorNagaMechanic
 }
 Rule PlayerRemarkC3M2PlaneDoorNagaMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsSaidC3M2PlaneDoorNag IsNotSaidC3M2OpenDoor IsInSwamps IsNotCoughing IsTalk IsTalkMechanic IsNotZombiePresentTank AutoIsNotScavenge AutoIsNotSurvival IsWorldTalkMechanic IsNotSpeakingWeight0 _auto_NotTimerLockA _auto_NotTimerLockMechanic
+	criteria ConceptTalkIdle IsMechanic IsSaidC3M2PlaneDoorNag IsNotSaidC3M2OpenDoor IsInSwamps IsNotCoughing IsTalk IsTalkMechanic NotTankAggro AutoIsNotScavenge AutoIsNotSurvival IsWorldTalkMechanic IsNotSpeakingWeight0 _auto_NotTimerLockA _auto_NotTimerLockMechanic
 	ApplyContext "_auto_TimerLockA:1:20,_auto_TimerLockMechanic:1:40,Talk:1:1.660"
 	applycontexttoworld
 	Response PlayerRemarkC3M2PlaneDoorNagaMechanic
@@ -10066,7 +10066,7 @@ Response PlayerRemarkWorldC6M2_Phase2DownIntenseMechanic
 }
 Rule PlayerRemarkWorldC6M2_Phase2DownIntenseMechanic
 {
-	criteria ConceptRemark IsMechanic IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing InIntenseCombat IsTalk IsTalkMechanic IsWorldTalkMechanic IsSubjectNear200 IntensityOver75 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	criteria ConceptRemark IsMechanic IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing ActiveCombatSituation IsTalk IsTalkMechanic IsWorldTalkMechanic IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
 	ApplyContext "SaidWorldC6M2_Phase2Down:1:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_Phase2DownIntenseMechanic
@@ -10440,7 +10440,7 @@ Response PlayerHurryUpC4M2Mechanic
 }
 Rule PlayerHurryUpC4M2Mechanic
 {
-	criteria ConceptPlayerHurryUp IsMechanic IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsNotSaidSafeSpotAhead HardRain2DS IsNotZombiePresentTank IsWorldTalkMechanic IsNotSpeaking _auto_IsMechanicInWitchville
+	criteria ConceptPlayerHurryUp IsMechanic IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsNotSaidSafeSpotAhead HardRain2DS NotTankAggro IsWorldTalkMechanic IsNotSpeaking _auto_IsMechanicInWitchville
 	Response PlayerHurryUpC4M2Mechanic
 }
 
@@ -11666,7 +11666,7 @@ Rule PlayerGrabbedByJockeyC1Mechanic
 //}
 //Rule GrenadeCarefulMechanic
 //{
-//	criteria ConceptGrenadeCareful IsNotCoughing IsMechanic IsTalk IsWitchPresent NotInCombat HasAFrom IssuerClose IsTalkMechanic IsWorldTalkMechanic IsNotZombiePresentTank
+//	criteria ConceptGrenadeCareful IsNotCoughing IsMechanic IsTalk IsWitchPresent NotInCombat HasAFrom IssuerClose IsTalkMechanic IsWorldTalkMechanic NotTankAggro
 //	Response GrenadeCarefulMechanic
 //}
 
@@ -11689,7 +11689,7 @@ Response PlayerGrenadeMolotovTankMechanic
 }
 Rule PlayerGrenadeMolotovTankMechanic
 {
-	criteria ConceptThrewGrenade IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsGrenadeMolotov IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkMechanic _auto_NotSpottedVehicle
+	criteria ConceptThrewGrenade IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsGrenadeMolotov IsTankAggro IsSaidTankWarn2 IsWorldTalkMechanic _auto_NotSpottedVehicle
 	Response PlayerGrenadeMolotovTankMechanic
 }
 
@@ -11737,7 +11737,7 @@ Response PlayerGrenadeVomitJarTankMechanic
 }
 Rule PlayerGrenadeVomitJarTankMechanic
 {
-	criteria ConceptThrewGrenade IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsGrenadeVomitJar IsZombiePresentTank IsSaidTankWarn2 isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsWorldTalkMechanic _auto_NotSpottedVehicle
+	criteria ConceptThrewGrenade IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsGrenadeVomitJar IsTankAggro IsSaidTankWarn2 isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 IsWorldTalkMechanic _auto_NotSpottedVehicle
 	Response PlayerGrenadeVomitJarTankMechanic
 }
 
@@ -13127,7 +13127,7 @@ Response SurvivorVocalizeEmphaticGoC4M2Mechanic
 }
 Rule SurvivorVocalizeEmphaticGoC4M2Mechanic
 {
-	criteria ConceptPlayerEmphaticGo IsMechanic IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotSpeaking HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsMechanicInWitchville
+	criteria ConceptPlayerEmphaticGo IsMechanic IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotSpeaking HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsMechanicInWitchville
 	Response SurvivorVocalizeEmphaticGoC4M2Mechanic
 }
 
@@ -14154,7 +14154,7 @@ Response PlayerHealOtherMechanic
 }
 Rule PlayerHealOtherMechanic
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsMechanic IsTalk IsTalkMechanic NotInIntenseCombat IsWorldTalkMechanic
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsMechanic IsTalk IsTalkMechanic NotInIntenseCombat NotTankAggro IsWorldTalkMechanic
 	ApplyContext "TalkMechanic:1:5"
 	Response PlayerHealOtherMechanic
 }
@@ -14169,7 +14169,7 @@ Response PlayerHealOtherC1Mechanic
 }
 Rule PlayerHealOtherC1Mechanic
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsMechanic IsTalk IsTalkMechanic NotInIntenseCombat IsWorldTalkMechanic DeadCenter1DS
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsMechanic IsTalk IsTalkMechanic NotInIntenseCombat NotTankAggro IsWorldTalkMechanic DeadCenter1DS
 	ApplyContext "TalkMechanic:1:5"
 	Response PlayerHealOtherC1Mechanic
 }
@@ -14183,14 +14183,7 @@ Response PlayerHealOtherCombatMechanic
 }
 Rule PlayerHealOtherCombatMechanic
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsMechanic IsTalk IsTalkMechanic InIntenseCombat IsWorldTalkMechanic
-	ApplyContext "TalkMechanic:1:5"
-	Response PlayerHealOtherCombatMechanic
-}
-
-Rule PlayerHealOtherTankMechanic
-{
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsMechanic IsTalk IsTalkMechanic IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkMechanic
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsMechanic IsTalk IsTalkMechanic ActiveCombatSituation IsWorldTalkMechanic
 	ApplyContext "TalkMechanic:1:5"
 	Response PlayerHealOtherCombatMechanic
 }
@@ -14204,7 +14197,7 @@ Response PlayerLedgeSaveMechanic
 }
 Rule PlayerLedgeSaveMechanic
 {
-	criteria ConceptPlayerLedgeSave IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkMechanic:1:5"
 	Response PlayerLedgeSaveMechanic
 }
@@ -14231,7 +14224,7 @@ Response PlayerReviveFriendMechanic
 }
 Rule PlayerReviveFriendMechanic
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing  IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkMechanic:1:2"
 	Response PlayerReviveFriendMechanic
 }
@@ -14268,7 +14261,7 @@ Response PlayerReviveFriendCriticalMechanic
 }
 Rule PlayerReviveFriendCriticalMechanic
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkMechanic:1:5"
 	Response PlayerReviveFriendCriticalMechanic
 }
@@ -14282,14 +14275,28 @@ Response PlayerReviveFriendLoudMechanic
 }
 Rule PlayerReviveFriendLoudMechanic
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsMechanic IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkMechanic IsWorldTalkMechanic _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing  IsMechanic ActiveCombatSituation IsTalk IsTalkMechanic IsWorldTalkMechanic _auto_NotSpottedVehicle
+	ApplyContext "TalkMechanic:1:5"
+	Response PlayerReviveFriendLoudMechanic
+}
+
+Rule PlayerLedgeSaveLoudMechanic
+{
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkMechanic:1:5"
+	Response PlayerReviveFriendLoudMechanic
+}
+
+Rule PlayerLedgeSaveLoudCriticalMechanic
+{
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic ActiveCombatSituation _auto_NotSpottedVehicle
 	ApplyContext "TalkMechanic:1:5"
 	Response PlayerReviveFriendLoudMechanic
 }
 
 Rule PlayerLedgeSaveCriticalMechanic
 {
-	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkMechanic:1:5"
 	Response PlayerLedgeSaveMechanic
 }
@@ -14298,23 +14305,9 @@ Rule PlayerLedgeSaveCriticalMechanic
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer - ZRescue
 //--------------------------------------------------------------------------------------------------------------
-Rule PlayerReviveFriendLoud2Mechanic
-{
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsMechanic NotInIntenseCombat IsTalk IsTalkMechanic IsWorldTalkMechanic _auto_NotSpottedVehicle
-	ApplyContext "TalkMechanic:1:5"
-	Response PlayerReviveFriendLoudMechanic
-}
-
 Rule PlayerReviveFriendLoudCritMechanic
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsMechanic NotInIntenseCombat IsTalk IsTalkMechanic IsWorldTalkMechanic _auto_NotSpottedVehicle
-	ApplyContext "TalkMechanic:1:5"
-	Response PlayerReviveFriendLoudMechanic
-}
-
-Rule PlayerReviveFriendLoudCrit2Mechanic
-{
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsMechanic IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkMechanic IsWorldTalkMechanic _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsMechanic ActiveCombatSituation IsTalk IsTalkMechanic IsWorldTalkMechanic _auto_NotSpottedVehicle
 	ApplyContext "TalkMechanic:1:5"
 	Response PlayerReviveFriendLoudMechanic
 }
@@ -17725,6 +17718,22 @@ Rule JSGone2escapeMechanic
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
+Rule CampaignStartMechanic
+{
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	ApplyContext "Talk:1:60,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:20"
+	applycontexttoworld
+	Response CustomTalkerEnable
+}
+
+Rule NoIntroChapter1Mechanic
+{
+	criteria ConceptTalkIdle IsMechanic NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
 Rule EllisStoryStartMechanic
 {
 	criteria ConceptTalkIdle IsMechanic IsNotSpeaking AutoIsNotScavenge AutoIsNotSurvival IsNotSrcGrp_ELLISSTORYINIT
@@ -17736,7 +17745,7 @@ Rule EllisStoryStartMechanic
 
 Rule SafeRoomStartMechanic
 {
-	criteria ConceptTalkIdle IsMechanic IsInStartArea AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	criteria ConceptTalkIdle IsMechanic IsInStartArea IsNotChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable

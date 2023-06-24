@@ -155,7 +155,7 @@ criterion "IsNotAirport02CraneStarted"   "worldAirport02CraneStarted" "!=1" requ
 criterion "IsAirport02CraneStarted"   "worldAirport02CraneStarted" "!=1" required      
 
 
-criterion "ConceptHealThanks" Concept "HealThanks" required  
+criterion "ConceptHealThanks" "Concept" "HealThanks" required  
 
 criterion "Isfarm01_camping"   "subject" "farm01_camping" required  
 criterion "Isairport01_burning"   "subject" "airport01_burning" required  
@@ -929,6 +929,11 @@ criterion "IsTank"        "Who"     "Tank"        required
 criterion "IsZombiePresentTank"        "ZombiePresentTank"     "1"        required
 criterion "IsNotZombiePresentTank"        "ZombiePresentTank"     "<1"        required
 criterion "IsSaidTankWarn2"        "worldSaidTankWarn2"     "1"        required
+
+criterion "IsTankAggro"        "worldtankactive"     "1"        required
+criterion "NotTankAggro"        "worldtankactive"     "0"        required
+
+criterion "ActiveCombatSituation" { InIntenseCombat IsTankAggro } required
 
 criterion "IsZombiePresentWitch"        "ZombiePresentWitch"     "1"        required
 
@@ -1899,6 +1904,10 @@ criterion "ConceptEllisInterrupt"   "Concept" "EllisInterrupt"	  required
 
 //Saferoom Door Open
 criterion "Conceptopen_safedoor"   "Concept" "open_safedoor"	  required  //Trigger_multiple just outside starting safe doors (needs to be placed manually in maps)
+
+//Chapter tracker
+Criterion "IsChapter1" "Chapter" "0" required
+Criterion "IsNotChapter1" "Chapter" "!=0" required
 
 //Map Related Criteria
 

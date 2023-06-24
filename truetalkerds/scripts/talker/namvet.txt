@@ -2602,7 +2602,7 @@ Response L4D1PlayerFriendlyFireNamVet
 }
 Rule L4D1PlayerFriendlyFireNamVet
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkNamVet IsWorldTalkNamVet NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireNamVet
 }
@@ -2616,7 +2616,7 @@ Response L4D1PlayerFriendlyFire2NamVet
 }
 Rule L4D1PlayerFriendlyFire2NamVet
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkNamVet IsWorldTalkNamVet NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFire2NamVet
 }
@@ -2633,7 +2633,7 @@ Response L4D1PlayerFriendlyFireFromFrancisNamVet
 }
 Rule L4D1PlayerFriendlyFireFromFrancisNamVet
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkNamVet SubjectIsBiker ChanceToFire30Percent IsWorldTalkNamVet IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkNamVet SubjectIsBiker ChanceToFire30Percent IsWorldTalkNamVet NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireFromFrancisNamVet
 }
@@ -2646,7 +2646,7 @@ Response L4D1PlayerFriendlyFireFromLouisNamVet
 }
 Rule L4D1PlayerFriendlyFireFromLouisNamVet
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkNamVet SubjectIsManager ChanceToFire30Percent IsWorldTalkNamVet IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkNamVet SubjectIsManager ChanceToFire30Percent IsWorldTalkNamVet NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireFromLouisNamVet
 }
@@ -2657,7 +2657,7 @@ Response L4D1PlayerFriendlyFireFromZoeyNamVet
 }
 Rule L4D1PlayerFriendlyFireFromZoeyNamVet
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkNamVet SubjectIsTeenGirl ChanceToFire30Percent IsWorldTalkNamVet IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsNotOnThirdStrike IsTalk IsTalkNamVet SubjectIsTeenGirl ChanceToFire30Percent IsWorldTalkNamVet NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireFromZoeyNamVet
 }
@@ -2671,7 +2671,7 @@ Response L4D1PlayerFriendlyFireNoBulletNamVet
 }
 Rule L4D1PlayerFriendlyFireNoBulletNamVet
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkNamVet IsWorldTalkNamVet NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFireNoBulletNamVet
 }
@@ -2909,7 +2909,7 @@ Response L4D1SurvivorReloadingNamVet
 }
 Rule L4D1SurvivorReloadingNamVet
 {
-	criteria ConceptPlayerReloading IsASurvivor IsNotSpeaking IsNamVet IsNotIncapacitated IsTalk IsTalkNamVet RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkNamVet IsNotZombiePresentTank ChanceToFire50Percent _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsASurvivor IsNotSpeaking IsNamVet IsNotIncapacitated IsTalk IsTalkNamVet RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkNamVet NotTankAggro ChanceToFire50Percent _auto_NotSpottedVehicle
 	Response L4D1SurvivorReloadingNamVet
 }
 
@@ -6913,7 +6913,7 @@ Response L4D1PlayerHealOtherNamVet
 }
 Rule L4D1PlayerHealOtherNamVet
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsNamVet IsTalk IsTalkNamVet NotInIntenseCombat IsWorldTalkNamVet
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsNamVet IsTalk IsTalkNamVet NotInIntenseCombat NotTankAggro IsWorldTalkNamVet
 	ApplyContext "TalkNamVet:1:5"
 	Response L4D1PlayerHealOtherNamVet
 }
@@ -6926,16 +6926,8 @@ Response L4D1PlayerHealOtherCombatNamVet
 }
 Rule L4D1PlayerHealOtherCombatNamVet
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsNamVet IsTalk IsTalkNamVet InIntenseCombat IsWorldTalkNamVet
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsNamVet IsTalk IsTalkNamVet ActiveCombatSituation IsWorldTalkNamVet
 	ApplyContext "TalkNamVet:1:5"
-	Response L4D1PlayerHealOtherCombatNamVet
-}
-
-Rule L4D1PlayerHealOtherTankNamVet
-{
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsNamVet IsTalk IsTalkNamVet IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkNamVet
-	ApplyContext "TalkNamVet:1:5"
-	forceweight 30
 	Response L4D1PlayerHealOtherCombatNamVet
 }
 
@@ -6964,7 +6956,7 @@ Response L4D1PlayerReviveFriendNamVet
 }
 Rule L4D1PlayerReviveFriendNamVet
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing  IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkNamVet:1:2"
 	Response L4D1PlayerReviveFriendNamVet
 }
@@ -6981,7 +6973,7 @@ Response L4D1PlayerReviveFriendCriticalNamVet
 }
 Rule L4D1PlayerReviveFriendCriticalNamVet
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkNamVet:1:5"
 	Response L4D1PlayerReviveFriendCriticalNamVet
 }
@@ -7001,30 +6993,15 @@ Response L4D1PlayerReviveFriendLoudNamVet
 }
 Rule L4D1PlayerReviveFriendLoudNamVet
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsNamVet InIntenseCombat IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsNamVet ActiveCombatSituation IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
 	ApplyContext "TalkNamVet:1:5"
-	Response L4D1PlayerReviveFriendLoudNamVet
-}
-
-Rule L4D1PlayerReviveFriendLoud2NamVet
-{
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsNamVet IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
-	ApplyContext "TalkTeenGirl:1:5"
 	Response L4D1PlayerReviveFriendLoudNamVet
 }
 
 Rule L4D1PlayerReviveFriendLoudCritNamVet
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsNamVet InIntenseCombat IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsNamVet ActiveCombatSituation IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
 	ApplyContext "TalkNamVet:1:5"
-	Response L4D1PlayerReviveFriendLoudNamVet
-}
-
-Rule L4D1PlayerReviveFriendLoudCrit2NamVet
-{
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsNamVet IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
-	ApplyContext "TalkNamVet:1:5"
-	forceweight 30
 	Response L4D1PlayerReviveFriendLoudNamVet
 }
 
@@ -7087,18 +7064,31 @@ Response PlayerLedgeSaveNamVet
 }
 Rule PlayerLedgeSaveNamVet
 {
-	criteria ConceptPlayerLedgeSave IsNotCoughing IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkNamVet:1:5"
 	Response PlayerLedgeSaveNamVet
 }
 
 Rule L4D1PlayerLedgeSaveCriticalNamVet
 {
-	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkNamVet:1:5"
 	Response PlayerLedgeSaveNamVet
 }
 
+Rule PlayerLedgeSaveLoudNamVet
+{
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkNamVet:1:5"
+	Response PlayerLedgeSaveNamVet
+}
+
+Rule L4D1PlayerLedgeSaveLoudCriticalNamVet
+{
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkNamVet:1:5"
+	Response PlayerLedgeSaveNamVet
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer Convo
@@ -8735,9 +8725,25 @@ Rule NearFinalePlanBNamVet
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
+Rule CampaignStartNamVet
+{
+	criteria ConceptTalkIdle IsNamVet IsInStartArea IsChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	ApplyContext "Talk:1:60,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:20"
+	applycontexttoworld
+	Response CustomTalkerEnable
+}
+
+Rule NoIntroChapter1NamVet
+{
+	criteria ConceptTalkIdle IsNamVet NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
 Rule SafeRoomStartNamVet
 {
-	criteria ConceptTalkIdle IsNamVet IsInStartArea AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	criteria ConceptTalkIdle IsNamVet IsInStartArea IsNotChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable

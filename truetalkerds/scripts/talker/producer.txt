@@ -5429,7 +5429,7 @@ Response PlayerAlertGiveItemProducer
 }
 Rule PlayerAlertGiveItemProducer
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsProducer IsTalk IsTalkProducer NotInIntenseCombat IsWorldTalkProducer
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsProducer IsTalk IsTalkProducer NotInIntenseCombat NotTankAggro IsWorldTalkProducer
 	Response PlayerAlertGiveItemProducer
 }
 
@@ -5439,7 +5439,7 @@ Response PlayerAlertGiveItemC1Producer
 }
 Rule PlayerAlertGiveItemC1Producer
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsProducer IsTalk IsTalkProducer NotInIntenseCombat IsWorldTalkProducer NoKnowNames DeadCenter1DS NoKnowNames
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsProducer IsTalk IsTalkProducer NotInIntenseCombat NotTankAggro IsWorldTalkProducer NoKnowNames DeadCenter1DS NoKnowNames
 	Response PlayerAlertGiveItemC1Producer
 }
 
@@ -5454,7 +5454,7 @@ Response PlayerAlertGiveItemCombatProducer
 }
 Rule PlayerAlertGiveItemCombatProducer
 {
-	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsProducer IsTalk IsTalkProducer InIntenseCombat IsWorldTalkProducer
+	criteria ConceptPlayerAlertGiveItem IsNotCoughing IsProducer IsTalk IsTalkProducer ActiveCombatSituation IsWorldTalkProducer
 	Response PlayerAlertGiveItemCombatProducer
 }
 
@@ -5494,7 +5494,7 @@ Response PlayerFriendlyFireProducer
 }
 Rule PlayerFriendlyFireProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkProducer IsWorldTalkProducer IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsDamageTypeBullet IsTalk IsTalkProducer IsWorldTalkProducer NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireProducer
 }
@@ -5506,7 +5506,7 @@ Response PlayerFriendlyFire2Producer
 }
 Rule PlayerFriendlyFire2Producer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsOnThirdStrike IsFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsTalk IsTalkProducer IsWorldTalkProducer IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsOnThirdStrike IsFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsTalk IsTalkProducer IsWorldTalkProducer NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFire2Producer
 }
@@ -5547,7 +5547,7 @@ Response PlayerFriendlyFireNoBulletProducer
 }
 Rule PlayerFriendlyFireNoBulletProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkProducer IsWorldTalkProducer IsNotZombiePresentTank _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeBullet IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkProducer IsWorldTalkProducer NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireNoBulletProducer
 }
@@ -5575,7 +5575,7 @@ Response PlayerFriendlyFireTankProducer
 }
 Rule PlayerFriendlyFireTankProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsZombiePresentTank IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankProducer
 }
@@ -5586,7 +5586,7 @@ Response PlayerFriendlyFireTankCoachProducer
 }
 Rule PlayerFriendlyFireTankCoachProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsCoach IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsCoach IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankCoachProducer
 }
@@ -5597,7 +5597,7 @@ Response PlayerFriendlyFireTankGamblerProducer
 }
 Rule PlayerFriendlyFireTankGamblerProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGamblerProducer
 }
@@ -5608,7 +5608,7 @@ Response PlayerFriendlyFireTankMechanicProducer
 }
 Rule PlayerFriendlyFireTankMechanicProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsZombiePresentTank IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsMechanic IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsMechanic IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankMechanicProducer
 }
@@ -5765,7 +5765,7 @@ Response PlayerReloadingC502RunProducer
 }
 Rule PlayerReloadingC502RunProducer
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated TheParish2DS IsTalk IsTalkProducer IsWorldTalkProducer IsNotZombiePresentTank ChanceToFire50Percent _auto_IsAlarm
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated TheParish2DS IsTalk IsTalkProducer IsWorldTalkProducer NotTankAggro ChanceToFire50Percent _auto_IsAlarm
 	Response PlayerReloadingC502RunProducer
 }
 
@@ -5779,7 +5779,7 @@ Response PlayerReloadingTankProducer
 }
 Rule PlayerReloadingTankProducer
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer IsNotSaidReloadingTank IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkProducer _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer IsNotSaidReloadingTank IsTankAggro IsSaidTankWarn2 IsWorldTalkProducer _auto_NotSpottedVehicle
 	ApplyContext "SaidReloadingTank:1:10,SaidTankWarn2:1:20"
 	applycontexttoworld
 	Response PlayerReloadingTankProducer
@@ -5793,7 +5793,7 @@ Response PlayerReloadingTankC1Producer
 }
 Rule PlayerReloadingTankC1Producer
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkProducer C1M1orC1M2 IsNotSurvival
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 IsWorldTalkProducer C1M1orC1M2 IsNotSurvival
 	ApplyContext "SaidReloadingTank:1:10,SaidTankWarn2:1:20"
 	applycontexttoworld
 	Response PlayerReloadingTankC1Producer
@@ -6017,7 +6017,7 @@ Response SurvivorReloadingProducer
 }
 Rule SurvivorReloadingProducer
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkProducer ChanceToFire50Percent IsNotZombiePresentTank NotInIntenseCombat _auto_NotProducerInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkProducer ChanceToFire50Percent NotTankAggro NotInIntenseCombat _auto_NotProducerInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
 	Response SurvivorReloadingProducer
 }
 
@@ -6029,7 +6029,7 @@ Response SurvivorReloadingIntenseProducer
 }
 Rule SurvivorReloadingIntenseProducer
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkProducer ChanceToFire50Percent IsNotZombiePresentTank InIntenseCombat _auto_NotProducerInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkProducer ChanceToFire50Percent NotTankAggro InIntenseCombat _auto_NotProducerInWitchville _auto_NotAlarmV2 _auto_ConcertNotLive _auto_NotSpottedVehicle
 	Response SurvivorReloadingIntenseProducer
 }
 
@@ -6043,7 +6043,7 @@ Response SurvivorReloadingC4M2Producer
 }
 Rule SurvivorReloadingC4M2Producer
 {
-	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkProducer ChanceToFire50Percent HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsProducerInWitchville
+	criteria ConceptPlayerReloading IsSurvivor IsNotSpeaking IsProducer IsNotIncapacitated IsTalk IsTalkProducer RecentGroupInCombat10 HasNotgrenadelauncher IsWorldTalkProducer ChanceToFire50Percent HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsProducerInWitchville
 	Response SurvivorReloadingC4M2Producer
 }
 
@@ -6996,7 +6996,7 @@ Response PlayerRemarkC3M2PlaneDoorNagaProducer
 }
 Rule PlayerRemarkC3M2PlaneDoorNagaProducer
 {
-	criteria ConceptTalkIdle IsProducer IsNotCoughing IsTalk IsTalkProducer IsSaidC3M2PlaneDoorNag IsInSwamps IsNotSaidC3M2OpenDoor IsNotZombiePresentTank AutoIsNotScavenge AutoIsNotSurvival IsWorldTalkProducer IsNotSpeakingWeight0 _auto_NotTimerLockA _auto_NotTimerLockProducer
+	criteria ConceptTalkIdle IsProducer IsNotCoughing IsTalk IsTalkProducer IsSaidC3M2PlaneDoorNag IsInSwamps IsNotSaidC3M2OpenDoor NotTankAggro AutoIsNotScavenge AutoIsNotSurvival IsWorldTalkProducer IsNotSpeakingWeight0 _auto_NotTimerLockA _auto_NotTimerLockProducer
 	ApplyContext "_auto_TimerLockA:1:20,_auto_TimerLockProducer:1:40,Talk:1:1.652"
 	applycontexttoworld
 	Response PlayerRemarkC3M2PlaneDoorNagaProducer
@@ -8761,7 +8761,7 @@ Response PlayerRemarkWorldC6M2_Phase2DownProducer
 }
 Rule PlayerRemarkWorldC6M2_Phase2DownProducer
 {
-	criteria ConceptRemark IsProducer IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing NotInCombat NotInIntenseCombat IsTalk IsTalkProducer IsWorldTalkProducer IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	criteria ConceptRemark IsProducer IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing NotInCombat NotInIntenseCombat NotTankAggro IsTalk IsTalkProducer IsWorldTalkProducer IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
 	ApplyContext "SaidWorldC6M2_Phase2Down:1:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_Phase2DownProducer
@@ -8773,7 +8773,7 @@ Response PlayerRemarkWorldC6M2_Phase2DownIntenseProducer
 }
 Rule PlayerRemarkWorldC6M2_Phase2DownIntenseProducer
 {
-	criteria ConceptRemark IsProducer IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing InIntenseCombat IsTalk IsTalkProducer IsWorldTalkProducer IsSubjectNear200 IntensityOver75 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	criteria ConceptRemark IsProducer IsWorldC6M2_Phase2Down IsNotSaidWorldC6M2_Phase2Down IsNotCoughing ActiveCombatSituation IsTalk IsTalkProducer IsWorldTalkProducer IsSubjectNear200 AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
 	ApplyContext "SaidWorldC6M2_Phase2Down:1:0"
 	applycontexttoworld
 	Response PlayerRemarkWorldC6M2_Phase2DownIntenseProducer
@@ -9050,7 +9050,7 @@ Response PlayerHurryUpC4M2Producer
 }
 Rule PlayerHurryUpC4M2Producer
 {
-	criteria ConceptPlayerHurryUp IsNotCoughing IsProducer IsTalk IsTalkProducer HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank IsWorldTalkProducer IsNotSpeaking _auto_IsProducerInWitchville
+	criteria ConceptPlayerHurryUp IsNotCoughing IsProducer IsTalk IsTalkProducer HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro IsWorldTalkProducer IsNotSpeaking _auto_IsProducerInWitchville
 	Response PlayerHurryUpC4M2Producer
 }
 
@@ -10229,7 +10229,7 @@ Rule PlayerGrabbedByJockeyC1Producer
 //}
 //Rule GrenadeCarefulProducer
 //{
-//	criteria ConceptGrenadeCareful IsNotCoughing IsProducer IsTalk IsWitchPresent NotInCombat HasAFrom IssuerClose IsTalkProducer IsWorldTalkProducer IsNotZombiePresentTank
+//	criteria ConceptGrenadeCareful IsNotCoughing IsProducer IsTalk IsWitchPresent NotInCombat HasAFrom IssuerClose IsTalkProducer IsWorldTalkProducer NotTankAggro
 //	Response GrenadeCarefulProducer
 //}
 
@@ -10253,7 +10253,7 @@ Response PlayerGrenadeMolotovTankProducer
 }
 Rule PlayerGrenadeMolotovTankProducer
 {
-	criteria ConceptThrewGrenade IsNotCoughing IsProducer IsTalk IsTalkProducer IsGrenadeMolotov IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkProducer _auto_NotSpottedVehicle
+	criteria ConceptThrewGrenade IsNotCoughing IsProducer IsTalk IsTalkProducer IsGrenadeMolotov IsTankAggro IsSaidTankWarn2 IsWorldTalkProducer _auto_NotSpottedVehicle
 	Response PlayerGrenadeMolotovTankProducer
 }
 
@@ -11557,7 +11557,7 @@ Response SurvivorVocalizeEmphaticGoC4M2Producer
 }
 Rule SurvivorVocalizeEmphaticGoC4M2Producer
 {
-	criteria ConceptPlayerEmphaticGo IsProducer IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkProducer IsWorldTalkProducer HardRain2DS IsNotSaidSafeSpotAhead IsNotZombiePresentTank _auto_IsProducerInWitchville
+	criteria ConceptPlayerEmphaticGo IsProducer IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkProducer IsWorldTalkProducer HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsProducerInWitchville
 	Response SurvivorVocalizeEmphaticGoC4M2Producer
 }
 
@@ -12516,7 +12516,7 @@ Response PlayerHealOtherProducer
 }
 Rule PlayerHealOtherProducer
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsProducer IsTalk IsTalkProducer NotInIntenseCombat IsWorldTalkProducer
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsProducer IsTalk IsTalkProducer NotInIntenseCombat NotTankAggro IsWorldTalkProducer
 	ApplyContext "TalkProducer:1:5"
 	Response PlayerHealOtherProducer
 }
@@ -12531,14 +12531,7 @@ Response PlayerHealOtherCombatProducer
 }
 Rule PlayerHealOtherCombatProducer
 {
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsProducer IsTalk IsTalkProducer InIntenseCombat IsWorldTalkProducer
-	ApplyContext "TalkProducer:1:5"
-	Response PlayerHealOtherCombatProducer
-}
-
-Rule PlayerHealOtherTankProducer
-{
-	criteria ConceptPlayerHealingOther IsNotCoughing  IsProducer IsTalk IsTalkProducer IsZombiePresentTank IsSaidTankWarn2 IsWorldTalkProducer
+	criteria ConceptPlayerHealingOther IsNotCoughing  IsProducer IsTalk IsTalkProducer ActiveCombatSituation IsWorldTalkProducer
 	ApplyContext "TalkProducer:1:5"
 	Response PlayerHealOtherCombatProducer
 }
@@ -12553,7 +12546,7 @@ Response PlayerLedgeSaveProducer
 }
 Rule PlayerLedgeSaveProducer
 {
-	criteria ConceptPlayerLedgeSave IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:5"
 	Response PlayerLedgeSaveProducer
 }
@@ -12591,7 +12584,7 @@ Response PlayerReviveFriendProducer
 }
 Rule PlayerReviveFriendProducer
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:2"
 	Response PlayerReviveFriendProducer
 }
@@ -12602,7 +12595,7 @@ Response PlayerReviveEllisProducer
 }
 Rule PlayerReviveEllisProducer
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsProducer IsTalk IsTalkProducer SubjectIsMechanic ChanceToFire5Percent IsWorldTalkProducer NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsProducer IsTalk IsTalkProducer SubjectIsMechanic ChanceToFire5Percent IsWorldTalkProducer NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:2,EllisCrying:1:2"
 	applycontexttoworld
 	Response PlayerReviveEllisProducer
@@ -12640,7 +12633,7 @@ Response PlayerReviveFriendCriticalProducer
 }
 Rule PlayerReviveFriendCriticalProducer
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsProducer IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsProducer IsTalk IsTalkProducer IsWorldTalkProducer NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:5"
 	Response PlayerReviveFriendCriticalProducer
 }
@@ -12658,17 +12651,30 @@ Response PlayerReviveFriendLoudProducer
 }
 Rule PlayerReviveFriendLoudProducer
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsProducer IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing  IsProducer ActiveCombatSituation IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:5"
-	forceweight 30
 	Response PlayerReviveFriendLoudProducer
 }
 
 Rule PlayerLedgeSaveCriticalProducer
 {
-	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing  IsProducer IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:5"
 	Response PlayerLedgeSaveProducer
+}
+
+Rule PlayerLedgeSaveLoudProducer
+{
+	criteria ConceptPlayerLedgeSave IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkProducer:1:5"
+	Response PlayerReviveFriendLoudProducer
+}
+
+Rule PlayerLedgeSaveCriticalLoudProducer
+{
+	criteria ConceptPlayerLedgeSaveCritical IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer ActiveCombatSituation _auto_NotSpottedVehicle
+	ApplyContext "TalkProducer:1:5"
+	Response PlayerReviveFriendLoudProducer
 }
 
 Response PlayerReviveFriendFFProducer
@@ -12679,7 +12685,7 @@ Response PlayerReviveFriendFFProducer
 }
 Rule PlayerReviveFriendFFProducer
 {
-	criteria ConceptPlayerReviveFriend IsNotCoughing IsProducer IsTalk IsTalkProducer IsShotTeammateProducer IsWorldTalkProducer NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsProducer IsTalk IsTalkProducer IsShotTeammateProducer IsWorldTalkProducer NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:5"
 	forceweight 20
 	Response PlayerReviveFriendFFProducer
@@ -12687,7 +12693,7 @@ Rule PlayerReviveFriendFFProducer
 
 Rule PlayerReviveFriendCriticalFFProducer
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsProducer IsTalk IsTalkProducer IsShotTeammateProducer IsWorldTalkProducer NotInIntenseCombat _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsProducer IsTalk IsTalkProducer IsShotTeammateProducer IsWorldTalkProducer NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:5"
 	forceweight 20
 	Response PlayerReviveFriendFFProducer
@@ -12696,25 +12702,10 @@ Rule PlayerReviveFriendCriticalFFProducer
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer - ZRescue
 //--------------------------------------------------------------------------------------------------------------
-Rule PlayerReviveFriendLoud2Producer
-{
-	criteria ConceptPlayerReviveFriend IsNotCoughing  IsProducer InIntenseCombat IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
-	ApplyContext "TalkProducer:1:5"
-	Response PlayerReviveFriendLoudProducer
-}
-
 Rule PlayerReviveFriendLoudCritProducer
 {
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing  IsProducer InIntenseCombat IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
+	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsProducer ActiveCombatSituation IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
 	ApplyContext "TalkProducer:1:5"
-	Response PlayerReviveFriendLoudProducer
-}
-
-Rule PlayerReviveFriendLoudCrit2Producer
-{
-	criteria ConceptPlayerReviveFriendCritical IsNotCoughing IsProducer IsZombiePresentTank IsSaidTankWarn2 IsTalk IsTalkProducer IsWorldTalkProducer _auto_NotSpottedVehicle
-	ApplyContext "TalkProducer:1:5"
-	forceweight 30
 	Response PlayerReviveFriendLoudProducer
 }
 
@@ -15672,9 +15663,25 @@ Rule JSGone2escapeProducer
 //--------------------------------------------------------------------------------------------------------------
 // Generic rules to keep track of contexts for all maps (Unless there's a seperate rule for special cases)
 //--------------------------------------------------------------------------------------------------------------
+Rule CampaignStartProducer
+{
+	criteria ConceptTalkIdle IsProducer IsInStartArea IsChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	ApplyContext "Talk:1:60,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:20"
+	applycontexttoworld
+	Response CustomTalkerEnable
+}
+
+Rule NoIntroChapter1Producer
+{
+	criteria ConceptTalkIdle IsProducer NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
+}
+
 Rule SafeRoomStartProducer
 {
-	criteria ConceptTalkIdle IsProducer IsInStartArea AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
+	criteria ConceptTalkIdle IsProducer IsInStartArea IsNotChapter1 AutoIsNotScavenge AutoIsNotSurvival _auto_NotSafeRoomStart
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable
