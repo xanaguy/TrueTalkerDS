@@ -842,7 +842,7 @@ Rule ReviveThanksProducer
 
 Response ReviveThanksCoachProducer
 {
-	scene "scenes/Producer/ThanksCoach01.vcd" predelay "2,2.5" then subject YouAreWelcome foo:0 0.3 //Thanks, my brother.
+	scene "scenes/Producer/ThanksCoach01.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Thanks, my brother.
 	scene "scenes/Producer/ThanksCoach02.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Thanks, Coach!
 }
 Rule ReviveThanksCoachProducer
@@ -5506,7 +5506,7 @@ Response PlayerFriendlyFire2Producer
 }
 Rule PlayerFriendlyFire2Producer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsOnThirdStrike IsFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsTalk IsTalkProducer IsWorldTalkProducer NotTankAggro _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsOnThirdStrike IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsTalk IsTalkProducer IsWorldTalkProducer NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFire2Producer
 }
@@ -9987,7 +9987,7 @@ Response C4M2LockTheDoorCheckPointProducer
 }
 Rule C4M2LockTheDoorCheckPointProducer
 {
-	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsProducer IsInSafeSpot IsTalk IsTalkProducer IsWorldTalkProducer HardRain2DS AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsProducer IsInSafeSpot IsNotAlone IsTalk IsTalkProducer IsWorldTalkProducer HardRain2DS AutoIsNotScavenge AutoIsNotSurvival
 	Response C4M2LockTheDoorCheckPointProducer
 }
 
@@ -11500,8 +11500,7 @@ Response SurvivorPouncedByHunterProducer
 }
 Rule SurvivorPouncedByHunterProducer
 {
-	criteria ConceptScreamWhilePounced IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer
-	ApplyContext "TalkProducer:1:5"
+	criteria ConceptScreamWhilePounced IsNotCoughing IsProducer IsTalk IsTalkProducer IsWorldTalkProducer IsNotSpeaking
 	Response SurvivorPouncedByHunterProducer
 }
 
@@ -15674,7 +15673,7 @@ Rule CampaignStartProducer
 Rule NoIntroChapter1Producer
 {
 	criteria ConceptTalkIdle IsProducer NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
-	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
 }

@@ -1017,8 +1017,8 @@ Rule ReviveThanksMechanic
 
 Response ReviveThanksCoachMechanic
 {
-	scene "scenes/Mechanic/Thanks01.vcd" predelay "2,2.5" then subject YouAreWelcome foo:0 0.3 //Hey, thanks, man.
-	scene "scenes/Mechanic/Thanks06.vcd" predelay "2,2.5" then subject YouAreWelcome foo:0 0.3 //Thanks man.
+	scene "scenes/Mechanic/Thanks01.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Hey, thanks, man.
+	scene "scenes/Mechanic/Thanks06.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Thanks man.
 	scene "scenes/Mechanic/ThanksCoach01.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Thanks, Coach.
 	scene "scenes/Mechanic/ThanksCoach02.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Thanks, Coach.
 	scene "scenes/Mechanic/ThanksCoach04.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Thanks, Coach.
@@ -1043,15 +1043,15 @@ Rule ReviveThanksCoachC1Mechanic
 
 Response ReviveThanksGamblerMechanic
 {
-	scene "scenes/Mechanic/Thanks01.vcd" predelay "2,2.5" then subject YouAreWelcome foo:0 0.3 //Hey, thanks, man.
-	scene "scenes/Mechanic/Thanks06.vcd" predelay "2,2.5" then subject YouAreWelcome foo:0 0.3 //Thanks man.
+	scene "scenes/Mechanic/Thanks01.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Hey, thanks, man.
+	scene "scenes/Mechanic/Thanks06.vcd" predelay ".2,.5" then subject YouAreWelcome foo:0 0.3 //Thanks man.
 	scene "scenes/Mechanic/ThanksGambler01.vcd" predelay ".2,.5"  then subject YouAreWelcome foo:0 0.3 //Thanks, Nick.
 	scene "scenes/Mechanic/ThanksGambler02.vcd" predelay ".2,.5"  then subject YouAreWelcome foo:0 0.3 //Hey, thanks, Nick.
 	scene "scenes/Mechanic/ThanksGambler03.vcd" predelay ".2,.5"  then subject YouAreWelcome foo:0 0.3 //Appreciate it, Nick.
 }
 Rule ReviveThanksGamblerMechanic
 {
-	criteria ConceptRevivedByFriend  IsNotCoughing  IsMechanic SubjectIsGambler ChanceToFire30Percent
+	criteria ConceptRevivedByFriend  IsNotCoughing IsMechanic SubjectIsGambler ChanceToFire30Percent
 	ApplyContext "TalkMechanic:1:2"
 	Response ReviveThanksGamblerMechanic
 }
@@ -6500,6 +6500,18 @@ Rule PlayerFriendlyFireTankMechanic
 	Response PlayerFriendlyFireTankMechanic
 }
 
+Response PlayerFriendlyFireTankC1Mechanic
+{
+	scene "scenes/Mechanic/ReactionNegative12.vcd"  //BULLSHIT!
+	scene "scenes/Mechanic/ReactionNegative13.vcd"  //Oh, hogwash, man!
+}
+Rule PlayerFriendlyFireTankC1Mechanic
+{
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkMechanic C1M1orC1M2 IsNotSurvival
+	ApplyContext "FriendlyFire:1:10"
+	Response PlayerFriendlyFireTankC1Mechanic
+}
+
 Response PlayerFriendlyFireTankCoachMechanic
 {
 	scene "scenes/Mechanic/FriendlyFireTank01.vcd"  //Whoa, whoa, WHOA! Shoot the Tank, man!
@@ -11423,7 +11435,7 @@ Response C4M2LockTheDoorCheckPointMechanic
 }
 Rule C4M2LockTheDoorCheckPointMechanic
 {
-	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsMechanic IsInSafeSpot IsTalk IsTalkMechanic IsWorldTalkMechanic HardRain2DS AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsMechanic IsInSafeSpot IsNotAlone IsTalk IsTalkMechanic IsWorldTalkMechanic HardRain2DS AutoIsNotScavenge AutoIsNotSurvival
 	Response C4M2LockTheDoorCheckPointMechanic
 }
 
@@ -13068,8 +13080,7 @@ Response SurvivorPouncedByHunterMechanic
 }
 Rule SurvivorPouncedByHunterMechanic
 {
-	criteria ConceptScreamWhilePounced IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic
-	ApplyContext "TalkMechanic:1:5"
+	criteria ConceptScreamWhilePounced IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsWorldTalkMechanic IsNotSpeaking
 	Response SurvivorPouncedByHunterMechanic
 }
 
@@ -13371,45 +13382,6 @@ Rule TeamKillMechanic
 	ApplyContext "SaidSomeoneDied:1:10,TalkMechanic:1:4"
 	applycontexttoworld
 	Response TeamKillMechanic
-}
-
-Response TeamKillFromCoachMechanic
-{
-	scene "scenes/Mechanic/DLC1_C6M1_InitialMeeting17.vcd" predelay "1,1.75" //COACH, come on, man!
-	scene "scenes/Mechanic/World120.vcd" predelay "1,1.75" //Man, you are sick, you know that?
-}
-Rule TeamKillFromCoachMechanic
-{
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsMechanic IsTalk IsTalkMechanic IsSaidFaultFriendlyFireGeneral IsSaidFaultFriendlyFireCoach ChanceToFire50Percent IsWorldTalkMechanic
-	ApplyContext "SaidSomeoneDied:1:10,TalkMechanic:1:3"
-	applycontexttoworld
-	Response TeamKillFromCoachMechanic
-}
-
-Response TeamKillFromGamblerMechanic
-{
-	scene "scenes/Mechanic/FriendlyFireC1Gambler01.vcd" predelay "1,1.75" //Nick! Did you mean to do that?
-	scene "scenes/Mechanic/World121.vcd" predelay "1,1.75" //You're a sick man.
-}
-Rule TeamKillFromGamblerMechanic
-{
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsMechanic IsTalk IsTalkMechanic IsSaidFaultFriendlyFireGeneral IsSaidFaultFriendlyFireGambler ChanceToFire50Percent IsWorldTalkMechanic
-	ApplyContext "SaidSomeoneDied:1:10,TalkMechanic:1:2"
-	applycontexttoworld
-	Response TeamKillFromGamblerMechanic
-}
-
-Response TeamKillFromProducerMechanic
-{
-	scene "scenes/Mechanic/FriendlyFireC1Producer01.vcd" predelay "1,1.75" //Ma'am you want me to show you how to work that thing?
-	scene "scenes/Mechanic/FriendlyFireC1Producer02.vcd" predelay "1,1.75" //Rochelle, STOP GIRL!
-}
-Rule TeamKillFromProducerMechanic
-{
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsMechanic IsTalk IsTalkMechanic IsSaidFaultFriendlyFireGeneral IsSaidFaultFriendlyFireProducer ChanceToFire50Percent IsWorldTalkMechanic
-	ApplyContext "SaidSomeoneDied:1:10,TalkMechanic:1:2"
-	applycontexttoworld
-	Response TeamKillFromProducerMechanic
 }
 
 
@@ -14301,6 +14273,17 @@ Rule PlayerLedgeSaveCriticalMechanic
 	Response PlayerLedgeSaveMechanic
 }
 
+Response PlayerReviveFriendFFMechanic
+{
+	scene "scenes/Mechanic/RevivefriendFF01.vcd"  //Did I do this? Did I? Oh shit. I'm sorry.  I am really sorry.
+}
+Rule PlayerReviveFriendFFMechanic
+{
+	criteria ConceptPlayerReviveFriend IsNotCoughing IsMechanic IsTalk IsTalkMechanic IsShotTeammateMechanic IsWorldTalkMechanic NotInIntenseCombat NotTankAggro _auto_NotSpottedVehicle
+	ApplyContext "TalkMechanic:1:5"
+	forceweight 20
+	Response PlayerReviveFriendFFMechanic
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer - ZRescue
@@ -17729,7 +17712,7 @@ Rule CampaignStartMechanic
 Rule NoIntroChapter1Mechanic
 {
 	criteria ConceptTalkIdle IsMechanic NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
-	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
 }

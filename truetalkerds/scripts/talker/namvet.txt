@@ -5568,7 +5568,7 @@ Response L4D1PlayerLockTheDoorCheckPointNamVet
 }
 Rule L4D1PlayerLockTheDoorCheckPointNamVet
 {
-	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsNamVet IsInSafeSpot IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsNamVet IsInSafeSpot IsNotAlone IsTalk IsTalkNamVet IsWorldTalkNamVet AutoIsNotScavenge AutoIsNotSurvival
 	Response L4D1PlayerLockTheDoorCheckPointNamVet
 }
 
@@ -6308,8 +6308,7 @@ Response SurvivorPouncedByHunterNamVet
 }
 Rule SurvivorPouncedByHunterNamVet
 {
-	criteria ConceptScreamWhilePounced IsNotCoughing IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet
-	ApplyContext "TalkNamVet:1:5"
+	criteria ConceptScreamWhilePounced IsNotCoughing IsNamVet IsTalk IsTalkNamVet IsWorldTalkNamVet IsNotSpeaking
 	Response SurvivorPouncedByHunterNamVet
 }
 
@@ -6421,8 +6420,8 @@ Rule L4D1DeathOneNamVet
 
 Response L4D1TeamKillNamVet
 {
-	scene "scenes/NamVet/TeamKillAccident01.vcd" predelay ".5,1.25" //Be careful!
-	scene "scenes/NamVet/TeamKillAccident02.vcd" predelay ".5,1.25" //Have you lost your mind?
+	scene "scenes/NamVet/TeamKillAccident01.vcd" predelay "1,1.75" //Be careful!
+	scene "scenes/NamVet/TeamKillAccident02.vcd" predelay "1,1.75" //Have you lost your mind?
 }
 Rule L4D1TeamKillNamVet
 {
@@ -8487,7 +8486,7 @@ Rule L4D1PlayerGetInsideCheckPointFatalFreight4NamVet
 
 Rule L4D1PlayerLockTheDoorCheckPointFatalFreight4NamVet
 {
-	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsNamVet IsInSafeSpot IsTalk IsTalkNamVet IsWorldTalkNamVet IsFatalFreight4 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsNamVet IsInSafeSpot IsNotAlone IsTalk IsTalkNamVet IsWorldTalkNamVet IsFatalFreight4 AutoIsNotScavenge AutoIsNotSurvival
 	Response NoResponse
 }
 
@@ -8736,7 +8735,7 @@ Rule CampaignStartNamVet
 Rule NoIntroChapter1NamVet
 {
 	criteria ConceptTalkIdle IsNamVet NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
-	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
 }

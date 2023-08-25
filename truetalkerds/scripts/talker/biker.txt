@@ -502,7 +502,7 @@ Response L4D1BotNoteHumanAttentionBiker
 }
 Rule L4D1BotNoteHumanAttentionBiker
 {
-	criteria ConceptSurvivorBotNoteHumanAttention IsNotCoughing IsBiker IsNotBotAttention IsTalk IsTalkBiker IsNotIncapacitated IsInSafeSpot IsWorldTalkBiker IsNotSpeakingWeight0
+	criteria ConceptSurvivorBotNoteHumanAttention IsNotCoughing IsBiker IsNotBotAttention IsTalk IsTalkBiker IsNotIncapacitated IsInStartArea IsWorldTalkBiker IsNotSpeakingWeight0
 	ApplyContext "SaidBotAttention:1:30"
 	applycontexttoworld
 	Response L4D1BotNoteHumanAttentionBiker
@@ -7336,7 +7336,7 @@ Response L4D1PlayerLockTheDoorCheckPointBiker
 }
 Rule L4D1PlayerLockTheDoorCheckPointBiker
 {
-	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsBiker IsInSafeSpot IsTalk IsTalkBiker IsWorldTalkBiker AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsBiker IsInSafeSpot IsNotAlone IsTalk IsTalkBiker IsWorldTalkBiker AutoIsNotScavenge AutoIsNotSurvival
 	Response L4D1PlayerLockTheDoorCheckPointBiker
 }
 
@@ -8133,8 +8133,7 @@ Response SurvivorPouncedByHunterBiker
 }
 Rule SurvivorPouncedByHunterBiker
 {
-	criteria ConceptScreamWhilePounced IsNotCoughing IsBiker IsTalk IsTalkBiker IsWorldTalkBiker
-	ApplyContext "TalkBiker:1:5"
+	criteria ConceptScreamWhilePounced IsNotCoughing IsBiker IsTalk IsTalkBiker IsWorldTalkBiker IsNotSpeaking
 	Response SurvivorPouncedByHunterBiker
 }
 
@@ -8241,9 +8240,9 @@ Rule L4D1DeathOneBiker
 
 Response L4D1TeamKillBiker
 {
-	scene "scenes/Biker/TeamKillAccident01.vcd" predelay ".5,1.25" //Be careful!
-	scene "scenes/Biker/TeamKillAccident02.vcd" predelay ".5,1.25" //That was not cool.
-	scene "scenes/Biker/TeamKillAccident03.vcd" predelay ".5,1.25" //That was not cool.
+	scene "scenes/Biker/TeamKillAccident01.vcd" predelay "1,1.75" //Be careful!
+	scene "scenes/Biker/TeamKillAccident02.vcd" predelay "1,1.75" //That was not cool.
+	scene "scenes/Biker/TeamKillAccident03.vcd" predelay "1,1.75" //That was not cool.
 }
 Rule L4D1TeamKillBiker
 {
@@ -10318,7 +10317,7 @@ Rule L4D1PlayerGetInsideCheckPointFatalFreight4Biker
 
 Rule L4D1PlayerLockTheDoorCheckPointFatalFreight4Biker
 {
-	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsBiker IsInSafeSpot IsTalk IsTalkBiker IsWorldTalkBiker IsFatalFreight4 AutoIsNotScavenge AutoIsNotSurvival
+	criteria ConceptPlayerLockTheDoorCheckPoint IsNotCoughing IsBiker IsInSafeSpot IsNotAlone IsTalk IsTalkBiker IsWorldTalkBiker IsFatalFreight4 AutoIsNotScavenge AutoIsNotSurvival
 	Response NoResponse
 }
 
@@ -10571,7 +10570,7 @@ Rule CampaignStartBiker
 Rule NoIntroChapter1Biker
 {
 	criteria ConceptTalkIdle IsBiker NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
-	ApplyContext "Talk:0:0,SaidCXM1Intro:1:0,_auto_SafeRoomStart:2:0"
+	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
 }
