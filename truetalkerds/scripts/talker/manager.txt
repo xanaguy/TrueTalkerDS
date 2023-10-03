@@ -2114,6 +2114,38 @@ Rule L4D1SurvivorBoomerBlunderManager
 	Response L4D1SurvivorBoomerBlunderManager
 }
 
+Response L4D1GreedManager
+{
+	print " " then any GreedResponse foo:0 1
+}
+Rule L4D1GreedManager
+{
+	criteria IsFaultConcept Wasteful IsManager
+	Response L4D1GreedManager
+}
+
+Response L4D1GreedResponseManager
+{
+	scene "scenes/Manager/Swears16.vcd"  //That's some country-ass bullshit.
+}
+
+Rule L4D1GreedResponseToNamVetManager
+{
+	criteria ConceptGreedResponse IsManager IsNotCoughing IsTalk IsTalkManager IsWorldTalkManager FromIsNamVet SubjectIsNamVet IsOnThirdStrike NoHasFirstAidKit
+	Response L4D1GreedResponseManager
+}
+
+Rule L4D1GreedResponseToBikerManager
+{
+	criteria ConceptGreedResponse IsManager IsNotCoughing IsTalk IsTalkManager IsWorldTalkManager FromIsBiker SubjectIsBiker IsOnThirdStrike NoHasFirstAidKit
+	Response L4D1GreedResponseManager
+}
+
+Rule L4D1GreedResponseToTeenGirlManager
+{
+	criteria ConceptGreedResponse IsManager IsNotCoughing IsTalk IsTalkManager IsWorldTalkManager FromIsTeenGirl SubjectIsTeenGirl IsOnThirdStrike NoHasFirstAidKit
+	Response L4D1GreedResponseManager
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // Finale Speech
@@ -6952,19 +6984,28 @@ Rule L4D1DeathAloneManager
 
 Response L4D1TeamKillManager
 {
-	scene "scenes/Manager/TeamKillAccident01.vcd" predelay "1,1.75" //Woah man, you gotta be careful.
-	scene "scenes/Manager/TeamKillAccident02.vcd" predelay "1,1.75" //Woah man, you gotta be careful.
-	scene "scenes/Manager/TeamKillAccident03.vcd" predelay "1,1.75" //What the hell man?
-	scene "scenes/Manager/TeamKillAccident04.vcd" predelay "1,1.75" //Be careful, what are you doing?
+	print " " then any TeamKillResponse foo:0 1.5
 }
 Rule L4D1TeamKillManager
 {
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsManager IsTalk IsTalkManager IsNotSaidSomeoneDied IsSaidFaultFriendlyFireGeneral IsNotSaidFaultFriendlyFireManager IsWorldTalkManager
+	criteria IsFaultConcept IsManager ShouldBeVoteKicked
 	ApplyContext "SaidSomeoneDied:1:10"
 	applycontexttoworld
 	Response L4D1TeamKillManager
 }
 
+Response L4D1TeamKillResponseManager
+{
+	scene "scenes/Manager/TeamKillAccident01.vcd" //Woah man, you gotta be careful.
+	scene "scenes/Manager/TeamKillAccident02.vcd" //Woah man, you gotta be careful.
+	scene "scenes/Manager/TeamKillAccident03.vcd" //What the hell man?
+	scene "scenes/Manager/TeamKillAccident04.vcd" //Be careful, what are you doing?
+}
+Rule L4D1TeamKillResponseManager
+{
+	criteria ConceptTeamKillResponse IsManager IsNotCoughing IsTalk IsTalkManager IsWorldTalkManager
+	Response L4D1TeamKillResponseManager
+}
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer - Pickups
 //--------------------------------------------------------------------------------------------------------------
@@ -9208,7 +9249,7 @@ Rule CampaignStartManager
 
 Rule NoIntroChapter1Manager
 {
-	criteria ConceptTalkIdle IsManager NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsManager NotInCombat IsInStartArea IsChapter1 IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
@@ -9220,6 +9261,14 @@ Rule SafeRoomStartManager
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable
+}
+
+Rule NoIntroManager
+{
+	criteria ConceptTalkIdle IsManager NotInCombat IsInStartArea IsNotChapter1 IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
 }
 
 Rule IntroEndManager

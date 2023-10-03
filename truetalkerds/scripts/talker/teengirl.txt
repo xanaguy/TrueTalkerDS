@@ -2308,6 +2308,39 @@ Rule L4D1SurvivorBoomerBlunderTeenGirl
 	Response L4D1SurvivorBoomerBlunderTeenGirl
 }
 
+Response L4D1GreedTeenGirl
+{
+	print " " then any GreedResponse foo:0 1
+}
+Rule L4D1GreedTeenGirl
+{
+	criteria IsFaultConcept Wasteful IsTeenGirl
+	Response L4D1GreedTeenGirl
+}
+
+Response L4D1GreedResponseTeenGirl
+{
+	scene "scenes/TeenGirl/Swear09.vcd" //Ah bullshit.
+}
+
+Rule L4D1GreedResponseToManagerTeenGirl
+{
+	criteria ConceptGreedResponse IsTeenGirl IsNotCoughing IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl FromIsManager SubjectIsManager IsOnThirdStrike NoHasFirstAidKit
+	Response L4D1GreedResponseTeenGirl
+}
+
+Rule L4D1GreedResponseToBikerTeenGirl
+{
+	criteria ConceptGreedResponse IsTeenGirl IsNotCoughing IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl FromIsBiker SubjectIsBiker IsOnThirdStrike NoHasFirstAidKit
+	Response L4D1GreedResponseTeenGirl
+}
+
+Rule L4D1GreedResponseToNamVetTeenGirl
+{
+	criteria ConceptGreedResponse IsTeenGirl IsNotCoughing IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl FromIsNamVet SubjectIsNamVet IsOnThirdStrike NoHasFirstAidKit
+	Response L4D1GreedResponseTeenGirl
+}
+
 
 //--------------------------------------------------------------------------------------------------------------
 // Finale Speech
@@ -7599,17 +7632,27 @@ Rule L4D1DeathOneTeenGirl
 
 Response L4D1TeamKillTeenGirl
 {
-	scene "scenes/TeenGirl/TeamKillAccident03.vcd" predelay "1,1.75" //Oh, shit man, no. No. NO!
-	scene "scenes/TeenGirl/TeamKillAccident05.vcd" predelay "1,1.75" //Be careful!
-	scene "scenes/TeenGirl/TeamKillAccident06.vcd" predelay "1,1.75" //Stop Stop!
-	scene "scenes/TeenGirl/TeamKillAccident08.vcd" predelay "1,1.75" //Woah.  Careful!
+	print " " then any TeamKillResponse foo:0 1.5
 }
 Rule L4D1TeamKillTeenGirl
 {
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsTeenGirl IsTalk IsTalkTeenGirl IsNotSaidSomeoneDied IsSaidFaultFriendlyFireGeneral IsNotSaidFaultFriendlyFireTeenGirl IsNotIncapacitated IsWorldTalkTeenGirl
+	criteria IsFaultConcept IsTeenGirl ShouldBeVoteKicked
 	ApplyContext "SaidSomeoneDied:1:10"
 	applycontexttoworld
 	Response L4D1TeamKillTeenGirl
+}
+
+Response L4D1TeamKillResponseTeenGirl
+{
+	scene "scenes/TeenGirl/TeamKillAccident03.vcd" //Oh, shit man, no. No. NO!
+	scene "scenes/TeenGirl/TeamKillAccident05.vcd" //Be careful!
+	scene "scenes/TeenGirl/TeamKillAccident06.vcd" //Stop Stop!
+	scene "scenes/TeenGirl/TeamKillAccident08.vcd" //Woah.  Careful!
+}
+Rule L4D1TeamKillResponseTeenGirl
+{
+	ConceptTeamKillResponse IsTeenGirl IsNotCoughing IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl
+	Response L4D1TeamKillResponseTeenGirl
 }
 
 
@@ -9833,10 +9876,10 @@ Rule CampaignStartTeenGirl
 
 Rule NoIntroChapter1TeenGirl
 {
-	criteria ConceptTalkIdle IsTeenGirl NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsTeenGirl NotInCombat IsInStartArea IsChapter1 IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
-	Response CustomTalkerEnable
+	Response NoResponse
 }
 
 Rule SafeRoomStartTeenGirl
@@ -9845,6 +9888,14 @@ Rule SafeRoomStartTeenGirl
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable
+}
+
+Rule NoIntroTeenGirl
+{
+	criteria ConceptTalkIdle IsTeenGirl NotInCombat IsInStartArea IsNotChapter1 IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
 }
 
 Rule IntroEndTeenGirl

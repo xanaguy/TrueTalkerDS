@@ -6290,6 +6290,44 @@ Rule SurvivorSpottedWitch2C1Mechanic
 }
 
 //--------------------------------------------------------------------------------------------------------------
+// Fault - Greed
+//--------------------------------------------------------------------------------------------------------------
+Response GreedMechanic
+{
+	print " " then any GreedResponse foo:0 1
+}
+Rule GreedMechanic
+{
+	criteria IsFaultConcept Wasteful IsMechanic
+	Response GreedMechanic
+}
+
+Response GreedResponseMechanic
+{
+	scene "scenes/Mechanic/ReactionNegative12.vcd"  //BULLSHIT!
+	scene "scenes/Mechanic/ReactionNegative13.vcd"  //Oh, hogwash, man!
+	scene "scenes/Mechanic/ReactionNegative16.vcd"  //Ain't that a load of shit.
+}
+
+Rule GreedResponseToGamblerMechanic
+{
+	criteria ConceptGreedResponse IsMechanic IsNotCoughing IsTalk IsTalkMechanic IsWorldTalkMechanic FromIsGambler SubjectIsGambler IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseMechanic
+}
+
+Rule GreedResponseToCoachMechanic
+{
+	criteria ConceptGreedResponse IsMechanic IsNotCoughing IsTalk IsTalkMechanic IsWorldTalkMechanic FromIsCoach SubjectIsCoach IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseMechanic
+}
+
+Rule GreedResponseToProducerMechanic
+{
+	criteria ConceptGreedResponse IsMechanic IsNotCoughing IsTalk IsTalkMechanic IsWorldTalkMechanic FromIsProducer SubjectIsProducer IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseMechanic
+}
+
+//--------------------------------------------------------------------------------------------------------------
 // Not Rosetta - Responses
 //--------------------------------------------------------------------------------------------------------------
 Response PlayerAlertGiveItemMechanic
@@ -6495,7 +6533,7 @@ Response PlayerFriendlyFireTankMechanic
 }
 Rule PlayerFriendlyFireTankMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankMechanic
 }
@@ -6507,7 +6545,7 @@ Response PlayerFriendlyFireTankC1Mechanic
 }
 Rule PlayerFriendlyFireTankC1Mechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkMechanic C1M1orC1M2 IsNotSurvival
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 IsWorldTalkMechanic C1M1orC1M2 IsNotSurvival
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankC1Mechanic
 }
@@ -6519,7 +6557,7 @@ Response PlayerFriendlyFireTankCoachMechanic
 }
 Rule PlayerFriendlyFireTankCoachMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsCoach IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsCoach IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankCoachMechanic
 }
@@ -6531,7 +6569,7 @@ Response PlayerFriendlyFireTankGamblerMechanic
 }
 Rule PlayerFriendlyFireTankGamblerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsGambler IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGamblerMechanic
 }
@@ -6542,7 +6580,7 @@ Response PlayerFriendlyFireTankProducerMechanic
 }
 Rule PlayerFriendlyFireTankProducerMechanic
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsProducer IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsMechanic IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkMechanic IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsProducer IsWorldTalkMechanic isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankProducerMechanic
 }
@@ -13115,6 +13153,21 @@ Rule SurvivorVocalizeBackUpMechanic
 	Response SurvivorVocalizeBackUpMechanic
 }
 
+Response SurvivorVocalizeBackUpC4M2Mechanic
+{
+	scene "scenes/Mechanic/BackUpQuiet01.vcd"  //Back up.
+	scene "scenes/Mechanic/BackUpQuiet02.vcd"  //Move back.
+	scene "scenes/Mechanic/BackUpQuiet03.vcd"  //Get back.
+	scene "scenes/Mechanic/BackUpQuiet04.vcd"  //Get back.
+	scene "scenes/Mechanic/BackUpQuiet05.vcd"  //Hey, move back.
+	scene "scenes/Mechanic/BackUpQuiet06.vcd"  //Back up.
+}
+Rule SurvivorVocalizeBackUpC4M2Mechanic
+{
+	criteria ConceptPlayerBackUp IsMechanic IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkMechanic IsWorldTalkMechanic HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsMechanicInWitchville
+	Response SurvivorVocalizeBackUpC4M2Mechanic
+}
+
 Response SurvivorVocalizeEmphaticGoMechanic
 {
 	scene "scenes/Mechanic/EmphaticGo01.vcd"  //Let's  go!
@@ -13370,20 +13423,29 @@ Rule DoubleDeathProducerMechanic
 
 Response TeamKillMechanic
 {
-	scene "scenes/Mechanic/TeamKillAccident04.vcd" predelay "1,1.75" //Yo we're on the same team aren't we?
-	scene "scenes/Mechanic/TeamKillAccident01.vcd" predelay "1,1.75" //Woah! I didn't do that! Man, that ain't right!
-	scene "scenes/Mechanic/TeamKillAccident02.vcd" predelay "1,1.75" //That's just straight messed up, man.
-	scene "scenes/Mechanic/TeamKillAccident03.vcd" predelay "1,1.75" //Jumpin' Jesus! What are you doin'!?!?!
-	scene "scenes/Mechanic/TeamKillAccident05.vcd" predelay "1,1.75" //Jesus Christ, man!
+	print " " then any TeamKillResponse foo:0 1.5
 }
 Rule TeamKillMechanic
 {
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsMechanic IsTalk IsTalkMechanic IsSaidFaultFriendlyFireGeneral IsNotSaidFaultFriendlyFireMechanic IsWorldTalkMechanic
-	ApplyContext "SaidSomeoneDied:1:10,TalkMechanic:1:4"
+	criteria IsFaultConcept IsMechanic ShouldBeVoteKicked
+	ApplyContext "SaidSomeoneDied:1:10"
 	applycontexttoworld
 	Response TeamKillMechanic
 }
 
+Response TeamKillResponseMechanic
+{
+	scene "scenes/Mechanic/TeamKillAccident04.vcd" //Yo we're on the same team aren't we?
+	scene "scenes/Mechanic/TeamKillAccident01.vcd" //Woah! I didn't do that! Man, that ain't right!
+	scene "scenes/Mechanic/TeamKillAccident02.vcd" //That's just straight messed up, man.
+	scene "scenes/Mechanic/TeamKillAccident03.vcd" //Jumpin' Jesus! What are you doin'!?!?!
+	scene "scenes/Mechanic/TeamKillAccident05.vcd" //Jesus Christ, man!
+}
+Rule TeamKillResponseMechanic
+{
+	criteria ConceptTeamKillResponse IsMechanic IsNotCoughing IsTalk IsTalkMechanic IsWorldTalkMechanic
+	Response TeamKillResponseMechanic
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer - Pickups
@@ -17711,7 +17773,7 @@ Rule CampaignStartMechanic
 
 Rule NoIntroChapter1Mechanic
 {
-	criteria ConceptTalkIdle IsMechanic NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsMechanic NotInCombat IsInStartArea IsChapter1 IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
@@ -17732,6 +17794,14 @@ Rule SafeRoomStartMechanic
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable
+}
+
+Rule NoIntroMechanic
+{
+	criteria ConceptTalkIdle IsMechanic NotInCombat IsInStartArea IsNotChapter1 IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
 }
 
 Rule IntroEndMechanic

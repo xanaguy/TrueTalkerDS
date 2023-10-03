@@ -5766,6 +5766,57 @@ Rule SurvivorSpottedWitch2C1Gambler
 }
 
 //--------------------------------------------------------------------------------------------------------------
+// Fault - Greed
+//--------------------------------------------------------------------------------------------------------------
+Response GreedGambler
+{
+	print " " then any GreedResponse foo:0 1
+}
+Rule GreedGambler
+{
+	criteria IsFaultConcept Wasteful IsGambler
+	Response GreedGambler
+}
+
+Response GreedResponseGambler
+{
+	scene "scenes/Gambler/ReactionNegative05.vcd"  //Bullshit!
+	scene "scenes/Gambler/ReactionNegative11.vcd"  //Oh bullshit!
+	scene "scenes/Gambler/ReactionNegative17.vcd"  //Bullshit!
+	scene "scenes/Gambler/ReactionNegative22.vcd"  //Oh bullshit!
+	scene "scenes/Gambler/ReactionNegative24.vcd"  //Is this some kind of sick joke?
+	scene "scenes/Gambler/ReactionNegative25.vcd"  //Is this some kind of sick joke?
+	scene "scenes/Gambler/ReactionNegative27.vcd"  //Kiss my ass.
+	scene "scenes/Gambler/ReactionNegative28.vcd"  //Ass.
+	scene "scenes/Gambler/ReactionNegative29.vcd"  //Asshat.
+	scene "scenes/Gambler/ReactionNegative31.vcd"  //Asshole.
+	scene "scenes/Gambler/ReactionNegative32.vcd"  //Assclown.
+	scene "scenes/Gambler/ReactionNegative33.vcd"  //Dumbshit.
+	scene "scenes/Gambler/ReactionNegative35.vcd"  //Kiss my ass.
+	scene "scenes/Gambler/ReactionNegative36.vcd"  //Kiss my ass.
+	scene "scenes/Gambler/ReactionNegative37.vcd"  //What an assclown.
+	scene "scenes/Gambler/ReactionNegative38.vcd"  //Dumbshit.
+}
+
+Rule GreedResponseToMechanicGambler
+{
+	criteria ConceptGreedResponse IsGambler IsNotCoughing IsTalk IsTalkGambler IsWorldTalkGambler FromIsMechanic SubjectIsMechanic IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseGambler
+}
+
+Rule GreedResponseToCoachGambler
+{
+	criteria ConceptGreedResponse IsGambler IsNotCoughing IsTalk IsTalkGambler IsWorldTalkGambler FromIsCoach SubjectIsCoach IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseGambler
+}
+
+Rule GreedResponseToProducerGambler
+{
+	criteria ConceptGreedResponse IsGambler IsNotCoughing IsTalk IsTalkGambler IsWorldTalkGambler FromIsProducer SubjectIsProducer IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseGambler
+}
+
+//--------------------------------------------------------------------------------------------------------------
 // Not Rosetta - Responses
 //--------------------------------------------------------------------------------------------------------------
 Response PlayerAlertGiveItemGambler
@@ -6021,7 +6072,7 @@ Response PlayerFriendlyFireTankGambler
 }
 Rule PlayerFriendlyFireTankGambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkGambler IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkGambler IsTankAggro IsSaidTankWarn2 IsWorldTalkGambler isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGambler
 }
@@ -6033,7 +6084,7 @@ Response PlayerFriendlyFireTankC1Gambler
 }
 Rule PlayerFriendlyFireTankC1Gambler
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkGambler IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkGambler C1M1orC1M2 IsNotSurvival
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsGambler IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkGambler IsTankAggro IsSaidTankWarn2 IsWorldTalkGambler C1M1orC1M2 IsNotSurvival
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankC1Gambler
 }
@@ -12575,14 +12626,14 @@ Rule SurvivorTankPoundC1Gambler
 
 Response SurvivorVocalizeBackUpGambler
 {
-	scene "scenes/Gambler/BackUp01.vcd"  //Back it up!
-	scene "scenes/Gambler/BackUp02.vcd"  //Back, back, back!
-	scene "scenes/Gambler/BackUp03.vcd"  //Come on back.
-	scene "scenes/Gambler/BackUp04.vcd"  //Back it up!
+	scene "scenes/Gambler/BackUpQuiet01.vcd"  //Back up.
+	scene "scenes/Gambler/BackUpQuiet02.vcd"  //Everyone back.
+	scene "scenes/Gambler/BackUpQuiet03.vcd"  //Let's get back.
+	scene "scenes/Gambler/BackUpQuiet04.vcd"  //Back up, back up.
 }
 Rule SurvivorVocalizeBackUpGambler
 {
-	criteria ConceptPlayerBackUp IsGambler IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkGambler IsWorldTalkGambler IsNotSpeaking
+	criteria ConceptPlayerBackUp IsGambler IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkGambler IsWorldTalkGambler IsNotSpeaking HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsGamblerInWitchville
 	Response SurvivorVocalizeBackUpGambler
 }
 
@@ -12847,14 +12898,25 @@ Rule DoubleDeath2MechanicGambler
 
 Response TeamKillGambler
 {
-	scene "scenes/Gambler/TeamKillAccident03.vcd" predelay "1,1.75" //What?!!?  This is hard enough without you helping the freaks!
+	print " " then any TeamKillResponse foo:0 1.5
 }
 Rule TeamKillGambler
 {
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsGambler IsNotSaidSomeoneDied IsTalk IsTalkGambler IsSaidFaultFriendlyFireGeneral IsNotSaidFaultFriendlyFireGambler IsWorldTalkGambler
-	ApplyContext "SaidSomeoneDied:1:10,TalkGambler:1:4"
+	criteria IsFaultConcept IsGambler ShouldBeVoteKicked
+	ApplyContext "SaidSomeoneDied:1:10"
 	applycontexttoworld
 	Response TeamKillGambler
+}
+
+
+Response TeamKillResponseGambler
+{
+	scene "scenes/Gambler/TeamKillAccident03.vcd" //What?!!?  This is hard enough without you helping the freaks!
+}
+Rule TeamKillResponseGambler
+{
+	criteria ConceptTeamKillResponse IsGambler IsNotCoughing IsTalk IsTalkGambler IsWorldTalkGambler
+	Response TeamKillResponseGambler
 }
 
 //--------------------------------------------------------------------------------------------------------------
@@ -16944,7 +17006,7 @@ Rule CampaignStartGambler
 
 Rule NoIntroChapter1Gambler
 {
-	criteria ConceptTalkIdle IsGambler NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsGambler NotInCombat IsInStartArea IsChapter1 IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
@@ -16956,6 +17018,14 @@ Rule SafeRoomStartGambler
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable
+}
+
+Rule NoIntroGambler
+{
+	criteria ConceptTalkIdle IsGambler NotInCombat IsInStartArea IsNotChapter1 IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
 }
 
 Rule IntroEndGambler

@@ -448,6 +448,18 @@ criterion "IsFaultBoomerBlunder"   "FaultName" "BoomerBlunder"	  required
 criterion "IsFaultWitchHarassment"   "FaultName" "WitchHarassment"	  required
 criterion "IsFaultReckless"   "FaultName" "Reckless"	  required
 criterion "IsFaultL4D"   "FaultName" "Left4Dead"	  required
+criterion "Wasteful"   "FaultName" "Greed"	  required
+criterion "Rusher"   "FaultName" "Abandonment"	  required
+criterion "SkillIssue"   "FaultName" "Knockdown"	  required
+criterion "TerribleThrowingArm"   "FaultName" "GrenadeBlunder"	  required
+criterion "SkullCracker"   "FaultName" "Forgetful"	  required
+criterion "ShouldBeVoteKicked"   "FaultName" "Murder"	  required
+criterion "Jackass"   "FaultName" "AbusiveBehavior"	  required
+criterion "TemptsFate"   "FaultName" "SecurityFailure"	  required
+
+//Fault responses
+criterion "ConceptTeamKillResponse"   "Concept" "TeamKillResponse"	  required
+criterion "ConceptGreedResponse"   "Concept" "GreedResponse"	  required
 
 //Awards
 
@@ -995,6 +1007,10 @@ criterion "IsNotDeadProducer"		"DeadCharacter"	"!=Producer"		required
 criterion "IsNotDeadMechanic"		"DeadCharacter"	"!=Mechanic"		required
 criterion "IsDeadUnknown"		"DeadCharacter"	"Unknown"		required
 
+criterion "GamblerIncapacitated"   "IncapacitatedCharacter" "Gambler"	  required
+criterion "CoachIncapacitated"   "IncapacitatedCharacter" "Coach"	  required
+criterion "ProducerIncapacitated"   "IncapacitatedCharacter" "Producer"	  required
+criterion "MechanicIncapacitated"   "IncapacitatedCharacter" "Mechanic"	  required
 
 // Infected states
 criterion "IsSurprised"   "InfectedState"   "Surprised"   required

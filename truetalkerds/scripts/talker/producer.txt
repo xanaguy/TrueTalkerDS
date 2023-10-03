@@ -5415,6 +5415,41 @@ Rule SurvivorSpottedWitch2C1Producer
 	Response SurvivorSpottedWitchC1Producer
 }
 
+//--------------------------------------------------------------------------------------------------------------
+// Fault - Greed
+//--------------------------------------------------------------------------------------------------------------
+Response GreedProducer
+{
+	print " " then any GreedResponse foo:0 1
+}
+Rule GreedProducer
+{
+	criteria IsFaultConcept Wasteful IsProducer
+	Response GreedProducer
+}
+
+Response GreedResponseProducer
+{
+	scene "scenes/Producer/ReactionNegative20.vcd"  //Argghh! (disgusted)
+}
+
+Rule GreedResponseToGamblerProducer
+{
+	criteria ConceptGreedResponse IsProducer IsNotCoughing IsTalk IsTalkProducer IsWorldTalkProducer FromIsGambler SubjectIsGambler IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseProducer
+}
+
+Rule GreedResponseToCoachProducer
+{
+	criteria ConceptGreedResponse IsProducer IsNotCoughing IsTalk IsTalkProducer IsWorldTalkProducer FromIsCoach SubjectIsCoach IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseProducer
+}
+
+Rule GreedResponseToMechanicProducer
+{
+	criteria ConceptGreedResponse IsProducer IsNotCoughing IsTalk IsTalkProducer IsWorldTalkProducer FromIsMechanic SubjectIsMechanic IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseProducer
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // Not Rosetta - Responses
@@ -5575,9 +5610,22 @@ Response PlayerFriendlyFireTankProducer
 }
 Rule PlayerFriendlyFireTankProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankProducer
+}
+
+Response PlayerFriendlyFireTankC1Producer
+{
+	scene "scenes/Producer/ReactionNegative17.vcd"  //We don't have time for this shit.
+	scene "scenes/Producer/ReactionNegative18.vcd"  //Goddamnit!
+	scene "scenes/Producer/ReactionNegative20.vcd"  //Argghh! (disgusted)
+}
+Rule PlayerFriendlyFireTankC1Producer
+{
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 IsWorldTalkProducer C1M1orC1M2 IsNotSurvival
+	ApplyContext "FriendlyFire:1:10"
+	Response PlayerFriendlyFireTankC1Producer
 }
 
 Response PlayerFriendlyFireTankCoachProducer
@@ -5586,7 +5634,7 @@ Response PlayerFriendlyFireTankCoachProducer
 }
 Rule PlayerFriendlyFireTankCoachProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsCoach IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsCoach IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankCoachProducer
 }
@@ -5597,7 +5645,7 @@ Response PlayerFriendlyFireTankGamblerProducer
 }
 Rule PlayerFriendlyFireTankGamblerProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsGambler IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGamblerProducer
 }
@@ -5608,7 +5656,7 @@ Response PlayerFriendlyFireTankMechanicProducer
 }
 Rule PlayerFriendlyFireTankMechanicProducer
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsMechanic IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsProducer IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkProducer IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsMechanic IsWorldTalkProducer isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankMechanicProducer
 }
@@ -11532,6 +11580,19 @@ Rule SurvivorVocalizeBackUpProducer
 	Response SurvivorVocalizeBackUpProducer
 }
 
+Response SurvivorVocalizeBackUpC4M2Producer
+{
+	scene "scenes/Producer/BackUpQuiet01.vcd"  //Back up.
+	scene "scenes/Producer/BackUpQuiet02.vcd"  //Move back.
+	scene "scenes/Producer/BackUpQuiet03.vcd"  //Get back.
+	scene "scenes/Producer/BackUpQuiet04.vcd"  //Get back, get back.
+}
+Rule SurvivorVocalizeBackUpC4M2Producer
+{
+	criteria ConceptPlayerBackUp IsProducer IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkProducer IsWorldTalkProducer HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsProducerInWitchville
+	Response SurvivorVocalizeBackUpC4M2Producer
+}
+
 Response SurvivorVocalizeEmphaticGoProducer
 {
 	scene "scenes/Producer/EmphaticGo01.vcd"  //What are you doing? GO!
@@ -11776,16 +11837,25 @@ Rule DoubleDeath2Producer
 
 Response TeamKillProducer
 {
-	scene "scenes/Producer/TeamKillAccident01.vcd" predelay "1,1.75" //Did you seriously think that was a good idea?
+	print " " then any TeamKillResponse foo:0 1.5
 }
 Rule TeamKillProducer
 {
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsProducer IsTalk IsTalkProducer IsNotSaidSomeoneDied IsSaidFaultFriendlyFireGeneral IsNotSaidFaultFriendlyFireProducer IsWorldTalkProducer
-	ApplyContext "SaidSomeoneDied:1:10,TalkProducer:1:3"
+	criteria IsFaultConcept IsProducer ShouldBeVoteKicked
+	ApplyContext "SaidSomeoneDied:1:10"
 	applycontexttoworld
 	Response TeamKillProducer
 }
 
+Response TeamKillResponseProducer
+{
+	scene "scenes/Producer/TeamKillAccident01.vcd" //Did you seriously think that was a good idea?
+}
+Rule TeamKillResponseProducer
+{
+	criteria ConceptTeamKillResponse IsProducer IsNotCoughing IsTalk IsTalkProducer IsWorldTalkProducer
+	Response TeamKillResponseProducer
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer - Pickups
@@ -15672,7 +15742,7 @@ Rule CampaignStartProducer
 
 Rule NoIntroChapter1Producer
 {
-	criteria ConceptTalkIdle IsProducer NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsProducer NotInCombat IsInStartArea IsChapter1 IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
@@ -15684,6 +15754,14 @@ Rule SafeRoomStartProducer
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable
+}
+
+Rule NoIntroProducer
+{
+	criteria ConceptTalkIdle IsProducer NotInCombat IsInStartArea IsNotChapter1 IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
 }
 
 Rule IntroEndProducer

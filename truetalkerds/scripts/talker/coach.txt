@@ -5598,6 +5598,43 @@ Rule SurvivorSpottedWitchC1M2Coach
 	Response SurvivorSpottedWitchC1M2Coach
 }
 
+//--------------------------------------------------------------------------------------------------------------
+// Fault - Greed
+//--------------------------------------------------------------------------------------------------------------
+Response GreedCoach
+{
+	print " " then any GreedResponse foo:0 1
+}
+Rule GreedCoach
+{
+	criteria IsFaultConcept Wasteful IsCoach
+	Response GreedCoach
+}
+
+Response GreedResponseCoach
+{
+	scene "scenes/Coach/ReactionNegative12.vcd"  //Bullshit.
+	scene "scenes/Coach/ReactionNegative14.vcd"  //Bullshit.
+	scene "scenes/Coach/ReactionNegative20.vcd"  //Bullshit.
+}
+
+Rule GreedResponseToMechanicCoach
+{
+	criteria ConceptGreedResponse IsCoach IsNotCoughing IsTalk IsTalkCoach IsWorldTalkCoach FromIsMechanic SubjectIsMechanic IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseCoach
+}
+
+Rule GreedResponseToGamblerCoach
+{
+	criteria ConceptGreedResponse IsCoach IsNotCoughing IsTalk IsTalkCoach IsWorldTalkCoach FromIsGambler SubjectIsGambler IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseCoach
+}
+
+Rule GreedResponseToProducerCoach
+{
+	criteria ConceptGreedResponse IsCoach IsNotCoughing IsTalk IsTalkCoach IsWorldTalkCoach FromIsProducer SubjectIsProducer IsOnThirdStrike NoHasFirstAidKit
+	Response GreedResponseCoach
+}
 
 //--------------------------------------------------------------------------------------------------------------
 // Not Rosetta - Responses
@@ -5824,7 +5861,7 @@ Response PlayerFriendlyFireTankCoach
 }
 Rule PlayerFriendlyFireTankCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankCoach
 }
@@ -5835,7 +5872,7 @@ Response PlayerFriendlyFireTankC1Coach
 }
 Rule PlayerFriendlyFireTankC1Coach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 IsNotIncapacitated IsWorldTalkCoach C1M1orC1M2 IsNotSurvival
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 IsWorldTalkCoach C1M1orC1M2 IsNotSurvival
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankC1Coach
 }
@@ -5846,7 +5883,7 @@ Response PlayerFriendlyFireTankGamblerCoach
 }
 Rule PlayerFriendlyFireTankGamblerCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsGambler IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsGambler IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankGamblerCoach
 }
@@ -5857,7 +5894,7 @@ Response PlayerFriendlyFireTankMechanicCoach
 }
 Rule PlayerFriendlyFireTankMechanicCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsMechanic IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsMechanic IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankMechanicCoach
 }
@@ -5868,7 +5905,7 @@ Response PlayerFriendlyFireTankProducerCoach
 }
 Rule PlayerFriendlyFireTankProducerCoach
 {
-	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent IsNotIncapacitated SubjectIsProducer IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsCoach IsNotFriendlyFire IsNotIncapacitated IsDamageTypeBullet IsTalk IsTalkCoach IsTankAggro IsSaidTankWarn2 ChanceToFire30Percent SubjectIsProducer IsWorldTalkCoach isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 isNotmap_c1m2_streets isNotmap_c1m2d_streets isNotmap_c1m2_streets_2009 _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response PlayerFriendlyFireTankProducerCoach
 }
@@ -12483,6 +12520,18 @@ Rule SurvivorVocalizeBackUpCoach
 	Response SurvivorVocalizeBackUpCoach
 }
 
+Response SurvivorVocalizeBackUpC4M2Coach
+{
+	scene "scenes/Coach/BackUpQuiet01.vcd"  //Back up.
+	scene "scenes/Coach/BackUpQuiet02.vcd"  //Back up, Back up.
+	scene "scenes/Coach/BackUpQuiet03.vcd"  //Back up.
+}
+Rule SurvivorVocalizeBackUpC4M2Coach
+{
+	criteria ConceptPlayerBackUp IsCoach IsNotCoughing IsNotInSafeSpot IsNotInCheckpoint IsTalk IsTalkCoach IsWorldTalkCoach HardRain2DS IsNotSaidSafeSpotAhead NotTankAggro _auto_IsCoachInWitchville
+	Response SurvivorVocalizeBackUpC4M2Coach
+}
+
 Response SurvivorVocalizeEmphaticGoCoach
 {
 	scene "scenes/Coach/EmphaticGo01.vcd"  //GO!
@@ -12745,18 +12794,28 @@ Rule DoubleDeathCoach
 
 Response TeamKillCoach
 {
-	scene "scenes/Coach/TeamKillAccident03.vcd" predelay "1,1.75" //Man, are you wrong in the head shootin like that?
-	scene "scenes/Coach/TeamKillAccident05.vcd" predelay "1,1.75" //What the f'...  don't be doin that.
-	scene "scenes/Coach/TeamKillAccident06.vcd" predelay "1,1.75" //Hey! Don't be doin that.
-	scene "scenes/Coach/TeamKillAccident07.vcd" predelay "1,1.75" //You try that shit on me and you'll be wishin' your momma never met ya father.
-	scene "scenes/Coach/TeamKillAccident08.vcd" predelay "1,1.75" //Keep goin at em like that and you gonna be the last man on earth.
+	print " " then any TeamKillResponse foo:0 1.5
 }
 Rule TeamKillCoach
 {
-	criteria ConceptSurvivorDied IsNotCoughing SurvivorDiedReallyClose IsCoach IsTalk IsTalkCoach IsNotSaidSomeoneDied IsSaidFaultFriendlyFireGeneral IsNotSaidFaultFriendlyFireCoach IsWorldTalkCoach
-	ApplyContext "SaidSomeoneDied:1:10,TalkCoach:1:5"
+	criteria IsFaultConcept IsCoach ShouldBeVoteKicked
+	ApplyContext "SaidSomeoneDied:1:10"
 	applycontexttoworld
 	Response TeamKillCoach
+}
+
+Response TeamKillResponseCoach
+{
+	scene "scenes/Coach/TeamKillAccident03.vcd" //Man, are you wrong in the head shootin like that?
+	scene "scenes/Coach/TeamKillAccident05.vcd" //What the f'...  don't be doin that.
+	scene "scenes/Coach/TeamKillAccident06.vcd" //Hey! Don't be doin that.
+	scene "scenes/Coach/TeamKillAccident07.vcd" //You try that shit on me and you'll be wishin' your momma never met ya father.
+	scene "scenes/Coach/TeamKillAccident08.vcd" //Keep goin at em like that and you gonna be the last man on earth.
+}
+Rule TeamKillResponseCoach
+{
+	criteria ConceptTeamKillResponse IsCoach IsNotCoughing IsTalk IsTalkCoach IsWorldTalkCoach
+	Response TeamKillResponseCoach
 }
 
 //--------------------------------------------------------------------------------------------------------------
@@ -16533,7 +16592,7 @@ Rule CampaignStartCoach
 
 Rule NoIntroChapter1Coach
 {
-	criteria ConceptTalkIdle IsCoach NotInCombat IsInStartArea IsChapter1 IsNotAlone IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	criteria ConceptTalkIdle IsCoach NotInCombat IsInStartArea IsChapter1 IsNotSaidLeavingSafeArea IsNotSaidCXM1Intro AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
 	ApplyContext "Talk:0:0,CXM1Intro:1:0,_auto_SafeRoomStart:2:0"
 	applycontexttoworld
 	Response NoResponse
@@ -16545,6 +16604,14 @@ Rule SafeRoomStartCoach
 	ApplyContext "Talk:1:45,_auto_SafeRoomStart:1:0,_auto_SafeRoomQuiet:1:5"
 	applycontexttoworld
 	Response CustomTalkerEnable
+}
+
+Rule NoIntroCoach
+{
+	criteria ConceptTalkIdle IsCoach NotInCombat IsInStartArea IsNotChapter1 IsNotSaidLeavingSafeArea AutoIsNotScavenge AutoIsNotSurvival _auto_IsSafeRoomStart _auto_NotSafeRoomQuiet IsNotSpeakingWeight0
+	ApplyContext "Talk:0:0,_auto_SafeRoomStart:2:0"
+	applycontexttoworld
+	Response NoResponse
 }
 
 Rule IntroEndCoach
