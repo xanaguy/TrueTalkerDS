@@ -7,6 +7,16 @@ Response _PlayerInfoRemarkableBlankBiker
 	scene "scenes/Biker/blank.vcd"
 }
 
+Response BlankCutoffBiker
+{
+	scene "scenes/Biker/blank.vcd" then all BlankCutoff foo:0 .1
+}
+Rule BlankCutoffBiker
+{
+	criteria ConceptBlankCutoff IsBiker AutoIsNotScavenge AutoIsNotSurvival
+	Response _PlayerInfoRemarkableBlankBiker
+}
+
 Response C6M3PlayerNiceShotBiker
 {
 	scene "scenes/Biker/NiceShot01.vcd"  //Nice shot.
@@ -26,7 +36,7 @@ Rule C6M3PlayerNiceShotBiker
 
 Rule PlayerNiceShotBiker
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsBiker IssuerNotSoClose IsTalk IsTalkBiker IsWorldTalkBiker IsNotSpeaking ChanceToFire30Percent HasAFrom
+	criteria ConceptPlayerNiceShot IsNotCoughing IsBiker IssuerClose IsTalk IsTalkBiker IsWorldTalkBiker IsNotSpeaking ChanceToFire30Percent HasAFrom
 	Response C6M3PlayerNiceShotBiker
 }
 
@@ -73,17 +83,17 @@ Rule L4D1ReviveMeInterruptedMinorBiker
 
 Response L4D1ReviveMeInterruptedMajorBiker
 {
-	scene "scenes/Biker/HurtMajor01.vcd"  //[Pain noise - ahh]
-	scene "scenes/Biker/HurtMajor02.vcd"  //[Pain noise - huh]
-	scene "scenes/Biker/HurtMajor03.vcd"  //[Pain noise - oy]
-	scene "scenes/Biker/HurtMajor04.vcd"  //[Pain noise - ugh]
-	scene "scenes/Biker/HurtMajor05.vcd"  //[Pain noise - ugh]
-	scene "scenes/Biker/HurtMajor06.vcd"  //[Pain noise - ugh]
-	scene "scenes/Biker/HurtMajor07.vcd"  //[Pain noise - ugh]
-	scene "scenes/Biker/HurtMajor08.vcd"  //[Pain noise - ugh]
-	scene "scenes/Biker/HurtMajor09.vcd"  //[Pain noise - ugh]
-	scene "scenes/Biker/HurtMajor10.vcd"  //[Pain noise - ugh]
-	scene "scenes/Biker/HurtMajor11.vcd"  //[Pain noise - ugh]
+	scene "scenes/Biker/HurtMajor01.vcd" predelay "0.75"  //[Pain noise - ahh]
+	scene "scenes/Biker/HurtMajor02.vcd" predelay "0.75"  //[Pain noise - huh]
+	scene "scenes/Biker/HurtMajor03.vcd" predelay "0.75"  //[Pain noise - oy]
+	scene "scenes/Biker/HurtMajor04.vcd" predelay "0.75"  //[Pain noise - ugh]
+	scene "scenes/Biker/HurtMajor05.vcd" predelay "0.75"  //[Pain noise - ugh]
+	scene "scenes/Biker/HurtMajor06.vcd" predelay "0.75"  //[Pain noise - ugh]
+	scene "scenes/Biker/HurtMajor07.vcd" predelay "0.75"  //[Pain noise - ugh]
+	scene "scenes/Biker/HurtMajor08.vcd" predelay "0.75"  //[Pain noise - ugh]
+	scene "scenes/Biker/HurtMajor09.vcd" predelay "0.75"  //[Pain noise - ugh]
+	scene "scenes/Biker/HurtMajor10.vcd" predelay "0.75"  //[Pain noise - ugh]
+	scene "scenes/Biker/HurtMajor11.vcd" predelay "0.75"  //[Pain noise - ugh]
 }
 Rule L4D1ReviveMeInterruptedMajorBiker
 {
@@ -3121,6 +3131,7 @@ Response L4D1PlayerShotCarNotBiker
 	scene "scenes/Biker/Swear03.vcd" predelay "0.1,0.7" //Ah shit.
 	scene "scenes/Biker/Swear04.vcd" predelay "0.1,0.7" //Ah hell.
 	scene "scenes/Biker/Swear08.vcd" predelay "0.1,0.7" //Ah bullshit.
+	scene "scenes/Biker/DLC1_CommunityL4D106.vcd" predelay "2" //I hate car alarms.
 }
 Rule L4D1PlayerShotCarNotBiker
 {
@@ -3952,13 +3963,23 @@ Rule L4D1PlayerFriendlyFireBiker
 
 Response L4D1PlayerFriendlyFire2Biker
 {
-	scene "scenes/Biker/TeamKillAccident04.vcd"  //Pull yer head outta yer ass.
 	scene "scenes/Biker/TeamKillAccident05.vcd"  //Careful!
 	scene "scenes/Biker/TeamKillAccident06.vcd"  //Hey! Careful!
 }
 Rule L4D1PlayerFriendlyFire2Biker
 {
 	criteria ConceptPlayerFriendlyFire IsNotCoughing IsBiker IsNotFriendlyFire IsNotIncapacitated IsOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkBiker IsWorldTalkBiker NotTankAggro _auto_NotSpottedVehicle
+	ApplyContext "FriendlyFire:1:10"
+	Response L4D1PlayerFriendlyFire2Biker
+}
+
+Response L4D1PlayerFriendlyFireTankBiker
+{
+	scene "scenes/Biker/TeamKillAccident04.vcd"  //Pull yer head outta yer ass.
+}
+Rule L4D1PlayerFriendlyFire2Biker
+{
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsBiker IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkBiker IsWorldTalkBiker IsTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFire2Biker
 }
@@ -7327,6 +7348,14 @@ Rule L4D1PlayerKillConfirmationTankBiker
 	Response L4D1PlayerKillConfirmationTankBiker
 }
 
+Rule PlayerRemarkremark_caralarmBiker
+{
+	criteria ConceptRemark IsBiker Isremark_caralarm IsNotSaidremark_caralarm IsNotCoughing NotInCombat IsTalk IsTalkBiker IsSubjectNear700 IsWorldTalkBiker AutoIsNotScavenge AutoIsNotSurvival IsNotSpeakingWeight0
+	ApplyContext "Saidremark_caralarm:1:300"
+	applycontexttoworld
+	Response PlayerWarnCarefulBiker
+}
+
 Response L4D1C9M2KillTankBiker
 {
 	scene "scenes/Biker/DLC2M2FINALEWAITING01.vcd"  //Jesus, this thing takes forever.
@@ -9147,25 +9176,6 @@ Rule InfoReminfo_powerboat4aBiker
 	Response InfoReminfo_powerboat4aBiker
 }
 
-Response PlayerShotGasCanBiker
-{
-	scene "scenes/Biker/ReactionNegative05.vcd" predelay "1,1.5" //Shit
-	scene "scenes/Biker/ReactionNegative07.vcd" predelay "1,1.5" //Damnit.
-	scene "scenes/Biker/ReactionNegative08.vcd" predelay "1,1.5" //Damnit.
-	scene "scenes/Biker/Swear03.vcd" predelay "1,1.5" //Ah shit.
-	scene "scenes/Biker/Swear08.vcd" predelay "1,1.5" //Ah bullshit.
-	scene "scenes/Biker/Swear17.vcd" predelay "1,1.5" //Dammit.
-	scene "scenes/Biker/Swear18.vcd" predelay "1,1.5" //Bullshit.
-}
-Rule PlayerShotGasCanBiker
-{
-	criteria ConceptPlayerShotGasCan IsBiker IsNotSaidPlayerShotGasCan IsScavenge
-	ApplyContext "SaidPlayerShotGasCan1:10"
-	applycontexttoworld
-	Response PlayerShotGasCanBiker
-}
-
-
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer Heal
 //--------------------------------------------------------------------------------------------------------------
@@ -9253,7 +9263,7 @@ Rule SurvivorSpottedM60AutoBiker
 
 Rule SurvivorSpottedGrenadeLauncherBiker
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsProducer IsTalk IsTalkBiker IsNotSmartLookAuto Isgrenade_launcher IsWorldTalkBiker _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsBiker IsTalk IsTalkBiker IsNotSmartLookAuto Isgrenade_launcher IsWorldTalkBiker _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotgrenade_launcher:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedChainsawBiker
@@ -9261,7 +9271,7 @@ Rule SurvivorSpottedGrenadeLauncherBiker
 
 Rule SurvivorSpottedGrenadeLauncherAutoBiker
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsProducer IsTalk IsTalkBiker IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotgrenade_launcher IsNotSaidSpot Isgrenade_launcher IsWorldTalkBiker IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsBiker IsTalk IsTalkBiker IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotgrenade_launcher IsNotSaidSpot Isgrenade_launcher IsWorldTalkBiker IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotgrenade_launcher:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedChainsawBiker
@@ -10656,7 +10666,7 @@ Rule LeavingSafeRoomBiker
 	criteria ConceptSurvivorLeavingInitialCheckpoint IsBiker IsNotSaidLeavingSafeArea
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:0:0"
 	applycontexttoworld
-	Response NoResponse
+	Response BlankCutoffBiker
 }
 
 Rule FinaleTriggeredBiker

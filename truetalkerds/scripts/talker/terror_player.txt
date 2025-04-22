@@ -12,6 +12,8 @@ Response CustomTalkerEnable //Blank Response: This will trigger an in-map entity
 	print " " fire relay_talker_addon Trigger 0
 }
 
+criterion "ConceptBlankCutoff" "Concept" "BlankCutoff" required
+
 criterion "Conceptcommentjockey" "Concept" "commentjockey" required
 criterion "Conceptcommentjockey2" "Concept" "commentjockey2" required
 criterion "IsNotSaidCommentJockey" "worldSaidCommentJockey" "!=1" required

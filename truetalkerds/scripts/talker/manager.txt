@@ -7,6 +7,16 @@ Response _PlayerInfoRemarkableBlankManager
 	scene "scenes/Manager/blank.vcd"
 }
 
+Response BlankCutoffManager
+{
+	scene "scenes/Manager/blank.vcd" then all BlankCutoff foo:0 .1
+}
+Rule BlankCutoffManager
+{
+	criteria ConceptBlankCutoff IsManager AutoIsNotScavenge AutoIsNotSurvival
+	Response _PlayerInfoRemarkableBlankManager
+}
+
 Response C6M3PlayerNiceShotManager
 {
 	scene "scenes/Manager/NiceShot01.vcd"  //Nice shot!
@@ -2686,7 +2696,7 @@ Rule SurvivorSpottedVomitJarManager
 
 Rule SurvivorSpottedVomitJarAutoManager
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsManager IsTalk IsTalkManager IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotMolotov IsNotSaidSpot IsVomitjar IsWorldTalkManager IsNotSpeakingWeight0
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsManager IsTalk IsTalkManager IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotVomitJar IsNotSaidSpot IsVomitjar IsWorldTalkManager IsNotSpeakingWeight0
 	ApplyContext "SaidSpotMolotov:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedVomitJarManager
@@ -3153,7 +3163,6 @@ Response L4D1PlayerFriendlyFire2Manager
 {
 	scene "scenes/Manager/TeamKillAccident01.vcd"  //Woah man, you gotta be careful.
 	scene "scenes/Manager/TeamKillAccident02.vcd"  //Woah man, you gotta be careful.
-	scene "scenes/Manager/TeamKillAccident03.vcd"  //What the hell man?
 	scene "scenes/Manager/TeamKillAccident04.vcd"  //Be careful, what are you doing?
 }
 Rule L4D1PlayerFriendlyFire2Manager
@@ -3161,6 +3170,17 @@ Rule L4D1PlayerFriendlyFire2Manager
 	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkManager IsWorldTalkManager NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFire2Manager
+}
+
+Response L4D1PlayerFriendlyFireTankManager
+{
+	scene "scenes/Manager/TeamKillAccident03.vcd"  //What the hell man?
+}
+Rule L4D1PlayerFriendlyFireTankManager
+{
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsManager IsNotFriendlyFire IsNotIncapacitated IsNotOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkManager IsWorldTalkManager IsTankAggro _auto_NotSpottedVehicle
+	ApplyContext "FriendlyFire:1:10"
+	Response L4D1PlayerFriendlyFireTankManager
 }
 
 Response L4D1PlayerFriendlyFireFromBillManager
@@ -7141,7 +7161,7 @@ Response L4D1SurvivorPickupPainPillsManager
 {
 	scene "scenes/Manager/TakePills01.vcd" odds 10 //Better grab everything I can [to self]
 	scene "scenes/Manager/TakePills02.vcd"  //Grabbing Pills.
-	scene "scenes/Manager/Taunt07.vcd." odds 1 //(Loud, Evil laughing)
+	scene "scenes/Manager/Taunt07.vcd" odds 1 //(Loud, Evil laughing)
 }
 Rule L4D1SurvivorPickupPainPillsManager
 {
@@ -7770,28 +7790,6 @@ Rule L4D1PlayerHospitalIntro02Manager
 	criteria ConceptIntroHospital02 IsManager HasAFrom AutoIsNotScavenge AutoIsNotSurvival
 	Response L4D1PlayerHospitalIntro02Manager
 }
-
-
-//--------------------------------------------------------------------------------------------------------------
-// Vocalizer Convo (AUTO)
-//--------------------------------------------------------------------------------------------------------------
-Response PlayerShotGasCanManager
-{
-	scene "scenes/Manager/Swears05.vcd" predelay "1,1.5" //Shit.
-	scene "scenes/Manager/Swears06.vcd" predelay "1,1.5" //Ah shit.
-	scene "scenes/Manager/Swears07.vcd" predelay "1,1.5" //Shit shit shit.
-	scene "scenes/Manager/Swears12.vcd" predelay "1,1.5" //Shit.
-	scene "scenes/Manager/Swears13.vcd" predelay "1,1.5" //Ah shit.
-	scene "scenes/Manager/Swears16.vcd" predelay "1,1.5" //That's some country-ass bullshit.
-}
-Rule PlayerShotGasCanManager
-{
-	criteria ConceptPlayerShotGasCan IsManager IsNotSaidPlayerShotGasCan IsScavenge
-	ApplyContext "SaidPlayerShotGasCan:1:10"
-	applycontexttoworld
-	Response PlayerShotGasCanManager
-}
-
 
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer Heal
@@ -9292,7 +9290,7 @@ Rule LeavingSafeRoomManager
 	criteria ConceptSurvivorLeavingInitialCheckpoint IsManager IsNotSaidLeavingSafeArea
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:0:0"
 	applycontexttoworld
-	Response NoResponse
+	Response BlankCutoffManager
 }
 
 Rule FinaleTriggeredManager

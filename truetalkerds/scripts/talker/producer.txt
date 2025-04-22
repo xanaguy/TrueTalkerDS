@@ -7,6 +7,16 @@ Response _PlayerInfoRemarkableBlankProducer
 	scene "scenes/Producer/blank.vcd"
 }
 
+Response BlankCutoffProducer
+{
+	scene "scenes/Producer/blank.vcd" then all BlankCutoff foo:0 .1
+}
+Rule BlankCutoffProducer
+{
+	criteria ConceptBlankCutoff IsProducer AutoIsNotScavenge AutoIsNotSurvival
+	Response _PlayerInfoRemarkableBlankProducer
+}
+
 Response C1M1InSmokeProducer
 {
 	scene "scenes/Producer/Cough01.vcd"  then any C1M1Cough foo:0 -2.638 //[Coughing from smoke]
@@ -124,13 +134,13 @@ Response PlayerNiceShotProducer
 }
 Rule PlayerNiceShotProducer
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsProducer HasAFrom IssuerClose IsTalk IsTalkProducer ChanceToFire30Percent IsWorldTalkProducer
+	criteria ConceptPlayerNiceShot IsNotCoughing IsProducer HasAFrom IssuerClose IsTalk IsTalkProducer ChanceToFire30Percent IsWorldTalkProducer IsNotSpeaking
 	Response PlayerNiceShotProducer
 }
 
 Rule L4D1PlayerNiceShotProducer
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsProducer HasAFrom IssuerNotSoClose ThePassing3DS SubjectIsNotGambler SubjectIsNotMechanic SubjectIsNotCoach IsTalk IsTalkProducer ChanceToFire30Percent IsWorldTalkProducer
+	criteria ConceptPlayerNiceShot IsNotCoughing IsProducer HasAFrom IssuerNotSoClose ThePassing3DS SubjectIsNotGambler SubjectIsNotMechanic SubjectIsNotCoach IsTalk IsTalkProducer ChanceToFire30Percent IsWorldTalkProducer IsNotSpeaking
 	Response PlayerNiceShotProducer
 }
 
@@ -140,7 +150,7 @@ Response PlayerNiceShotCoachProducer
 }
 Rule PlayerNiceShotCoachProducer
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsProducer HasAFrom IssuerClose IsTalk IsTalkProducer ChanceToFire10Percent IsWorldTalkProducer SubjectIsCoach
+	criteria ConceptPlayerNiceShot IsNotCoughing IsProducer HasAFrom IssuerClose IsTalk IsTalkProducer ChanceToFire10Percent IsWorldTalkProducer SubjectIsCoach IsNotSpeaking
 	Response PlayerNiceShotCoachProducer
 }
 
@@ -151,7 +161,7 @@ Response PlayerNiceShotMechanicProducer
 }
 Rule PlayerNiceShotMechanicProducer
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsProducer HasAFrom IssuerClose IsTalk IsTalkProducer ChanceToFire10Percent SubjectIsMechanic IsWorldTalkProducer
+	criteria ConceptPlayerNiceShot IsNotCoughing IsProducer HasAFrom IssuerClose IsTalk IsTalkProducer ChanceToFire10Percent SubjectIsMechanic IsWorldTalkProducer IsNotSpeaking
 	ApplyContext "TalkProducer:1:3"
 	Response PlayerNiceShotMechanicProducer
 }
@@ -645,16 +655,6 @@ Rule PlayerWorldC3M1FerryCrossingE03Producer
 {
 	criteria ConceptWorldC3M1FerryCrossingE03 IsProducer HasAFrom AutoIsNotScavenge AutoIsNotSurvival
 	Response PlayerWorldC3M1FerryCrossingE03Producer
-}
-
-Response PlayerWorldC3M1FerryCrossingN2Producer
-{
-	scene "scenes/Producer/WorldC3M109.vcd"  then mechanic _C3M1CrazyMilitants foo:0 0.1 //Yeah, let's just cut through the gator park and visit the crazy militants in the swamp, sound good?
-}
-Rule PlayerWorldC3M1FerryCrossingN2Producer
-{
-	criteria ConceptWorldC3M1FerryCrossingN2 IsProducer HasAFrom AutoIsNotScavenge AutoIsNotSurvival
-	Response PlayerWorldC3M1FerryCrossingN2Producer
 }
 
 
@@ -1920,6 +1920,18 @@ Rule InfoRemC3M3LowerGateaProducer
 //--------------------------------------------------------------------------------------------------------------
 // C3M4
 //--------------------------------------------------------------------------------------------------------------
+Response C3M4RescueStartProducer
+{
+	print " " then orator C3M4RescueStart foo:0 0
+}
+Rule C3M4RescueStartProducer
+{
+	criteria ConceptFinalVehicleSpotted IsProducer IsAtPlantation _auto_IsFinaleStarted
+	ApplyContext "_auto_Finale:2:0"
+	applycontexttoworld
+	Response C3M4RescueStartProducer
+}
+
 Response C3M4BoatNagsProducer
 {
 	norepeat
@@ -2116,7 +2128,7 @@ Response C5M1_intro004Producer
 {
 	scene "scenes/Producer/World02.vcd"  then any C5M1_intro005 foo:0 0.01 //I'm just happy to be off that boat.
 	scene "scenes/Producer/World01.vcd"  then Mechanic C5M1_intro009 foo:0 0.01 //There's the bridge You sure they're going to be there?
-	scene "scenes/Producer/World04.vcd"  then Mechanic C5M1_intro008 foo:0 0.01 //We're here. Crescent City. I'll tell you now, I'm not showing anyone my tits.
+	scene "scenes/Producer/World04.vcd"  then self IntroEnd foo:0 0.01 //We're here. Crescent City. I'll tell you now, I'm not showing anyone my tits.
 }
 Rule C5M1_intro004Producer
 {
@@ -8179,6 +8191,7 @@ Response PlayerRemarkWorldC3M1FerryNagProducer
 	scene "scenes/Producer/WorldC3M114.vcd"  //Right. We should try the village.
 	scene "scenes/Producer/WorldC3M116.vcd"  //Okay, let's get ready and then call the ferry.
 	scene "scenes/Producer/WorldC3M108.vcd"  //Earl's Gator Village? This just keeps getting better.
+	scene "scenes/Producer/WorldC3M109.vcd"  then any _C3M1CrazyMilitants foo:0 0.1 //Yeah, let's just cut through the gator park and visit the crazy militants in the swamp, sound good?
 	scene "scenes/Producer/WorldC3M1B03.vcd" then mechanic WorldIntroC3f2 foo:0 0.1 //Based on the location of Whispering Oaks, our previous air speed and accounting for the wind speed, I would place us right at Earl's Gator Village.
 }
 Rule PlayerRemarkWorldC3M1FerryNagProducer
@@ -10039,7 +10052,7 @@ Rule C4M2LockTheDoorCheckPointProducer
 	Response C4M2LockTheDoorCheckPointProducer
 }
 
-Response GoingToDieCoachCoachProducer
+Response SurvivorVocalizeGoingToDieProducer
 {
 	scene "scenes/Producer/GoingToDie01.vcd"  then coach coachcoaches foo:0 .5 //Okay this was a mistake.
 	scene "scenes/Producer/GoingToDie02.vcd"  then coach coachcoaches foo:0 .5 //Okay, this seriously hurts.
@@ -10063,11 +10076,11 @@ Response GoingToDieCoachCoachProducer
 	scene "scenes/Producer/GoingToDie26.vcd"  then coach coachcoaches foo:0 .5 //You have got to be kidding me.
 	scene "scenes/Producer/GoingToDie27.vcd"  then coach coachcoaches foo:0 .5 //I got a plan, let's kill all the zombies. Sound good?
 }
-Rule GoingToDieCoachCoachProducer
+Rule SurvivorVocalizeGoingToDieProducer
 {
-	criteria ConceptPlayerGoingToDie IsNotSpeaking IsNotCoughing IsProducer IsTalk IsTalkProducer IsNotComplainBlock IsCoachAlive IsCoachNear200 ChanceToFire30Percent IsWorldTalkProducer IsNotInStartArea IsNotInCheckpoint _auto_NotSpottedVehicle
+	criteria ConceptPlayerGoingToDie IsNotSpeaking IsNotCoughing IsProducer IsTalk IsNotOnThirdStrike IsTalkProducer IsNotComplainBlock IsWorldTalkProducer IsNotInStartArea IsNotInCheckpoint _auto_NotSpottedVehicle
 	ApplyContext "IsComplain:1:25"
-	Response GoingToDieCoachCoachProducer
+	Response SurvivorVocalizeGoingToDieProducer
 }
 
 Response PlayerAlertGiveItemStopProducer
@@ -11621,49 +11634,18 @@ Rule SurvivorVocalizeEmphaticGoC4M2Producer
 	Response SurvivorVocalizeEmphaticGoC4M2Producer
 }
 
-Response SurvivorVocalizeGoingToDieProducer
-{
-	scene "scenes/Producer/GoingToDie01.vcd"  //Okay this was a mistake.
-	scene "scenes/Producer/GoingToDie02.vcd"  //Okay, this seriously hurts.
-	scene "scenes/Producer/GoingToDie03.vcd"  //Okay, okay  that one hurt.
-	scene "scenes/Producer/GoingToDie04.vcd" odds 20 //Girl, you should have stayed with Jacob. (to self)
-	scene "scenes/Producer/GoingToDie05.vcd" odds 50 //By the beard of Zeus this hurts!
-	scene "scenes/Producer/GoingToDie06.vcd"  //Son of a bee-sting. this hurts.
-	scene "scenes/Producer/GoingToDie08.vcd"  //This is not happening, This is not happening. This is not happening. (to self)
-	scene "scenes/Producer/GoingToDie09.vcd"  //Did this ever seem like a good idea?
-	scene "scenes/Producer/GoingToDie10.vcd"  //Knights of Columbus this hurts.
-	scene "scenes/Producer/GoingToDie11.vcd"  //I am too young to feel this old.
-	scene "scenes/Producer/GoingToDie13.vcd"  //This is not going well.
-	scene "scenes/Producer/GoingToDie14.vcd"  //One of you fellas want to carry the cute girl?
-	scene "scenes/Producer/GoingToDie15.vcd"  //I think I really hurt something.
-	scene "scenes/Producer/GoingToDie16.vcd"  //Anyone else feel like crap right now?
-	scene "scenes/Producer/GoingToDie17.vcd"  //This is some grim shit we got ourselves into.
-	scene "scenes/Producer/GoingToDie18.vcd"  //This is some grim shit we got ourselves into.
-	scene "scenes/Producer/GoingToDie20.vcd"  //Something's got to break our way.
-	scene "scenes/Producer/GoingToDie21.vcd"  //So this is how it's going to be.
-	scene "scenes/Producer/GoingToDie25.vcd"  //Girl, you should have stayed at home. (to self)
-	scene "scenes/Producer/GoingToDie26.vcd"  //You have got to be kidding me.
-	scene "scenes/Producer/GoingToDie27.vcd"  //I got a plan, let's kill all the zombies. Sound good?
-}
-Rule SurvivorVocalizeGoingToDieProducer
-{
-	criteria ConceptPlayerGoingToDie IsNotSpeaking IsNotCoughing IsProducer IsTalk IsTalkProducer IsNotComplainBlock IsWorldTalkProducer IsNotInStartArea IsNotInCheckpoint _auto_NotSpottedVehicle
-	ApplyContext "IsComplain:1:25"
-	Response SurvivorVocalizeGoingToDieProducer
-}
-
 Response SurvivorVocalizeGoingToDie3Producer
 {
-	scene "scenes/Producer/GoingToDie301.vcd"  //Tonight's top story, Rochelle isn't going to make it.
-	scene "scenes/Producer/GoingToDie302.vcd"  //In case anyone is wondering, I am about to die!
-	scene "scenes/Producer/GoingToDie303.vcd" odds 30 //Hey guys, unlike Ellis, I'm not a complainer, but I'm about to die.
-	scene "scenes/Producer/GoingToDie304.vcd" odds 40 //I am too young and too beautiful to die.
-	scene "scenes/Producer/GoingToDie305.vcd"  //I need to find some health.
-	scene "scenes/Producer/GoingToDie306.vcd"  //In case anyone is wondering, I am about to die!
+	scene "scenes/Producer/GoingToDie301.vcd" then coach coachcoaches foo:0 .5 //Tonight's top story, Rochelle isn't going to make it.
+	scene "scenes/Producer/GoingToDie302.vcd" then coach coachcoaches foo:0 .5 //In case anyone is wondering, I am about to die!
+	scene "scenes/Producer/GoingToDie303.vcd" odds 30 then coach coachcoaches foo:0 .5 //Hey guys, unlike Ellis, I'm not a complainer, but I'm about to die.
+	scene "scenes/Producer/GoingToDie304.vcd" odds 40 then coach coachcoaches foo:0 .5 //I am too young and too beautiful to die.
+	scene "scenes/Producer/GoingToDie305.vcd" then coach coachcoaches foo:0 .5 //I need to find some health.
+	scene "scenes/Producer/GoingToDie306.vcd" then coach coachcoaches foo:0 .5 //In case anyone is wondering, I am about to die!
 }
 Rule SurvivorVocalizeGoingToDie3Producer
 {
-	criteria ConceptPlayerGoingToDie IsNotSpeaking IsNotCoughing IsProducer IsOnThirdStrike IsTalk IsTalkProducer IsNotComplainBlock IsWorldTalkProducer IsNotInStartArea IsNotInCheckpoint _auto_NotSpottedVehicle
+	criteria ConceptPlayerGoingToDie IsNotSpeaking IsNotCoughing IsProducer IsOnThirdStrike IsTalk IsTalkProducer IsNotComplainBlock IsWorldTalkProducer IsOnThirdStrike IsNotInStartArea IsNotInCheckpoint _auto_NotSpottedVehicle
 	ApplyContext "IsComplain:1:25"
 	Response SurvivorVocalizeGoingToDie3Producer
 }
@@ -12491,7 +12473,7 @@ Response SurvivorPickupUpExplosiveAmmoProducer
 }
 Rule SurvivorPickupUpExplosiveAmmoProducer
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsProducer IsPickedUpExplosiveAmmo IsNotSpeaking IsNotInStartArea IsTalk IsTalkProducer IsWorldTalkProducer AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsProducer IsPickedUpExplosiveAmmo NotPickedUpItem IsNotSpeaking IsNotInStartArea IsTalk IsTalkProducer IsWorldTalkProducer AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupUpExplosiveAmmoProducer
 }
@@ -12502,7 +12484,7 @@ Response SurvivorPickupUpExplosivesProducer
 }
 Rule SurvivorPickupUpExplosivesProducer
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsProducer IsPickedUpUpgradePack_Explosive IsNotSpeaking IsNotInStartArea IsTalk IsTalkProducer IsWorldTalkProducer AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsProducer IsPickedUpUpgradePack_Explosive NotPickedUpItem IsNotSpeaking IsNotInStartArea IsTalk IsTalkProducer IsWorldTalkProducer AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupUpExplosivesProducer
 }
@@ -12513,7 +12495,7 @@ Response SurvivorPickupUpIncendiaryProducer
 }
 Rule SurvivorPickupUpIncendiaryProducer
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsProducer IsPickedUpUpgradePack_Incendiary IsNotSpeaking IsNotInStartArea IsTalk IsTalkProducer IsWorldTalkProducer AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsProducer IsPickedUpUpgradePack_Incendiary NotPickedUpItem IsNotSpeaking IsNotInStartArea IsTalk IsTalkProducer IsWorldTalkProducer AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupUpIncendiaryProducer
 }
@@ -15377,7 +15359,7 @@ Rule C13M3Tanker1Producer
 
 Response C13M3Tanker2Producer
 {
-	scene "scenes/Coach/LookOut03.vcd" then any C13M3Tanker3 foo:0 3 //Oh shit, watch out!
+	scene "scenes/Producer/LookOut03.vcd" then any C13M3Tanker3 foo:0 3 //Heads up!
 	scene "scenes/Producer/DLC1_L4D1Tank01.vcd" then any C13M3Tanker3 foo:0 3 //Holy shit!
 }
 Rule C13M3Tanker2Producer
@@ -15785,7 +15767,7 @@ Rule LeavingSafeRoomProducer
 	criteria ConceptSurvivorLeavingInitialCheckpoint IsProducer IsNotSaidLeavingSafeArea
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:0:0"
 	applycontexttoworld
-	Response NoResponse
+	Response BlankCutoffProducer
 }
 
 Rule FinaleTriggeredProducer

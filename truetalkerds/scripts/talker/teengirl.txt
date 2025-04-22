@@ -7,6 +7,16 @@ Response _PlayerInfoRemarkableBlankTeenGirl
 	scene "scenes/TeenGirl/blank.vcd"
 }
 
+Response BlankCutoffTeenGirl
+{
+	scene "scenes/TeenGirl/blank.vcd" then all BlankCutoff foo:0 .1
+}
+Rule BlankCutoffTeenGirl
+{
+	criteria ConceptBlankCutoff IsTeenGirl AutoIsNotScavenge AutoIsNotSurvival
+	Response _PlayerInfoRemarkableBlankTeenGirl
+}
+
 Response C6M3PlayerNiceShotTeenGirl
 {
 	scene "scenes/TeenGirl/NiceShot01.vcd"  //Good one!
@@ -2944,7 +2954,7 @@ Rule SurvivorSpottedVomitJarTeenGirl
 
 Rule SurvivorSpottedVomitJarAutoTeenGirl
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotMolotov IsNotSaidSpot IsVomitjar IsWorldTalkTeenGirl IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotVomitJar IsNotSaidSpot IsVomitjar IsWorldTalkTeenGirl IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotMolotov:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedVomitJarTeenGirl
@@ -3427,7 +3437,6 @@ Response L4D1PlayerFriendlyFire2TeenGirl
 {
 	scene "scenes/TeenGirl/TeamKillAccident03.vcd"  //You REALLY have to be more careful!
 	scene "scenes/TeenGirl/TeamKillAccident05.vcd"  //Be careful!
-	scene "scenes/TeenGirl/TeamKillAccident06.vcd"  //Stop Stop!
 	scene "scenes/TeenGirl/TeamKillAccident08.vcd"  //Woah.  Careful!
 }
 Rule L4D1PlayerFriendlyFire2TeenGirl
@@ -3435,6 +3444,17 @@ Rule L4D1PlayerFriendlyFire2TeenGirl
 	criteria ConceptPlayerFriendlyFire IsNotCoughing IsTeenGirl IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsOnThirdStrike IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsNotZombiePresentTank _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFire2TeenGirl
+}
+
+Response L4D1PlayerFriendlyFireTankTeenGirl
+{
+	scene "scenes/TeenGirl/TeamKillAccident06.vcd"  //Stop Stop!
+}
+Rule L4D1PlayerFriendlyFireTankTeenGirl
+{
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsTeenGirl IsNotFriendlyFire IsNotIncapacitated IsNotDamageTypeExplosive IsNotOnThirdStrike IsTalk IsTalkTeenGirl IsWorldTalkTeenGirl IsTankAggro _auto_NotSpottedVehicle
+	ApplyContext "FriendlyFire:1:10"
+	Response L4D1PlayerFriendlyFireTankTeenGirl
 }
 
 Response L4D1PlayerFriendlyFireFromBillTeenGirl
@@ -8482,25 +8502,6 @@ Rule InfoReminfo_powerboat4TeenGirl
 	Response InfoReminfo_powerboat4TeenGirl
 }
 
-Response PlayerShotGasCanTeenGirl
-{
-	scene "scenes/TeenGirl/ReactionNegative01.vcd" predelay "1,1.5" //Uh oh
-	scene "scenes/TeenGirl/ReactionNegative11.vcd" predelay "1,1.5" //Are you kidding me?
-	scene "scenes/TeenGirl/ReactionNegative25.vcd" predelay "1,1.5" //Crap
-	scene "scenes/TeenGirl/Swear06.vcd" predelay "1,1.5" //Mother.
-	scene "scenes/TeenGirl/Swear09.vcd" predelay "1,1.5" //Ah bullshit.
-	scene "scenes/TeenGirl/Swear12.vcd" predelay "1,1.5" //Shit.
-	scene "scenes/TeenGirl/Swear13.vcd" predelay "1,1.5" //Goddammit.
-}
-Rule PlayerShotGasCanTeenGirl
-{
-	criteria ConceptPlayerShotGasCan IsTeenGirl IsNotSaidPlayerShotGasCan IsScavenge
-	ApplyContext "SaidPlayerShotGasCan1:10"
-	applycontexttoworld
-	Response PlayerShotGasCanTeenGirl
-}
-
-
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer Heal
 //--------------------------------------------------------------------------------------------------------------
@@ -8676,7 +8677,7 @@ Rule SurvivorSpottedPumpShotgunTeenGirl
 
 Rule SurvivorSpottedPumpShotgunAutoTeenGirl
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsNotSaidSomeoneDied IsSmartLookAuto IsPumpShotgun IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSmg_silenced IsWorldTalkTeenGirl IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsNotSaidSomeoneDied IsSmartLookAuto IsPumpShotgun IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsWorldTalkTeenGirl IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponsTeenGirl
@@ -8692,7 +8693,7 @@ Rule SurvivorSpottedShotgun_ChromeTeenGirl
 
 Rule SurvivorSpottedShotgun_ChromeAutoTeenGirl
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsNotSaidSomeoneDied IsSmartLookAuto IsShotgun_Chrome IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsSmg_silenced IsWorldTalkTeenGirl IsNotSpeakingWeight0 _auto_NotSpottedVehicle
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsTeenGirl IsTalk IsTalkTeenGirl IsNotSaidSomeoneDied IsSmartLookAuto IsShotgun_Chrome IsNotAlone IsNotSaidSpotWeapons IsNotSaidSpot IsWorldTalkTeenGirl IsNotSpeakingWeight0 _auto_NotSpottedVehicle
 	ApplyContext "SaidSpotWeapons:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedWeaponsTeenGirl
@@ -9919,7 +9920,7 @@ Rule LeavingSafeRoomTeenGirl
 	criteria ConceptSurvivorLeavingInitialCheckpoint IsTeenGirl IsNotSaidLeavingSafeArea
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:0:0"
 	applycontexttoworld
-	Response NoResponse
+	Response BlankCutoffTeenGirl
 }
 
 Rule FinaleTriggeredTeenGirl

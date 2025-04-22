@@ -7,6 +7,16 @@ Response _PlayerInfoRemarkableBlankCoach
 	scene "scenes/Coach/blank.vcd"
 }
 
+Response BlankCutoffCoach
+{
+	scene "scenes/Coach/blank.vcd" then all BlankCutoff foo:0 .1
+}
+Rule BlankCutoffCoach
+{
+	criteria ConceptBlankCutoff IsCoach AutoIsNotScavenge AutoIsNotSurvival
+	Response _PlayerInfoRemarkableBlankCoach
+}
+
 Response C1M1InSmokeCoach
 {
 	scene "scenes/Coach/Cough01.vcd"  then any C1M1Cough foo:0 -0.584 //[Coughing from smoke]
@@ -140,7 +150,7 @@ Response PlayerNiceShotCoach
 }
 Rule PlayerNiceShotCoach
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsCoach HasAFrom IssuerClose IsTalk IsTalkCoach ChanceToFire30Percent IsWorldTalkCoach
+	criteria ConceptPlayerNiceShot IsNotCoughing IsCoach HasAFrom IssuerClose IsTalk IsTalkCoach ChanceToFire30Percent IsWorldTalkCoach IsNotSpeaking
 	Response PlayerNiceShotCoach
 }
 
@@ -156,7 +166,7 @@ Response PlayerNiceShotGamblerCoach
 }
 Rule PlayerNiceShotGamblerCoach
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsCoach HasAFrom IssuerClose IsTalk IsTalkCoach ChanceToFire10Percent IsWorldTalkCoach SubjectIsGambler
+	criteria ConceptPlayerNiceShot IsNotCoughing IsCoach HasAFrom IssuerClose IsTalk IsTalkCoach ChanceToFire10Percent IsWorldTalkCoach SubjectIsGambler IsNotSpeaking
 	Response PlayerNiceShotGamblerCoach
 }
 
@@ -168,7 +178,7 @@ Response PlayerNiceShotMechanicCoach
 }
 Rule PlayerNiceShotMechanicCoach
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsCoach HasAFrom IssuerClose IsTalk IsTalkCoach ChanceToFire10Percent IsWorldTalkCoach SubjectIsMechanic
+	criteria ConceptPlayerNiceShot IsNotCoughing IsCoach HasAFrom IssuerClose IsTalk IsTalkCoach ChanceToFire10Percent IsWorldTalkCoach SubjectIsMechanic IsNotSpeaking
 	Response PlayerNiceShotMechanicCoach
 }
 
@@ -178,7 +188,7 @@ Response PlayerNiceShotProducerCoach
 }
 Rule PlayerNiceShotProducerCoach
 {
-	criteria ConceptPlayerNiceShot IsNotCoughing IsCoach HasAFrom IssuerClose IsTalk IsTalkCoach ChanceToFire10Percent IsWorldTalkCoach SubjectIsProducer
+	criteria ConceptPlayerNiceShot IsNotCoughing IsCoach HasAFrom IssuerClose IsTalk IsTalkCoach ChanceToFire10Percent IsWorldTalkCoach SubjectIsProducer IsNotSpeaking
 	Response PlayerNiceShotProducerCoach
 }
 
@@ -568,7 +578,7 @@ Response PlayercoachcoachesCoach
 }
 Rule PlayercoachcoachesCoach
 {
-	criteria Conceptcoachcoaches IsCoach IsTalk IsTalkCoach IsNotSaidcoachcoaches IsHealthyHalf IsWorldTalkCoach IsNotSpeaking
+	criteria Conceptcoachcoaches IsCoach IsTalk IsTalkCoach IsNotSaidcoachcoaches IsRocking IssuerClose ChanceToFire30Percent IsWorldTalkCoach IsNotSpeaking
 	ApplyContext "Saidcoachcoaches:1:20"
 	applycontexttoworld
 	Response PlayercoachcoachesCoach
@@ -582,7 +592,7 @@ Response PlayercoachcoachesGamblerCoach
 }
 Rule PlayercoachcoachesGamblerCoach
 {
-	criteria Conceptcoachcoaches IsCoach IsTalk IsTalkCoach IsNotSaidcoachcoaches FromIsGambler ChanceToFire30Percent IsNotIncapacitated IsHealthyHalf IsWorldTalkCoach IsNotSpeaking
+	criteria Conceptcoachcoaches IsCoach IsTalk IsTalkCoach IsNotSaidcoachcoaches FromIsGambler IssuerClose ChanceToFire30Percent IsNotIncapacitated IsRocking IsWorldTalkCoach IsNotSpeaking
 	ApplyContext "Saidcoachcoaches:1:20"
 	applycontexttoworld
 	Response PlayercoachcoachesGamblerCoach
@@ -595,7 +605,7 @@ Response PlayercoachcoachesMechanicCoach
 }
 Rule PlayercoachcoachesMechanicCoach
 {
-	criteria Conceptcoachcoaches IsCoach IsTalk IsTalkCoach IsNotSaidcoachcoaches FromIsMechanic ChanceToFire30Percent IsNotIncapacitated IsHealthyHalf IsWorldTalkCoach IsNotSpeaking
+	criteria Conceptcoachcoaches IsCoach IsTalk IsTalkCoach IsNotSaidcoachcoaches FromIsMechanic IssuerClose ChanceToFire30Percent IsNotIncapacitated IsRocking IsWorldTalkCoach IsNotSpeaking
 	ApplyContext "Saidcoachcoaches:1:20"
 	applycontexttoworld
 	Response PlayercoachcoachesMechanicCoach
@@ -609,7 +619,7 @@ Response PlayercoachcoachesProducerCoach
 }
 Rule PlayercoachcoachesProducerCoach
 {
-	criteria Conceptcoachcoaches IsCoach IsTalk IsTalkCoach IsNotSaidcoachcoaches FromIsProducer ChanceToFire30Percent IsNotIncapacitated  IsHealthyHalf IsWorldTalkCoach IsNotSpeaking
+	criteria Conceptcoachcoaches IsCoach IsTalk IsTalkCoach IsNotSaidcoachcoaches FromIsProducer IssuerClose ChanceToFire30Percent IsNotIncapacitated IsRocking IsWorldTalkCoach IsNotSpeaking
 	ApplyContext "Saidcoachcoaches:1:20"
 	applycontexttoworld
 	Response PlayercoachcoachesProducerCoach
@@ -2229,6 +2239,18 @@ Rule InfoRemC3M3LowerGateaCoach
 //--------------------------------------------------------------------------------------------------------------
 // C3M4
 //--------------------------------------------------------------------------------------------------------------
+Response C3M4RescueStartCoach
+{
+	print " " then orator C3M4RescueStart foo:0 0
+}
+Rule C3M4RescueStartCoach
+{
+	criteria ConceptFinalVehicleSpotted IsProducer IsAtPlantation _auto_IsFinaleStarted
+	ApplyContext "_auto_Finale:2:0"
+	applycontexttoworld
+	Response C3M4RescueStartCoach
+}
+
 Response C3M4BoatNagsCoach
 {
 	norepeat
@@ -3630,8 +3652,8 @@ Rule C5M5_saferoom005Coach
 Response PlayerReviveParishCoach
 {
 	scene "scenes/Coach/WorldC5M5B20.vcd"  //Man, we are too close. I am NOT gonna let you die here.
-	scene "scenes/Coach/WorldC5M5B21.vcd"  //We are too close. I am NOT gonna let you die here.
-	scene "scenes/Coach/WorldC5M5B22.vcd"  //Man, we are too close. I am NOT gonna let you die here.
+	scene "scenes/Coach/WorldC5M5B21.vcd"  //Man, we are too close. I am NOT gonna let you die here.
+	scene "scenes/Coach/WorldC5M5B22.vcd"  //We are too close. I am NOT gonna let you die here.
 }
 Rule PlayerReviveParishCoach
 {
@@ -3656,7 +3678,7 @@ Rule PlayerLedgeSaveCriticalParishCoach
 
 Response PlayerReviveParishProducerCoach
 {
-	scene "scenes/Coach/WorldC5M5B21.vcd"  //We are too close. I am NOT gonna let you die here.
+	scene "scenes/Coach/WorldC5M5B22.vcd"  //We are too close. I am NOT gonna let you die here.
 	scene "scenes/Coach/WorldC5M5B23.vcd"  //Girl, I am NOT gonna let you die here.
 }
 Rule PlayerReviveParishProducerCoach
@@ -8638,7 +8660,7 @@ Rule PlayerRemarkWorldC1M2UpStairsCoach
 
 Response PlayerRemarkWorldC3M1FerryCrossingCoach
 {
-	scene "scenes/Coach/WorldC3M1B12.vcd" then producer WorldC3M1FerryCrossingN2 foo:0 0.1 //Man. When you're forced to turn to people livin' in a swamp to help you get out of a city? I don't think CEDA's doing their job right.
+	scene "scenes/Coach/WorldC3M1B12.vcd"  //Man. When you're forced to turn to people livin' in a swamp to help you get out of a city? I don't think CEDA's doing their job right.
 }
 Rule PlayerRemarkWorldC3M1FerryCrossingCoach
 {
@@ -11971,17 +11993,6 @@ Rule PlayerWorldSignColdBeer2Coach
 	Response PlayerWorldSignColdBeer2Coach
 }
 
-Response PlayerWorldSignHurricane2Coach
-{
-	scene "scenes/Coach/DLC1_C6M3_FinaleChat01.vcd" then producer WorldSignHurricane3 foo:0 0.1 //WHAT??
-	scene "scenes/Coach/DLC1_C6M3_FinaleChat02.vcd" then producer WorldSignHurricane3 foo:0 0.1 //WHAT??
-}
-Rule PlayerWorldSignHurricane2Coach
-{
-	criteria ConceptWorldSignHurricane2 IsNotCoughing IsCoach IsTalk IsTalkCoach HasAFrom IssuerReallyClose IsWorldTalkCoach
-	Response PlayerWorldSignHurricane2Coach
-}
-
 Response SurvivorCaughtVomitCoach
 {
 	scene "scenes/Coach/BoomerReaction01.vcd"  //[Reaction noise to boomer vomit - gross and bad]
@@ -12591,7 +12602,7 @@ Response SurvivorVocalizeGoingToDieCoach
 }
 Rule SurvivorVocalizeGoingToDieCoach
 {
-	criteria ConceptPlayerGoingToDie IsNotSpeaking IsNotCoughing IsCoach IsTalk IsTalkCoach IsNotComplainBlock IsWorldTalkCoach IsNotInStartArea IsNotInCheckpoint _auto_NotSpottedVehicle
+	criteria ConceptPlayerGoingToDie IsNotSpeaking IsNotCoughing IsCoach IsNotOnThirdStrike IsTalk IsTalkCoach IsNotComplainBlock IsWorldTalkCoach IsNotInStartArea IsNotInCheckpoint _auto_NotSpottedVehicle
 	ApplyContext "IsComplain:1:25"
 	Response SurvivorVocalizeGoingToDieCoach
 }
@@ -12946,7 +12957,7 @@ Rule SurvivorPickupcricket_batCoach
 	Response SurvivorPickupcricket_batCoach
 }
 
-Response SurvivorPickupCricketBatCoach
+Response SurvivorPickupBaseballBatCoach
 {
 	scene "scenes/Coach/TakeMelee01.vcd"  //Oh yeah.
 	scene "scenes/Coach/TakeMelee02.vcd"  //Alright now, mm-hm. This is gonna work.
@@ -12956,18 +12967,25 @@ Response SurvivorPickupCricketBatCoach
 	scene "scenes/Coach/TakeMelee06.vcd"  //Shit. I'd pay cash money for this.
 	scene "scenes/Coach/TakeMelee07.vcd"  //Alright. Now I am ready.
 }
-Rule SurvivorPickupCricketBatCoach
+Rule SurvivorPickupBaseballBatCoach
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsCoach IsPickedUpcricket_bat IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsCoach IsPickedUpbaseball_bat IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
-	Response SurvivorPickupCricketBatCoach
+	Response SurvivorPickupBaseballBatCoach
 }
 
 Rule SurvivorPickupShovelCoach
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsCoach IsPickedUpShovel IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsCoach IsPickedUpShovel IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
-	Response SurvivorPickupCricketBatCoach
+	Response SurvivorPickupBaseballBatCoach
+}
+
+Rule SurvivorPickupFryingPanCoach
+{
+	criteria ConceptPlayerPickup IsNotCoughing IsCoach IsPickedUpFryingPan IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	ApplyContext "PickedUpItem:1:30"
+	Response SurvivorPickupBaseballBatCoach
 }
 
 Response SurvivorPickupKnifeCoach
@@ -12977,7 +12995,14 @@ Response SurvivorPickupKnifeCoach
 }
 Rule SurvivorPickupKnifeCoach
 {
-	criteria ConceptPlayerPickup IsNotCoughing IsCoach IsPickedUpKnife IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	criteria ConceptPlayerPickup IsNotCoughing IsCoach IsPickedUpKnife IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
+	ApplyContext "PickedUpItem:1:30"
+	Response SurvivorPickupKnifeCoach
+}
+
+Rule SurvivorPickupFireAxeCoach
+{
+	criteria ConceptPlayerPickup IsNotCoughing IsCoach IsPickedUpFireAxe IsNotSpeaking ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
 	Response SurvivorPickupKnifeCoach
 }
@@ -13348,17 +13373,17 @@ Rule SurvivorPickuptonfaCoach
 	Response SurvivorPickuptonfaCoach
 }
 
-Response SurvivorPickupUpExplosiveAmmoCoach
+Response SurvivorPickupExplosiveAmmoCoach
 {
 	scene "scenes/Coach/Yes03.vcd"  //Yes.
 	scene "scenes/Coach/Yes04.vcd"  //Oh Yeah.
 	scene "scenes/Coach/Yes05.vcd"  //For sure.
 }
-Rule SurvivorPickupUpExplosiveAmmoCoach
+Rule SurvivorPickupExplosiveAmmoCoach
 {
 	criteria ConceptPlayerPickup IsNotCoughing IsCoach ChanceToFire30Percent NotPickedUpItem IsNotInSafeSpot IsPickedUpExplosiveAmmo IsNotSpeaking  IsTalk IsTalkCoach IsWorldTalkCoach IsNotInStartArea isNotmap_c1m1_hotel isNotmap_c1m1d_hotel isNotmap_c1m1_hotel_2009 AutoIsNotSurvival AutoIsNotScavenge _auto_NotSpottedVehicle
 	ApplyContext "PickedUpItem:1:30"
-	Response SurvivorPickupUpExplosiveAmmoCoach
+	Response SurvivorPickupExplosiveAmmoCoach
 }
 
 Response SurvivorPickupUpExplosivesCoach
@@ -15152,23 +15177,6 @@ Rule C1M2TankInfoCoach
 	Response C1M2TankInfoCoach
 }
 
-Response PlayerShotGasCanCoach
-{
-	scene "scenes/Coach/ReactionNegative01.vcd" predelay "1,1.5" //Shit.
-	scene "scenes/Coach/ReactionNegative03.vcd" predelay "1,1.5" //Damn!
-	scene "scenes/Coach/ReactionNegative08.vcd" predelay "1,1.5" //Goddamnit!
-	scene "scenes/Coach/ReactionNegative09.vcd" predelay "1,1.5" //Shiiit.
-	scene "scenes/Coach/ReactionNegative15.vcd" predelay "1,1.5" //Goddamn!
-	scene "scenes/Coach/ReactionNegative16.vcd" predelay "1,1.5" //Son of a bitch.
-}
-Rule PlayerShotGasCanCoach
-{
-	criteria ConceptPlayerShotGasCan IsCoach IsNotSaidPlayerShotGasCan IsScavenge
-	ApplyContext "SaidPlayerShotGasCan1:10"
-	applycontexttoworld
-	Response PlayerShotGasCanCoach
-}
-
 Response PlayerCr0wnedBrideCoach
 {
 	scene "scenes/Coach/DLC1_C6M1_WeddingWitchDead02.vcd" predelay "3" then gambler WeddingWitchDead03 foo:0 3.1 //Mm, now that's a shotgun wedding.
@@ -16635,7 +16643,7 @@ Rule LeavingSafeRoomCoach
 	criteria ConceptSurvivorLeavingInitialCheckpoint IsCoach IsNotSaidLeavingSafeArea
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:0:0"
 	applycontexttoworld
-	Response NoResponse
+	Response BlankCutoffCoach
 }
 
 Rule FinaleTriggeredCoach

@@ -7,6 +7,16 @@ Response _PlayerInfoRemarkableBlankNamVet
 	scene "scenes/NamVet/blank.vcd"
 }
 
+Response BlankCutoffNamVet
+{
+	scene "scenes/NamVet/blank.vcd" then all BlankCutoff foo:0 .1
+}
+Rule BlankCutoffNamVet
+{
+	criteria ConceptBlankCutoff IsNamVet AutoIsNotScavenge AutoIsNotSurvival
+	Response _PlayerInfoRemarkableBlankNamVet
+}
+
 Response L4D1PlayerNiceShotNamVet
 {
 	scene "scenes/NamVet/NiceShot01.vcd"  //
@@ -2195,7 +2205,7 @@ Rule SurvivorSpottedVomitJarNamVet
 
 Rule SurvivorSpottedVomitJarAutoNamVet
 {
-	criteria ConceptPlayerSpotWeapon IsNotCoughing IsNamVet IsTalk IsTalkNamVet IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotMolotov IsNotSaidSpot IsVomitJar IsWorldTalkNamVet IsNotSpeakingWeight0
+	criteria ConceptPlayerSpotWeapon IsNotCoughing IsNamVet IsTalk IsTalkNamVet IsSmartLookAuto IsNotInSafeSpot IsNotAlone IsNotSaidSpotVomitJar IsNotSaidSpot IsVomitJar IsWorldTalkNamVet IsNotSpeakingWeight0
 	ApplyContext "SaidSpotMolotov:1:5,SaidSpot:1:20"
 	applycontexttoworld
 	Response SurvivorSpottedVomitJarNamVet
@@ -2643,7 +2653,6 @@ Rule L4D1PlayerFriendlyFireNamVet
 Response L4D1PlayerFriendlyFire2NamVet
 {
 	scene "scenes/NamVet/TeamKillAccident01.vcd"  //Be careful!
-	scene "scenes/NamVet/TeamKillAccident02.vcd"  //Have you lost your mind?
 	scene "scenes/NamVet/TeamKillAccident03.vcd"  //What did you do you just do?
 	scene "scenes/NamVet/TeamKillAccident04.vcd"  //Watch it, Watch it!
 }
@@ -2652,6 +2661,17 @@ Rule L4D1PlayerFriendlyFire2NamVet
 	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkNamVet IsWorldTalkNamVet NotTankAggro _auto_NotSpottedVehicle
 	ApplyContext "FriendlyFire:1:10"
 	Response L4D1PlayerFriendlyFire2NamVet
+}
+
+Response L4D1PlayerFriendlyFireTankNamVet
+{
+	scene "scenes/NamVet/TeamKillAccident02.vcd"  //Have you lost your mind?
+}
+Rule L4D1PlayerFriendlyFireTankNamVet
+{
+	criteria ConceptPlayerFriendlyFire IsNotCoughing IsNamVet IsNotFriendlyFire IsNotIncapacitated IsOnThirdStrike IsNotDamageTypeExplosive IsTalk IsTalkNamVet IsWorldTalkNamVet IsTankAggro _auto_NotSpottedVehicle
+	ApplyContext "FriendlyFire:1:10"
+	Response L4D1PlayerFriendlyFireTankNamVet
 }
 
 Response L4D1PlayerFriendlyFireFromFrancisNamVet
@@ -7229,24 +7249,6 @@ Rule InfoReminfo_trailerboatruckNamVet
 	Response InfoReminfo_trailerboatruckNamVet
 }
 
-Response PlayerShotGasCanNamVet
-{
-	scene "scenes/NamVet/ReactionNegative07.vcd" predelay "1,1.5" //God dammit
-	scene "scenes/NamVet/ReactionNegative09.vcd" predelay "1,1.5" //Son of a bitch
-	scene "scenes/NamVet/ReactionNegative10.vcd" predelay "1,1.5" //Dammit
-	scene "scenes/NamVet/Swears04.vcd" predelay "1,1.5" //Bull-frickin-horseshit.
-	scene "scenes/NamVet/Swears09.vcd" predelay "1,1.5" //God DAMMIT.
-	scene "scenes/NamVet/Swears10.vcd" predelay "1,1.5" //Mother of mercy.
-	scene "scenes/NamVet/Swears19.vcd" predelay "1,1.5" //What a crock a' shit...
-}
-Rule PlayerShotGasCanNamVet
-{
-	criteria ConceptPlayerShotGasCan IsNamVet IsNotSaidPlayerShotGasCan IsScavenge
-	ApplyContext "SaidPlayerShotGasCan1:10"
-	applycontexttoworld
-	Response PlayerShotGasCanNamVet
-}
-
 
 //--------------------------------------------------------------------------------------------------------------
 // Vocalizer Heal
@@ -8810,7 +8812,7 @@ Rule LeavingSafeRoomNamVet
 	criteria ConceptSurvivorLeavingInitialCheckpoint IsNamVet IsNotSaidLeavingSafeArea
 	ApplyContext "SaidLeavingSafeArea:1:0,Talk:0:0"
 	applycontexttoworld
-	Response NoResponse
+	Response BlankCutoffNamVet
 }
 
 Rule FinaleTriggeredNamVet
